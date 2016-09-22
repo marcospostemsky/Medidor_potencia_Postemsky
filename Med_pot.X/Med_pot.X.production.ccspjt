@@ -1,0 +1,16 @@
+[PROJECT]
+Target=dist\default\production\Med_pot.X.production.hex
+Processor_Text=PIC18F4550
+CCSVersion=5.048
+Compiler=PCH
+[Target Data]
+FileList=$linker.c
+[dist\default\production\Med_pot.X.production.c]
+Type=4
+[mru-list]
+1=dist\default\production\Med_pot.X.production.c
+[Units]
+Count=2
+1=main
+2=funciones
+Link=1

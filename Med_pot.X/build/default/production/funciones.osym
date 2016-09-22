@@ -1,0 +1,72 @@
+_RETURN_
+CCP_1
+CCP_1_LOW
+CCP_1_HIGH
+CCP_2
+CCP_2_LOW
+CCP_2_HIGH
+PSP_DATA
+C1OUT
+C2OUT
+contador
+pulso_timer
+address
+lcd_backlight
+pe
+pl
+ql
+pas
+qas
+pat
+qat
+punto1
+punto2
+pos_V
+pos_I
+pos_V_A
+pos_I_A
+control_V
+control_I
+desfase
+tension
+corriente
+tension_RMS
+corriente_RMS
+t_desfase
+potencia_ins
+angulo
+
+Project Directory:
+    C:\Users\MARCOS\Proyecto_final\Med_pot.X\
+
+Project Files:
+    funciones.c                                             [18-sep-16 10:27  CRC=3DCAEFF3]
+    ..\..\..\..\Program Files (x86)\PICC\devices\18F4550.h  [26-jun-15 10:09  CRC=281B1877]
+    funciones.h                                             [18-sep-16 10:27  CRC=AB6AC1FE]
+    i2c_Flex_LCD.h                                          [12-ene-14 15:46  CRC=9BBA501F]
+    MAX191.c                                                [17-sep-16 19:26  CRC=6B413333]
+    ..\..\..\..\Program Files (x86)\PICC\drivers\math.h     [16-ene-15 10:40  CRC=6A8358B0]
+
+Source signature=ED52FF1A
+
+Units:
+    funciones (main)
+
+Compiler Settings:
+    Processor:      PIC18F4550
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Output file:    Relocatable
+    Compile Mode:       CCS5
+    Predefined symbols:
+       #define __18F4550 1
+
+Output Files:
+    XREF file:   build\default\production\funciones.xsym
+    Errors:      build\default\production\funciones.err
+    Ext Symbols: build\default\production\funciones.esym
+    Object:      build\default\production\funciones.o
+    Symbols:     build\default\production\funciones.osym

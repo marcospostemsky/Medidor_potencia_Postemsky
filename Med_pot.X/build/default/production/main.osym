@@ -1,0 +1,48 @@
+_RETURN_
+CCP_1
+CCP_1_LOW
+CCP_1_HIGH
+CCP_2
+CCP_2_LOW
+CCP_2_HIGH
+PSP_DATA
+C1OUT
+C2OUT
+address
+lcd_backlight
+contador
+pulso_timer
+
+Project Directory:
+    C:\Users\MARCOS\Proyecto_final\Med_pot.X\
+
+Project Files:
+    main.c                                                  [18-sep-16 10:33  CRC=0C04F669]
+    ..\..\..\..\Program Files (x86)\PICC\devices\18F4550.h  [26-jun-15 10:09  CRC=281B1877]
+    funciones.h                                             [18-sep-16 10:27  CRC=AB6AC1FE]
+    i2c_Flex_LCD.h                                          [12-ene-14 15:46  CRC=9BBA501F]
+
+Source signature=16FF711C
+
+Units:
+    main (main)
+
+Compiler Settings:
+    Processor:      PIC18F4550
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    ICD Provisions: Yes
+    Output file:    Relocatable
+    Compile Mode:       CCS5
+    Predefined symbols:
+       #define __18F4550 1
+
+Output Files:
+    XREF file:   build\default\production\main.xsym
+    Errors:      build\default\production\main.err
+    Ext Symbols: build\default\production\main.esym
+    Object:      build\default\production\main.o
+    Symbols:     build\default\production\main.osym

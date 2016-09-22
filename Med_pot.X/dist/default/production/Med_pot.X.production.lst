@@ -1,0 +1,5204 @@
+CCS PCH C Compiler, Version 5.048, 5967               22-sep-16 01:01
+
+               Filename:   C:\Users\MARCOS\Proyecto_final\Med_pot.X\dist\default\production\Med_pot.X.production.lst
+
+               ROM used:   5442 bytes (17%)
+                           Largest free fragment is 26490
+               RAM used:   71 (3%) at main() level
+                           137 (7%) worst case
+               Stack used: 7 locations (6 in main + 1 for interrupts)
+               Stack size: 30
+
+*
+0000:  GOTO   1518
+*
+0008:  MOVWF  04
+000A:  MOVFF  FD8,05
+000E:  MOVFF  FE0,06
+0012:  MOVLB  0
+0014:  MOVFF  FE9,0C
+0018:  MOVFF  FEA,07
+001C:  MOVFF  FE1,08
+0020:  MOVFF  FE2,09
+0024:  MOVFF  FD9,0A
+0028:  MOVFF  FDA,0B
+002C:  MOVFF  FF3,12
+0030:  MOVFF  FF4,13
+0034:  MOVFF  FFA,14
+0038:  MOVFF  FF5,15
+003C:  MOVFF  FF6,16
+0040:  MOVFF  FF7,17
+0044:  MOVFF  00,0E
+0048:  MOVFF  01,0F
+004C:  MOVFF  02,10
+0050:  MOVFF  03,11
+0054:  BTFSS  FF2.5
+0056:  GOTO   0060
+005A:  BTFSC  FF2.2
+005C:  GOTO   00AE
+0060:  MOVFF  0E,00
+0064:  MOVFF  0F,01
+0068:  MOVFF  10,02
+006C:  MOVFF  11,03
+0070:  MOVFF  0C,FE9
+0074:  MOVFF  07,FEA
+0078:  BSF    07.7
+007A:  MOVFF  08,FE1
+007E:  MOVFF  09,FE2
+0082:  MOVFF  0A,FD9
+0086:  MOVFF  0B,FDA
+008A:  MOVFF  12,FF3
+008E:  MOVFF  13,FF4
+0092:  MOVFF  14,FFA
+0096:  MOVFF  15,FF5
+009A:  MOVFF  16,FF6
+009E:  MOVFF  17,FF7
+00A2:  MOVF   04,W
+00A4:  MOVFF  06,FE0
+00A8:  MOVFF  05,FD8
+00AC:  RETFIE 0
+.................... #import(file="build/default/production/main.o") 
+.................... #import(file="build/default/production/funciones.o") 
+.................... /** 
+.................... *	\file main.c 
+.................... *	\brief Resumen del contenido del archivo 
+.................... *	\details Descripcion detallada del archivo 
+.................... *	\author Postemsky Marcos 
+.................... *	\date 17-09-2016 11:39:08 
+.................... */ 
+.................... #include <18F4550.h> 
+.................... //////////// Standard Header file for the PIC18F4550 device //////////////// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... ////        (C) Copyright 1996, 2014 Custom Computer Services          //// 
+.................... //// This source code may only be used by licensed users of the CCS C  //// 
+.................... //// compiler.  This source code may only be distributed to other      //// 
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction //// 
+.................... //// or distribution is permitted without written permission.          //// 
+.................... //// Derivative programs created using this software in object code    //// 
+.................... //// form are not restricted in any way.                               //// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... #device PIC18F4550 
+....................  
+.................... #list 
+....................  
+.................... #device ICD=2 
+.................... #fuses NOWDT,MCLR,HS,NOUSBDIV,NOIESO,            //Selecciona el oscilador interno 
+.................... #use delay(clock=12 Mhz, crystal= 12 MHz)   // Selecciona la velocidad del oscilador interno 
+*
+00DC:  CLRF   FEA
+00DE:  MOVLW  56
+00E0:  MOVWF  FE9
+00E2:  MOVF   FEF,W
+00E4:  BZ    0102
+00E6:  MOVLW  03
+00E8:  MOVWF  01
+00EA:  CLRF   00
+00EC:  DECFSZ 00,F
+00EE:  BRA    00EC
+00F0:  DECFSZ 01,F
+00F2:  BRA    00EA
+00F4:  MOVLW  E3
+00F6:  MOVWF  00
+00F8:  DECFSZ 00,F
+00FA:  BRA    00F8
+00FC:  NOP   
+00FE:  DECFSZ FEF,F
+0100:  BRA    00E6
+0102:  RETURN 0
+.................... #use i2c(Master,Fast=100000, sda=PIN_D6, scl=PIN_D7,force_sw) 
+0104:  MOVLW  08
+0106:  MOVWF  01
+0108:  MOVLW  02
+010A:  MOVWF  00
+010C:  DECFSZ 00,F
+010E:  BRA    010C
+0110:  BCF    F8C.7
+0112:  BCF    F95.7
+0114:  MOVLW  02
+0116:  MOVWF  00
+0118:  DECFSZ 00,F
+011A:  BRA    0118
+011C:  RLCF   5A,F
+011E:  BCF    F8C.6
+0120:  BTFSC  FD8.0
+0122:  BSF    F95.6
+0124:  BTFSS  FD8.0
+0126:  BCF    F95.6
+0128:  BSF    F95.7
+012A:  BTFSS  F83.7
+012C:  BRA    012A
+012E:  DECFSZ 01,F
+0130:  BRA    0108
+0132:  MOVLW  02
+0134:  MOVWF  00
+0136:  DECFSZ 00,F
+0138:  BRA    0136
+013A:  BCF    F8C.7
+013C:  BCF    F95.7
+013E:  NOP   
+0140:  BSF    F95.6
+0142:  MOVLW  02
+0144:  MOVWF  00
+0146:  DECFSZ 00,F
+0148:  BRA    0146
+014A:  MOVLW  02
+014C:  MOVWF  00
+014E:  DECFSZ 00,F
+0150:  BRA    014E
+0152:  BSF    F95.7
+0154:  BTFSS  F83.7
+0156:  BRA    0154
+0158:  CLRF   01
+015A:  MOVLW  02
+015C:  MOVWF  00
+015E:  DECFSZ 00,F
+0160:  BRA    015E
+0162:  BTFSC  F83.6
+0164:  BSF    01.0
+0166:  BCF    F8C.7
+0168:  BCF    F95.7
+016A:  BCF    F8C.6
+016C:  BCF    F95.6
+016E:  RETURN 0
+....................  
+.................... #include "funciones.h" 
+.................... /** 
+.................... *	\file funciones.h 
+.................... *	\brief Resumen del archivo 
+.................... *	\details Descripcion detallada del archivo 
+.................... *	\author Postemsky Marcos 
+.................... *	\date 17-09-2016 11:39:08 
+.................... */ 
+....................  
+.................... #include <i2c_Flex_LCD.h> 
+.................... //----------------------------------------------------------------------------- 
+.................... // Title:         i2c_Flex_LCD 
+.................... // Description:   Driver for common LCD with 1/2/3 or 4 row modules using PCF8574T interface board with I2C protocol. 
+.................... // Date:          Nov-2013 
+.................... // Ver.Rev.:      1.0 
+.................... // Author:        Hugo Silva (sergio-hugo@bol.com.br) #Based on the routines of 20X4_LCD_I2C_DRIVER.h from Pumrin S. 
+.................... //----------------------------------------------------------------------------- 
+.................... // 
+.................... // lcd_init() Must be called before any other function. 
+.................... // 
+.................... // lcd_putc(c) Will display c on the next position of the LCD. 
+.................... //  
+.................... //     \f Clear LCD dispay 
+.................... //     \1 Set write position on LCD Line 1 
+.................... //     \2 Set write position on LCD Line 2 
+.................... //     \3 Set write position on LCD Line 3 
+.................... //     \4 Set write position on LCD Line 4 
+.................... // 
+.................... //     lcd_gotoxy(x,y) Set write position on LCD (upper left is 1,1) 
+.................... // 
+.................... //----------------------------------------------------------------------------- 
+.................... // LCD pins D0-D3 are not used. 
+.................... //----------------------------------------------------------------------------- 
+.................... // 
+.................... // Commment   : Control of a compatible LCD HITACHI from a bus I2C with 
+.................... //              an EXPANDER of I/O with connection I2C. The tests of these 
+.................... //              routines have been programmed using the IC PCF8574T of Phillips. 
+.................... //              I used 4 bits mode programming. The 8 bits mode programming 
+.................... //              is possible if you use 2 x PCF8574T. 
+.................... // 
+.................... // As defined in the following structure the pin connection is as follows: 
+.................... // 
+.................... //  PCF8574P     LCD 
+.................... //  ========     ====== 
+.................... //     P0        RS 
+.................... //     P1        RW 
+.................... //     P2        Enable  
+.................... //     P3        Led Backlight 
+.................... //     P4        D4 
+.................... //     P5        D5 
+.................... //     P6        D6 
+.................... //     P7        D7 
+.................... // 
+.................... //  The SCL and SDA pins should be pull-up resistor as shown below: 
+.................... // 
+.................... //             +5v 
+.................... //               | 
+.................... //               < 
+.................... //               > 4.7K        
+.................... //               <          
+.................... //To PIC         |          To i2c slave 
+.................... //pin xx ------------------ SDA pin  
+.................... //(SDA)                      
+.................... //              +5v 
+.................... //               | 
+.................... //               < 
+.................... //               > 4.7K        
+.................... //               <          
+.................... //To PIC         |          To i2c slave 
+.................... //pin xx ------------------ SCL pin  
+.................... //(SCL) 
+.................... // 
+.................... //To PIC                    To i2c slave 
+.................... //Vss pin ----------------- Vss or ground pin  
+.................... //                | 
+.................... //              ----- 
+.................... //               ---  Ground 
+.................... //                -  
+.................... //  
+.................... // THIS DOCUMENT IS PROVIDED TO THE USER "AS IS" 
+.................... //----------------------------------------------------------------------------- 
+.................... //For PCF8574T the addressing is: 
+....................  
+.................... //Jp3 Jp2 Jp1 
+.................... //A2 A1 A0  Hex 
+.................... //L L L  0x40 
+.................... //L L H  0x42 
+.................... //L H L  0x44 
+.................... //L H H  0x46 
+.................... //H L L  0x48 
+.................... //H L H  0x4A 
+.................... //H H L  0x4C 
+.................... //H H H  0x4E 
+....................  
+.................... //---------------------------------------------------------------------------- 
+.................... #define LCD_ADDR       0x4E //I2C slave address for LCD module 
+....................  
+.................... #define ON             1 
+.................... #define OFF            0 
+.................... #define RS             0b00000001  //P0 - PCF8574T Pin connected to RS 
+.................... #define RW             0b00000010  //P1 - PCF8574T Pin connected to RW 
+.................... #define EN             0b00000100  //P2 - PCF8574T Pin connected to EN 
+.................... #define BACKLIGHT_LED  0b00001000  //P3 - PCF8574T Pin connected to BACKLIGHT LED 
+....................  
+.................... #define lcd_line_one   0x80   // LCD RAM address for line 1 
+.................... #define lcd_line_two   0xC0   // LCD RAM address for line 2 
+.................... #define lcd_line_three 0x94   // LCD RAM address for line 3 
+.................... #define lcd_line_four  0xD4   // LCD RAM address for line 4 
+....................   
+.................... byte address; 
+.................... int1 lcd_backlight=ON; 
+....................  
+.................... void i2c_lcd_backlight_On(){ 
+....................       lcd_backlight=ON; 
+.................... } 
+....................  
+.................... void i2c_lcd_backlight_Off(){ 
+....................       lcd_backlight=OFF; 
+.................... } 
+....................  
+.................... void i2c_send_nibble(unsigned char data) 
+....................    {    
+....................         i2c_start(); 
+....................         delay_us(20); 
+....................         i2c_write(LCD_ADDR); //the slave addresse 
+....................         delay_us(20); 
+....................         i2c_write(data); 
+....................         delay_us(20); 
+....................         i2c_stop(); 
+....................         delay_us(20); 
+....................    } 
+....................  
+.................... void lcd_send_byte(unsigned char data) 
+....................    { 
+....................         if (lcd_backlight) data=data|EN|BACKLIGHT_LED; else data=data|EN; //set pin EN 
+....................         i2c_send_nibble(data); 
+....................         data=data-4;       //toggle EN back to 0 
+....................         i2c_send_nibble(data); 
+....................    } 
+....................     
+.................... void lcd_clear() 
+.................... { 
+....................     lcd_send_byte(0x00); 
+....................     lcd_send_byte(0x10); 
+....................     delay_ms(2); 
+.................... } 
+....................  
+.................... void lcd_init() 
+.................... { 
+....................     delay_ms(200); //LCD power up delay 
+....................         
+....................    //Request works on the command by set the RS = 0 R/W = 0 write 
+....................         lcd_send_byte(0x00); 
+....................         lcd_send_byte(0x10); 
+....................         lcd_send_byte(0x00); 
+....................         lcd_send_byte(0x00); 
+....................         lcd_send_byte(0x10); 
+....................            //First state in 8 bit mode 
+....................         lcd_send_byte(0x30); 
+....................         lcd_send_byte(0x30); 
+....................            //Then set to 4-bit mode 
+....................         lcd_send_byte(0x30); 
+....................         lcd_send_byte(0x20); 
+....................            //mode 4 bits, 2 lines, characters 5 x 7 (28 h) 
+....................         lcd_send_byte(0x20); 
+....................         lcd_send_byte(0x80); 
+....................            //no need cursor on (0Ch) 
+....................         lcd_send_byte(0x00); 
+....................         lcd_send_byte(0xC0); 
+....................            //the cursor moves to the left (06 h) 
+....................         lcd_send_byte(0x00); 
+....................         lcd_send_byte(0x60); 
+....................            //clears the display 
+....................         lcd_clear(); 
+.................... } 
+....................  
+*
+152E:  CLRF   1E
+1530:  MOVF   FC1,W
+1532:  ANDLW  C0
+1534:  IORLW  0F
+1536:  MOVWF  FC1
+.................... void lcd_gotoxy( byte x, byte y) 
+*
+1524:  CLRF   1B
+.................... {      
+.................... static char data; 
+....................       
+....................    switch(y) 
+....................    { 
+....................       case 1:  address= lcd_line_one;     break; 
+....................       case 2:  address= lcd_line_two;     break; 
+....................       case 3:  address= lcd_line_three;   break; 
+....................       case 4:  address= lcd_line_four;    break; 
+....................       default: address= lcd_line_one;     break;  
+....................    } 
+....................   
+....................    address+=x-1; 
+....................    data=address&0xF0; 
+....................    lcd_send_byte(data); 
+....................    data=address&0x0F; 
+....................    data=data<<4; 
+....................    lcd_send_byte(data); 
+.................... } 
+....................  
+.................... //Display the character on LCD screen. 
+.................... void LCD_PUTC(char in_data) 
+.................... { 
+....................  char data;      
+....................   switch(in_data) 
+....................    {  
+....................      case '\f': lcd_clear()    ;  break;                
+....................      case '\1': lcd_gotoxy(1,1);  break; 
+....................      case '\2': lcd_gotoxy(1,2);  break; 
+....................      case '\3': lcd_gotoxy(1,3);  break; 
+....................      case '\4': lcd_gotoxy(1,4);  break; 
+....................  
+....................      default: 
+....................         data=in_data&0xF0; 
+....................         data=data|RS; //set RS pin to 1 
+....................         lcd_send_byte(data); 
+....................         data=in_data&0x0F; 
+....................         data=data<<4; 
+....................         data=data|RS; //set RS pin to 1 
+....................         lcd_send_byte(data); 
+....................      break; 
+....................    } 
+.................... }  
+....................  
+....................  
+.................... #ifndef FUNCIONES_H 
+.................... #define FUNCIONES_H 
+.................... //Declaracion de estados 
+....................  
+.................... #define 	PUNTO_TENS_CORR	0 
+.................... #define 	CONVERSION_DESFASE	1 
+.................... #define 	TENS_CORR_RMS	2 
+.................... #define 	CALCULO_POT_ENER	3 
+.................... #define 	MOSTRAR_DATOS	4 
+....................  
+.................... //Prototipos de los eventos 
+.................... void maquina_estado(void); 
+....................  
+.................... #endif 
+....................  
+.................... #use fast_io(A) 
+.................... #use fast_io(B) 
+....................  
+.................... extern int contador; 
+.................... extern int pulso_timer; 
+....................  
+.................... void inicializar(); 
+....................  
+.................... void main() 
+*
+1518:  CLRF   FF8
+151A:  BCF    FD0.7
+151C:  BSF    07.7
+151E:  BSF    1A.0
+1520:  BSF    1A.0
+1522:  BSF    1A.0
+*
+1526:  CLRF   1C
+1528:  CLRF   1D
+152A:  BSF    1A.0
+152C:  CLRF   46
+*
+1538:  MOVLW  07
+153A:  MOVWF  FB4
+.................... { 
+....................  
+.................... //declaracion de variables 
+.................... //inicializacion de perifericos 
+....................  
+.................... 	inicializar() ; 
+153C:  GOTO   02D0
+....................  
+....................  
+.................... 	while(1) 
+.................... 	{ 
+....................  
+.................... 		maquina_estado(); 
+1540:  BRA    103A
+1542:  BRA    1540
+....................  
+.................... 	} 
+.................... } 
+....................  
+1544:  BRA    1544
+.................... void Inicializar(){ 
+....................  
+....................     setup_adc_ports(AN0);                                   //Canal 0 analógico 
+*
+02D0:  MOVF   FC1,W
+02D2:  ANDLW  C0
+02D4:  IORLW  0E
+02D6:  MOVWF  FC1
+....................     setup_adc(ADC_CLOCK_DIV_16);    
+02D8:  MOVF   FC0,W
+02DA:  ANDLW  C0
+02DC:  IORLW  05
+02DE:  MOVWF  FC0
+02E0:  BCF    FC0.7
+02E2:  BSF    FC2.0
+....................     setup_timer_0( RTCC_INTERNAL | T0_DIV_2); 
+02E4:  MOVLW  80
+02E6:  MOVWF  FD5
+....................     contador=1; 
+02E8:  MOVLW  01
+02EA:  MOVWF  1C
+....................     lcd_init(); 
+02EC:  BRA    021E
+....................     lcd_gotoxy(1,1); 
+02EE:  MOVLW  01
+02F0:  MOVWF  56
+02F2:  MOVWF  57
+02F4:  RCALL  027A
+....................     lcd_backlight=ON; 
+02F6:  BSF    1A.0
+....................     enable_interrupts (INT_RTCC); 
+02F8:  BSF    FF2.5
+....................     set_timer0(0x1D); 
+02FA:  CLRF   FD7
+02FC:  MOVLW  1D
+02FE:  MOVWF  FD6
+0300:  GOTO   1540 (RETURN)
+.................... } 
+....................  
+....................  
+.................... /** 
+.................... *	\file funciones.c 
+.................... *	\brief  
+.................... *	\details Descripcion detallada del archivo 
+.................... *	\author Postemsky Marcos 
+.................... *	\date 17-09-2016 11:39:08 
+.................... */ 
+....................  
+.................... #include <18F4550.h> 
+.................... //////////// Standard Header file for the PIC18F4550 device //////////////// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... ////        (C) Copyright 1996, 2014 Custom Computer Services          //// 
+.................... //// This source code may only be used by licensed users of the CCS C  //// 
+.................... //// compiler.  This source code may only be distributed to other      //// 
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction //// 
+.................... //// or distribution is permitted without written permission.          //// 
+.................... //// Derivative programs created using this software in object code    //// 
+.................... //// form are not restricted in any way.                               //// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... #device PIC18F4550 
+*
+00BC:  DATA 50,6F
+00BE:  DATA 74,65
+00C0:  DATA 6E,63
+00C2:  DATA 69,61
+00C4:  DATA 3D,20
+00C6:  DATA 25,66
+00C8:  DATA 20,57
+00CA:  DATA 00,00
+00CC:  DATA 54,3D
+00CE:  DATA 25,66
+00D0:  DATA 20,56
+00D2:  DATA 20,20
+00D4:  DATA 49,3D
+00D6:  DATA 25,66
+00D8:  DATA 20,41
+00DA:  DATA 00,00
+*
+036C:  MOVLW  8E
+036E:  MOVWF  00
+0370:  MOVFF  7A,01
+0374:  MOVFF  79,02
+0378:  CLRF   03
+037A:  MOVF   01,F
+037C:  BNZ   0390
+037E:  MOVFF  02,01
+0382:  CLRF   02
+0384:  MOVLW  08
+0386:  SUBWF  00,F
+0388:  MOVF   01,F
+038A:  BNZ   0390
+038C:  CLRF   00
+038E:  BRA    03A0
+0390:  BCF    FD8.0
+0392:  BTFSC  01.7
+0394:  BRA    039E
+0396:  RLCF   02,F
+0398:  RLCF   01,F
+039A:  DECF   00,F
+039C:  BRA    0390
+039E:  BCF    01.7
+03A0:  RETURN 0
+03A2:  MOVF   x79,W
+03A4:  BTFSC  FD8.2
+03A6:  BRA    048A
+03A8:  MOVWF  00
+03AA:  MOVF   x7D,W
+03AC:  BTFSC  FD8.2
+03AE:  BRA    048A
+03B0:  ADDWF  00,F
+03B2:  BNC   03BC
+03B4:  MOVLW  81
+03B6:  ADDWF  00,F
+03B8:  BC    048A
+03BA:  BRA    03C4
+03BC:  MOVLW  7F
+03BE:  SUBWF  00,F
+03C0:  BNC   048A
+03C2:  BZ    048A
+03C4:  MOVFF  7A,81
+03C8:  MOVF   x7E,W
+03CA:  XORWF  x81,F
+03CC:  BSF    x7A.7
+03CE:  BSF    x7E.7
+03D0:  MOVF   x7C,W
+03D2:  MULWF  x80
+03D4:  MOVFF  FF4,83
+03D8:  MOVF   x7B,W
+03DA:  MULWF  x7F
+03DC:  MOVFF  FF4,03
+03E0:  MOVFF  FF3,82
+03E4:  MULWF  x80
+03E6:  MOVF   FF3,W
+03E8:  ADDWF  x83,F
+03EA:  MOVF   FF4,W
+03EC:  ADDWFC x82,F
+03EE:  MOVLW  00
+03F0:  ADDWFC 03,F
+03F2:  MOVF   x7C,W
+03F4:  MULWF  x7F
+03F6:  MOVF   FF3,W
+03F8:  ADDWF  x83,F
+03FA:  MOVF   FF4,W
+03FC:  ADDWFC x82,F
+03FE:  MOVLW  00
+0400:  CLRF   02
+0402:  ADDWFC 03,F
+0404:  ADDWFC 02,F
+0406:  MOVF   x7A,W
+0408:  MULWF  x80
+040A:  MOVF   FF3,W
+040C:  ADDWF  x82,F
+040E:  MOVF   FF4,W
+0410:  ADDWFC 03,F
+0412:  MOVLW  00
+0414:  ADDWFC 02,F
+0416:  MOVF   x7A,W
+0418:  MULWF  x7F
+041A:  MOVF   FF3,W
+041C:  ADDWF  03,F
+041E:  MOVF   FF4,W
+0420:  ADDWFC 02,F
+0422:  MOVLW  00
+0424:  CLRF   01
+0426:  ADDWFC 01,F
+0428:  MOVF   x7C,W
+042A:  MULWF  x7E
+042C:  MOVF   FF3,W
+042E:  ADDWF  x82,F
+0430:  MOVF   FF4,W
+0432:  ADDWFC 03,F
+0434:  MOVLW  00
+0436:  ADDWFC 02,F
+0438:  ADDWFC 01,F
+043A:  MOVF   x7B,W
+043C:  MULWF  x7E
+043E:  MOVF   FF3,W
+0440:  ADDWF  03,F
+0442:  MOVF   FF4,W
+0444:  ADDWFC 02,F
+0446:  MOVLW  00
+0448:  ADDWFC 01,F
+044A:  MOVF   x7A,W
+044C:  MULWF  x7E
+044E:  MOVF   FF3,W
+0450:  ADDWF  02,F
+0452:  MOVF   FF4,W
+0454:  ADDWFC 01,F
+0456:  INCF   00,F
+0458:  BTFSC  01.7
+045A:  BRA    0466
+045C:  RLCF   x82,F
+045E:  RLCF   03,F
+0460:  RLCF   02,F
+0462:  RLCF   01,F
+0464:  DECF   00,F
+0466:  MOVLW  00
+0468:  BTFSS  x82.7
+046A:  BRA    0480
+046C:  INCF   03,F
+046E:  ADDWFC 02,F
+0470:  ADDWFC 01,F
+0472:  MOVF   01,W
+0474:  BNZ   0480
+0476:  MOVF   02,W
+0478:  BNZ   0480
+047A:  MOVF   03,W
+047C:  BNZ   0480
+047E:  INCF   00,F
+0480:  BTFSC  x81.7
+0482:  BSF    01.7
+0484:  BTFSS  x81.7
+0486:  BCF    01.7
+0488:  BRA    0492
+048A:  CLRF   00
+048C:  CLRF   01
+048E:  CLRF   02
+0490:  CLRF   03
+0492:  RETURN 0
+0494:  MOVF   59,W
+0496:  BTFSC  FD8.2
+0498:  BRA    05E4
+049A:  MOVWF  x65
+049C:  MOVF   5D,W
+049E:  BTFSC  FD8.2
+04A0:  BRA    05E4
+04A2:  SUBWF  x65,F
+04A4:  BNC   04B0
+04A6:  MOVLW  7F
+04A8:  ADDWF  x65,F
+04AA:  BTFSC  FD8.0
+04AC:  BRA    05E4
+04AE:  BRA    04BC
+04B0:  MOVLW  81
+04B2:  SUBWF  x65,F
+04B4:  BTFSS  FD8.0
+04B6:  BRA    05E4
+04B8:  BTFSC  FD8.2
+04BA:  BRA    05E4
+04BC:  MOVFF  65,00
+04C0:  CLRF   01
+04C2:  CLRF   02
+04C4:  CLRF   03
+04C6:  CLRF   x64
+04C8:  MOVFF  5A,63
+04CC:  BSF    x63.7
+04CE:  MOVFF  5B,62
+04D2:  MOVFF  5C,61
+04D6:  MOVLW  19
+04D8:  MOVWF  x65
+04DA:  MOVF   x60,W
+04DC:  SUBWF  x61,F
+04DE:  BC    04FA
+04E0:  MOVLW  01
+04E2:  SUBWF  x62,F
+04E4:  BC    04FA
+04E6:  SUBWF  x63,F
+04E8:  BC    04FA
+04EA:  SUBWF  x64,F
+04EC:  BC    04FA
+04EE:  INCF   x64,F
+04F0:  INCF   x63,F
+04F2:  INCF   x62,F
+04F4:  MOVF   x60,W
+04F6:  ADDWF  x61,F
+04F8:  BRA    054A
+04FA:  MOVF   5F,W
+04FC:  SUBWF  x62,F
+04FE:  BC    0524
+0500:  MOVLW  01
+0502:  SUBWF  x63,F
+0504:  BC    0524
+0506:  SUBWF  x64,F
+0508:  BC    0524
+050A:  INCF   x64,F
+050C:  INCF   x63,F
+050E:  MOVF   5F,W
+0510:  ADDWF  x62,F
+0512:  MOVF   x60,W
+0514:  ADDWF  x61,F
+0516:  BNC   054A
+0518:  INCF   x62,F
+051A:  BNZ   054A
+051C:  INCF   x63,F
+051E:  BNZ   054A
+0520:  INCF   x64,F
+0522:  BRA    054A
+0524:  MOVF   5E,W
+0526:  IORLW  80
+0528:  SUBWF  x63,F
+052A:  BC    0548
+052C:  MOVLW  01
+052E:  SUBWF  x64,F
+0530:  BC    0548
+0532:  INCF   x64,F
+0534:  MOVF   5E,W
+0536:  IORLW  80
+0538:  ADDWF  x63,F
+053A:  MOVF   5F,W
+053C:  ADDWF  x62,F
+053E:  BNC   0512
+0540:  INCF   x63,F
+0542:  BNZ   0512
+0544:  INCF   x64,F
+0546:  BRA    0512
+0548:  BSF    03.0
+054A:  DECFSZ x65,F
+054C:  BRA    0550
+054E:  BRA    0566
+0550:  BCF    FD8.0
+0552:  RLCF   x61,F
+0554:  RLCF   x62,F
+0556:  RLCF   x63,F
+0558:  RLCF   x64,F
+055A:  BCF    FD8.0
+055C:  RLCF   03,F
+055E:  RLCF   02,F
+0560:  RLCF   01,F
+0562:  RLCF   x66,F
+0564:  BRA    04DA
+0566:  BTFSS  x66.0
+0568:  BRA    0576
+056A:  BCF    FD8.0
+056C:  RRCF   01,F
+056E:  RRCF   02,F
+0570:  RRCF   03,F
+0572:  RRCF   x66,F
+0574:  BRA    057A
+0576:  DECF   00,F
+0578:  BZ    05E4
+057A:  BTFSC  x66.7
+057C:  BRA    05BA
+057E:  BCF    FD8.0
+0580:  RLCF   x61,F
+0582:  RLCF   x62,F
+0584:  RLCF   x63,F
+0586:  RLCF   x64,F
+0588:  MOVF   x60,W
+058A:  SUBWF  x61,F
+058C:  BC    059C
+058E:  MOVLW  01
+0590:  SUBWF  x62,F
+0592:  BC    059C
+0594:  SUBWF  x63,F
+0596:  BC    059C
+0598:  SUBWF  x64,F
+059A:  BNC   05D0
+059C:  MOVF   5F,W
+059E:  SUBWF  x62,F
+05A0:  BC    05AC
+05A2:  MOVLW  01
+05A4:  SUBWF  x63,F
+05A6:  BC    05AC
+05A8:  SUBWF  x64,F
+05AA:  BNC   05D0
+05AC:  MOVF   5E,W
+05AE:  IORLW  80
+05B0:  SUBWF  x63,F
+05B2:  BC    05BA
+05B4:  MOVLW  01
+05B6:  SUBWF  x64,F
+05B8:  BNC   05D0
+05BA:  INCF   03,F
+05BC:  BNZ   05D0
+05BE:  INCF   02,F
+05C0:  BNZ   05D0
+05C2:  INCF   01,F
+05C4:  BNZ   05D0
+05C6:  INCF   00,F
+05C8:  BZ    05E4
+05CA:  RRCF   01,F
+05CC:  RRCF   02,F
+05CE:  RRCF   03,F
+05D0:  MOVFF  5A,65
+05D4:  MOVF   5E,W
+05D6:  XORWF  x65,F
+05D8:  BTFSS  x65.7
+05DA:  BRA    05E0
+05DC:  BSF    01.7
+05DE:  BRA    05EC
+05E0:  BCF    01.7
+05E2:  BRA    05EC
+05E4:  CLRF   00
+05E6:  CLRF   01
+05E8:  CLRF   02
+05EA:  CLRF   03
+05EC:  RETURN 0
+05EE:  MOVLW  80
+05F0:  BTFSC  FD8.1
+05F2:  XORWF  x7E,F
+05F4:  CLRF   x83
+05F6:  CLRF   x84
+05F8:  MOVFF  7A,82
+05FC:  MOVF   x7E,W
+05FE:  XORWF  x82,F
+0600:  MOVF   x79,W
+0602:  BTFSC  FD8.2
+0604:  BRA    07BE
+0606:  MOVWF  x81
+0608:  MOVWF  00
+060A:  MOVF   x7D,W
+060C:  BTFSC  FD8.2
+060E:  BRA    07D0
+0610:  SUBWF  x81,F
+0612:  BTFSC  FD8.2
+0614:  BRA    0718
+0616:  BNC   0692
+0618:  MOVFF  7E,87
+061C:  BSF    x87.7
+061E:  MOVFF  7F,86
+0622:  MOVFF  80,85
+0626:  CLRF   x84
+0628:  BCF    FD8.0
+062A:  RRCF   x87,F
+062C:  RRCF   x86,F
+062E:  RRCF   x85,F
+0630:  RRCF   x84,F
+0632:  DECFSZ x81,F
+0634:  BRA    0626
+0636:  BTFSS  x82.7
+0638:  BRA    0640
+063A:  BSF    x83.0
+063C:  BRA    07F8
+063E:  BCF    x83.0
+0640:  BCF    x81.0
+0642:  BSF    x83.4
+0644:  CLRF   FEA
+0646:  MOVLW  7C
+0648:  MOVWF  FE9
+064A:  BRA    081E
+064C:  BCF    x83.4
+064E:  BTFSC  x82.7
+0650:  BRA    0666
+0652:  BTFSS  x81.0
+0654:  BRA    067C
+0656:  RRCF   x87,F
+0658:  RRCF   x86,F
+065A:  RRCF   x85,F
+065C:  RRCF   x84,F
+065E:  INCF   00,F
+0660:  BTFSC  FD8.2
+0662:  BRA    07EE
+0664:  BRA    067C
+0666:  BTFSC  x87.7
+0668:  BRA    0682
+066A:  BCF    FD8.0
+066C:  RLCF   x84,F
+066E:  RLCF   x85,F
+0670:  RLCF   x86,F
+0672:  RLCF   x87,F
+0674:  DECF   00,F
+0676:  BTFSC  FD8.2
+0678:  BRA    07EE
+067A:  BRA    0666
+067C:  BSF    x83.6
+067E:  BRA    0756
+0680:  BCF    x83.6
+0682:  MOVFF  7A,82
+0686:  BTFSS  x7A.7
+0688:  BRA    068E
+068A:  BSF    x87.7
+068C:  BRA    07E0
+068E:  BCF    x87.7
+0690:  BRA    07E0
+0692:  MOVFF  7D,81
+0696:  MOVFF  7D,00
+069A:  MOVF   x79,W
+069C:  SUBWF  x81,F
+069E:  MOVFF  7A,87
+06A2:  BSF    x87.7
+06A4:  MOVFF  7B,86
+06A8:  MOVFF  7C,85
+06AC:  CLRF   x84
+06AE:  BCF    FD8.0
+06B0:  RRCF   x87,F
+06B2:  RRCF   x86,F
+06B4:  RRCF   x85,F
+06B6:  RRCF   x84,F
+06B8:  DECFSZ x81,F
+06BA:  BRA    06AC
+06BC:  BTFSS  x82.7
+06BE:  BRA    06C6
+06C0:  BSF    x83.1
+06C2:  BRA    07F8
+06C4:  BCF    x83.1
+06C6:  BCF    x81.0
+06C8:  BSF    x83.5
+06CA:  CLRF   FEA
+06CC:  MOVLW  80
+06CE:  MOVWF  FE9
+06D0:  BRA    081E
+06D2:  BCF    x83.5
+06D4:  BTFSC  x82.7
+06D6:  BRA    06EC
+06D8:  BTFSS  x81.0
+06DA:  BRA    0702
+06DC:  RRCF   x87,F
+06DE:  RRCF   x86,F
+06E0:  RRCF   x85,F
+06E2:  RRCF   x84,F
+06E4:  INCF   00,F
+06E6:  BTFSC  FD8.2
+06E8:  BRA    07EE
+06EA:  BRA    0702
+06EC:  BTFSC  x87.7
+06EE:  BRA    0708
+06F0:  BCF    FD8.0
+06F2:  RLCF   x84,F
+06F4:  RLCF   x85,F
+06F6:  RLCF   x86,F
+06F8:  RLCF   x87,F
+06FA:  DECF   00,F
+06FC:  BTFSC  FD8.2
+06FE:  BRA    07EE
+0700:  BRA    06EC
+0702:  BSF    x83.7
+0704:  BRA    0756
+0706:  BCF    x83.7
+0708:  MOVFF  7E,82
+070C:  BTFSS  x7E.7
+070E:  BRA    0714
+0710:  BSF    x87.7
+0712:  BRA    07E0
+0714:  BCF    x87.7
+0716:  BRA    07E0
+0718:  MOVFF  7E,87
+071C:  BSF    x87.7
+071E:  MOVFF  7F,86
+0722:  MOVFF  80,85
+0726:  BTFSS  x82.7
+0728:  BRA    0732
+072A:  BCF    x87.7
+072C:  BSF    x83.2
+072E:  BRA    07F8
+0730:  BCF    x83.2
+0732:  CLRF   x84
+0734:  BCF    x81.0
+0736:  CLRF   FEA
+0738:  MOVLW  7C
+073A:  MOVWF  FE9
+073C:  BRA    081E
+073E:  BTFSC  x82.7
+0740:  BRA    077A
+0742:  MOVFF  7A,82
+0746:  BTFSS  x81.0
+0748:  BRA    0756
+074A:  RRCF   x87,F
+074C:  RRCF   x86,F
+074E:  RRCF   x85,F
+0750:  RRCF   x84,F
+0752:  INCF   00,F
+0754:  BZ    07EE
+0756:  BTFSS  x84.7
+0758:  BRA    0770
+075A:  INCF   x85,F
+075C:  BNZ   0770
+075E:  INCF   x86,F
+0760:  BNZ   0770
+0762:  INCF   x87,F
+0764:  BNZ   0770
+0766:  RRCF   x87,F
+0768:  RRCF   x86,F
+076A:  RRCF   x85,F
+076C:  INCF   00,F
+076E:  BZ    07EE
+0770:  BTFSC  x83.6
+0772:  BRA    0680
+0774:  BTFSC  x83.7
+0776:  BRA    0706
+0778:  BRA    07B2
+077A:  MOVLW  80
+077C:  XORWF  x87,F
+077E:  BTFSS  x87.7
+0780:  BRA    078A
+0782:  BRA    07F8
+0784:  MOVFF  7E,82
+0788:  BRA    079E
+078A:  MOVFF  7A,82
+078E:  MOVF   x87,F
+0790:  BNZ   079E
+0792:  MOVF   x86,F
+0794:  BNZ   079E
+0796:  MOVF   x85,F
+0798:  BNZ   079E
+079A:  CLRF   00
+079C:  BRA    07E0
+079E:  BTFSC  x87.7
+07A0:  BRA    07B2
+07A2:  BCF    FD8.0
+07A4:  RLCF   x84,F
+07A6:  RLCF   x85,F
+07A8:  RLCF   x86,F
+07AA:  RLCF   x87,F
+07AC:  DECFSZ 00,F
+07AE:  BRA    079E
+07B0:  BRA    07EE
+07B2:  BTFSS  x82.7
+07B4:  BRA    07BA
+07B6:  BSF    x87.7
+07B8:  BRA    07E0
+07BA:  BCF    x87.7
+07BC:  BRA    07E0
+07BE:  MOVFF  7D,00
+07C2:  MOVFF  7E,87
+07C6:  MOVFF  7F,86
+07CA:  MOVFF  80,85
+07CE:  BRA    07E0
+07D0:  MOVFF  79,00
+07D4:  MOVFF  7A,87
+07D8:  MOVFF  7B,86
+07DC:  MOVFF  7C,85
+07E0:  MOVFF  87,01
+07E4:  MOVFF  86,02
+07E8:  MOVFF  85,03
+07EC:  BRA    0856
+07EE:  CLRF   00
+07F0:  CLRF   01
+07F2:  CLRF   02
+07F4:  CLRF   03
+07F6:  BRA    0856
+07F8:  CLRF   x84
+07FA:  COMF   x85,F
+07FC:  COMF   x86,F
+07FE:  COMF   x87,F
+0800:  COMF   x84,F
+0802:  INCF   x84,F
+0804:  BNZ   0810
+0806:  INCF   x85,F
+0808:  BNZ   0810
+080A:  INCF   x86,F
+080C:  BNZ   0810
+080E:  INCF   x87,F
+0810:  BTFSC  x83.0
+0812:  BRA    063E
+0814:  BTFSC  x83.1
+0816:  BRA    06C4
+0818:  BTFSC  x83.2
+081A:  BRA    0730
+081C:  BRA    0784
+081E:  MOVF   FEF,W
+0820:  ADDWF  x85,F
+0822:  BNC   082E
+0824:  INCF   x86,F
+0826:  BNZ   082E
+0828:  INCF   x87,F
+082A:  BTFSC  FD8.2
+082C:  BSF    x81.0
+082E:  MOVF   FED,F
+0830:  MOVF   FEF,W
+0832:  ADDWF  x86,F
+0834:  BNC   083C
+0836:  INCF   x87,F
+0838:  BTFSC  FD8.2
+083A:  BSF    x81.0
+083C:  MOVF   FED,F
+083E:  MOVF   FEF,W
+0840:  BTFSC  FEF.7
+0842:  BRA    0846
+0844:  XORLW  80
+0846:  ADDWF  x87,F
+0848:  BTFSC  FD8.0
+084A:  BSF    x81.0
+084C:  BTFSC  x83.4
+084E:  BRA    064C
+0850:  BTFSC  x83.5
+0852:  BRA    06D2
+0854:  BRA    073E
+0856:  RETURN 0
+0858:  MOVFF  76,7D
+085C:  MOVF   x7A,W
+085E:  XORWF  x7D,F
+0860:  BTFSS  x7D.7
+0862:  BRA    086E
+0864:  BCF    FD8.2
+0866:  BCF    FD8.0
+0868:  BTFSC  x76.7
+086A:  BSF    FD8.0
+086C:  BRA    08CC
+086E:  MOVFF  76,7D
+0872:  MOVFF  79,7E
+0876:  MOVF   x75,W
+0878:  SUBWF  x7E,F
+087A:  BZ    0888
+087C:  BTFSS  x7D.7
+087E:  BRA    08CC
+0880:  MOVF   FD8,W
+0882:  XORLW  01
+0884:  MOVWF  FD8
+0886:  BRA    08CC
+0888:  MOVFF  7A,7E
+088C:  MOVF   x76,W
+088E:  SUBWF  x7E,F
+0890:  BZ    089E
+0892:  BTFSS  x7D.7
+0894:  BRA    08CC
+0896:  MOVF   FD8,W
+0898:  XORLW  01
+089A:  MOVWF  FD8
+089C:  BRA    08CC
+089E:  MOVFF  7B,7E
+08A2:  MOVF   x77,W
+08A4:  SUBWF  x7E,F
+08A6:  BZ    08B4
+08A8:  BTFSS  x7D.7
+08AA:  BRA    08CC
+08AC:  MOVF   FD8,W
+08AE:  XORLW  01
+08B0:  MOVWF  FD8
+08B2:  BRA    08CC
+08B4:  MOVFF  7C,7E
+08B8:  MOVF   x78,W
+08BA:  SUBWF  x7E,F
+08BC:  BZ    08CA
+08BE:  BTFSS  x7D.7
+08C0:  BRA    08CC
+08C2:  MOVF   FD8,W
+08C4:  XORLW  01
+08C6:  MOVWF  FD8
+08C8:  BRA    08CC
+08CA:  BCF    FD8.0
+08CC:  RETURN 0
+*
+09D8:  MOVLW  8E
+09DA:  MOVWF  00
+09DC:  MOVF   x75,W
+09DE:  SUBWF  00,F
+09E0:  MOVFF  76,02
+09E4:  MOVFF  77,01
+09E8:  BSF    02.7
+09EA:  MOVF   00,F
+09EC:  BZ    0A00
+09EE:  BCF    FD8.0
+09F0:  MOVF   02,F
+09F2:  BNZ   09F8
+09F4:  MOVF   01,F
+09F6:  BZ    0A00
+09F8:  RRCF   02,F
+09FA:  RRCF   01,F
+09FC:  DECFSZ 00,F
+09FE:  BRA    09EE
+0A00:  BTFSS  x76.7
+0A02:  BRA    0A0E
+0A04:  COMF   01,F
+0A06:  COMF   02,F
+0A08:  INCF   01,F
+0A0A:  BTFSC  FD8.2
+0A0C:  INCF   02,F
+0A0E:  GOTO   0ABE (RETURN)
+*
+0DD4:  TBLRD*+
+0DD6:  MOVFF  FF6,48
+0DDA:  MOVFF  FF7,49
+0DDE:  MOVFF  FF5,55
+0DE2:  RCALL  0D58
+0DE4:  MOVFF  48,FF6
+0DE8:  MOVFF  49,FF7
+0DEC:  DECFSZ 47,F
+0DEE:  BRA    0DD4
+0DF0:  RETURN 0
+0DF2:  MOVF   54,W
+0DF4:  SUBLW  B6
+0DF6:  MOVWF  54
+0DF8:  CLRF   03
+0DFA:  MOVFF  55,58
+0DFE:  BSF    55.7
+0E00:  BCF    FD8.0
+0E02:  RRCF   55,F
+0E04:  RRCF   56,F
+0E06:  RRCF   57,F
+0E08:  RRCF   03,F
+0E0A:  RRCF   02,F
+0E0C:  RRCF   01,F
+0E0E:  RRCF   00,F
+0E10:  DECFSZ 54,F
+0E12:  BRA    0E00
+0E14:  BTFSS  58.7
+0E16:  BRA    0E2E
+0E18:  COMF   00,F
+0E1A:  COMF   01,F
+0E1C:  COMF   02,F
+0E1E:  COMF   03,F
+0E20:  INCF   00,F
+0E22:  BTFSC  FD8.2
+0E24:  INCF   01,F
+0E26:  BTFSC  FD8.2
+0E28:  INCF   02,F
+0E2A:  BTFSC  FD8.2
+0E2C:  INCF   03,F
+0E2E:  GOTO   0F10 (RETURN)
+0E32:  BTFSC  FD8.1
+0E34:  BRA    0E3C
+0E36:  CLRF   FEA
+0E38:  MOVLW  5C
+0E3A:  MOVWF  FE9
+0E3C:  CLRF   00
+0E3E:  CLRF   01
+0E40:  CLRF   02
+0E42:  CLRF   03
+0E44:  CLRF   5C
+0E46:  CLRF   5D
+0E48:  CLRF   5E
+0E4A:  CLRF   5F
+0E4C:  MOVF   5B,W
+0E4E:  IORWF  5A,W
+0E50:  IORWF  59,W
+0E52:  IORWF  58,W
+0E54:  BZ    0EAE
+0E56:  MOVLW  20
+0E58:  MOVWF  x60
+0E5A:  BCF    FD8.0
+0E5C:  RLCF   54,F
+0E5E:  RLCF   55,F
+0E60:  RLCF   56,F
+0E62:  RLCF   57,F
+0E64:  RLCF   5C,F
+0E66:  RLCF   5D,F
+0E68:  RLCF   5E,F
+0E6A:  RLCF   5F,F
+0E6C:  MOVF   5B,W
+0E6E:  SUBWF  5F,W
+0E70:  BNZ   0E82
+0E72:  MOVF   5A,W
+0E74:  SUBWF  5E,W
+0E76:  BNZ   0E82
+0E78:  MOVF   59,W
+0E7A:  SUBWF  5D,W
+0E7C:  BNZ   0E82
+0E7E:  MOVF   58,W
+0E80:  SUBWF  5C,W
+0E82:  BNC   0EA2
+0E84:  MOVF   58,W
+0E86:  SUBWF  5C,F
+0E88:  MOVF   59,W
+0E8A:  BTFSS  FD8.0
+0E8C:  INCFSZ 59,W
+0E8E:  SUBWF  5D,F
+0E90:  MOVF   5A,W
+0E92:  BTFSS  FD8.0
+0E94:  INCFSZ 5A,W
+0E96:  SUBWF  5E,F
+0E98:  MOVF   5B,W
+0E9A:  BTFSS  FD8.0
+0E9C:  INCFSZ 5B,W
+0E9E:  SUBWF  5F,F
+0EA0:  BSF    FD8.0
+0EA2:  RLCF   00,F
+0EA4:  RLCF   01,F
+0EA6:  RLCF   02,F
+0EA8:  RLCF   03,F
+0EAA:  DECFSZ x60,F
+0EAC:  BRA    0E5A
+0EAE:  MOVFF  5C,FEF
+0EB2:  MOVFF  5D,FEC
+0EB6:  MOVFF  5E,FEC
+0EBA:  MOVFF  5F,FEC
+0EBE:  RETURN 0
+0EC0:  MOVF   FE9,W
+0EC2:  MOVWF  4C
+0EC4:  MOVF   4B,W
+0EC6:  MOVWF  4E
+0EC8:  BZ    0EFE
+0ECA:  MOVFF  4A,7C
+0ECE:  MOVFF  49,7B
+0ED2:  MOVFF  48,7A
+0ED6:  MOVFF  47,79
+0EDA:  CLRF   x80
+0EDC:  CLRF   x7F
+0EDE:  MOVLW  20
+0EE0:  MOVWF  x7E
+0EE2:  MOVLW  82
+0EE4:  MOVWF  x7D
+0EE6:  CALL   03A2
+0EEA:  MOVFF  03,4A
+0EEE:  MOVFF  02,49
+0EF2:  MOVFF  01,48
+0EF6:  MOVFF  00,47
+0EFA:  DECFSZ 4E,F
+0EFC:  BRA    0ECA
+0EFE:  MOVFF  4A,57
+0F02:  MOVFF  49,56
+0F06:  MOVFF  48,55
+0F0A:  MOVFF  47,54
+0F0E:  BRA    0DF2
+0F10:  MOVFF  03,4A
+0F14:  MOVFF  02,49
+0F18:  MOVFF  01,48
+0F1C:  MOVFF  00,47
+0F20:  BTFSS  4A.7
+0F22:  BRA    0F3E
+0F24:  DECF   4C,F
+0F26:  BSF    4C.5
+0F28:  COMF   47,F
+0F2A:  COMF   48,F
+0F2C:  COMF   49,F
+0F2E:  COMF   4A,F
+0F30:  INCF   47,F
+0F32:  BTFSC  FD8.2
+0F34:  INCF   48,F
+0F36:  BTFSC  FD8.2
+0F38:  INCF   49,F
+0F3A:  BTFSC  FD8.2
+0F3C:  INCF   4A,F
+0F3E:  MOVLW  3B
+0F40:  MOVWF  53
+0F42:  MOVLW  9A
+0F44:  MOVWF  52
+0F46:  MOVLW  CA
+0F48:  MOVWF  51
+0F4A:  CLRF   50
+0F4C:  MOVLW  0A
+0F4E:  MOVWF  4E
+0F50:  MOVF   4B,W
+0F52:  BTFSC  FD8.2
+0F54:  INCF   4C,F
+0F56:  BSF    FD8.1
+0F58:  CLRF   FEA
+0F5A:  MOVLW  47
+0F5C:  MOVWF  FE9
+0F5E:  MOVFF  4A,57
+0F62:  MOVFF  49,56
+0F66:  MOVFF  48,55
+0F6A:  MOVFF  47,54
+0F6E:  MOVFF  53,5B
+0F72:  MOVFF  52,5A
+0F76:  MOVFF  51,59
+0F7A:  MOVFF  50,58
+0F7E:  RCALL  0E32
+0F80:  MOVF   01,W
+0F82:  MOVF   00,F
+0F84:  BNZ   0FA4
+0F86:  INCF   4B,W
+0F88:  SUBWF  4E,W
+0F8A:  BZ    0FA4
+0F8C:  MOVF   4C,W
+0F8E:  BZ    0FA8
+0F90:  ANDLW  0F
+0F92:  SUBWF  4E,W
+0F94:  BZ    0F98
+0F96:  BC    1006
+0F98:  BTFSC  4C.7
+0F9A:  BRA    1006
+0F9C:  BTFSC  4C.6
+0F9E:  BRA    0FA8
+0FA0:  MOVLW  20
+0FA2:  BRA    0FFE
+0FA4:  MOVLW  20
+0FA6:  ANDWF  4C,F
+0FA8:  BTFSS  4C.5
+0FAA:  BRA    0FC4
+0FAC:  BCF    4C.5
+0FAE:  MOVF   4B,W
+0FB0:  BTFSS  FD8.2
+0FB2:  DECF   4C,F
+0FB4:  MOVF   00,W
+0FB6:  MOVWF  4C
+0FB8:  MOVLW  2D
+0FBA:  MOVWF  55
+0FBC:  RCALL  0D58
+0FBE:  MOVF   4C,W
+0FC0:  MOVWF  00
+0FC2:  CLRF   4C
+0FC4:  MOVF   4B,W
+0FC6:  SUBWF  4E,W
+0FC8:  BNZ   0FDE
+0FCA:  MOVF   00,W
+0FCC:  MOVWF  4C
+0FCE:  MOVLW  2E
+0FD0:  MOVWF  55
+0FD2:  RCALL  0D58
+0FD4:  MOVF   4C,W
+0FD6:  MOVWF  00
+0FD8:  MOVLW  20
+0FDA:  ANDWF  4C,F
+0FDC:  MOVLW  00
+0FDE:  MOVLW  30
+0FE0:  BTFSS  4C.5
+0FE2:  BRA    0FFE
+0FE4:  BCF    4C.5
+0FE6:  MOVF   4B,W
+0FE8:  BTFSS  FD8.2
+0FEA:  DECF   4C,F
+0FEC:  MOVF   00,W
+0FEE:  MOVWF  4C
+0FF0:  MOVLW  2D
+0FF2:  MOVWF  55
+0FF4:  RCALL  0D58
+0FF6:  MOVF   4C,W
+0FF8:  MOVWF  00
+0FFA:  CLRF   4C
+0FFC:  MOVLW  30
+0FFE:  ADDWF  00,F
+1000:  MOVFF  00,55
+1004:  RCALL  0D58
+1006:  BCF    FD8.1
+1008:  MOVFF  53,57
+100C:  MOVFF  52,56
+1010:  MOVFF  51,55
+1014:  MOVFF  50,54
+1018:  CLRF   5B
+101A:  CLRF   5A
+101C:  CLRF   59
+101E:  MOVLW  0A
+1020:  MOVWF  58
+1022:  RCALL  0E32
+1024:  MOVFF  03,53
+1028:  MOVFF  02,52
+102C:  MOVFF  01,51
+1030:  MOVFF  00,50
+1034:  DECFSZ 4E,F
+1036:  BRA    0F56
+1038:  RETURN 0
+....................  
+.................... #list 
+....................  
+.................... #use delay(clock=12 Mhz, crystal= 12 MHz)   // Selecciona la velocidad del oscilador interno 
+.................... #use i2c(Master,Fast=100000, sda=PIN_D6, scl=PIN_D7,force_sw) 
+.................... int contador = 0 ;int pulso_timer = 0 ; 
+.................... #include "funciones.h"  
+.................... /** 
+.................... *	\file funciones.h 
+.................... *	\brief Resumen del archivo 
+.................... *	\details Descripcion detallada del archivo 
+.................... *	\author Postemsky Marcos 
+.................... *	\date 17-09-2016 11:39:08 
+.................... */ 
+....................  
+.................... #include <i2c_Flex_LCD.h> 
+.................... //----------------------------------------------------------------------------- 
+.................... // Title:         i2c_Flex_LCD 
+.................... // Description:   Driver for common LCD with 1/2/3 or 4 row modules using PCF8574T interface board with I2C protocol. 
+.................... // Date:          Nov-2013 
+.................... // Ver.Rev.:      1.0 
+.................... // Author:        Hugo Silva (sergio-hugo@bol.com.br) #Based on the routines of 20X4_LCD_I2C_DRIVER.h from Pumrin S. 
+.................... //----------------------------------------------------------------------------- 
+.................... // 
+.................... // lcd_init() Must be called before any other function. 
+.................... // 
+.................... // lcd_putc(c) Will display c on the next position of the LCD. 
+.................... //  
+.................... //     \f Clear LCD dispay 
+.................... //     \1 Set write position on LCD Line 1 
+.................... //     \2 Set write position on LCD Line 2 
+.................... //     \3 Set write position on LCD Line 3 
+.................... //     \4 Set write position on LCD Line 4 
+.................... // 
+.................... //     lcd_gotoxy(x,y) Set write position on LCD (upper left is 1,1) 
+.................... // 
+.................... //----------------------------------------------------------------------------- 
+.................... // LCD pins D0-D3 are not used. 
+.................... //----------------------------------------------------------------------------- 
+.................... // 
+.................... // Commment   : Control of a compatible LCD HITACHI from a bus I2C with 
+.................... //              an EXPANDER of I/O with connection I2C. The tests of these 
+.................... //              routines have been programmed using the IC PCF8574T of Phillips. 
+.................... //              I used 4 bits mode programming. The 8 bits mode programming 
+.................... //              is possible if you use 2 x PCF8574T. 
+.................... // 
+.................... // As defined in the following structure the pin connection is as follows: 
+.................... // 
+.................... //  PCF8574P     LCD 
+.................... //  ========     ====== 
+.................... //     P0        RS 
+.................... //     P1        RW 
+.................... //     P2        Enable  
+.................... //     P3        Led Backlight 
+.................... //     P4        D4 
+.................... //     P5        D5 
+.................... //     P6        D6 
+.................... //     P7        D7 
+.................... // 
+.................... //  The SCL and SDA pins should be pull-up resistor as shown below: 
+.................... // 
+.................... //             +5v 
+.................... //               | 
+.................... //               < 
+.................... //               > 4.7K        
+.................... //               <          
+.................... //To PIC         |          To i2c slave 
+.................... //pin xx ------------------ SDA pin  
+.................... //(SDA)                      
+.................... //              +5v 
+.................... //               | 
+.................... //               < 
+.................... //               > 4.7K        
+.................... //               <          
+.................... //To PIC         |          To i2c slave 
+.................... //pin xx ------------------ SCL pin  
+.................... //(SCL) 
+.................... // 
+.................... //To PIC                    To i2c slave 
+.................... //Vss pin ----------------- Vss or ground pin  
+.................... //                | 
+.................... //              ----- 
+.................... //               ---  Ground 
+.................... //                -  
+.................... //  
+.................... // THIS DOCUMENT IS PROVIDED TO THE USER "AS IS" 
+.................... //----------------------------------------------------------------------------- 
+.................... //For PCF8574T the addressing is: 
+....................  
+.................... //Jp3 Jp2 Jp1 
+.................... //A2 A1 A0  Hex 
+.................... //L L L  0x40 
+.................... //L L H  0x42 
+.................... //L H L  0x44 
+.................... //L H H  0x46 
+.................... //H L L  0x48 
+.................... //H L H  0x4A 
+.................... //H H L  0x4C 
+.................... //H H H  0x4E 
+....................  
+.................... //---------------------------------------------------------------------------- 
+.................... #define LCD_ADDR       0x4E //I2C slave address for LCD module 
+....................  
+.................... #define ON             1 
+.................... #define OFF            0 
+.................... #define RS             0b00000001  //P0 - PCF8574T Pin connected to RS 
+.................... #define RW             0b00000010  //P1 - PCF8574T Pin connected to RW 
+.................... #define EN             0b00000100  //P2 - PCF8574T Pin connected to EN 
+.................... #define BACKLIGHT_LED  0b00001000  //P3 - PCF8574T Pin connected to BACKLIGHT LED 
+....................  
+.................... #define lcd_line_one   0x80   // LCD RAM address for line 1 
+.................... #define lcd_line_two   0xC0   // LCD RAM address for line 2 
+.................... #define lcd_line_three 0x94   // LCD RAM address for line 3 
+.................... #define lcd_line_four  0xD4   // LCD RAM address for line 4 
+....................   
+.................... byte address; 
+.................... int1 lcd_backlight=ON; 
+....................  
+.................... void i2c_lcd_backlight_On(){ 
+....................       lcd_backlight=ON; 
+.................... } 
+....................  
+.................... void i2c_lcd_backlight_Off(){ 
+....................       lcd_backlight=OFF; 
+.................... } 
+....................  
+.................... void i2c_send_nibble(unsigned char data) 
+....................    {    
+....................         i2c_start(); 
+*
+0170:  BSF    F95.6
+0172:  MOVLW  02
+0174:  MOVWF  00
+0176:  DECFSZ 00,F
+0178:  BRA    0176
+017A:  BSF    F95.7
+017C:  MOVLW  02
+017E:  MOVWF  00
+0180:  DECFSZ 00,F
+0182:  BRA    0180
+0184:  BCF    F8C.6
+0186:  BCF    F95.6
+0188:  MOVLW  02
+018A:  MOVWF  00
+018C:  DECFSZ 00,F
+018E:  BRA    018C
+0190:  BCF    F8C.7
+0192:  BCF    F95.7
+....................         delay_us(20); 
+0194:  MOVLW  13
+0196:  MOVWF  00
+0198:  DECFSZ 00,F
+019A:  BRA    0198
+019C:  BRA    019E
+....................         i2c_write(LCD_ADDR); //the slave addresse 
+019E:  MOVLW  4E
+01A0:  MOVWF  5A
+01A2:  RCALL  0104
+....................         delay_us(20); 
+01A4:  MOVLW  13
+01A6:  MOVWF  00
+01A8:  DECFSZ 00,F
+01AA:  BRA    01A8
+01AC:  BRA    01AE
+....................         i2c_write(data); 
+01AE:  MOVFF  59,5A
+01B2:  RCALL  0104
+....................         delay_us(20); 
+01B4:  MOVLW  13
+01B6:  MOVWF  00
+01B8:  DECFSZ 00,F
+01BA:  BRA    01B8
+01BC:  BRA    01BE
+....................         i2c_stop(); 
+01BE:  BCF    F95.6
+01C0:  NOP   
+01C2:  BSF    F95.7
+01C4:  BTFSS  F83.7
+01C6:  BRA    01C4
+01C8:  MOVLW  02
+01CA:  MOVWF  00
+01CC:  DECFSZ 00,F
+01CE:  BRA    01CC
+01D0:  BRA    01D2
+01D2:  NOP   
+01D4:  BSF    F95.6
+01D6:  MOVLW  02
+01D8:  MOVWF  00
+01DA:  DECFSZ 00,F
+01DC:  BRA    01DA
+....................         delay_us(20); 
+01DE:  MOVLW  13
+01E0:  MOVWF  00
+01E2:  DECFSZ 00,F
+01E4:  BRA    01E2
+01E6:  BRA    01E8
+01E8:  RETURN 0
+....................    } 
+....................  
+.................... void lcd_send_byte(unsigned char data) 
+....................    { 
+....................         if (lcd_backlight) data=data|EN|BACKLIGHT_LED; else data=data|EN; //set pin EN 
+01EA:  BTFSS  1A.0
+01EC:  BRA    01F8
+01EE:  MOVF   58,W
+01F0:  IORLW  04
+01F2:  IORLW  08
+01F4:  MOVWF  58
+01F6:  BRA    01FA
+01F8:  BSF    58.2
+....................         i2c_send_nibble(data); 
+01FA:  MOVFF  58,59
+01FE:  RCALL  0170
+....................         data=data-4;       //toggle EN back to 0 
+0200:  MOVLW  04
+0202:  SUBWF  58,F
+....................         i2c_send_nibble(data); 
+0204:  MOVFF  58,59
+0208:  RCALL  0170
+020A:  RETURN 0
+....................    } 
+....................     
+.................... void lcd_clear() 
+.................... { 
+....................     lcd_send_byte(0x00); 
+020C:  CLRF   58
+020E:  RCALL  01EA
+....................     lcd_send_byte(0x10); 
+0210:  MOVLW  10
+0212:  MOVWF  58
+0214:  RCALL  01EA
+....................     delay_ms(2); 
+0216:  MOVLW  02
+0218:  MOVWF  56
+021A:  RCALL  00DC
+021C:  RETURN 0
+.................... } 
+....................  
+.................... void lcd_init() 
+.................... { 
+....................     delay_ms(200); //LCD power up delay 
+021E:  MOVLW  C8
+0220:  MOVWF  56
+0222:  RCALL  00DC
+....................         
+....................    //Request works on the command by set the RS = 0 R/W = 0 write 
+....................         lcd_send_byte(0x00); 
+0224:  CLRF   58
+0226:  RCALL  01EA
+....................         lcd_send_byte(0x10); 
+0228:  MOVLW  10
+022A:  MOVWF  58
+022C:  RCALL  01EA
+....................         lcd_send_byte(0x00); 
+022E:  CLRF   58
+0230:  RCALL  01EA
+....................         lcd_send_byte(0x00); 
+0232:  CLRF   58
+0234:  RCALL  01EA
+....................         lcd_send_byte(0x10); 
+0236:  MOVLW  10
+0238:  MOVWF  58
+023A:  RCALL  01EA
+....................            //First state in 8 bit mode 
+....................         lcd_send_byte(0x30); 
+023C:  MOVLW  30
+023E:  MOVWF  58
+0240:  RCALL  01EA
+....................         lcd_send_byte(0x30); 
+0242:  MOVLW  30
+0244:  MOVWF  58
+0246:  RCALL  01EA
+....................            //Then set to 4-bit mode 
+....................         lcd_send_byte(0x30); 
+0248:  MOVLW  30
+024A:  MOVWF  58
+024C:  RCALL  01EA
+....................         lcd_send_byte(0x20); 
+024E:  MOVLW  20
+0250:  MOVWF  58
+0252:  RCALL  01EA
+....................            //mode 4 bits, 2 lines, characters 5 x 7 (28 h) 
+....................         lcd_send_byte(0x20); 
+0254:  MOVLW  20
+0256:  MOVWF  58
+0258:  RCALL  01EA
+....................         lcd_send_byte(0x80); 
+025A:  MOVLW  80
+025C:  MOVWF  58
+025E:  RCALL  01EA
+....................            //no need cursor on (0Ch) 
+....................         lcd_send_byte(0x00); 
+0260:  CLRF   58
+0262:  RCALL  01EA
+....................         lcd_send_byte(0xC0); 
+0264:  MOVLW  C0
+0266:  MOVWF  58
+0268:  RCALL  01EA
+....................            //the cursor moves to the left (06 h) 
+....................         lcd_send_byte(0x00); 
+026A:  CLRF   58
+026C:  RCALL  01EA
+....................         lcd_send_byte(0x60); 
+026E:  MOVLW  60
+0270:  MOVWF  58
+0272:  RCALL  01EA
+....................            //clears the display 
+....................         lcd_clear(); 
+0274:  RCALL  020C
+0276:  GOTO   02EE (RETURN)
+.................... } 
+....................  
+.................... void lcd_gotoxy( byte x, byte y) 
+.................... {      
+.................... static char data; 
+....................       
+....................    switch(y) 
+027A:  MOVF   57,W
+027C:  XORLW  01
+027E:  BZ    028E
+0280:  XORLW  03
+0282:  BZ    0294
+0284:  XORLW  01
+0286:  BZ    029A
+0288:  XORLW  07
+028A:  BZ    02A0
+028C:  BRA    02A6
+....................    { 
+....................       case 1:  address= lcd_line_one;     break; 
+028E:  MOVLW  80
+0290:  MOVWF  19
+0292:  BRA    02AA
+....................       case 2:  address= lcd_line_two;     break; 
+0294:  MOVLW  C0
+0296:  MOVWF  19
+0298:  BRA    02AA
+....................       case 3:  address= lcd_line_three;   break; 
+029A:  MOVLW  94
+029C:  MOVWF  19
+029E:  BRA    02AA
+....................       case 4:  address= lcd_line_four;    break; 
+02A0:  MOVLW  D4
+02A2:  MOVWF  19
+02A4:  BRA    02AA
+....................       default: address= lcd_line_one;     break;  
+02A6:  MOVLW  80
+02A8:  MOVWF  19
+....................    } 
+....................   
+....................    address+=x-1; 
+02AA:  MOVLW  01
+02AC:  SUBWF  56,W
+02AE:  ADDWF  19,F
+....................    data=address&0xF0; 
+02B0:  MOVF   19,W
+02B2:  ANDLW  F0
+02B4:  MOVWF  1E
+....................    lcd_send_byte(data); 
+02B6:  MOVFF  1E,58
+02BA:  RCALL  01EA
+....................    data=address&0x0F; 
+02BC:  MOVF   19,W
+02BE:  ANDLW  0F
+02C0:  MOVWF  1E
+....................    data=data<<4; 
+02C2:  SWAPF  1E,F
+02C4:  MOVLW  F0
+02C6:  ANDWF  1E,F
+....................    lcd_send_byte(data); 
+02C8:  MOVFF  1E,58
+02CC:  RCALL  01EA
+02CE:  RETURN 0
+.................... } 
+....................  
+.................... //Display the character on LCD screen. 
+.................... void LCD_PUTC(char in_data) 
+.................... { 
+....................  char data;      
+....................   switch(in_data) 
+*
+0D58:  MOVF   55,W
+0D5A:  XORLW  0C
+0D5C:  BZ    0D70
+0D5E:  XORLW  0D
+0D60:  BZ    0D76
+0D62:  XORLW  03
+0D64:  BZ    0D82
+0D66:  XORLW  01
+0D68:  BZ    0D90
+0D6A:  XORLW  07
+0D6C:  BZ    0D9E
+0D6E:  BRA    0DAC
+....................    {  
+....................      case '\f': lcd_clear()    ;  break;                
+0D70:  CALL   020C
+0D74:  BRA    0DD2
+....................      case '\1': lcd_gotoxy(1,1);  break; 
+0D76:  MOVLW  01
+0D78:  MOVWF  56
+0D7A:  MOVWF  57
+0D7C:  CALL   027A
+0D80:  BRA    0DD2
+....................      case '\2': lcd_gotoxy(1,2);  break; 
+0D82:  MOVLW  01
+0D84:  MOVWF  56
+0D86:  MOVLW  02
+0D88:  MOVWF  57
+0D8A:  CALL   027A
+0D8E:  BRA    0DD2
+....................      case '\3': lcd_gotoxy(1,3);  break; 
+0D90:  MOVLW  01
+0D92:  MOVWF  56
+0D94:  MOVLW  03
+0D96:  MOVWF  57
+0D98:  CALL   027A
+0D9C:  BRA    0DD2
+....................      case '\4': lcd_gotoxy(1,4);  break; 
+0D9E:  MOVLW  01
+0DA0:  MOVWF  56
+0DA2:  MOVLW  04
+0DA4:  MOVWF  57
+0DA6:  CALL   027A
+0DAA:  BRA    0DD2
+....................  
+....................      default: 
+....................         data=in_data&0xF0; 
+0DAC:  MOVF   55,W
+0DAE:  ANDLW  F0
+0DB0:  MOVWF  56
+....................         data=data|RS; //set RS pin to 1 
+0DB2:  BSF    56.0
+....................         lcd_send_byte(data); 
+0DB4:  MOVFF  56,58
+0DB8:  CALL   01EA
+....................         data=in_data&0x0F; 
+0DBC:  MOVF   55,W
+0DBE:  ANDLW  0F
+0DC0:  MOVWF  56
+....................         data=data<<4; 
+0DC2:  SWAPF  56,F
+0DC4:  MOVLW  F0
+0DC6:  ANDWF  56,F
+....................         data=data|RS; //set RS pin to 1 
+0DC8:  BSF    56.0
+....................         lcd_send_byte(data); 
+0DCA:  MOVFF  56,58
+0DCE:  CALL   01EA
+....................      break; 
+....................    } 
+0DD2:  RETURN 0
+.................... }  
+....................  
+....................  
+.................... #ifndef FUNCIONES_H 
+.................... #define FUNCIONES_H 
+.................... //Declaracion de estados 
+....................  
+.................... #define 	PUNTO_TENS_CORR	0 
+.................... #define 	CONVERSION_DESFASE	1 
+.................... #define 	TENS_CORR_RMS	2 
+.................... #define 	CALCULO_POT_ENER	3 
+.................... #define 	MOSTRAR_DATOS	4 
+....................  
+.................... //Prototipos de los eventos 
+.................... void maquina_estado(void); 
+....................  
+.................... #endif 
+....................  
+.................... #include <MAX191.c> 
+.................... #ifndef ADC_MAX191 
+.................... #define ADC_CS1 PIN_A1 
+.................... #define ADC_SCLK PIN_A2 
+.................... #define ADC_DOUT PIN_A3 
+.................... #endif 
+....................  
+.................... unsigned long leer_ADC(ADC){ 
+....................     unsigned long dato; 
+....................     int i; 
+....................     output_low (ADC_SCLK); 
+*
+0304:  BCF    F92.2
+0306:  BCF    F89.2
+....................     output_low (ADC_CS1); 
+0308:  BCF    F92.1
+030A:  BCF    F89.1
+....................      
+....................      
+....................     if (ADC==2){ 
+030C:  MOVF   47,W
+030E:  SUBLW  02
+0310:  BNZ   0346
+....................          
+....................         output_low (ADC_CS1); // modo CPOL = 0, CPHA = 0 
+0312:  BCF    F92.1
+0314:  BCF    F89.1
+....................         delay_us(1); 
+0316:  BRA    0318
+0318:  NOP   
+....................          
+....................         for(i=0;i<16;i++){ 
+031A:  CLRF   4A
+031C:  MOVF   4A,W
+031E:  SUBLW  0F
+0320:  BNC   033E
+....................           output_high(ADC_SCLK); 
+0322:  BCF    F92.2
+0324:  BSF    F89.2
+....................           shift_left(&dato,2,input(ADC_DOUT));  
+0326:  BSF    F92.3
+0328:  BTFSC  F80.3
+032A:  BRA    0330
+032C:  BCF    FD8.0
+032E:  BRA    0332
+0330:  BSF    FD8.0
+0332:  RLCF   48,F
+0334:  RLCF   49,F
+....................           output_low(ADC_SCLK);  
+0336:  BCF    F92.2
+0338:  BCF    F89.2
+033A:  INCF   4A,F
+033C:  BRA    031C
+....................         } 
+....................   
+....................         output_low (ADC_SCLK); 
+033E:  BCF    F92.2
+0340:  BCF    F89.2
+....................         output_high (ADC_CS1); 
+0342:  BCF    F92.1
+0344:  BSF    F89.1
+....................     } 
+....................  
+....................     dato= (dato>>2)& 0x0FFF; 
+0346:  RRCF   49,W
+0348:  MOVWF  4C
+034A:  RRCF   48,W
+034C:  MOVWF  4B
+034E:  RRCF   4C,F
+0350:  RRCF   4B,F
+0352:  MOVLW  3F
+0354:  ANDWF  4C,F
+0356:  MOVFF  4B,48
+035A:  MOVF   4C,W
+035C:  ANDLW  0F
+035E:  MOVWF  49
+....................     return(dato); 
+0360:  MOVFF  48,01
+0364:  MOVFF  49,02
+0368:  GOTO   106C (RETURN)
+.................... } 
+....................  
+.................... #include <math.h> 
+.................... //////////////////////////////////////////////////////////////////////////// 
+.................... ////        (C) Copyright 1996,2011 Custom Computer Services            //// 
+.................... //// This source code may only be used by licensed users of the CCS C   //// 
+.................... //// compiler.  This source code may only be distributed to other       //// 
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction  //// 
+.................... //// or distribution is permitted without written permission.           //// 
+.................... //// Derivative programs created using this software in object code     //// 
+.................... //// form are not restricted in any way.                                //// 
+.................... //////////////////////////////////////////////////////////////////////////// 
+.................... ////                                                                    //// 
+.................... //// History:                                                           //// 
+.................... ////  * 9/20/2001 :  Improvments are made to sin/cos code.              //// 
+.................... ////                 The code now is small, much faster,                //// 
+.................... ////                 and more accurate.                                 //// 
+.................... ////  * 2/21/2007 :  Compiler handles & operator differently and does   //// 
+.................... ////                 not return generic (int8 *) so type cast is done   //// 
+.................... ////  * 6/19/2010 :  Divisions by constants converted to multiplication //// 
+.................... ////                 by its inverse to improve computation speed        //// 
+.................... ////  * 1/21/2011 :  Constants used for double precision math updated   //// 
+.................... ////                 Updated routines include 64 bit versions of cos,   //// 
+.................... ////                 asin,atan,exp,log and dependant functions          //// 
+.................... ////  * 1/31/2011 :  Optimized current 32-bit float routines for cos    //// 
+.................... ////                 and log function                                   //// 
+.................... ////  * 6/13/2011 :  Fixed PCD overload CEIL_FLOOR functions for values //// 
+.................... ////                 greater then 10000000 and less then -10000000      //// 
+.................... ////                                                                    //// 
+.................... //////////////////////////////////////////////////////////////////////////// 
+....................  
+.................... #ifndef MATH_H 
+.................... #define MATH_H 
+....................  
+.................... #ifdef PI 
+.................... #undef  PI 
+.................... #endif 
+.................... #define PI     3.1415926535897932 
+....................  
+....................  
+.................... #define SQRT2  1.4142135623730950 
+....................  
+.................... //float const ps[4] = {5.9304945, 21.125224, 8.9403076, 0.29730279}; 
+.................... //float const qs[4] = {1.0000000, 15.035723, 17.764134, 2.4934718}; 
+....................  
+.................... ///////////////////////////// Round Functions ////////////////////////////// 
+....................  
+.................... float32 CEIL_FLOOR(float32 x, unsigned int8 n) 
+.................... { 
+....................    float32 y, res; 
+....................    unsigned int16 l; 
+....................    int1 s; 
+....................  
+....................    s = 0; 
+....................    y = x; 
+....................  
+....................    if (x < 0) 
+....................    { 
+....................       s = 1; 
+....................       y = -y; 
+....................    } 
+....................  
+....................    if (y <= 32768.0) 
+....................       res = (float32)(unsigned int16)y; 
+....................  
+....................  else if (y < 10000000.0) 
+....................    {  
+....................       l = (unsigned int16)(y*0.000030517578125); 
+....................       y = 32768.0*(y*0.000030517578125 - (float32)l); 
+....................       res = 32768.0*(float32)l; 
+....................       res += (float32)(unsigned int16)y; 
+....................    } 
+....................  
+....................  else 
+....................   res = y; 
+....................  
+....................  y = y - (float32)(unsigned int16)y; 
+....................  
+....................  if (s) 
+....................   res = -res; 
+....................  
+....................  if (y != 0) 
+....................  { 
+....................   if (s == 1 && n == 0) 
+....................    res -= 1.0; 
+....................  
+....................   if (s == 0 && n == 1) 
+....................    res += 1.0; 
+....................  } 
+....................  if (x == 0) 
+....................     res = 0; 
+....................  
+....................  return (res); 
+.................... } 
+....................  
+.................... // Overloaded Functions to take care for new Data types in PCD 
+.................... // Overloaded function CEIL_FLOOR() for data type - Float48 
+.................... #if defined(__PCD__) 
+.................... float48 CEIL_FLOOR(float48 x, unsigned int8 n) 
+.................... { 
+....................    float48 y, res; 
+....................    unsigned int32 l; 
+....................    int1 s; 
+....................  
+....................    s = 0; 
+....................    y = x; 
+....................  
+....................    if (x < 0) 
+....................    { 
+....................       s = 1; 
+....................       y = -y; 
+....................    } 
+....................  
+....................    if (y <= 32768.0) 
+....................       res = (float48)(unsigned int16)y; 
+....................  
+....................    else if (y < 549755813888.0) 
+....................    { 
+....................       l = (unsigned int32)(y*0.000030517578125); 
+....................       y = 32768.0*(y*0.000030517578125 - (float48)l); 
+....................       res = 32768.0*(float48)l; 
+....................       res += (float48)(unsigned int16)y; 
+....................    } 
+....................    else 
+....................    {   
+....................       res = y; 
+....................       y = 0.0; 
+....................    } 
+....................     
+....................    if(y != 0) 
+....................       y = y - (float48)(unsigned int16)y; 
+....................  
+....................    if (s) 
+....................       res = -res; 
+....................  
+....................    if (y != 0) 
+....................    { 
+....................       if (s == 1 && n == 0) 
+....................          res -= 1.0; 
+....................  
+....................       if (s == 0 && n == 1) 
+....................          res += 1.0; 
+....................    } 
+....................    if (x == 0) 
+....................       res = 0; 
+....................  
+....................    return (res); 
+.................... } 
+....................  
+....................  
+.................... // Overloaded function CEIL_FLOOR() for data type - Float64 
+.................... float64 CEIL_FLOOR(float64 x, unsigned int8 n) 
+.................... { 
+....................    float64 y, res; 
+....................    int64 l; 
+....................    int1 s; 
+....................  
+....................    s = 0; 
+....................    y = x; 
+....................  
+....................    if (x < 0) 
+....................    { 
+....................       s = 1; 
+....................       y = -y; 
+....................    } 
+....................  
+....................    if (y <= 32768.0) 
+....................       res = (float64)(unsigned int16)y; 
+....................    else if (y < 4503599627370496.0) 
+....................    { 
+....................       l = (int64)(y*0.000030517578125); 
+....................       y = 32768.0*(y*0.000030517578125 - (float64)l); 
+....................       res = 32768.0*(float64)l; 
+....................       res += (float64)(unsigned int16)y; 
+....................    } 
+....................    else 
+....................    { 
+....................       res = y; 
+....................       y = 0.0; 
+....................    } 
+....................     
+....................    if(y != 0) 
+....................       y = y - (float64)(unsigned int16)y; 
+....................  
+....................    if (s) 
+....................       res = -res; 
+....................  
+....................    if (y != 0) 
+....................    { 
+....................       if (s == 1 && n == 0) 
+....................          res -= 1.0; 
+....................  
+....................       if (s == 0 && n == 1) 
+....................          res += 1.0; 
+....................    } 
+....................     
+....................    if (x == 0) 
+....................       res = 0; 
+....................  
+....................    return (res); 
+.................... } 
+.................... #endif 
+....................  
+.................... //////////////////////////////////////////////////////////////////////////// 
+.................... //   float floor(float x) 
+.................... //////////////////////////////////////////////////////////////////////////// 
+.................... // Description : rounds down the number x. 
+.................... // Date : N/A 
+.................... // 
+.................... float32 floor(float32 x) 
+.................... { 
+....................    return CEIL_FLOOR(x,0); 
+.................... } 
+.................... // Following 2 functions are overloaded functions of floor() for PCD 
+.................... // Overloaded function floor() for data type - Float48 
+.................... #if defined(__PCD__) 
+.................... float48 floor(float48 x) 
+.................... { 
+....................    return CEIL_FLOOR(x, 0); 
+.................... } 
+....................  
+.................... // Overloaded function floor() for data type - Float64 
+.................... float64 floor(float64 x) 
+.................... { 
+....................    return CEIL_FLOOR(x, 0); 
+.................... } 
+.................... #endif 
+....................  
+....................  
+.................... //////////////////////////////////////////////////////////////////////////// 
+.................... //   float ceil(float x) 
+.................... //////////////////////////////////////////////////////////////////////////// 
+.................... // Description : rounds up the number x. 
+.................... // Date : N/A 
+.................... // 
+.................... float32 ceil(float32 x) 
+.................... { 
+....................    return CEIL_FLOOR(x, 1); 
+.................... } 
+.................... // Following 2 functions are overloaded functions of ceil() for PCD 
+.................... // Overloaded function ceil() for data type - Float48 
+.................... #if defined(__PCD__) 
+.................... float48 ceil(float48 x) 
+.................... { 
+....................    return CEIL_FLOOR(x, 1); 
+.................... } 
+....................  
+.................... // Overloaded function ceil() for data type - Float64 
+.................... float64 ceil(float64 x) 
+.................... { 
+....................    return CEIL_FLOOR(x, 1); 
+.................... } 
+.................... #endif 
+....................  
+....................  //////////////////////////////////////////////////////////////////////////// 
+.................... //   float fabs(float x) 
+.................... //////////////////////////////////////////////////////////////////////////// 
+.................... // Description : Computes the absolute value of floating point number x 
+.................... // Returns : returns the absolute value of x 
+.................... // Date : N/A 
+.................... // 
+.................... #define fabs abs 
+....................  
+.................... //////////////////////////////////////////////////////////////////////////// 
+.................... //   float fmod(float x) 
+.................... //////////////////////////////////////////////////////////////////////////// 
+.................... // Description : Computes the floating point remainder of x/y 
+.................... // Returns : returns the value of x= i*y, for some integer i such that, if y 
+.................... // is non zero, the result has the same isgn of x na dmagnitude less than the 
+.................... // magnitude of y. If y is zero then a domain error occurs. 
+.................... // Date : N/A 
+.................... // 
+....................  
+.................... float fmod(float32 x,float32 y) 
+.................... { 
+....................    float32 i; 
+....................    if (y!=0.0) 
+....................    { 
+....................       i=(x/y < 0.0)? ceil(x/y): floor(x/y); 
+....................       return(x-(i*y)); 
+....................    } 
+....................    else 
+....................    { 
+....................    #ifdef _ERRNO 
+....................    { 
+....................       errno=EDOM; 
+....................    } 
+....................    #endif 
+....................    } 
+.................... } 
+.................... //Overloaded function for fmod() for PCD 
+.................... // Overloaded function fmod() for data type - Float48 
+.................... #if defined(__PCD__) 
+.................... float48 fmod(float48 x,float48 y) 
+.................... { 
+....................    float48 i; 
+....................    if (y!=0.0) 
+....................    { 
+....................       i=(x/y < 0.0)? ceil(x/y): floor(x/y); 
+....................       return(x-(i*y)); 
+....................    } 
+....................    else 
+....................    { 
+....................    #ifdef _ERRNO 
+....................    { 
+....................       errno=EDOM; 
+....................    } 
+....................    #endif 
+....................    } 
+.................... } 
+.................... // Overloaded function fmod() for data type - Float64 
+.................... float64 fmod(float64 x,float64 y) 
+.................... { 
+....................    float64 i; 
+....................    if (y!=0.0) 
+....................    { 
+....................       i=(x/y < 0.0)? ceil(x/y): floor(x/y); 
+....................       return(x-(i*y)); 
+....................    } 
+....................    else 
+....................    { 
+....................    #ifdef _ERRNO 
+....................    { 
+....................       errno=EDOM; 
+....................    } 
+....................    #endif 
+....................    } 
+.................... } 
+.................... #endif 
+.................... //////////////////// Exponential and logarithmic functions //////////////////// 
+.................... //////////////////////////////////////////////////////////////////////////// 
+.................... //   float exp(float x) 
+.................... //////////////////////////////////////////////////////////////////////////// 
+.................... // Description : returns the value (e^x) 
+.................... // Date : N/A 
+.................... // 
+.................... #define LN2 0.6931471805599453 
+.................... #define LN2_INV 1.4426950408889634073 
+....................  
+.................... float const pe[6] = {0.000207455774, 0.00127100575, 0.00965065093, 
+....................                      0.0554965651,  0.240227138,  0.693147172}; 
+....................  
+....................  
+.................... float32 exp(float32 x) 
+.................... { 
+....................    float32 y, res, r; 
+....................    #if defined(__PCD__) 
+....................    int8 data1; 
+....................    #endif 
+....................    signed int8 n; 
+....................    int1 s; 
+....................    #ifdef _ERRNO 
+....................    if(x > 88.722838) 
+....................    { 
+....................       errno=ERANGE; 
+....................       return(0); 
+....................    } 
+....................    #endif 
+....................    n = (signed int16)(x*LN2_INV); 
+....................    s = 0; 
+....................    y = x; 
+....................  
+....................    if (x < 0) 
+....................    { 
+....................       s = 1; 
+....................       n = -n; 
+....................       y = -y; 
+....................    } 
+....................  
+....................    res = 0.0; 
+.................... #if !defined(__PCD__) 
+....................    *((unsigned int8 *)(&res)) = n + 0x7F; 
+.................... #endif 
+....................  
+.................... #if defined(__PCD__)  // Takes care of IEEE format for PCD 
+....................    data1 = n+0x7F; 
+....................    if(bit_test(data1,0)) 
+....................    bit_set(*(((unsigned int8 *)(&res)+2)),7); 
+....................    rotate_right(&data1,1); 
+....................    bit_clear(data1,7); 
+....................    *(((unsigned int8 *)(&res)+3)) = data1; 
+.................... #endif 
+....................  
+....................    y = y*LN2_INV - (float32)n; 
+....................  
+....................    r = pe[0]*y + pe[1]; 
+....................    r = r*y + pe[2]; 
+....................    r = r*y + pe[3]; 
+....................    r = r*y + pe[4]; 
+....................    r = r*y + pe[5]; 
+....................  
+....................    res = res*(1.0 + y*r); 
+....................  
+....................    if (s) 
+....................       res = 1.0/res; 
+....................    return(res); 
+.................... } 
+....................  
+....................  
+.................... //Overloaded function for exp() for PCD 
+.................... // Overloaded function exp() for data type - Float48 
+.................... #if defined(__PCD__) 
+.................... float48 exp(float48 x) 
+.................... { 
+....................    float48 y, res, r; 
+....................    int8 data1; 
+....................    signed int8 n; 
+....................    int1 s; 
+....................    #ifdef _ERRNO 
+....................    if(x > 88.722838) 
+....................    { 
+....................       errno=ERANGE; 
+....................       return(0); 
+....................    } 
+....................    #endif 
+....................    n = (signed int16)(x*LN2_INV); 
+....................    s = 0; 
+....................    y = x; 
+....................  
+....................    if (x < 0) 
+....................    { 
+....................       s = 1; 
+....................       n = -n; 
+....................       y = -y; 
+....................    } 
+....................  
+....................    res = 0.0; 
+....................  
+....................    data1 = n+0x7F; 
+....................    if(bit_test(data1,0)) 
+....................    bit_set(*(((unsigned int8 *)(&res)+4)),7); 
+....................    rotate_right(&data1,1); 
+....................    bit_clear(data1,7); 
+....................    *(((unsigned int8 *)(&res)+5)) = data1; 
+....................  
+....................    y = y*LN2_INV - (float48)n; 
+....................  
+....................    r = pe[0]*y + pe[1]; 
+....................    r = r*y + pe[2]; 
+....................    r = r*y + pe[3]; 
+....................    r = r*y + pe[4]; 
+....................    r = r*y + pe[5]; 
+....................  
+....................    res = res*(1.0 + y*r); 
+....................  
+....................    if (s) 
+....................       res = 1.0/res; 
+....................    return(res); 
+.................... } 
+....................  
+.................... // Overloaded function exp() for data type - Float64 
+.................... float64 const pe_64[12] ={9.30741400474913e-011,-4.28655416283316e-011, 
+....................                           8.71486547014137e-009,9.84458531538385e-008, 
+....................                           1.32588296983536e-006,1.52489283823016e-005, 
+....................                           0.000154037598423921,0.00133335487036216, 
+....................                           0.00961812936407326,0.0555041086222122, 
+....................                           0.240226506962827,0.693147180559823}; 
+....................  
+.................... float64 exp(float64 x) 
+.................... { 
+....................    float64 y, res, r; 
+....................    unsigned int16 data1, data2; 
+....................    unsigned int16 *p; 
+....................    signed int16 n; 
+....................    int1 s; 
+....................    #ifdef _ERRNO 
+....................    if(x > 709.7827128) 
+....................    { 
+....................       errno=ERANGE; 
+....................       return(0); 
+....................    } 
+....................    #endif 
+....................    y = x*LN2_INV; 
+....................    n = (signed int16)y; 
+....................    s = 0; 
+....................    y = x; 
+....................  
+....................    if (x < 0) 
+....................    { 
+....................       s = 1; 
+....................       n = -n; 
+....................       y = -y; 
+....................    } 
+....................  
+....................    res = 0.0; 
+....................  
+.................... #if !defined(__PCD__) 
+....................    *((unsigned int16 *)(&res)) = n + 0x7F; 
+.................... #endif 
+....................    p= (((unsigned int16 *)(&res))+3); 
+....................    data1 = *p; 
+....................    data2 = *p;    
+....................    data1 = n + 0x3FF; 
+....................    data1 = data1 <<4; 
+....................    if(bit_test(data2,15)) 
+....................    bit_set(data1,15); 
+....................    data2 = data2 & 0x000F; 
+....................    data1 ^= data2; 
+....................  
+....................    *(((unsigned int16 *)(&res)+3)) = data1; 
+....................  
+....................  
+....................    y = y*LN2_INV - (float64)n; 
+....................  
+....................    r = pe_64[0]*y + pe_64[1]; 
+....................    r = r*y + pe_64[2]; 
+....................    r = r*y + pe_64[3]; 
+....................    r = r*y + pe_64[4]; 
+....................    r = r*y + pe_64[5]; 
+....................    r = r*y + pe_64[6]; 
+....................    r = r*y + pe_64[7]; 
+....................    r = r*y + pe_64[8]; 
+....................    r = r*y + pe_64[9]; 
+....................    r = r*y + pe_64[10]; 
+....................    r = r*y + pe_64[11]; 
+....................     
+....................    res = res*(1.0 + y*r); 
+....................  
+....................    if (s) 
+....................       res = 1.0/res; 
+....................    return(res); 
+.................... } 
+.................... #ENDIF 
+....................  
+....................  
+.................... /************************************************************/ 
+....................  
+.................... float32 const pl[4] = {-1.080310025160955, 1.999999947089217}; 
+.................... float32 const ql[4] = {0.091284365719509, -0.873491916557671}; 
+....................  
+.................... //////////////////////////////////////////////////////////////////////////// 
+.................... //   float log(float x) 
+.................... //////////////////////////////////////////////////////////////////////////// 
+.................... // Description : returns the the natural log of x 
+.................... // Date : N/A 
+.................... // 
+.................... float32 log(float32 x) 
+.................... { 
+....................    float32 y, res, r, y2; 
+....................    #if defined(__PCD__) 
+....................    unsigned int8  data1,data2; 
+....................    #endif 
+....................    signed int8 n; 
+....................    #ifdef _ERRNO 
+....................    if(x <0) 
+....................    { 
+....................       errno=EDOM; 
+....................    } 
+....................    if(x ==0) 
+....................    { 
+....................       errno=ERANGE; 
+....................       return(0); 
+....................    } 
+....................    #endif 
+....................    y = x; 
+....................  
+....................    if (y != 1.0) 
+....................    { 
+.................... #if !defined(__PCD__) 
+....................     *((unsigned int8 *)(&y)) = 0x7E;  
+.................... #endif 
+....................  
+.................... #if defined(__PCD__) // Takes care of IEEE format 
+....................    data2 = *(((unsigned int8 *)(&y))+3); 
+....................    *(((unsigned int8 *)(&y))+3) = 0x3F; 
+....................    data1 = *(((unsigned int8 *)(&y))+2); 
+....................    bit_clear(data1,7); 
+....................    *(((unsigned int8 *)(&y))+2) = data1; 
+....................    if(bit_test(data2,7)) 
+....................      bit_set(*(((unsigned int8 *)(&y))+3),7); 
+.................... #endif 
+....................  
+....................       y = (y - 1.0)/(y + 1.0); 
+....................  
+....................       y2=y*y; 
+....................  
+....................       res = pl[0]*y2 + pl[1]; 
+....................  
+....................       r = ql[0]*y2 + ql[1]; 
+....................       r = r*y2 + 1.0; 
+....................  
+....................       res = y*res/r; 
+.................... #if !defined(__PCD__) 
+....................       n = *((unsigned int8 *)(&x)) - 0x7E; 
+.................... #endif 
+.................... #if defined(__PCD__)  
+....................     data1 = *(((unsigned int8 *)(&x)+3)); 
+....................     rotate_left(&data1,1); 
+....................     data2 = *(((unsigned int8 *)(&x)+2)); 
+....................     if(bit_test (data2,7)) 
+....................       bit_set(data1,0); 
+....................     n = data1 - 0x7E; 
+.................... #endif 
+....................  
+....................       if (n<0)  
+....................          r = -(float32)-n; 
+....................       else 
+....................          r = (float32)n; 
+....................  
+....................       res += r*LN2; 
+....................    } 
+....................  
+....................    else 
+....................       res = 0.0; 
+....................  
+....................    return(res); 
+.................... } 
+....................  
+.................... //Overloaded function for log() for PCD 
+.................... // Overloaded function log() for data type - Float48 
+.................... #if defined(__PCD__) 
+.................... // Overloaded function log() for data type - float64 
+.................... float64 const pl_64[4] = {-0.145694052150681, 1.365485300000370, 
+....................                           -3.120535668274329, 2.000000000000000}; 
+....................  
+.................... float64 const ql_64[4] = {0.006047500465908, -0.208298281937234, 
+....................                           1.113943039156721, -1.893601167470470}; 
+....................  
+.................... float48 log(float48 x) 
+.................... { 
+....................    float48 y, res, r, y2; 
+....................    unsigned int8  data1,data2; 
+....................    signed int8 n; 
+.................... #ifdef _ERRNO 
+....................    if(x <0) 
+....................    { 
+....................       errno=EDOM; 
+....................    } 
+....................    if(x ==0) 
+....................    { 
+....................       errno=ERANGE; 
+....................       return(0); 
+....................    } 
+.................... #endif 
+....................    y = x; 
+....................  
+....................    if (y != 1.0) 
+....................    { 
+....................  
+.................... #if !defined(__PCD__) 
+....................       *((unsigned int8 *)(&y)) = 0x7E;  
+.................... #endif 
+....................       data2 = *(((unsigned int8 *)(&y))+5); 
+....................       *(((unsigned int8 *)(&y))+5) = 0x3F; 
+....................       data1 = *(((unsigned int8 *)(&y))+4); 
+....................       bit_clear(data1,7); 
+....................       *(((unsigned int8 *)(&y))+4) = data1; 
+....................  
+....................       if(bit_test(data2,7)) 
+....................       bit_set(*(((unsigned int8 *)(&y))+4),7); 
+....................       y = (y - 1.0)/(y + 1.0); 
+....................  
+....................       y2=y*y; 
+....................  
+....................       res = pl_64[0]*y2 + pl_64[1]; 
+....................       res = res*y2 + pl_64[2]; 
+....................       res = res*y2 + pl_64[3]; 
+....................  
+....................       r = ql_64[0]*y2 + ql_64[1]; 
+....................       r = r*y2 + ql_64[2]; 
+....................       r = r*y2 + ql_64[3]; 
+....................       r = r*y2 + 1.0;  
+....................       res = y*res/r; 
+....................  
+....................       data1 = *(((unsigned int8 *)(&x)+5)); 
+....................       rotate_left(&data1,1); 
+....................       data2 = *(((unsigned int8 *)(&x)+4)); 
+....................       if(bit_test (data2,7)) 
+....................       bit_set(data1,0); 
+....................        
+....................       n = data1 - 0x7E; 
+....................  
+....................       if (n<0) 
+....................       r = -(float48)-n; 
+....................       else 
+....................       r = (float48)n; 
+....................  
+....................       res += r*LN2; 
+....................    } 
+....................  
+....................    else 
+....................    res = 0.0; 
+....................  
+....................    return(res); 
+.................... } 
+....................  
+.................... float64 log(float64 x) 
+.................... { 
+....................    float64 y, res, r, y2; 
+....................    unsigned int16  data1,data2; 
+....................    unsigned int16 *p; 
+....................    signed int16 n; 
+....................    #ifdef _ERRNO 
+....................    if(x <0) 
+....................    { 
+....................       errno=EDOM; 
+....................    } 
+....................    if(x ==0) 
+....................    { 
+....................       errno=ERANGE; 
+....................       return(0); 
+....................    } 
+....................    #endif 
+....................    y = x; 
+....................  
+....................    if (y != 1.0) 
+....................    { 
+....................    #if !defined(__PCD__) 
+....................        *((unsigned int8 *)(&y)) = 0x7E;  
+....................    #endif 
+....................       p= (((unsigned int16 *)(&y))+3); 
+....................       data1 = *p; 
+....................       data2 = *p; 
+....................       data1 = 0x3FE; 
+....................       data1 = data1 <<4; 
+....................       if(bit_test (data2,15)) 
+....................          bit_set(data1,15); 
+....................       data2 = data2 & 0x000F; 
+....................       data1 ^=data2; 
+....................  
+....................       *p = data1; 
+....................  
+....................       y = (y - 1.0)/(y + 1.0); 
+....................  
+....................       y2=y*y; 
+....................  
+....................       res = pl_64[0]*y2 + pl_64[1]; 
+....................       res = res*y2 + pl_64[2]; 
+....................       res = res*y2 + pl_64[3]; 
+....................  
+....................       r = ql_64[0]*y2 + ql_64[1]; 
+....................       r = r*y2 + ql_64[2]; 
+....................       r = r*y2 + ql_64[3]; 
+....................       r = r*y2 + 1.0; 
+....................  
+....................       res = y*res/r; 
+....................   
+....................       p= (((unsigned int16 *)(&x))+3); 
+....................       data1 = *p; 
+....................       bit_clear(data1,15); 
+....................       data1 = data1 >>4;     
+....................       n = data1 - 0x3FE; 
+....................  
+....................  
+....................       if (n<0) 
+....................          r = -(float64)-n; 
+....................       else 
+....................          r = (float64)n; 
+....................  
+....................       res += r*LN2; 
+....................    } 
+....................  
+....................    else 
+....................       res = 0.0; 
+....................  
+....................    return(res); 
+.................... } 
+.................... #endif 
+....................  
+....................  
+.................... #define LN10 2.3025850929940456 
+.................... #define LN10_INV 0.4342944819032518276 
+....................  
+.................... //////////////////////////////////////////////////////////////////////////// 
+.................... //   float log10(float x) 
+.................... //////////////////////////////////////////////////////////////////////////// 
+.................... // Description : returns the the log base 10 of x 
+.................... // Date : N/A 
+.................... // 
+.................... float32 log10(float32 x) 
+.................... { 
+....................    float32 r; 
+....................  
+....................    r = log(x); 
+....................    r = r*LN10_INV; 
+....................    return(r); 
+.................... } 
+....................  
+.................... //Overloaded functions for log10() for PCD 
+.................... // Overloaded function log10() for data type - Float48 
+.................... #if defined(__PCD__) 
+.................... float48 log10(float48 x) 
+.................... { 
+....................    float48 r; 
+....................  
+....................    r = log(x); 
+....................    r = r*LN10_INV; 
+....................    return(r); 
+.................... } 
+....................  
+.................... // Overloaded function log10() for data type - Float64 
+.................... float64 log10(float64 x) 
+.................... { 
+....................    float64 r; 
+....................  
+....................    r = log(x); 
+....................    r = r*LN10_INV; 
+....................    return(r); 
+.................... } 
+.................... #endif 
+.................... //////////////////////////////////////////////////////////////////////////// 
+.................... //   float modf(float x) 
+.................... //////////////////////////////////////////////////////////////////////////// 
+.................... // Description :breaks the argument value int integral and fractional parts, 
+.................... // ach of which have the same sign as the argument.  It stores the integral part 
+.................... // as a float in the object pointed to by the iptr 
+.................... // Returns : returns the signed fractional part of value. 
+.................... // Date : N/A 
+.................... // 
+....................  
+.................... float32 modf(float32 value,float32 *iptr) 
+.................... { 
+....................    *iptr=(value < 0.0)? ceil(value): floor(value); 
+....................    return(value - *iptr); 
+.................... } 
+.................... //Overloaded functions for modf() for PCD 
+.................... // Overloaded function modf() for data type - Float48 
+.................... #if defined(__PCD__) 
+.................... float48 modf(float48 value,float48 *iptr) 
+.................... { 
+....................    *iptr=(value < 0.0)? ceil(value): floor(value); 
+....................    return(value - *iptr); 
+.................... } 
+.................... // Overloaded function modf() for data type - Float64 
+.................... float64 modf(float64 value,float64 *iptr) 
+.................... { 
+....................    *iptr=(value < 0.0)? ceil(value): floor(value); 
+....................    return(value - *iptr); 
+.................... } 
+.................... #endif 
+....................  
+.................... //////////////////////////////////////////////////////////////////////////// 
+.................... //   float pwr(float x,float y) 
+.................... //////////////////////////////////////////////////////////////////////////// 
+.................... // Description : returns the value (x^y) 
+.................... // Date : N/A 
+.................... // Note : 0 is returned when the function will generate an imaginary number 
+.................... // 
+.................... float32 pwr(float32 x,float32 y) 
+.................... { 
+....................    if(0 > x && fmod(y, 1) == 0) { 
+....................       if(fmod(y, 2) == 0) { 
+....................          return (exp(log(-x) * y)); 
+....................       } else { 
+....................          return (-exp(log(-x) * y)); 
+....................       } 
+....................    } else if(0 > x && fmod(y, 1) != 0) { 
+....................       return 0; 
+....................    } else { 
+....................       if(x != 0 || 0 >= y) { 
+....................          return (exp(log(x) * y)); 
+....................       } 
+....................    } 
+.................... } 
+.................... //Overloaded functions for pwr() for PCD 
+.................... // Overloaded function pwr() for data type - Float48 
+.................... #if defined(__PCD__) 
+.................... float48 pwr(float48 x,float48 y) 
+.................... { 
+....................    if(0 > x && fmod(y, 1) == 0) { 
+....................       if(fmod(y, 2) == 0) { 
+....................          return (exp(log(-x) * y)); 
+....................       } else { 
+....................          return (-exp(log(-x) * y)); 
+....................       } 
+....................    } else if(0 > x && fmod(y, 1) != 0) { 
+....................       return 0; 
+....................    } else { 
+....................       if(x != 0 || 0 >= y) { 
+....................          return (exp(log(x) * y)); 
+....................       } 
+....................    } 
+.................... } 
+.................... // Overloaded function pwr() for data type - Float64 
+.................... float64 pwr(float64 x,float64 y) 
+.................... { 
+....................    if(0 > x && fmod(y, 1) == 0) { 
+....................       if(fmod(y, 2) == 0) { 
+....................          return (exp(log(-x) * y)); 
+....................       } else { 
+....................          return (-exp(log(-x) * y)); 
+....................       } 
+....................    } else if(0 > x && fmod(y, 1) != 0) { 
+....................       return 0; 
+....................    } else { 
+....................       if(x != 0 || 0 >= y) { 
+....................          return (exp(log(x) * y)); 
+....................       } 
+....................    } 
+.................... } 
+.................... #endif 
+....................  
+.................... //////////////////// Power functions //////////////////// 
+....................  
+.................... //////////////////////////////////////////////////////////////////////////// 
+.................... //   float pow(float x,float y) 
+.................... //////////////////////////////////////////////////////////////////////////// 
+.................... // Description : returns the value (x^y) 
+.................... // Date : N/A 
+.................... // Note : 0 is returned when the function will generate an imaginary number 
+.................... // 
+.................... float32 pow(float32 x,float32 y) 
+.................... { 
+....................    if(0 > x && fmod(y, 1) == 0) { 
+....................       if(fmod(y, 2) == 0) { 
+....................          return (exp(log(-x) * y)); 
+....................       } else { 
+....................          return (-exp(log(-x) * y)); 
+....................       } 
+....................    } else if(0 > x && fmod(y, 1) != 0) { 
+....................       return 0; 
+....................    } else { 
+....................       if(x != 0 || 0 >= y) { 
+....................          return (exp(log(x) * y)); 
+....................       } 
+....................    } 
+.................... } 
+.................... //Overloaded functions for pow() for PCD 
+.................... // Overloaded function for pow() data type - Float48 
+.................... #if defined(__PCD__) 
+.................... float48 pow(float48 x,float48 y) 
+.................... { 
+....................    if(0 > x && fmod(y, 1) == 0) { 
+....................       if(fmod(y, 2) == 0) { 
+....................          return (exp(log(-x) * y)); 
+....................       } else { 
+....................          return (-exp(log(-x) * y)); 
+....................       } 
+....................    } else if(0 > x && fmod(y, 1) != 0) { 
+....................       return 0; 
+....................    } else { 
+....................       if(x != 0 || 0 >= y) { 
+....................          return (exp(log(x) * y)); 
+....................       } 
+....................    } 
+.................... } 
+....................  
+.................... // Overloaded function pow() for data type - Float64 
+.................... float64 pow(float64 x,float64 y) 
+.................... { 
+....................    if(0 > x && fmod(y, 1) == 0) { 
+....................       if(fmod(y, 2) == 0) { 
+....................          return (exp(log(-x) * y)); 
+....................       } else { 
+....................          return (-exp(log(-x) * y)); 
+....................       } 
+....................    } else if(0 > x && fmod(y, 1) != 0) { 
+....................       return 0; 
+....................    } else { 
+....................       if(x != 0 || 0 >= y) { 
+....................          return (exp(log(x) * y)); 
+....................       } 
+....................    } 
+.................... } 
+.................... #endif 
+....................  
+.................... //////////////////////////////////////////////////////////////////////////// 
+.................... //   float sqrt(float x) 
+.................... //////////////////////////////////////////////////////////////////////////// 
+.................... // Description : returns the square root of x 
+.................... // Date : N/A 
+.................... // 
+.................... float32 sqrt(float32 x) 
+.................... { 
+....................    float32 y, res; 
+....................    #if defined(__PCD__) 
+....................    unsigned int16 data1,data2; 
+....................    #endif 
+....................    unsigned int8 *p; 
+....................  
+....................    #ifdef _ERRNO 
+....................    if(x < 0) 
+....................    { 
+....................       errno=EDOM; 
+....................    } 
+....................    #endif 
+....................  
+....................    if( x<=0.0) 
+*
+08CE:  MOVFF  4E,78
+08D2:  MOVFF  4D,77
+08D6:  MOVFF  4C,76
+08DA:  MOVFF  4B,75
+08DE:  CLRF   x7C
+08E0:  CLRF   x7B
+08E2:  CLRF   x7A
+08E4:  CLRF   x79
+08E6:  RCALL  0858
+08E8:  BC    08EC
+08EA:  BNZ   08F6
+....................       return(0.0); 
+08EC:  CLRF   00
+08EE:  CLRF   01
+08F0:  CLRF   02
+08F2:  CLRF   03
+08F4:  BRA    09D6
+....................  
+....................    y=x; 
+08F6:  MOVFF  4E,52
+08FA:  MOVFF  4D,51
+08FE:  MOVFF  4C,50
+0902:  MOVFF  4B,4F
+....................     
+....................    #if !defined(__PCD__) 
+....................     p=&y; 
+0906:  CLRF   58
+0908:  MOVLW  4F
+090A:  MOVWF  57
+....................    (*p)=(unsigned int8)((((unsigned int16)(*p)) + 127) >> 1); 
+090C:  MOVFF  57,FE9
+0910:  MOVFF  58,FEA
+0914:  MOVF   FEF,W
+0916:  CLRF   5C
+0918:  MOVWF  5B
+091A:  MOVLW  7F
+091C:  ADDWF  5B,F
+091E:  MOVLW  00
+0920:  ADDWFC 5C,F
+0922:  BCF    FD8.0
+0924:  RRCF   5C,W
+0926:  RRCF   5B,W
+0928:  MOVFF  58,FEA
+092C:  MOVFF  57,FE9
+0930:  MOVWF  FEF
+....................    #endif 
+....................     
+....................    #if defined(__PCD__) 
+....................     p = (((unsigned int8 *)(&y))+3); 
+....................     data1 = *(((unsigned int8 *)(&y))+3); 
+....................     data2 = *(((unsigned int8 *)(&y))+2); 
+....................     rotate_left(&data1,1);     
+....................     if(bit_test(data2,7))     
+....................        bit_set(data1,0);     
+....................     data1 = ((data1+127) >>1); 
+....................     bit_clear(data2,7); 
+....................     if(bit_test(data1,0)) 
+....................        bit_set(data2,7); 
+....................     data1 = data1 >>1; 
+....................     *(((unsigned int8 *)(&y))+3) = data1; 
+....................     *(((unsigned int8 *)(&y))+2) = data2; 
+....................      
+....................   #endif 
+....................  
+....................    do { 
+....................       res=y; 
+0932:  MOVFF  52,56
+0936:  MOVFF  51,55
+093A:  MOVFF  50,54
+093E:  MOVFF  4F,53
+....................       y+=(x/y); 
+0942:  MOVFF  4E,5C
+0946:  MOVFF  4D,5B
+094A:  MOVFF  4C,5A
+094E:  MOVFF  4B,59
+0952:  MOVFF  52,60
+0956:  MOVFF  51,5F
+095A:  MOVFF  50,5E
+095E:  MOVFF  4F,5D
+0962:  RCALL  0494
+0964:  BCF    FD8.1
+0966:  MOVFF  52,7C
+096A:  MOVFF  51,7B
+096E:  MOVFF  50,7A
+0972:  MOVFF  4F,79
+0976:  MOVFF  03,80
+097A:  MOVFF  02,7F
+097E:  MOVFF  01,7E
+0982:  MOVFF  00,7D
+0986:  RCALL  05EE
+0988:  MOVFF  03,52
+098C:  MOVFF  02,51
+0990:  MOVFF  01,50
+0994:  MOVFF  00,4F
+....................  
+....................       #if !defined(__PCD__) 
+....................      (*p)--; 
+0998:  MOVFF  57,FE9
+099C:  MOVFF  58,FEA
+09A0:  DECF   FEF,F
+....................    #endif 
+....................     
+....................    #if defined(__PCD__) 
+....................     data1 = *(((unsigned int8 *)(&y))+3); 
+....................     data2 = *(((unsigned int8 *)(&y))+2); 
+....................     rotate_left(&data1,1); 
+....................     if(bit_test(data2,7)) 
+....................        bit_set(data1,0);     
+....................     data1--; 
+....................     bit_clear(data2,7); 
+....................     if(bit_test(data1,0)) 
+....................        bit_set(data2,7); 
+....................     data1 = data1 >>1; 
+....................     *(((unsigned int8 *)(&y))+3) = data1; 
+....................     *(((unsigned int8 *)(&y))+2) = data2; 
+....................      
+....................   #endif 
+....................    } while(res != y); 
+09A2:  MOVFF  56,78
+09A6:  MOVFF  55,77
+09AA:  MOVFF  54,76
+09AE:  MOVFF  53,75
+09B2:  MOVFF  52,7C
+09B6:  MOVFF  51,7B
+09BA:  MOVFF  50,7A
+09BE:  MOVFF  4F,79
+09C2:  RCALL  0858
+09C4:  BNZ   0932
+....................  
+....................    return(res); 
+09C6:  MOVFF  53,00
+09CA:  MOVFF  54,01
+09CE:  MOVFF  55,02
+09D2:  MOVFF  56,03
+09D6:  RETURN 0
+.................... } 
+.................... //Overloaded functions for sqrt() for PCD 
+.................... // Overloaded function sqrt() for data type - Float48 
+.................... #if defined(__PCD__) 
+.................... float48 sqrt(float48 x) 
+.................... { 
+....................    float48 y, res; 
+....................    unsigned int16 data1,data2; 
+....................    unsigned int8 *p; 
+....................  
+....................    #ifdef _ERRNO 
+....................    if(x < 0) 
+....................    { 
+....................       errno=EDOM; 
+....................    } 
+....................    #endif 
+....................  
+....................    if( x<=0.0) 
+....................       return(0.0); 
+....................  
+....................    y=x; 
+....................     
+....................    #if !defined(__PCD__) 
+....................     p=&y; 
+....................    (*p)=(unsigned int8)((((unsigned int16)(*p)) + 127) >> 1); 
+....................    #endif 
+....................     
+....................    #if defined(__PCD__) 
+....................     p = (((unsigned int8 *)(&y))+5); 
+....................     data1 = *(((unsigned int8 *)(&y))+5); 
+....................     data2 = *(((unsigned int8 *)(&y))+4); 
+....................     rotate_left(&data1,1); 
+....................     if(bit_test(data2,7)) 
+....................        bit_set(data1,0);     
+....................     data1 = ((data1+127) >>1); 
+....................     bit_clear(data2,7); 
+....................     if(bit_test(data1,0)) 
+....................        bit_set(data2,7); 
+....................     data1 = data1 >>1; 
+....................     *(((unsigned int8 *)(&y))+5) = data1; 
+....................     *(((unsigned int8 *)(&y))+4) = data2; 
+....................      
+....................   #endif 
+....................  
+....................    do { 
+....................       res=y; 
+....................       y+=(x/y); 
+....................  
+....................       #if !defined(__PCD__) 
+....................      (*p)--; 
+....................    #endif 
+....................     
+....................     data1 = *(((unsigned int8 *)(&y))+5); 
+....................     data2 = *(((unsigned int8 *)(&y))+4); 
+....................     rotate_left(&data1,1); 
+....................     if(bit_test(data2,7)) 
+....................        bit_set(data1,0);     
+....................     data1--; 
+....................     bit_clear(data2,7); 
+....................     if(bit_test(data1,0)) 
+....................        bit_set(data2,7); 
+....................     data1 = data1 >>1; 
+....................     *(((unsigned int8 *)(&y))+5) = data1; 
+....................     *(((unsigned int8 *)(&y))+4) = data2; 
+....................      
+....................    } while(res != y); 
+....................  
+....................    return(res); 
+.................... } 
+....................  
+.................... // Overloaded function sqrt() for data type - Float64 
+.................... float64 sqrt(float64 x) 
+.................... { 
+....................    float64 y, res; 
+....................    unsigned int16 *p; 
+....................    unsigned int16 temp1,temp2; 
+....................  
+....................    #ifdef _ERRNO 
+....................    if(x < 0) 
+....................    { 
+....................       errno=EDOM; 
+....................    } 
+....................    #endif 
+....................  
+....................    if( x<=0.0) 
+....................       return(0.0); 
+....................  
+....................    y=x; 
+....................    p= (((unsigned int16 *)(&y))+3); 
+....................    temp1 = *p; 
+....................    temp2 = *p; 
+....................    bit_clear(temp1,15); 
+....................    temp1 = (temp1>>4)+1023; 
+....................    temp1 = temp1 >> 1; 
+....................    temp1 = (temp1<<4) & 0xFFF0; 
+....................    if(bit_test(temp2,15)) 
+....................       bit_set(temp1,15); 
+....................    temp2 = temp2 & 0x000F; 
+....................    temp1 ^= temp2; 
+....................     
+....................    (*p) = temp1; 
+....................     
+....................    do { 
+....................       res=y; 
+....................       y+=(x/y); 
+....................      temp1 = *p; 
+....................      temp2 = *p; 
+....................      bit_clear(temp1,15); 
+....................      temp1 = (temp1>>4); 
+....................      temp1--; 
+....................      temp1 = (temp1<<4) & 0xFFF0; 
+....................      if(bit_test(temp2,15)) 
+....................         bit_set(temp1,15); 
+....................      temp2 = temp2 & 0x000F; 
+....................      temp1 ^= temp2; 
+....................      (*p) = temp1; 
+....................  
+....................    } while(res != y); 
+....................  
+....................    return(res); 
+.................... } 
+.................... #endif 
+....................  
+.................... ////////////////////////////// Trig Functions ////////////////////////////// 
+.................... #ifdef PI_DIV_BY_TWO_INV 
+.................... #undef PI_DIV_BY_TWO_INV 
+.................... #endif 
+.................... #define PI_DIV_BY_TWO_INV 0.63661977236758134 
+.................... #ifdef PI_DIV_BY_TWO 
+.................... #undef PI_DIV_BY_TWO 
+.................... #endif 
+.................... #define PI_DIV_BY_TWO   1.5707963267948966 
+.................... #ifdef TWOBYPI 
+.................... #undef TWOBYPI 
+.................... #endif 
+.................... #define TWOBYPI          0.6366197723675813 
+....................  
+.................... //////////////////////////////////////////////////////////////////////////// 
+.................... //   float cos(float x) 
+.................... //////////////////////////////////////////////////////////////////////////// 
+.................... // Description : returns the cosine value of the angle x, which is in radian 
+.................... // Date : 9/20/2001 
+.................... // 
+.................... float32 cos(float32 x) 
+*
+0A12:  CLRF   5A
+0A14:  CLRF   59
+0A16:  CLRF   58
+0A18:  MOVLW  7F
+0A1A:  MOVWF  57
+.................... { 
+....................    float32 y, t, t2 = 1.0; 
+....................    unsigned int8 quad, i; 
+....................    float32 frac; 
+....................    float32 p[5] = {                    //by the series definition for cosine 
+....................       -0.49999999456337096,            // sum ( ( (-1)^n * x^2n )/(2n)! ) 
+....................        0.04166663896921267, 
+....................       -0.00138883894522527, 
+....................        0.00002476138231734, 
+....................       -0.00000026070414770 
+....................       //-0.00000000001147, 
+....................       // 0.00000000000005 
+....................    }; 
+0A1C:  MOVLW  7E
+0A1E:  MOVWF  x61
+0A20:  MOVLW  80
+0A22:  MOVWF  x62
+0A24:  CLRF   x63
+0A26:  CLRF   x64
+0A28:  MOVLW  7A
+0A2A:  MOVWF  x65
+0A2C:  MOVLW  2A
+0A2E:  MOVWF  x66
+0A30:  MOVLW  AA
+0A32:  MOVWF  x67
+0A34:  MOVLW  A3
+0A36:  MOVWF  x68
+0A38:  MOVLW  75
+0A3A:  MOVWF  x69
+0A3C:  MOVLW  B6
+0A3E:  MOVWF  x6A
+0A40:  MOVLW  09
+0A42:  MOVWF  x6B
+0A44:  MOVLW  B4
+0A46:  MOVWF  x6C
+0A48:  MOVLW  6F
+0A4A:  MOVWF  x6D
+0A4C:  MOVLW  4F
+0A4E:  MOVWF  x6E
+0A50:  MOVLW  B6
+0A52:  MOVWF  x6F
+0A54:  MOVLW  AA
+0A56:  MOVWF  x70
+0A58:  MOVLW  69
+0A5A:  MOVWF  x71
+0A5C:  MOVLW  8B
+0A5E:  MOVWF  x72
+0A60:  MOVLW  F6
+0A62:  MOVWF  x73
+0A64:  MOVLW  E8
+0A66:  MOVWF  x74
+....................  
+....................    if (x < 0) x = -x;                  // absolute value of input 
+0A68:  MOVFF  4E,78
+0A6C:  MOVFF  4D,77
+0A70:  MOVFF  4C,76
+0A74:  MOVFF  4B,75
+0A78:  CLRF   x7C
+0A7A:  CLRF   x7B
+0A7C:  CLRF   x7A
+0A7E:  CLRF   x79
+0A80:  RCALL  0858
+0A82:  BNC   0A8A
+0A84:  MOVF   4C,W
+0A86:  XORLW  80
+0A88:  MOVWF  4C
+....................  
+....................    quad = (unsigned int8)(x * PI_DIV_BY_TWO_INV);    // quadrant 
+0A8A:  MOVFF  4E,7C
+0A8E:  MOVFF  4D,7B
+0A92:  MOVFF  4C,7A
+0A96:  MOVFF  4B,79
+0A9A:  MOVLW  83
+0A9C:  MOVWF  x80
+0A9E:  MOVLW  F9
+0AA0:  MOVWF  x7F
+0AA2:  MOVLW  22
+0AA4:  MOVWF  x7E
+0AA6:  MOVLW  7E
+0AA8:  MOVWF  x7D
+0AAA:  RCALL  03A2
+0AAC:  MOVFF  03,78
+0AB0:  MOVFF  02,77
+0AB4:  MOVFF  01,76
+0AB8:  MOVFF  00,75
+0ABC:  BRA    09D8
+0ABE:  MOVFF  01,5B
+....................    frac = (x * PI_DIV_BY_TWO_INV) - quad;  // fractional part of input 
+0AC2:  MOVFF  4E,7C
+0AC6:  MOVFF  4D,7B
+0ACA:  MOVFF  4C,7A
+0ACE:  MOVFF  4B,79
+0AD2:  MOVLW  83
+0AD4:  MOVWF  x80
+0AD6:  MOVLW  F9
+0AD8:  MOVWF  x7F
+0ADA:  MOVLW  22
+0ADC:  MOVWF  x7E
+0ADE:  MOVLW  7E
+0AE0:  MOVWF  x7D
+0AE2:  RCALL  03A2
+0AE4:  MOVFF  03,78
+0AE8:  MOVFF  02,77
+0AEC:  MOVFF  01,76
+0AF0:  MOVFF  00,75
+0AF4:  CLRF   x7A
+0AF6:  MOVFF  5B,79
+0AFA:  RCALL  036C
+0AFC:  BSF    FD8.1
+0AFE:  MOVFF  78,7C
+0B02:  MOVFF  77,7B
+0B06:  MOVFF  76,7A
+0B0A:  MOVFF  75,79
+0B0E:  MOVFF  03,80
+0B12:  MOVFF  02,7F
+0B16:  MOVFF  01,7E
+0B1A:  MOVFF  00,7D
+0B1E:  RCALL  05EE
+0B20:  MOVFF  03,60
+0B24:  MOVFF  02,5F
+0B28:  MOVFF  01,5E
+0B2C:  MOVFF  00,5D
+....................    quad = quad % 4;                    // quadrant (0 to 3) 
+0B30:  MOVLW  03
+0B32:  ANDWF  5B,F
+....................  
+....................    if (quad == 0 || quad == 2) 
+0B34:  MOVF   5B,F
+0B36:  BZ    0B3E
+0B38:  MOVF   5B,W
+0B3A:  SUBLW  02
+0B3C:  BNZ   0B72
+....................       t = frac * PI_DIV_BY_TWO; 
+0B3E:  MOVFF  60,7C
+0B42:  MOVFF  5F,7B
+0B46:  MOVFF  5E,7A
+0B4A:  MOVFF  5D,79
+0B4E:  MOVLW  DB
+0B50:  MOVWF  x80
+0B52:  MOVLW  0F
+0B54:  MOVWF  x7F
+0B56:  MOVLW  49
+0B58:  MOVWF  x7E
+0B5A:  MOVLW  7F
+0B5C:  MOVWF  x7D
+0B5E:  RCALL  03A2
+0B60:  MOVFF  03,56
+0B64:  MOVFF  02,55
+0B68:  MOVFF  01,54
+0B6C:  MOVFF  00,53
+0B70:  BRA    0C3C
+....................    else if (quad == 1) 
+0B72:  DECFSZ 5B,W
+0B74:  BRA    0BDA
+....................       t = (1-frac) * PI_DIV_BY_TWO; 
+0B76:  BSF    FD8.1
+0B78:  CLRF   x7C
+0B7A:  CLRF   x7B
+0B7C:  CLRF   x7A
+0B7E:  MOVLW  7F
+0B80:  MOVWF  x79
+0B82:  MOVFF  60,80
+0B86:  MOVFF  5F,7F
+0B8A:  MOVFF  5E,7E
+0B8E:  MOVFF  5D,7D
+0B92:  RCALL  05EE
+0B94:  MOVFF  03,78
+0B98:  MOVFF  02,77
+0B9C:  MOVFF  01,76
+0BA0:  MOVFF  00,75
+0BA4:  MOVFF  03,7C
+0BA8:  MOVFF  02,7B
+0BAC:  MOVFF  01,7A
+0BB0:  MOVFF  00,79
+0BB4:  MOVLW  DB
+0BB6:  MOVWF  x80
+0BB8:  MOVLW  0F
+0BBA:  MOVWF  x7F
+0BBC:  MOVLW  49
+0BBE:  MOVWF  x7E
+0BC0:  MOVLW  7F
+0BC2:  MOVWF  x7D
+0BC4:  CALL   03A2
+0BC8:  MOVFF  03,56
+0BCC:  MOVFF  02,55
+0BD0:  MOVFF  01,54
+0BD4:  MOVFF  00,53
+0BD8:  BRA    0C3C
+....................    else // should be 3 
+....................       t = (frac-1) * PI_DIV_BY_TWO; 
+0BDA:  BSF    FD8.1
+0BDC:  MOVFF  60,7C
+0BE0:  MOVFF  5F,7B
+0BE4:  MOVFF  5E,7A
+0BE8:  MOVFF  5D,79
+0BEC:  CLRF   x80
+0BEE:  CLRF   x7F
+0BF0:  CLRF   x7E
+0BF2:  MOVLW  7F
+0BF4:  MOVWF  x7D
+0BF6:  RCALL  05EE
+0BF8:  MOVFF  03,78
+0BFC:  MOVFF  02,77
+0C00:  MOVFF  01,76
+0C04:  MOVFF  00,75
+0C08:  MOVFF  03,7C
+0C0C:  MOVFF  02,7B
+0C10:  MOVFF  01,7A
+0C14:  MOVFF  00,79
+0C18:  MOVLW  DB
+0C1A:  MOVWF  x80
+0C1C:  MOVLW  0F
+0C1E:  MOVWF  x7F
+0C20:  MOVLW  49
+0C22:  MOVWF  x7E
+0C24:  MOVLW  7F
+0C26:  MOVWF  x7D
+0C28:  CALL   03A2
+0C2C:  MOVFF  03,56
+0C30:  MOVFF  02,55
+0C34:  MOVFF  01,54
+0C38:  MOVFF  00,53
+....................  
+....................    y = 1.0; 
+0C3C:  CLRF   52
+0C3E:  CLRF   51
+0C40:  CLRF   50
+0C42:  MOVLW  7F
+0C44:  MOVWF  4F
+....................    t = t * t; 
+0C46:  MOVFF  56,7C
+0C4A:  MOVFF  55,7B
+0C4E:  MOVFF  54,7A
+0C52:  MOVFF  53,79
+0C56:  MOVFF  56,80
+0C5A:  MOVFF  55,7F
+0C5E:  MOVFF  54,7E
+0C62:  MOVFF  53,7D
+0C66:  CALL   03A2
+0C6A:  MOVFF  03,56
+0C6E:  MOVFF  02,55
+0C72:  MOVFF  01,54
+0C76:  MOVFF  00,53
+....................    for (i = 0; i <= 4; i++) 
+0C7A:  CLRF   5C
+0C7C:  MOVF   5C,W
+0C7E:  SUBLW  04
+0C80:  BNC   0D34
+....................    { 
+....................       t2 = t2 * t; 
+0C82:  MOVFF  5A,7C
+0C86:  MOVFF  59,7B
+0C8A:  MOVFF  58,7A
+0C8E:  MOVFF  57,79
+0C92:  MOVFF  56,80
+0C96:  MOVFF  55,7F
+0C9A:  MOVFF  54,7E
+0C9E:  MOVFF  53,7D
+0CA2:  CALL   03A2
+0CA6:  MOVFF  03,5A
+0CAA:  MOVFF  02,59
+0CAE:  MOVFF  01,58
+0CB2:  MOVFF  00,57
+....................       y = y + p[i] * t2; 
+0CB6:  MOVF   5C,W
+0CB8:  MULLW  04
+0CBA:  MOVF   FF3,W
+0CBC:  CLRF   03
+0CBE:  ADDLW  61
+0CC0:  MOVWF  FE9
+0CC2:  MOVLW  00
+0CC4:  ADDWFC 03,W
+0CC6:  MOVWF  FEA
+0CC8:  MOVFF  FEF,79
+0CCC:  MOVFF  FEC,7A
+0CD0:  MOVFF  FEC,7B
+0CD4:  MOVFF  FEC,7C
+0CD8:  MOVFF  5A,80
+0CDC:  MOVFF  59,7F
+0CE0:  MOVFF  58,7E
+0CE4:  MOVFF  57,7D
+0CE8:  CALL   03A2
+0CEC:  MOVFF  FEA,76
+0CF0:  MOVFF  FE9,75
+0CF4:  BCF    FD8.1
+0CF6:  MOVFF  52,7C
+0CFA:  MOVFF  51,7B
+0CFE:  MOVFF  50,7A
+0D02:  MOVFF  4F,79
+0D06:  MOVFF  03,80
+0D0A:  MOVFF  02,7F
+0D0E:  MOVFF  01,7E
+0D12:  MOVFF  00,7D
+0D16:  RCALL  05EE
+0D18:  MOVFF  76,FEA
+0D1C:  MOVFF  75,FE9
+0D20:  MOVFF  03,52
+0D24:  MOVFF  02,51
+0D28:  MOVFF  01,50
+0D2C:  MOVFF  00,4F
+0D30:  INCF   5C,F
+0D32:  BRA    0C7C
+....................    } 
+....................  
+....................    if (quad == 2 || quad == 1) 
+0D34:  MOVF   5B,W
+0D36:  SUBLW  02
+0D38:  BZ    0D3E
+0D3A:  DECFSZ 5B,W
+0D3C:  BRA    0D44
+....................       y = -y;  // correct sign 
+0D3E:  MOVF   50,W
+0D40:  XORLW  80
+0D42:  MOVWF  50
+....................  
+....................    return (y); 
+0D44:  MOVFF  4F,00
+0D48:  MOVFF  50,01
+0D4C:  MOVFF  51,02
+0D50:  MOVFF  52,03
+0D54:  GOTO   140C (RETURN)
+.................... } 
+....................  
+....................  
+.................... //Overloaded functions for cos() for PCD 
+.................... // Overloaded function cos() for data type - Float48 
+.................... #if defined(__PCD__) 
+.................... float48 cos(float48 x) 
+.................... { 
+....................    float48 y, t, t2 = 1.0; 
+....................    unsigned int8 quad, i; 
+....................    float48 frac; 
+....................    float48 p[6] = {                    //by the series definition for cosine 
+....................       -0.5,                            // sum ( ( (-1)^n * x^2n )/(2n)! ) 
+....................        0.04166666666667, 
+....................       -0.00138888888889, 
+....................        0.00002480158730, 
+....................       -0.00000027557319, 
+....................        0.00000000208767 
+....................    }; 
+....................  
+....................    if (x < 0) x = -x;                  // absolute value of input 
+....................  
+....................    quad = (unsigned int8)(x * PI_DIV_BY_TWO_INV);    // quadrant 
+....................    frac = (x * PI_DIV_BY_TWO_INV) - quad;  // fractional part of input 
+....................    quad = quad % 4;                    // quadrant (0 to 3) 
+....................  
+....................    if (quad == 0 || quad == 2) 
+....................       t = frac * PI_DIV_BY_TWO; 
+....................    else if (quad == 1) 
+....................       t = (1-frac) * PI_DIV_BY_TWO; 
+....................    else // should be 3 
+....................       t = (frac-1) * PI_DIV_BY_TWO; 
+....................  
+....................    y = 0.999999999781; 
+....................    t = t * t; 
+....................    for (i = 0; i <= 5; i++) 
+....................    { 
+....................       t2 = t2 * t; 
+....................       y = y + p[i] * t2; 
+....................    } 
+....................  
+....................    if (quad == 2 || quad == 1) 
+....................       y = -y;  // correct sign 
+....................  
+....................    return (y); 
+.................... } 
+....................  
+.................... // Overloaded function cos() for data type - Float64 
+.................... float64 cos(float64 x) 
+.................... { 
+....................    float64 y, t, t2 = 1.0; 
+....................    unsigned int8 quad, i; 
+....................    float64 frac; 
+....................    float64 p_64[9] = {               //by the series definition for cosine 
+....................      -0.49999999999998740,           // sum ( ( (-1)^n * x^2n )/(2n)! )              
+....................       0.04166666666656518, 
+....................      -0.00138888888851691, 
+....................       0.00002480158658490, 
+....................      -0.00000027557239796, 
+....................       0.00000000208715031, 
+....................      -0.00000000001126577, 
+....................       0.00000000000000427, 
+....................       0.00000000000000372}; 
+....................  
+....................    if (x < 0) x = -x;                  // absolute value of input 
+....................  
+....................    quad = (unsigned int8)(x * PI_DIV_BY_TWO_INV);    // quadrant 
+....................    frac = (x * PI_DIV_BY_TWO_INV) - quad;  // fractional part of input 
+....................    quad = quad % 4;                    // quadrant (0 to 3) 
+....................  
+....................    if (quad == 0 || quad == 2) 
+....................       t = frac * PI_DIV_BY_TWO; 
+....................    else if (quad == 1) 
+....................       t = (1-frac) * PI_DIV_BY_TWO; 
+....................    else // should be 3 
+....................       t = (frac-1) * PI_DIV_BY_TWO; 
+....................  
+....................    y = 1.0; 
+....................    t = t * t; 
+....................    for (i = 0; i <= 8; i++) 
+....................    { 
+....................       t2 = t2 * t; 
+....................       y = y + p_64[i] * t2; 
+....................    } 
+....................  
+....................    if (quad == 2 || quad == 1) 
+....................       y = -y;  // correct sign 
+....................  
+....................    return (y); 
+.................... } 
+....................  
+.................... #endif 
+....................  
+.................... //////////////////////////////////////////////////////////////////////////// 
+.................... //   float sin(float x) 
+.................... //////////////////////////////////////////////////////////////////////////// 
+.................... // Description : returns the sine value of the angle x, which is in radian 
+.................... // Date : 9/20/2001 
+.................... // 
+.................... float32 sin(float32 x) 
+.................... { 
+....................    return cos(x - PI_DIV_BY_TWO); 
+.................... } 
+....................  
+.................... //Overloaded functions for sin() for PCD 
+.................... // Overloaded function sin() for data type - Float48 
+.................... #if defined(__PCD__) 
+.................... float48 sin(float48 x) 
+.................... { 
+....................    return cos(x - PI_DIV_BY_TWO); 
+.................... } 
+....................  
+.................... // Overloaded function sin() for data type - Float48 
+.................... float64 sin(float64 x) 
+.................... { 
+....................    return cos(x - PI_DIV_BY_TWO); 
+.................... } 
+.................... #endif 
+....................  
+.................... //////////////////////////////////////////////////////////////////////////// 
+.................... //   float tan(float x) 
+.................... //////////////////////////////////////////////////////////////////////////// 
+.................... // Description : returns the tangent value of the angle x, which is in radian 
+.................... // Date : 9/20/2001 
+.................... // 
+.................... float32 tan(float32 x) 
+.................... { 
+....................    float32 c, s; 
+....................  
+....................    c = cos(x); 
+....................    if (c == 0.0) 
+....................       return (1.0e+36); 
+....................  
+....................    s = sin(x); 
+....................    return(s/c); 
+.................... } 
+.................... //Overloaded functions for tan() for PCD 
+.................... // Overloaded function tan() for data type - Float48 
+.................... #if defined(__PCD__) 
+.................... float48 tan(float48 x) 
+.................... { 
+....................    float48 c, s; 
+....................  
+....................    c = cos(x); 
+....................    if (c == 0.0) 
+....................       return (1.0e+36); 
+....................  
+....................    s = sin(x); 
+....................    return(s/c); 
+.................... } 
+....................  
+.................... // Overloaded function tan() for data type - Float48 
+.................... float64 tan(float64 x) 
+.................... { 
+....................    float64 c, s; 
+....................  
+....................    c = cos(x); 
+....................    if (c == 0.0) 
+....................       return (1.0e+36); 
+....................  
+....................    s = sin(x); 
+....................    return(s/c); 
+.................... } 
+.................... #endif 
+....................  
+.................... float32 const pas[3] = {0.49559947, -4.6145309, 5.6036290}; 
+.................... float32 const qas[3] = {1.0000000,  -5.5484666, 5.6036290}; 
+....................  
+.................... float32 ASIN_COS(float32 x, unsigned int8 n) 
+.................... { 
+....................    float32 y, res, r, y2; 
+....................    int1 s; 
+....................    #ifdef _ERRNO 
+....................    if(x <-1 || x > 1) 
+....................    { 
+....................       errno=EDOM; 
+....................    } 
+....................    #endif 
+....................    s = 0; 
+....................    y = x; 
+....................  
+....................    if (x < 0) 
+....................    { 
+....................       s = 1; 
+....................       y = -y; 
+....................    } 
+....................  
+....................    if (y > 0.5) 
+....................    { 
+....................       y = sqrt((1.0 - y)*0.5); 
+....................       n += 2; 
+....................    } 
+....................  
+....................    y2=y*y; 
+....................  
+....................    res = pas[0]*y2 + pas[1]; 
+....................    res = res*y2 + pas[2]; 
+....................  
+....................    r = qas[0]*y2 + qas[1]; 
+....................    r = r*y2 + qas[2]; 
+....................  
+....................    res = y*res/r; 
+....................  
+....................    if (n & 2)     // |x| > 0.5 
+....................       res = PI_DIV_BY_TWO - 2.0*res; 
+....................    if (s) 
+....................       res = -res; 
+....................    if (n & 1)           // take arccos 
+....................       res = PI_DIV_BY_TWO - res; 
+....................  
+....................    return(res); 
+.................... } 
+....................  
+....................  
+.................... //Overloaded functions for ASIN_COS() for PCD 
+.................... // Overloaded function ASIN_COS() for data type - Float48 
+.................... #if defined(__PCD__) 
+.................... float48 ASIN_COS(float48 x, unsigned int8 n) 
+.................... { 
+....................    float48 y, res, r, y2; 
+....................    int1 s; 
+....................    #ifdef _ERRNO 
+....................    if(x <-1 || x > 1) 
+....................    { 
+....................       errno=EDOM; 
+....................    } 
+....................    #endif 
+....................    s = 0; 
+....................    y = x; 
+....................  
+....................    if (x < 0) 
+....................    { 
+....................       s = 1; 
+....................       y = -y; 
+....................    } 
+....................  
+....................    if (y > 0.5) 
+....................    { 
+....................       y = sqrt((1.0 - y)*0.5); 
+....................       n += 2; 
+....................    } 
+....................  
+....................    y2=y*y; 
+....................  
+....................    res = pas[0]*y2 + pas[1]; 
+....................    res = res*y2 + pas[2]; 
+....................  
+....................    r = qas[0]*y2 + qas[1]; 
+....................    r = r*y2 + qas[2]; 
+....................  
+....................    res = y*res/r; 
+....................  
+....................    if (n & 2)     // |x| > 0.5 
+....................       res = PI_DIV_BY_TWO - 2.0*res; 
+....................    if (s) 
+....................       res = -res; 
+....................    if (n & 1)           // take arccos 
+....................       res = PI_DIV_BY_TWO - res; 
+....................  
+....................    return(res); 
+.................... } 
+....................  
+.................... // Overloaded function ASIN_COS() for data type - Float64 
+.................... double pas_64[5]={1.000000000000000,-2.069938587724477,1.421444580548907, 
+....................                  -0.360690137621842,0.024929451660228}; 
+....................  
+.................... double qas_64[5]={-2.236605254391134,1.719212122946451,-0.524122954476133, 
+....................                    0.052808872045749,-0.000662536036570}; 
+....................                     
+.................... float64 ASIN_COS(float64 x, unsigned int8 n) 
+.................... { 
+....................    float64 y, res, r, y2; 
+....................    int1 s; 
+....................    #ifdef _ERRNO 
+....................    if(x <-1 || x > 1) 
+....................    { 
+....................       errno=EDOM; 
+....................    } 
+....................    #endif 
+....................    s = 0; 
+....................    y = x; 
+....................  
+....................    if (x < 0) 
+....................    { 
+....................       s = 1; 
+....................       y = -y; 
+....................    } 
+....................  
+....................    if (y > 0.5) 
+....................    { 
+....................       y = sqrt((1.0 - y)*0.5); 
+....................       n += 2; 
+....................    } 
+....................  
+....................    y2=y*y; 
+....................  
+....................    res = pas_64[4]*y2 + pas_64[3]; 
+....................    res = res*y2 + pas_64[2]; 
+....................    res = res*y2 + pas_64[1]; 
+....................    res = res*y2 + pas_64[0]; 
+....................  
+....................    r = qas_64[4]*y2 + qas_64[3]; 
+....................    r = r*y2 + qas_64[2]; 
+....................    r = r*y2 + qas_64[1]; 
+....................    r = r*y2 + qas_64[0]; 
+....................    r = r*y2 + 1.0; 
+....................  
+....................    res = y*res/r; 
+....................  
+....................    if (n & 2)     // |x| > 0.5 
+....................       res = PI_DIV_BY_TWO - 2.0*res; 
+....................    if (s) 
+....................       res = -res; 
+....................    if (n & 1)           // take arccos 
+....................       res = PI_DIV_BY_TWO - res; 
+....................  
+....................    return(res); 
+.................... } 
+.................... #endif 
+....................  
+.................... //////////////////////////////////////////////////////////////////////////// 
+.................... //   float asin(float x) 
+.................... //////////////////////////////////////////////////////////////////////////// 
+.................... // Description : returns the arcsine value of the value x. 
+.................... // Date : N/A 
+.................... // 
+.................... float32 asin(float32 x) 
+.................... { 
+....................    float32 r; 
+....................  
+....................    r = ASIN_COS(x, 0); 
+....................    return(r); 
+.................... } 
+.................... //Overloaded functions for asin() for PCD 
+.................... // Overloaded function asin() for data type - Float48 
+.................... #if defined(__PCD__) 
+.................... float48 asin(float48 x) 
+.................... { 
+....................    float48 r; 
+....................  
+....................    r = ASIN_COS(x, 0); 
+....................    return(r); 
+.................... } 
+....................  
+.................... // Overloaded function asin() for data type - Float64 
+.................... float64 asin(float64 x) 
+.................... { 
+....................    float64 r; 
+....................  
+....................    r = ASIN_COS(x, 0); 
+....................    return(r); 
+.................... } 
+.................... #endif 
+....................  
+.................... //////////////////////////////////////////////////////////////////////////// 
+.................... //   float acos(float x) 
+.................... //////////////////////////////////////////////////////////////////////////// 
+.................... // Description : returns the arccosine value of the value x. 
+.................... // Date : N/A 
+.................... // 
+.................... float32 acos(float32 x) 
+.................... { 
+....................    float32 r; 
+....................  
+....................    r = ASIN_COS(x, 1); 
+....................    return(r); 
+.................... } 
+.................... //Overloaded functions for acos() for PCD 
+.................... // Overloaded function acos() for data type - Float48 
+.................... #if defined(__PCD__) 
+.................... float48 acos(float48 x) 
+.................... { 
+....................    float48 r; 
+....................  
+....................    r = ASIN_COS(x, 1); 
+....................    return(r); 
+.................... } 
+....................  
+.................... // Overloaded function acos() for data type - Float64 
+.................... float64 acos(float64 x) 
+.................... { 
+....................    float64 r; 
+....................  
+....................    r = ASIN_COS(x, 1); 
+....................    return(r); 
+.................... } 
+.................... #endif 
+....................  
+.................... float32 const pat[4] = {0.17630401, 5.6710795, 22.376096, 19.818457}; 
+.................... float32 const qat[4] = {1.0000000,  11.368190, 28.982246, 19.818457}; 
+....................  
+.................... //////////////////////////////////////////////////////////////////////////// 
+.................... //   float atan(float x) 
+.................... //////////////////////////////////////////////////////////////////////////// 
+.................... // Description : returns the arctangent value of the value x. 
+.................... // Date : N/A 
+.................... // 
+.................... float32 atan(float32 x) 
+.................... { 
+....................    float32 y, res, r; 
+....................    int1 s, flag; 
+....................  
+....................    s = 0; 
+....................    flag = 0; 
+....................    y = x; 
+....................  
+....................    if (x < 0) 
+....................    { 
+....................       s = 1; 
+....................       y = -y; 
+....................    } 
+....................  
+....................    if (y > 1.0) 
+....................    { 
+....................       y = 1.0/y; 
+....................       flag = 1; 
+....................    } 
+....................  
+....................    res = pat[0]*y*y + pat[1]; 
+....................    res = res*y*y + pat[2]; 
+....................    res = res*y*y + pat[3]; 
+....................  
+....................    r = qat[0]*y*y + qat[1]; 
+....................    r = r*y*y + qat[2]; 
+....................    r = r*y*y + qat[3]; 
+....................  
+....................    res = y*res/r; 
+....................  
+....................  
+....................    if (flag)                              // for |x| > 1 
+....................       res = PI_DIV_BY_TWO - res; 
+....................    if (s) 
+....................       res = -res; 
+....................  
+....................    return(res); 
+.................... } 
+.................... //Overloaded functions for atan() for PCD 
+.................... // Overloaded function atan() for data type - Float48 
+.................... #if defined(__PCD__) 
+.................... float48 atan(float48 x) 
+.................... { 
+....................    float48 y, res, r; 
+....................    int1 s, flag; 
+....................  
+....................    s = 0; 
+....................    flag = 0; 
+....................    y = x; 
+....................  
+....................    if (x < 0) 
+....................    { 
+....................       s = 1; 
+....................       y = -y; 
+....................    } 
+....................  
+....................    if (y > 1.0) 
+....................    { 
+....................       y = 1.0/y; 
+....................       flag = 1; 
+....................    } 
+....................  
+....................    res = pat[0]*y*y + pat[1]; 
+....................    res = res*y*y + pat[2]; 
+....................    res = res*y*y + pat[3]; 
+....................  
+....................    r = qat[0]*y*y + qat[1]; 
+....................    r = r*y*y + qat[2]; 
+....................    r = r*y*y + qat[3]; 
+....................  
+....................    res = y*res/r; 
+....................  
+....................  
+....................    if (flag)                              // for |x| > 1 
+....................       res = PI_DIV_BY_TWO - res; 
+....................    if (s) 
+....................       res = -res; 
+....................  
+....................    return(res); 
+.................... } 
+....................  
+.................... float64 pat_64[6]={0.999999999999999,2.249923645595566,1.771541617806449, 
+....................                    0.579678874003185,0.072162702162882,0.002281100141660}; 
+....................  
+.................... float64 qat_64[6]={2.583256978928510,2.432627277466967,1.016760379885393, 
+....................                    0.182482977188688,0.011155377971690,0.000100013019160}; 
+.................... // Overloaded function atan() for data type - Float64 
+.................... float64 atan(float64 x) 
+.................... { 
+....................    float64 y,y2, res, r; 
+....................    int1 s, flag; 
+....................  
+....................    s = 0; 
+....................    flag = 0; 
+....................    y = x; 
+....................  
+....................    if (x < 0) 
+....................    { 
+....................       s = 1; 
+....................       y = -y; 
+....................    } 
+....................  
+....................    if (y > 1.0) 
+....................    { 
+....................       y = 1.0/y; 
+....................       flag = 1; 
+....................    } 
+....................    y2 = y*y; 
+....................    res = pat_64[5]*y2 + pat_64[4]; 
+....................    res = res*y2 + pat_64[3]; 
+....................    res = res*y2 + pat_64[2]; 
+....................    res = res*y2 + pat_64[1]; 
+....................    res = res*y2 + pat_64[0]; 
+....................  
+....................    r = qat_64[5]*y2 + qat_64[4]; 
+....................    r = r*y2 + qat_64[3]; 
+....................    r = r*y2 + qat_64[2]; 
+....................    r = r*y2 + qat_64[1]; 
+....................    r = r*y2 + qat_64[0]; 
+....................    r = r*y2 + 1.0; 
+....................  
+....................    res = y*res/r; 
+....................  
+....................  
+....................    if (flag)                              // for |x| > 1 
+....................       res = PI_DIV_BY_TWO - res; 
+....................    if (s) 
+....................       res = -res; 
+....................  
+....................    return(res); 
+.................... } 
+.................... #endif 
+....................  
+.................... ///////////////////////////////////////////////////////////////////////////// 
+.................... //   float atan2(float y, float x) 
+.................... ///////////////////////////////////////////////////////////////////////////// 
+.................... // Description :computes the principal value of arc tangent of y/x, using the 
+.................... // signs of both the arguments to determine the quadrant of the return value 
+.................... // Returns : returns the arc tangent of y/x. 
+.................... // Date : N/A 
+.................... // 
+....................  
+.................... float32 atan2(float32 y,float32 x) 
+.................... { 
+....................    float32 z; 
+....................    int1 sign; 
+....................    unsigned int8 quad; 
+....................    sign=0; 
+....................    quad=0; //quadrant 
+....................    quad=((y<=0.0)?((x<=0.0)?3:4):((x<0.0)?2:1)); 
+....................    if(y<0.0) 
+....................    { 
+....................       sign=1; 
+....................       y=-y; 
+....................    } 
+....................    if(x<0.0) 
+....................    { 
+....................       x=-x; 
+....................    } 
+....................    if (x==0.0) 
+....................    { 
+....................       if(y==0.0) 
+....................       { 
+....................       #ifdef _ERRNO 
+....................       { 
+....................          errno=EDOM; 
+....................       } 
+....................       #endif 
+....................       } 
+....................       else 
+....................       { 
+....................          if(sign) 
+....................          { 
+....................          return (-(PI_DIV_BY_TWO)); 
+....................          } 
+....................          else 
+....................          { 
+....................          return (PI_DIV_BY_TWO); 
+....................          } 
+....................       } 
+....................    } 
+....................    else 
+....................    { 
+....................       z=y/x; 
+....................       switch(quad) 
+....................       { 
+....................          case 1: 
+....................          { 
+....................             return atan(z); 
+....................             break; 
+....................          } 
+....................          case 2: 
+....................          { 
+.................... //            return (atan(z)+PI_DIV_BY_TWO);  //2L3122 
+....................             return (PI-atan(z)); 
+....................             break; 
+....................          } 
+....................          case 3: 
+....................          { 
+....................             return (atan(z)-PI); 
+....................             break; 
+....................          } 
+....................          case 4: 
+....................          { 
+....................             return (-atan(z)); 
+....................             break; 
+....................          } 
+....................       } 
+....................    } 
+.................... } 
+....................  
+.................... //Overloaded functions for atan2() for PCD 
+.................... // Overloaded function atan2() for data type - Float48 
+.................... #if defined(__PCD__) 
+.................... float48 atan2(float48 y,float48 x) 
+.................... { 
+....................    float48 z; 
+....................    int1 sign; 
+....................    unsigned int8 quad; 
+....................    sign=0; 
+....................    quad=0; //quadrant 
+....................    quad=((y<=0.0)?((x<=0.0)?3:4):((x<0.0)?2:1)); 
+....................    if(y<0.0) 
+....................    { 
+....................       sign=1; 
+....................       y=-y; 
+....................    } 
+....................    if(x<0.0) 
+....................    { 
+....................       x=-x; 
+....................    } 
+....................    if (x==0.0) 
+....................    { 
+....................       if(y==0.0) 
+....................       { 
+....................       #ifdef _ERRNO 
+....................       { 
+....................          errno=EDOM; 
+....................       } 
+....................       #endif 
+....................       } 
+....................       else 
+....................       { 
+....................          if(sign) 
+....................          { 
+....................          return (-(PI_DIV_BY_TWO)); 
+....................          } 
+....................          else 
+....................          { 
+....................          return (PI_DIV_BY_TWO); 
+....................          } 
+....................       } 
+....................    } 
+....................    else 
+....................    { 
+....................       z=y/x; 
+....................       switch(quad) 
+....................       { 
+....................          case 1: 
+....................          { 
+....................             return atan(z); 
+....................             break; 
+....................          } 
+....................          case 2: 
+....................          { 
+.................... //            return (atan(z)+PI_DIV_BY_TWO);  //2L3122 
+....................             return (PI-atan(z)); 
+....................             break; 
+....................          } 
+....................          case 3: 
+....................          { 
+....................             return (atan(z)-PI); 
+....................             break; 
+....................          } 
+....................          case 4: 
+....................          { 
+....................             return (-atan(z)); 
+....................             break; 
+....................          } 
+....................       } 
+....................    } 
+.................... } 
+....................  
+.................... // Overloaded function atan2() for data type - Float64 
+.................... float64 atan2(float64 y,float64 x) 
+.................... { 
+....................    float64 z; 
+....................    int1 sign; 
+....................    unsigned int8 quad; 
+....................    sign=0; 
+....................    quad=0; //quadrant 
+....................    quad=((y<=0.0)?((x<=0.0)?3:4):((x<0.0)?2:1)); 
+....................    if(y<0.0) 
+....................    { 
+....................       sign=1; 
+....................       y=-y; 
+....................    } 
+....................    if(x<0.0) 
+....................    { 
+....................       x=-x; 
+....................    } 
+....................    if (x==0.0) 
+....................    { 
+....................       if(y==0.0) 
+....................       { 
+....................       #ifdef _ERRNO 
+....................       { 
+....................          errno=EDOM; 
+....................       } 
+....................       #endif 
+....................       } 
+....................       else 
+....................       { 
+....................          if(sign) 
+....................          { 
+....................          return (-(PI_DIV_BY_TWO)); 
+....................          } 
+....................          else 
+....................          { 
+....................          return (PI_DIV_BY_TWO); 
+....................          } 
+....................       } 
+....................    } 
+....................    else 
+....................    { 
+....................       z=y/x; 
+....................       switch(quad) 
+....................       { 
+....................          case 1: 
+....................          { 
+....................             return atan(z); 
+....................             break; 
+....................          } 
+....................          case 2: 
+....................          { 
+.................... //            return (atan(z)+PI_DIV_BY_TWO);  //2L3122 
+....................             return (PI-atan(z)); 
+....................             break; 
+....................          } 
+....................          case 3: 
+....................          { 
+....................             return (atan(z)-PI); 
+....................             break; 
+....................          } 
+....................          case 4: 
+....................          { 
+....................             return (-atan(z)); 
+....................             break; 
+....................          } 
+....................       } 
+....................    } 
+.................... } 
+.................... #endif 
+....................  
+.................... //////////////////// Hyperbolic functions //////////////////// 
+....................  
+.................... //////////////////////////////////////////////////////////////////////////// 
+.................... //   float cosh(float x) 
+.................... //////////////////////////////////////////////////////////////////////////// 
+.................... // Description : Computes the hyperbolic cosine value of x 
+.................... // Returns : returns the hyperbolic cosine value of x 
+.................... // Date : N/A 
+.................... // 
+....................  
+.................... float32 cosh(float32 x) 
+.................... { 
+....................    return ((exp(x)+exp(-x))*0.5); 
+.................... } 
+.................... //Overloaded functions for cosh() for PCD 
+.................... // Overloaded function cosh() for data type - Float48 
+.................... #if defined(__PCD__) 
+.................... float48 cosh(float48 x) 
+.................... { 
+....................    return ((exp(x)+exp(-x))*0.5); 
+.................... } 
+....................  
+.................... // Overloaded function cosh() for data type - Float64 
+.................... float64 cosh(float64 x) 
+.................... { 
+....................    return ((exp(x)+exp(-x))*0.5); 
+.................... } 
+.................... #endif 
+....................  
+.................... //////////////////////////////////////////////////////////////////////////// 
+.................... //   float sinh(float x) 
+.................... //////////////////////////////////////////////////////////////////////////// 
+.................... // Description : Computes the hyperbolic sine value of x 
+.................... // Returns : returns the hyperbolic sine value of x 
+.................... // Date : N/A 
+.................... // 
+....................  
+.................... float32 sinh(float32 x) 
+.................... { 
+....................  
+....................    return ((exp(x) - exp(-x))*0.5); 
+.................... } 
+.................... //Overloaded functions for sinh() for PCD 
+.................... // Overloaded function sinh() for data type - Float48 
+.................... #if defined(__PCD__) 
+.................... float48 sinh(float48 x) 
+.................... { 
+....................  
+....................    return ((exp(x) - exp(-x))*0.5); 
+.................... } 
+....................  
+.................... // Overloaded function sinh() for data type - Float48 
+.................... float64 sinh(float64 x) 
+.................... { 
+....................  
+....................    return ((exp(x) - exp(-x))*0.5); 
+.................... } 
+.................... #endif 
+....................  
+.................... //////////////////////////////////////////////////////////////////////////// 
+.................... //   float tanh(float x) 
+.................... //////////////////////////////////////////////////////////////////////////// 
+.................... // Description : Computes the hyperbolic tangent value of x 
+.................... // Returns : returns the hyperbolic tangent value of x 
+.................... // Date : N/A 
+.................... // 
+....................  
+.................... float32 tanh(float32 x) 
+.................... { 
+....................    return(sinh(x)/cosh(x)); 
+.................... } 
+.................... //Overloaded functions for tanh() for PCD 
+.................... // Overloaded function tanh() for data type - Float48 
+.................... #if defined(__PCD__) 
+.................... float48 tanh(float48 x) 
+.................... { 
+....................    return(sinh(x)/cosh(x)); 
+.................... } 
+....................  
+.................... // Overloaded function tanh() for data type - Float64 
+.................... float64 tanh(float64 x) 
+.................... { 
+....................    return(sinh(x)/cosh(x)); 
+.................... } 
+.................... #endif 
+....................  
+.................... //////////////////////////////////////////////////////////////////////////// 
+.................... //   float frexp(float x, signed int *exp) 
+.................... //////////////////////////////////////////////////////////////////////////// 
+.................... // Description : breaks a floating point number into a normalized fraction and an integral 
+.................... // power of 2. It stores the integer in the signed int object pointed to by exp. 
+.................... // Returns : returns the value x, such that x is a double with magnitude in the interval 
+.................... // [1/2,1) or zero, and value equals x times 2 raised to the power *exp.If value is zero, 
+.................... // both parts of the result are zero. 
+.................... // Date : N/A 
+.................... // 
+....................  
+.................... #define LOG2 .30102999566398119521 
+.................... #define LOG2_INV 3.32192809488736234787 
+.................... float32 frexp(float32 x, signed int8 *exp) 
+.................... { 
+....................    float32 res; 
+....................    int1 sign = 0; 
+....................    if(x == 0.0) 
+....................    { 
+....................       *exp=0; 
+....................       return (0.0); 
+....................    } 
+....................    if(x < 0.0) 
+....................    { 
+....................      x=-x; 
+....................      sign=1; 
+....................    } 
+....................    if (x > 1.0) 
+....................    { 
+....................       *exp=(ceil(log10(x)*LOG2_INV)); 
+....................       res=x/(pow(2, *exp)); 
+....................       if (res == 1) 
+....................       { 
+....................          *exp=*exp+1; 
+....................           res=.5; 
+....................       } 
+....................    } 
+....................    else 
+....................    { 
+....................       if(x < 0.5) 
+....................       { 
+....................          *exp=-1; 
+....................          res=x*2; 
+....................       } 
+....................       else 
+....................       { 
+....................          *exp=0; 
+....................           res=x; 
+....................       } 
+....................    } 
+....................    if(sign) 
+....................    { 
+....................       res=-res; 
+....................    } 
+....................    return res; 
+.................... } 
+....................  
+.................... //Overloaded functions for frexp() for PCD 
+.................... // Overloaded function frexp() for data type - Float48 
+.................... #if defined(__PCD__) 
+.................... float48 frexp(float48 x, signed int8 *exp) 
+.................... { 
+....................    float48 res; 
+....................    int1 sign = 0; 
+....................    if(x == 0.0) 
+....................    { 
+....................       *exp=0; 
+....................       return (0.0); 
+....................    } 
+....................    if(x < 0.0) 
+....................    { 
+....................      x=-x; 
+....................      sign=1; 
+....................    } 
+....................    if (x > 1.0) 
+....................    { 
+....................       *exp=(ceil(log10(x)*LOG2_INV)); 
+....................       res=x/(pow(2, *exp)); 
+....................       if (res == 1) 
+....................       { 
+....................          *exp=*exp+1; 
+....................           res=.5; 
+....................       } 
+....................    } 
+....................    else 
+....................    { 
+....................       if(x < 0.5) 
+....................       { 
+....................          *exp=-1; 
+....................          res=x*2; 
+....................       } 
+....................       else 
+....................       { 
+....................          *exp=0; 
+....................           res=x; 
+....................       } 
+....................    } 
+....................    if(sign) 
+....................    { 
+....................       res=-res; 
+....................    } 
+....................    return res; 
+.................... } 
+....................  
+.................... // Overloaded function frexp() for data type - Float64 
+.................... float64 frexp(float64 x, signed int8 *exp) 
+.................... { 
+....................    float64 res; 
+....................    int1 sign = 0; 
+....................    if(x == 0.0) 
+....................    { 
+....................       *exp=0; 
+....................       return (0.0); 
+....................    } 
+....................    if(x < 0.0) 
+....................    { 
+....................      x=-x; 
+....................      sign=1; 
+....................    } 
+....................    if (x > 1.0) 
+....................    { 
+....................       *exp=(ceil(log10(x)*LOG2_INV)); 
+....................       res=x/(pow(2, *exp)); 
+....................       if (res == 1) 
+....................       { 
+....................          *exp=*exp+1; 
+....................           res=.5; 
+....................       } 
+....................    } 
+....................    else 
+....................    { 
+....................       if(x < 0.5) 
+....................       { 
+....................          *exp=-1; 
+....................          res=x*2; 
+....................       } 
+....................       else 
+....................       { 
+....................          *exp=0; 
+....................           res=x; 
+....................       } 
+....................    } 
+....................    if(sign) 
+....................    { 
+....................       res=-res; 
+....................    } 
+....................    return res; 
+.................... } 
+.................... #endif 
+....................  
+.................... ////////////////////////////////////////////////////////////////////////////// 
+.................... //   float ldexp(float x, signed int *exp) 
+.................... ////////////////////////////////////////////////////////////////////////////// 
+.................... // Description : multiplies a floating point number by an integral power of 2. 
+.................... // Returns : returns the value of x times 2 raised to the power exp. 
+.................... // Date : N/A 
+.................... // 
+....................  
+.................... float32 ldexp(float32 value, signed int8 exp) 
+.................... { 
+....................    return (value * pow(2,exp)); 
+.................... } 
+.................... //Overloaded functions for ldexp() for PCD 
+.................... // Overloaded function ldexp() for data type - Float48 
+....................  
+.................... #if defined(__PCD__) 
+.................... float48 ldexp(float48 value, signed int8 exp) 
+.................... { 
+....................    return (value * pow(2,exp)); 
+.................... } 
+.................... // Overloaded function ldexp() for data type - Float64 
+.................... float64 ldexp(float64 value, signed int8 exp) 
+.................... { 
+....................    return (value * pow(2,exp)); 
+.................... } 
+.................... #endif 
+....................  
+.................... #endif 
+....................  
+....................  
+....................  
+.................... //Implementacion Switch-Case 
+....................  
+.................... /** 
+.................... *	\fn void maquina_estado() 
+.................... *	\brief Implementacion Switch-Case 
+.................... *	\details  
+.................... *	\author Postemsky Marcos 
+.................... *	\date 17-09-2016 11:39:08 
+....................  **/ 
+.................... unsigned long punto1, punto2; 
+.................... int8 pos_V,pos_I,pos_V_A,pos_I_A; 
+.................... int control_V, control_I; 
+.................... int desfase; 
+.................... float tension, corriente, tension_RMS,corriente_RMS, t_desfase, potencia_ins,angulo; 
+....................  
+....................  
+.................... #INT_RTCC                // interrupcion para demora de 500 us 
+.................... void interrtimer_0(){ 
+....................     set_timer0(0x1D);   // se carga 29 para un desborde en 500 us teniendo en cuenta los tiempos en C 
+*
+00AE:  CLRF   FD7
+00B0:  MOVLW  1D
+00B2:  MOVWF  FD6
+....................     pulso_timer++; 
+00B4:  INCF   1D,F
+00B6:  BCF    FF2.2
+00B8:  GOTO   0060
+....................    } 
+....................  
+.................... void maquina_estado() 
+.................... { 
+.................... 		static int estado = PUNTO_TENS_CORR; 
+....................  
+.................... 		switch(estado) 
+*
+103A:  MOVF   46,W
+103C:  XORLW  00
+103E:  BZ    1058
+1040:  XORLW  01
+1042:  BZ    10C0
+1044:  XORLW  03
+1046:  BTFSC  FD8.2
+1048:  BRA    11C6
+104A:  XORLW  01
+104C:  BTFSC  FD8.2
+104E:  BRA    1296
+1050:  XORLW  07
+1052:  BTFSC  FD8.2
+1054:  BRA    1452
+1056:  BRA    1512
+.................... 		{ 
+.................... 			case PUNTO_TENS_CORR: 
+....................                 set_adc_channel(0);           //Habilitación canal 
+1058:  MOVLW  00
+105A:  MOVWF  01
+105C:  MOVF   FC2,W
+105E:  ANDLW  C3
+1060:  IORWF  01,W
+1062:  MOVWF  FC2
+....................                 punto1= leer_ADC(2); 
+1064:  MOVLW  02
+1066:  MOVWF  47
+1068:  GOTO   0304
+106C:  MOVFF  02,20
+1070:  MOVFF  01,1F
+....................                 punto2= read_adc(); // comprobar si funciona con el tiempo de demora de la lectura del externo 
+1074:  BSF    FC2.1
+1076:  BTFSC  FC2.1
+1078:  BRA    1076
+107A:  CLRF   22
+107C:  MOVFF  FC4,21
+....................                 // convierte los valores de long a float 
+....................                 tension=punto1; 
+1080:  MOVFF  20,7A
+1084:  MOVFF  1F,79
+1088:  CALL   036C
+108C:  MOVFF  03,2D
+1090:  MOVFF  02,2C
+1094:  MOVFF  01,2B
+1098:  MOVFF  00,2A
+....................                 corriente=punto2; 
+109C:  MOVFF  22,7A
+10A0:  MOVFF  21,79
+10A4:  CALL   036C
+10A8:  MOVFF  03,31
+10AC:  MOVFF  02,30
+10B0:  MOVFF  01,2F
+10B4:  MOVFF  00,2E
+....................                 contador++; 
+10B8:  INCF   1C,F
+.................... 					estado = CONVERSION_DESFASE; 
+10BA:  MOVLW  01
+10BC:  MOVWF  46
+.................... 		 
+.................... 				 
+....................  
+.................... 				break; 
+10BE:  BRA    1514
+.................... 			 
+.................... 			case CONVERSION_DESFASE: 
+....................                 tension= (tension*5)/4096; 
+10C0:  MOVFF  2D,7C
+10C4:  MOVFF  2C,7B
+10C8:  MOVFF  2B,7A
+10CC:  MOVFF  2A,79
+10D0:  CLRF   x80
+10D2:  CLRF   x7F
+10D4:  MOVLW  20
+10D6:  MOVWF  x7E
+10D8:  MOVLW  81
+10DA:  MOVWF  x7D
+10DC:  CALL   03A2
+10E0:  MOVFF  03,4A
+10E4:  MOVFF  02,49
+10E8:  MOVFF  01,48
+10EC:  MOVFF  00,47
+10F0:  MOVFF  03,5C
+10F4:  MOVFF  02,5B
+10F8:  MOVFF  01,5A
+10FC:  MOVFF  00,59
+1100:  CLRF   x60
+1102:  CLRF   5F
+1104:  CLRF   5E
+1106:  MOVLW  8B
+1108:  MOVWF  5D
+110A:  CALL   0494
+110E:  MOVFF  03,2D
+1112:  MOVFF  02,2C
+1116:  MOVFF  01,2B
+111A:  MOVFF  00,2A
+....................                 corriente= (corriente*5)/1024; 
+111E:  MOVFF  31,7C
+1122:  MOVFF  30,7B
+1126:  MOVFF  2F,7A
+112A:  MOVFF  2E,79
+112E:  CLRF   x80
+1130:  CLRF   x7F
+1132:  MOVLW  20
+1134:  MOVWF  x7E
+1136:  MOVLW  81
+1138:  MOVWF  x7D
+113A:  CALL   03A2
+113E:  MOVFF  03,4A
+1142:  MOVFF  02,49
+1146:  MOVFF  01,48
+114A:  MOVFF  00,47
+114E:  MOVFF  03,5C
+1152:  MOVFF  02,5B
+1156:  MOVFF  01,5A
+115A:  MOVFF  00,59
+115E:  CLRF   x60
+1160:  CLRF   5F
+1162:  CLRF   5E
+1164:  MOVLW  89
+1166:  MOVWF  5D
+1168:  CALL   0494
+116C:  MOVFF  03,31
+1170:  MOVFF  02,30
+1174:  MOVFF  01,2F
+1178:  MOVFF  00,2E
+....................                  
+....................                 // Analisis del punto POSITVO O NEGATIVO 
+....................                 // valor positivo estado=0-- valor negativo estado=1 
+....................                  
+....................                 //TENSION 
+....................                 #asm 
+....................                 clrf &pos_V; 
+117C:  CLRF   23
+....................                 btfsc (&tension + 0x01), 7; 
+117E:  BTFSC  2B.7
+....................                 bsf &pos_V,0; 
+1180:  BSF    23.0
+....................                 #endasm 
+.................... 				 
+....................                 //CORRIENTE 
+....................                 #asm 
+....................                 clrf &pos_I; 
+1182:  CLRF   24
+....................                 btfsc (&corriente + 0x01), 7; 
+1184:  BTFSC  2F.7
+....................                 bsf &pos_I,0; 
+1186:  BSF    24.0
+....................                 #endasm 
+.................... 					 
+....................                 if (pos_V==1 && contador!=0 && pos_V_A==0 && control_V != 0){ 
+1188:  DECFSZ 23,W
+118A:  BRA    11A0
+118C:  MOVF   1C,F
+118E:  BZ    11A0
+1190:  MOVF   25,F
+1192:  BNZ   11A0
+1194:  MOVF   27,F
+1196:  BZ    11A0
+....................                  control_V= contador; // tiempo en el que cruzó la tension  
+1198:  MOVFF  1C,27
+....................                  desfase=1; 
+119C:  MOVLW  01
+119E:  MOVWF  29
+....................                 } 
+....................                  
+....................                 if (pos_I==1 && contador!=0 && pos_I_A==0 && control_I != 0){ 
+11A0:  DECFSZ 24,W
+11A2:  BRA    11B8
+11A4:  MOVF   1C,F
+11A6:  BZ    11B8
+11A8:  MOVF   26,F
+11AA:  BNZ   11B8
+11AC:  MOVF   28,F
+11AE:  BZ    11B8
+....................                      
+....................                  control_I= contador; // tiempo en el que cruzó la corriente 
+11B0:  MOVFF  1C,28
+....................                  desfase=2; 
+11B4:  MOVLW  02
+11B6:  MOVWF  29
+....................                 } 
+....................                  
+....................                 pos_V_A=pos_V; 
+11B8:  MOVFF  23,25
+....................                 pos_I_A=pos_I; 
+11BC:  MOVFF  24,26
+....................                  
+....................                  
+.................... 					estado = TENS_CORR_RMS; 
+11C0:  MOVLW  02
+11C2:  MOVWF  46
+.................... 		 
+.................... 				 
+....................  
+.................... 				break; 
+11C4:  BRA    1514
+.................... 			 
+.................... 			case TENS_CORR_RMS: 
+.................... 			 
+.................... 				if((contador<60)&& (pulso_timer==1)) 
+11C6:  MOVF   1C,W
+11C8:  SUBLW  3B
+11CA:  BNC   1288
+11CC:  DECFSZ 1D,W
+11CE:  BRA    1288
+.................... 				{ 
+.................... 					tension_RMS=tension_RMS+ tension * tension;       //calcula tension eficaz 
+11D0:  MOVFF  2D,7C
+11D4:  MOVFF  2C,7B
+11D8:  MOVFF  2B,7A
+11DC:  MOVFF  2A,79
+11E0:  MOVFF  2D,80
+11E4:  MOVFF  2C,7F
+11E8:  MOVFF  2B,7E
+11EC:  MOVFF  2A,7D
+11F0:  CALL   03A2
+11F4:  BCF    FD8.1
+11F6:  MOVFF  35,7C
+11FA:  MOVFF  34,7B
+11FE:  MOVFF  33,7A
+1202:  MOVFF  32,79
+1206:  MOVFF  03,80
+120A:  MOVFF  02,7F
+120E:  MOVFF  01,7E
+1212:  MOVFF  00,7D
+1216:  CALL   05EE
+121A:  MOVFF  03,35
+121E:  MOVFF  02,34
+1222:  MOVFF  01,33
+1226:  MOVFF  00,32
+....................                     corriente_RMS= corriente_RMS+ corriente * corriente; // calcula corriente eficaz 
+122A:  MOVFF  31,7C
+122E:  MOVFF  30,7B
+1232:  MOVFF  2F,7A
+1236:  MOVFF  2E,79
+123A:  MOVFF  31,80
+123E:  MOVFF  30,7F
+1242:  MOVFF  2F,7E
+1246:  MOVFF  2E,7D
+124A:  CALL   03A2
+124E:  BCF    FD8.1
+1250:  MOVFF  39,7C
+1254:  MOVFF  38,7B
+1258:  MOVFF  37,7A
+125C:  MOVFF  36,79
+1260:  MOVFF  03,80
+1264:  MOVFF  02,7F
+1268:  MOVFF  01,7E
+126C:  MOVFF  00,7D
+1270:  CALL   05EE
+1274:  MOVFF  03,39
+1278:  MOVFF  02,38
+127C:  MOVFF  01,37
+1280:  MOVFF  00,36
+....................                     pulso_timer=0; 
+1284:  CLRF   1D
+....................                      
+.................... 					estado = PUNTO_TENS_CORR; 
+1286:  CLRF   46
+.................... 		 
+.................... 				} 
+.................... 				if((contador==60)) 
+1288:  MOVF   1C,W
+128A:  SUBLW  3C
+128C:  BNZ   1294
+.................... 				{ 
+.................... 					disable_interrupts(INT_RTCC); 
+128E:  BCF    FF2.5
+.................... 					estado = CALCULO_POT_ENER; 
+1290:  MOVLW  03
+1292:  MOVWF  46
+.................... 		 
+.................... 				} 
+....................  
+.................... 				break; 
+1294:  BRA    1514
+.................... 			 
+.................... 			case CALCULO_POT_ENER: 
+.................... 			 
+.................... 				tension_RMS= SQRT(tension_RMS/60); 
+1296:  MOVFF  35,5C
+129A:  MOVFF  34,5B
+129E:  MOVFF  33,5A
+12A2:  MOVFF  32,59
+12A6:  CLRF   x60
+12A8:  CLRF   5F
+12AA:  MOVLW  70
+12AC:  MOVWF  5E
+12AE:  MOVLW  84
+12B0:  MOVWF  5D
+12B2:  CALL   0494
+12B6:  MOVFF  03,4A
+12BA:  MOVFF  02,49
+12BE:  MOVFF  01,48
+12C2:  MOVFF  00,47
+12C6:  MOVFF  03,4E
+12CA:  MOVFF  02,4D
+12CE:  MOVFF  01,4C
+12D2:  MOVFF  00,4B
+12D6:  CALL   08CE
+12DA:  MOVFF  03,35
+12DE:  MOVFF  02,34
+12E2:  MOVFF  01,33
+12E6:  MOVFF  00,32
+....................                 corriente_RMS= SQRT(corriente_RMS/60); 
+12EA:  MOVFF  39,5C
+12EE:  MOVFF  38,5B
+12F2:  MOVFF  37,5A
+12F6:  MOVFF  36,59
+12FA:  CLRF   x60
+12FC:  CLRF   5F
+12FE:  MOVLW  70
+1300:  MOVWF  5E
+1302:  MOVLW  84
+1304:  MOVWF  5D
+1306:  CALL   0494
+130A:  MOVFF  03,4A
+130E:  MOVFF  02,49
+1312:  MOVFF  01,48
+1316:  MOVFF  00,47
+131A:  MOVFF  03,4E
+131E:  MOVFF  02,4D
+1322:  MOVFF  01,4C
+1326:  MOVFF  00,4B
+132A:  CALL   08CE
+132E:  MOVFF  03,39
+1332:  MOVFF  02,38
+1336:  MOVFF  01,37
+133A:  MOVFF  00,36
+....................                  
+....................                 if (desfase==2){ 
+133E:  MOVF   29,W
+1340:  SUBLW  02
+1342:  BNZ   13C4
+....................                     t_desfase= (control_I-control_V); 
+1344:  MOVF   27,W
+1346:  SUBWF  28,W
+1348:  CLRF   x7A
+134A:  MOVWF  x79
+134C:  CALL   036C
+1350:  MOVFF  03,3D
+1354:  MOVFF  02,3C
+1358:  MOVFF  01,3B
+135C:  MOVFF  00,3A
+....................                     angulo= (t_desfase*pi)/20;      // angulo de desfase en radianes. 
+1360:  MOVFF  3D,7C
+1364:  MOVFF  3C,7B
+1368:  MOVFF  3B,7A
+136C:  MOVFF  3A,79
+1370:  MOVLW  DB
+1372:  MOVWF  x80
+1374:  MOVLW  0F
+1376:  MOVWF  x7F
+1378:  MOVLW  49
+137A:  MOVWF  x7E
+137C:  MOVLW  80
+137E:  MOVWF  x7D
+1380:  CALL   03A2
+1384:  MOVFF  03,4A
+1388:  MOVFF  02,49
+138C:  MOVFF  01,48
+1390:  MOVFF  00,47
+1394:  MOVFF  03,5C
+1398:  MOVFF  02,5B
+139C:  MOVFF  01,5A
+13A0:  MOVFF  00,59
+13A4:  CLRF   x60
+13A6:  CLRF   5F
+13A8:  MOVLW  20
+13AA:  MOVWF  5E
+13AC:  MOVLW  83
+13AE:  MOVWF  5D
+13B0:  CALL   0494
+13B4:  MOVFF  03,45
+13B8:  MOVFF  02,44
+13BC:  MOVFF  01,43
+13C0:  MOVFF  00,42
+....................                 }                 
+....................                 
+....................                 potencia_ins= tension_RMS*corriente_RMS* cos(angulo); 
+13C4:  MOVFF  35,7C
+13C8:  MOVFF  34,7B
+13CC:  MOVFF  33,7A
+13D0:  MOVFF  32,79
+13D4:  MOVFF  39,80
+13D8:  MOVFF  38,7F
+13DC:  MOVFF  37,7E
+13E0:  MOVFF  36,7D
+13E4:  CALL   03A2
+13E8:  MOVFF  03,4A
+13EC:  MOVFF  02,49
+13F0:  MOVFF  01,48
+13F4:  MOVFF  00,47
+13F8:  MOVFF  45,4E
+13FC:  MOVFF  44,4D
+1400:  MOVFF  43,4C
+1404:  MOVFF  42,4B
+1408:  GOTO   0A12
+140C:  MOVFF  4A,7C
+1410:  MOVFF  49,7B
+1414:  MOVFF  48,7A
+1418:  MOVFF  47,79
+141C:  MOVFF  03,80
+1420:  MOVFF  02,7F
+1424:  MOVFF  01,7E
+1428:  MOVFF  00,7D
+142C:  CALL   03A2
+1430:  MOVFF  03,41
+1434:  MOVFF  02,40
+1438:  MOVFF  01,3F
+143C:  MOVFF  00,3E
+....................                 //se limpian las variables para la próxima tanta de muestreo 
+....................                 control_V=0;       
+1440:  CLRF   27
+....................                 control_I=0; 
+1442:  CLRF   28
+....................                 angulo=0; 
+1444:  CLRF   45
+1446:  CLRF   44
+1448:  CLRF   43
+144A:  CLRF   42
+....................                  
+.................... 					estado = MOSTRAR_DATOS; 
+144C:  MOVLW  04
+144E:  MOVWF  46
+.................... 				break; 
+1450:  BRA    1514
+.................... 			 
+.................... 			case MOSTRAR_DATOS: 
+....................                 lcd_gotoxy(1,1); 
+1452:  MOVLW  01
+1454:  MOVWF  56
+1456:  MOVWF  57
+1458:  CALL   027A
+....................                 printf(LCD_PUTC,"Potencia= \%f W",potencia_ins); 
+145C:  MOVLW  BC
+145E:  MOVWF  FF6
+1460:  MOVLW  00
+1462:  MOVWF  FF7
+1464:  MOVLW  0A
+1466:  MOVWF  47
+1468:  RCALL  0DD4
+146A:  MOVLW  89
+146C:  MOVWF  FE9
+146E:  MOVFF  41,4A
+1472:  MOVFF  40,49
+1476:  MOVFF  3F,48
+147A:  MOVFF  3E,47
+147E:  MOVLW  02
+1480:  MOVWF  4B
+1482:  RCALL  0EC0
+1484:  MOVLW  20
+1486:  MOVWF  55
+1488:  RCALL  0D58
+148A:  MOVLW  57
+148C:  MOVWF  55
+148E:  RCALL  0D58
+....................                 lcd_gotoxy(1,2); 
+1490:  MOVLW  01
+1492:  MOVWF  56
+1494:  MOVLW  02
+1496:  MOVWF  57
+1498:  CALL   027A
+....................                 printf (LCD_PUTC, "T=\%f V  I=\%f A",tension_RMS,corriente_RMS); 
+149C:  MOVLW  54
+149E:  MOVWF  55
+14A0:  RCALL  0D58
+14A2:  MOVLW  3D
+14A4:  MOVWF  55
+14A6:  RCALL  0D58
+14A8:  MOVLW  89
+14AA:  MOVWF  FE9
+14AC:  MOVFF  35,4A
+14B0:  MOVFF  34,49
+14B4:  MOVFF  33,48
+14B8:  MOVFF  32,47
+14BC:  MOVLW  02
+14BE:  MOVWF  4B
+14C0:  RCALL  0EC0
+14C2:  MOVLW  D0
+14C4:  MOVWF  FF6
+14C6:  MOVLW  00
+14C8:  MOVWF  FF7
+14CA:  MOVLW  06
+14CC:  MOVWF  47
+14CE:  RCALL  0DD4
+14D0:  MOVLW  89
+14D2:  MOVWF  FE9
+14D4:  MOVFF  39,4A
+14D8:  MOVFF  38,49
+14DC:  MOVFF  37,48
+14E0:  MOVFF  36,47
+14E4:  MOVLW  02
+14E6:  MOVWF  4B
+14E8:  RCALL  0EC0
+14EA:  MOVLW  20
+14EC:  MOVWF  55
+14EE:  RCALL  0D58
+14F0:  MOVLW  41
+14F2:  MOVWF  55
+14F4:  RCALL  0D58
+....................                 delay_ms(750); 
+14F6:  MOVLW  03
+14F8:  MOVWF  47
+14FA:  MOVLW  FA
+14FC:  MOVWF  56
+14FE:  CALL   00DC
+1502:  DECFSZ 47,F
+1504:  BRA    14FA
+....................                 enable_interrupts(INT_RTCC); 
+1506:  BSF    FF2.5
+....................                 set_timer0(0x1D);   // se carga 29 para un desborde en 500 us teniendo en cuenta los tiempos en C 
+1508:  CLRF   FD7
+150A:  MOVLW  1D
+150C:  MOVWF  FD6
+.................... 					 
+.................... 					estado = PUNTO_TENS_CORR; 
+150E:  CLRF   46
+.................... 		 
+....................  
+.................... 				break; 
+1510:  BRA    1514
+.................... 			 
+.................... 			default: estado = PUNTO_TENS_CORR; 
+1512:  CLRF   46
+.................... 		} 
+1514:  GOTO   1542 (RETURN)
+....................  
+....................  
+.................... } 
+....................  
+.................... //Funciones asociadas a los eventos 
+....................  
+.................... /** 
+.................... *	\fn int -(void) 
+.................... *	\brief Resumen 
+.................... *	\details Detalles 
+.................... *	\author Postemsky Marcos 
+.................... *	\date 17-09-2016 11:39:08 
+.................... */ 
+....................  
+....................  
+....................  
+
+Configuration Fuses:
+   Word  1: CC02   PLL3 CPUDIV1 NOUSBDIV HS FCMEN IESO
+   Word  2: 1E3E   PUT BROWNOUT BORV21 VREGEN NOWDT WDT32768
+   Word  3: 8700   CCP2C1 PBADEN LPT1OSC MCLR
+   Word  4: 0021   STVREN NOLVP ICSP2 NOXINST DEBUG
+   Word  5: C00F   NOPROTECT NOCPB NOCPD
+   Word  6: E00F   NOWRT NOWRTC NOWRTB NOWRTD
+   Word  7: 400F   NOEBTR NOEBTRB
+
+   Some fuses have been forced to be compatible with the ICD debugger.

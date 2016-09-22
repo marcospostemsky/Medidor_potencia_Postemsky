@@ -1,0 +1,235 @@
+000     @SCRATCH
+001     @SCRATCH
+001     _RETURN_
+002     @SCRATCH
+003     @SCRATCH
+004     @INTERRUPT_AREA
+005     @INTERRUPT_AREA
+006     @INTERRUPT_AREA
+007     @INTERRUPT_AREA
+008     @INTERRUPT_AREA
+009     @INTERRUPT_AREA
+00A     @INTERRUPT_AREA
+00B     @INTERRUPT_AREA
+00C     @INTERRUPT_AREA
+00D     @INTERRUPT_AREA
+00E     @INTERRUPT_AREA
+00F     @INTERRUPT_AREA
+010     @INTERRUPT_AREA
+011     @INTERRUPT_AREA
+012     @INTERRUPT_AREA
+013     @INTERRUPT_AREA
+014     @INTERRUPT_AREA
+015     @INTERRUPT_AREA
+016     @INTERRUPT_AREA
+017     @INTERRUPT_AREA
+018     @INTERRUPT_AREA
+019     address
+01A.0   lcd_backlight
+01B     lcd_gotoxy.data
+01C     contador
+01D     pulso_timer
+01E     lcd_gotoxy.data
+01F-020 punto1
+021-022 punto2
+023     pos_V
+024     pos_I
+025     pos_V_A
+026     pos_I_A
+027     control_V
+028     control_I
+029     desfase
+02A-02D tension
+02E-031 corriente
+032-035 tension_RMS
+036-039 corriente_RMS
+03A-03D t_desfase
+03E-041 potencia_ins
+042-045 angulo
+046     maquina_estado.estado
+047     @PSTRINGCN_670.P1
+047-04A @PRINTF_L32D_670FPFPF.P2
+047-04A atan2.y
+047     leer_ADC.ADC
+047     maquina_estado.@SCRATCH1
+048-049 leer_ADC.dato
+048     maquina_estado.@SCRATCH2
+048     @PSTRINGCN_670.@SCRATCH1
+049     maquina_estado.@SCRATCH3
+049     @PSTRINGCN_670.@SCRATCH2
+04A     leer_ADC.i
+04A     maquina_estado.@SCRATCH4
+04B-04E cos.x
+04B-04E atan2.x
+04B-04E sqrt.x
+04B     @PRINTF_L32D_670FPFPF.P1
+04B     leer_ADC.@SCRATCH1
+04C     leer_ADC.@SCRATCH2
+04C     @PRINTF_L32D_670FPFPF.@SCRATCH1
+04D     @PRINTF_L32D_670FPFPF.@SCRATCH2
+04E     @PRINTF_L32D_670FPFPF.@SCRATCH3
+04F-052 atan2.z
+04F-052 cos.y
+04F-052 sqrt.y
+04F     @PRINTF_L32D_670FPFPF.@SCRATCH4
+050     @PRINTF_L32D_670FPFPF.@SCRATCH5
+051     @PRINTF_L32D_670FPFPF.@SCRATCH6
+052     @PRINTF_L32D_670FPFPF.@SCRATCH7
+053-056 cos.t
+053.0   atan2.sign
+053-056 sqrt.res
+053     @PRINTF_L32D_670FPFPF.@SCRATCH8
+054-057 @FTOSD.P1
+054-057 @DIV3232.P2
+054     atan2.quad
+054     LCD_PUTC.data
+055     LCD_PUTC.in_data
+056     lcd_gotoxy.x
+056     LCD_PUTC.data
+056     @delay_ms1.P1
+057     lcd_gotoxy.y
+057-05A cos.t2
+057-058 sqrt.p
+058-05B @DIV3232.P1
+058     lcd_send_byte.data
+058     @FTOSD.@SCRATCH1
+059-05C @DIVFF.P1
+059     i2c_send_nibble.data
+059     lcd_send_byte.@SCRATCH1
+059     sqrt.@SCRATCH1
+05A     @I2C_WRITE_1.P1
+05A     sqrt.@SCRATCH2
+05B     cos.quad
+05B     sqrt.@SCRATCH3
+05C     cos.i
+05C     sqrt.@SCRATCH4
+05C     @DIV3232.@SCRATCH1
+05D-060 cos.frac
+05D-060 @DIVFF.P1
+05D     @DIV3232.@SCRATCH2
+05E     @DIV3232.@SCRATCH3
+05F     @DIV3232.@SCRATCH4
+060     @DIV3232.@SCRATCH5
+061-074 cos.p
+061     @DIVFF.@SCRATCH1
+062     @DIVFF.@SCRATCH2
+063     @DIVFF.@SCRATCH3
+064     @DIVFF.@SCRATCH4
+065     @DIVFF.@SCRATCH5
+066     @DIVFF.@SCRATCH6
+075-078 @SFTOI.P1
+075-078 @FLT.P2
+075     cos.@SCRATCH1
+076     cos.@SCRATCH2
+077     cos.@SCRATCH3
+078     cos.@SCRATCH4
+079-07A @ITOF.P1
+079-07C @ADDFF.P2
+079-07C @FLT.P3
+079-07C @MULFF.P4
+07D-080 @ADDFF.P1
+07D-080 @MULFF.P2
+07D     @FLT.@SCRATCH1
+07E     @FLT.@SCRATCH2
+081     @MULFF.@SCRATCH1
+081     @ADDFF.@SCRATCH1
+082     @MULFF.@SCRATCH2
+082     @ADDFF.@SCRATCH2
+083     @MULFF.@SCRATCH3
+083     @ADDFF.@SCRATCH3
+084     @ADDFF.@SCRATCH4
+085     @ADDFF.@SCRATCH5
+086     @ADDFF.@SCRATCH6
+087     @ADDFF.@SCRATCH7
+088     @ADDFF.@SCRATCH8
+F83     PSP_DATA
+FB4.6   C1OUT
+FB4.7   C2OUT
+FBB     CCP_2_LOW
+FBB     CCP_2
+FBC     CCP_2_HIGH
+FBE     CCP_1
+FBE     CCP_1_LOW
+FBF     CCP_1_HIGH
+FE1-FE2 @READ_PACKED_MEMORY.P1
+FE1-FE2 @WRITE_PACKED_MEMORY.P2
+FE9-FEA @WRITE_PACKED_MEMORY.P1
+FE9-FEA @READ_PACKED_MEMORY.P2
+FE9-FEA @READ_PROGRAM_MEMORY.P3
+FE9-FEA @WRITE_PROGRAM_MEMORY.P4
+FF6-FF8 @READ_PROGRAM_MEMORY.P1
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P2
+
+ROM Allocation:
+0000AE  interrtimer_0
+0000BC  @const852.call
+0000CC  @const863.call
+0000DC  @delay_ms1
+000104  @I2C_WRITE_1
+000170  i2c_send_nibble
+0001EA  lcd_send_byte
+00020C  lcd_clear
+00021E  lcd_init
+00027A  lcd_gotoxy
+0002D0  inicializar
+000304  leer_ADC
+00036C  @ITOF
+0003A2  @MULFF
+000494  @DIVFF
+0005EE  @ADDFF
+000858  @FLT
+0008CE  sqrt
+0009D8  @SFTOI
+000A12  cos
+000D58  LCD_PUTC
+000DD4  @PSTRINGCN_670
+000DF2  @FTOSD
+000E32  @DIV3232
+000EC0  @PRINTF_L32D_670FPFPF
+00103A  maquina_estado
+001518  @cinit1
+001518  MAIN
+00153C  @cinit2
+
+Project Directory:
+    C:\Users\MARCOS\Proyecto_final\Med_pot.X\
+
+Project Files:
+    main.c (link)                                           [18-sep-16 10:33  CRC=0C04F669]
+    ..\..\..\..\Program Files (x86)\PICC\devices\18F4550.h  [26-jun-15 10:09  CRC=281B1877]
+    funciones.h                                             [18-sep-16 10:27  CRC=AB6AC1FE]
+    i2c_Flex_LCD.h                                          [12-ene-14 15:46  CRC=9BBA501F]
+    funciones.c (link)                                      [18-sep-16 10:27  CRC=3DCAEFF3]
+    MAX191.c                                                [17-sep-16 19:26  CRC=6B413333]
+    ..\..\..\..\Program Files (x86)\PICC\drivers\math.h     [16-ene-15 10:40  CRC=6A8358B0]
+
+Source signature=F957F583
+Program memory checksum=0000
+Program memory CRC=0000
+Hex file CRC=F40C
+
+Units:
+    C:\Users\MARCOS\Proyecto_final\Med_pot.X\build\default\production\main.o
+    C:\Users\MARCOS\Proyecto_final\Med_pot.X\build\default\production\funciones.o
+
+Compiler Settings:
+    Processor:      PIC18F4550
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    ICD Provisions: Yes
+    Compile Mode:       CCS5
+
+Output Files:
+    XREF file:   dist\default\production\Med_pot.xsym
+    Errors:      dist\default\production\Med_pot.X.production.err
+    Ext Symbols: dist\default\production\Med_pot.X.production.esym
+    INHX32:      dist\default\production\Med_pot.X.production.hex
+    Symbols:     dist\default\production\Med_pot.X.production.sym
+    List:        dist\default\production\Med_pot.X.production.lst
+    Debug/COFF:  dist\default\production\Med_pot.X.production.cof
+    Project:     Med_pot.X.production.ccspjt
+    Call Tree:   dist\default\production\Med_pot.X.production.tre
+    Statistics:  dist\default\production\Med_pot.X.production.STA
