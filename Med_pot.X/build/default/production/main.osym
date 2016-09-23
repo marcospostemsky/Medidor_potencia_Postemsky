@@ -10,6 +10,13 @@ C1OUT
 C2OUT
 address
 lcd_backlight
+pe
+pl
+ql
+pas
+qas
+pat
+qat
 contador
 pulso_timer
 
@@ -19,11 +26,12 @@ Project Directory:
 Project Files:
     main.c                                                  [18-sep-16 10:33  CRC=0C04F669]
     ..\..\..\..\Program Files (x86)\PICC\devices\18F4550.h  [26-jun-15 10:09  CRC=281B1877]
-    funciones.h                                             [23-sep-16 08:21  CRC=31946E6F]
+    funciones.h                                             [23-sep-16 08:41  CRC=32F16FC0]
     i2c_Flex_LCD.h                                          [12-ene-14 15:46  CRC=9BBA501F]
-    MAX191.h                                                [23-sep-16 08:20  CRC=B96F2DBD]
+    MAX191.h                                                [23-sep-16 08:30  CRC=D8BA4B18]
+    ..\..\..\..\Program Files (x86)\PICC\drivers\math.h     [16-ene-15 10:40  CRC=6A8358B0]
 
-Source signature=744D28E8
+Source signature=B08CCB37
 
 Units:
     main (main)

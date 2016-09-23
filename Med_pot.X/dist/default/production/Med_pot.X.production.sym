@@ -47,123 +47,138 @@
 03E-041 potencia_ins
 042-045 angulo
 046     maquina_estado.estado
-047-04A atan2.y
-047     leer_ADC.ADC
 047-04A @PRINTF_L32D_670FPFPF.P1
-047     @PSTRINGCN_670.P2
+047-04A atan2.z
+047     @PSTRINGCN_670.P1
+047-048 leer_ADC.dato
 047     maquina_estado.@SCRATCH1
-048-049 leer_ADC.dato
 048     maquina_estado.@SCRATCH2
 048     @PSTRINGCN_670.@SCRATCH1
+049     leer_ADC.i
 049     maquina_estado.@SCRATCH3
 049     @PSTRINGCN_670.@SCRATCH2
-04A     leer_ADC.i
+04A     leer_ADC.ADC
 04A     maquina_estado.@SCRATCH4
+04B-04E cos.y
+04B-04C leer_ADC.dato
+04B-04E sqrt.y
+04B.0   atan2.sign
 04B     @PRINTF_L32D_670FPFPF.P1
-04B-04E atan2.x
-04B-04E sqrt.x
-04B-04E cos.x
-04B     leer_ADC.@SCRATCH1
-04C     leer_ADC.@SCRATCH2
+04B.1   atan2.sign
+04C     atan2.quad
 04C     @PRINTF_L32D_670FPFPF.@SCRATCH1
+04D     leer_ADC.i
+04D-050 atan2.y
 04D     @PRINTF_L32D_670FPFPF.@SCRATCH2
+04E     leer_ADC.@SCRATCH1
 04E     @PRINTF_L32D_670FPFPF.@SCRATCH3
-04F-052 atan2.z
-04F-052 sqrt.y
-04F-052 cos.y
+04F-052 sqrt.res
+04F-052 cos.t
+04F     leer_ADC.@SCRATCH2
 04F     @PRINTF_L32D_670FPFPF.@SCRATCH4
 050     @PRINTF_L32D_670FPFPF.@SCRATCH5
+051-054 atan2.x
 051     @PRINTF_L32D_670FPFPF.@SCRATCH6
 052     @PRINTF_L32D_670FPFPF.@SCRATCH7
-053.0   atan2.sign
-053-056 cos.t
-053-056 sqrt.res
+053-056 cos.t2
+053-054 sqrt.p
 053     @PRINTF_L32D_670FPFPF.@SCRATCH8
+054-057 @DIV3232.P1
 054     LCD_PUTC.data
 054-057 @FTOSD.P1
-054-057 @DIV3232.P2
-054     atan2.quad
+055-058 atan2.z
 055     LCD_PUTC.in_data
+055-058 sqrt.x
 056     lcd_gotoxy.x
-056     @delay_ms1.P1
 056     LCD_PUTC.data
-057-058 sqrt.p
-057-05A cos.t2
+056     @delay_ms1.P1
 057     lcd_gotoxy.y
-058     lcd_send_byte.data
+057     cos.quad
 058-05B @DIV3232.P1
+058     lcd_send_byte.data
+058     cos.i
 058     @FTOSD.@SCRATCH1
+059     atan2.quad
 059     i2c_send_nibble.data
+059-05C cos.frac
+059-05C sqrt.y
 059-05C @DIVFF.P1
 059     lcd_send_byte.@SCRATCH1
-059     sqrt.@SCRATCH1
 05A     @I2C_WRITE_1.P1
-05A     sqrt.@SCRATCH2
-05B     cos.quad
-05B     sqrt.@SCRATCH3
-05C     cos.i
-05C     sqrt.@SCRATCH4
 05C     @DIV3232.@SCRATCH1
-05D-060 cos.frac
+05D-070 cos.p
+05D-060 sqrt.res
 05D-060 @DIVFF.P1
 05D     @DIV3232.@SCRATCH2
 05E     @DIV3232.@SCRATCH3
 05F     @DIV3232.@SCRATCH4
 060     @DIV3232.@SCRATCH5
-061-074 cos.p
+061-062 sqrt.p
 061     @DIVFF.@SCRATCH1
 062     @DIVFF.@SCRATCH2
 063     @DIVFF.@SCRATCH3
+063     sqrt.@SCRATCH1
 064     @DIVFF.@SCRATCH4
+064     sqrt.@SCRATCH2
 065     @DIVFF.@SCRATCH5
+065     sqrt.@SCRATCH3
 066     @DIVFF.@SCRATCH6
+066     sqrt.@SCRATCH4
+071-074 cos.x
+075-078 @SFTOI.P1
+075-078 cos.y
 075-078 @FLT.P1
-075-078 @SFTOI.P2
-075     cos.@SCRATCH1
-076     cos.@SCRATCH2
-077     cos.@SCRATCH3
-078     cos.@SCRATCH4
-079-07A @ITOF.P1
+079-07C @FLT.P1
+079-07C cos.t
+079-07C @MULFF.P1
 079-07C @ADDFF.P2
-079-07C @MULFF.P3
-079-07C @FLT.P4
-07D-080 @ADDFF.P1
-07D-080 @MULFF.P2
+079-07A @ITOF.P3
+07D-080 @MULFF.P1
+07D-080 @ADDFF.P2
+07D-080 cos.t2
 07D     @FLT.@SCRATCH1
 07E     @FLT.@SCRATCH2
+081     cos.quad
 081     @MULFF.@SCRATCH1
 081     @ADDFF.@SCRATCH1
+082     cos.i
 082     @MULFF.@SCRATCH2
 082     @ADDFF.@SCRATCH2
+083-086 cos.frac
 083     @MULFF.@SCRATCH3
 083     @ADDFF.@SCRATCH3
 084     @ADDFF.@SCRATCH4
 085     @ADDFF.@SCRATCH5
 086     @ADDFF.@SCRATCH6
+087-09A cos.p
 087     @ADDFF.@SCRATCH7
 088     @ADDFF.@SCRATCH8
+09B     cos.@SCRATCH1
+09C     cos.@SCRATCH2
+09D     cos.@SCRATCH3
+09E     cos.@SCRATCH4
 F83     PSP_DATA
 FB4.6   C1OUT
 FB4.7   C2OUT
-FBB     CCP_2_LOW
 FBB     CCP_2
+FBB     CCP_2_LOW
 FBC     CCP_2_HIGH
 FBE     CCP_1
 FBE     CCP_1_LOW
 FBF     CCP_1_HIGH
 FE1-FE2 @WRITE_PACKED_MEMORY.P1
 FE1-FE2 @READ_PACKED_MEMORY.P2
-FE9-FEA @READ_PACKED_MEMORY.P1
+FE9-FEA @READ_PROGRAM_MEMORY.P1
 FE9-FEA @WRITE_PROGRAM_MEMORY.P2
-FE9-FEA @WRITE_PACKED_MEMORY.P3
-FE9-FEA @READ_PROGRAM_MEMORY.P4
+FE9-FEA @READ_PACKED_MEMORY.P3
+FE9-FEA @WRITE_PACKED_MEMORY.P4
 FF6-FF8 @READ_PROGRAM_MEMORY.P1
 FF6-FF8 @WRITE_PROGRAM_MEMORY.P2
 
 ROM Allocation:
 0000AE  interrtimer_0
-0000BC  @const853.call
-0000CC  @const864.call
+0000BC  @const984.call
+0000CC  @const995.call
 0000DC  @delay_ms1
 000104  @I2C_WRITE_1
 000170  i2c_send_nibble
@@ -174,22 +189,28 @@ ROM Allocation:
 0002D0  inicializar
 000304  leer_ADC
 00036C  @ITOF
+00036C  @ITOF
+0003A2  @MULFF
 0003A2  @MULFF
 000494  @DIVFF
+000494  @DIVFF
 0005EE  @ADDFF
+0005EE  @ADDFF
+000858  @FLT
 000858  @FLT
 0008CE  sqrt
 0009D8  @SFTOI
+0009D8  @SFTOI
 000A12  cos
-000D58  LCD_PUTC
-000DD4  @PSTRINGCN_670
-000DF2  @FTOSD
-000E32  @DIV3232
-000EC0  @PRINTF_L32D_670FPFPF
-00103A  maquina_estado
-001518  @cinit1
-001518  MAIN
-00153C  @cinit2
+000D38  LCD_PUTC
+000DB4  @PSTRINGCN_670
+000DD2  @FTOSD
+000E12  @DIV3232
+000EA0  @PRINTF_L32D_670FPFPF
+00101A  maquina_estado
+0014F8  MAIN
+0014F8  @cinit1
+00151C  @cinit2
 
 Project Directory:
     C:\Users\MARCOS\Proyecto_final\Med_pot.X\
@@ -197,16 +218,16 @@ Project Directory:
 Project Files:
     main.c (link)                                           [18-sep-16 10:33  CRC=0C04F669]
     ..\..\..\..\Program Files (x86)\PICC\devices\18F4550.h  [26-jun-15 10:09  CRC=281B1877]
-    funciones.h                                             [23-sep-16 08:21  CRC=31946E6F]
+    funciones.h                                             [23-sep-16 08:41  CRC=32F16FC0]
     i2c_Flex_LCD.h                                          [12-ene-14 15:46  CRC=9BBA501F]
-    MAX191.h                                                [23-sep-16 08:20  CRC=B96F2DBD]
-    funciones.c (link)                                      [23-sep-16 08:31  CRC=3091765E]
+    MAX191.h                                                [23-sep-16 08:30  CRC=D8BA4B18]
     ..\..\..\..\Program Files (x86)\PICC\drivers\math.h     [16-ene-15 10:40  CRC=6A8358B0]
+    funciones.c (link)                                      [23-sep-16 08:41  CRC=595F06E3]
 
-Source signature=C07622E9
+Source signature=F8C7804D
 Program memory checksum=0000
 Program memory CRC=0000
-Hex file CRC=F40C
+Hex file CRC=B984
 
 Units:
     C:\Users\MARCOS\Proyecto_final\Med_pot.X\build\default\production\main.o

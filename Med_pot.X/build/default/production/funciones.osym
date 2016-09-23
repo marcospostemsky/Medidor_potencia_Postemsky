@@ -40,14 +40,14 @@ Project Directory:
     C:\Users\MARCOS\Proyecto_final\Med_pot.X\
 
 Project Files:
-    funciones.c                                             [23-sep-16 08:31  CRC=3091765E]
+    funciones.c                                             [23-sep-16 08:41  CRC=595F06E3]
     ..\..\..\..\Program Files (x86)\PICC\devices\18F4550.h  [26-jun-15 10:09  CRC=281B1877]
-    funciones.h                                             [23-sep-16 08:21  CRC=31946E6F]
+    funciones.h                                             [23-sep-16 08:41  CRC=32F16FC0]
     i2c_Flex_LCD.h                                          [12-ene-14 15:46  CRC=9BBA501F]
     MAX191.h                                                [23-sep-16 08:30  CRC=D8BA4B18]
     ..\..\..\..\Program Files (x86)\PICC\drivers\math.h     [16-ene-15 10:40  CRC=6A8358B0]
 
-Source signature=D3BC49DB
+Source signature=FDE6DBB1
 
 Units:
     funciones (main)
