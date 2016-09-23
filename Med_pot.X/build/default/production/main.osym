@@ -19,10 +19,11 @@ Project Directory:
 Project Files:
     main.c                                                  [18-sep-16 10:33  CRC=0C04F669]
     ..\..\..\..\Program Files (x86)\PICC\devices\18F4550.h  [26-jun-15 10:09  CRC=281B1877]
-    funciones.h                                             [18-sep-16 10:27  CRC=AB6AC1FE]
+    funciones.h                                             [23-sep-16 08:21  CRC=31946E6F]
     i2c_Flex_LCD.h                                          [12-ene-14 15:46  CRC=9BBA501F]
+    MAX191.h                                                [23-sep-16 08:20  CRC=B96F2DBD]
 
-Source signature=16FF711C
+Source signature=744D28E8
 
 Units:
     main (main)

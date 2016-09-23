@@ -7,6 +7,7 @@
 */
 
 #include <i2c_Flex_LCD.h>
+#include <MAX191.h>
 
 #ifndef FUNCIONES_H
 #define FUNCIONES_H

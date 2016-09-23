@@ -1,4 +1,4 @@
-CCS PCH C Compiler, Version 5.048, 5967               22-sep-16 01:01
+CCS PCH C Compiler, Version 5.048, 5967               23-sep-16 08:31
 
                Filename:   C:\Users\MARCOS\Proyecto_final\Med_pot.X\dist\default\production\Med_pot.X.production.lst
 
@@ -390,6 +390,22 @@ CCS PCH C Compiler, Version 5.048, 5967               22-sep-16 01:01
 ....................    } 
 .................... }  
 ....................  
+.................... #include <MAX191.h> 
+.................... /*  
+....................  * File:   MAX191.h 
+....................  * Author: MARCOS 
+....................  * 
+....................  * Created on 23 de septiembre de 2016, 08:14 
+....................  */ 
+....................  
+.................... #ifndef MAX192_H 
+.................... #define MAX192_H 
+....................  
+.................... #define ADC_CS1 PIN_A1 
+.................... #define ADC_SCLK PIN_A2 
+.................... #define ADC_DOUT PIN_A3 
+....................  
+.................... unsigned long leer_ADC(ADC){ 
 ....................  
 .................... #ifndef FUNCIONES_H 
 .................... #define FUNCIONES_H 
@@ -1467,7 +1483,7 @@ CCS PCH C Compiler, Version 5.048, 5967               22-sep-16 01:01
 .................... #use delay(clock=12 Mhz, crystal= 12 MHz)   // Selecciona la velocidad del oscilador interno 
 .................... #use i2c(Master,Fast=100000, sda=PIN_D6, scl=PIN_D7,force_sw) 
 .................... int contador = 0 ;int pulso_timer = 0 ; 
-.................... #include "funciones.h"  
+.................... #include "funciones.h" 
 .................... /** 
 .................... *	\file funciones.h 
 .................... *	\brief Resumen del archivo 
@@ -1913,28 +1929,20 @@ CCS PCH C Compiler, Version 5.048, 5967               22-sep-16 01:01
 0DD2:  RETURN 0
 .................... }  
 ....................  
+.................... #include <MAX191.h> 
+.................... /*  
+....................  * File:   MAX191.h 
+....................  * Author: MARCOS 
+....................  * 
+....................  * Created on 23 de septiembre de 2016, 08:14 
+....................  */ 
 ....................  
-.................... #ifndef FUNCIONES_H 
-.................... #define FUNCIONES_H 
-.................... //Declaracion de estados 
+.................... #ifndef MAX192_H 
+.................... #define MAX192_H 
 ....................  
-.................... #define 	PUNTO_TENS_CORR	0 
-.................... #define 	CONVERSION_DESFASE	1 
-.................... #define 	TENS_CORR_RMS	2 
-.................... #define 	CALCULO_POT_ENER	3 
-.................... #define 	MOSTRAR_DATOS	4 
-....................  
-.................... //Prototipos de los eventos 
-.................... void maquina_estado(void); 
-....................  
-.................... #endif 
-....................  
-.................... #include <MAX191.c> 
-.................... #ifndef ADC_MAX191 
 .................... #define ADC_CS1 PIN_A1 
 .................... #define ADC_SCLK PIN_A2 
 .................... #define ADC_DOUT PIN_A3 
-.................... #endif 
 ....................  
 .................... unsigned long leer_ADC(ADC){ 
 ....................     unsigned long dato; 
@@ -2010,6 +2018,24 @@ CCS PCH C Compiler, Version 5.048, 5967               22-sep-16 01:01
 0364:  MOVFF  49,02
 0368:  GOTO   106C (RETURN)
 .................... } 
+.................... #endif 
+....................  
+....................  
+....................  
+.................... #ifndef FUNCIONES_H 
+.................... #define FUNCIONES_H 
+.................... //Declaracion de estados 
+....................  
+.................... #define 	PUNTO_TENS_CORR	0 
+.................... #define 	CONVERSION_DESFASE	1 
+.................... #define 	TENS_CORR_RMS	2 
+.................... #define 	CALCULO_POT_ENER	3 
+.................... #define 	MOSTRAR_DATOS	4 
+....................  
+.................... //Prototipos de los eventos 
+.................... void maquina_estado(void); 
+....................  
+.................... #endif 
 ....................  
 .................... #include <math.h> 
 .................... //////////////////////////////////////////////////////////////////////////// 

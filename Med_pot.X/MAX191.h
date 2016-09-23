@@ -1,4 +1,16 @@
-//#include "MAX191.h"
+/* 
+ * File:   MAX191.h
+ * Author: MARCOS
+ *
+ * Created on 23 de septiembre de 2016, 08:14
+ */
+
+#ifndef MAX192_H
+#define MAX192_H
+
+#define ADC_CS1 PIN_A1
+#define ADC_SCLK PIN_A2
+#define ADC_DOUT PIN_A3
 
 unsigned long leer_ADC(ADC){
     unsigned long dato;
@@ -25,3 +37,5 @@ unsigned long leer_ADC(ADC){
     dato= (dato>>2)& 0x0FFF;
     return(dato);
 }
+#endif
+

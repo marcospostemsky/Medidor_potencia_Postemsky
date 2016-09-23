@@ -10,8 +10,7 @@
 #use delay(clock=12 Mhz, crystal= 12 MHz)   // Selecciona la velocidad del oscilador interno
 #use i2c(Master,Fast=100000, sda=PIN_D6, scl=PIN_D7,force_sw)
 int contador = 0 ;int pulso_timer = 0 ;
-#include "funciones.h" 
-#include <MAX191.c>
+#include "funciones.h"
 #include <math.h>
 
 

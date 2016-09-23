@@ -1,7 +1,7 @@
 D G "__PCH__" 0 0 ""5.048""
 D G "__DEVICE__" 0 0 ""
-D G "__DATE__" 0 0 ""22-sep-16""
-D G "__TIME__" 0 0 ""01:01:40""
+D G "__DATE__" 0 0 ""23-sep-16""
+D G "__TIME__" 0 0 ""08:24:33""
 D G "_UNICODE" 0 0 ""?""
 D G "__18F4550" 0 0 "1" "*	\file main.c"
 C G "" 0 1 1 "*"
@@ -1246,24 +1246,31 @@ F G "LCD_PUTC" 3 190 "void(int8 in_data)" `668
 V L "data" 3 191 "int8" `670 
 C L "LCD_PUTC" 3 2 1 "FUNCTION"
 C L "LCD_PUTC" 3 2 1 "FUNCTION"
-D G "FUNCIONES_H" 2 12 ""
-D G "PUNTO_TENS_CORR" 2 15 "0"
-D G "CONVERSION_DESFASE" 2 16 "1"
-D G "TENS_CORR_RMS" 2 17 "2"
-D G "CALCULO_POT_ENER" 2 18 "3"
-D G "MOSTRAR_DATOS" 2 19 "4"
-C L "maquina_estado" 2 13 1 "FUNCTION"
-F N "maquina_estado" 2 22 ""
-f G "maquina_estado" 2 22 "void()" `671 
-V G "contador" 0 18 "int8" `672 
-V G "pulso_timer" 0 19 "int8" `673 
+C G "" 4 1 1 "*"
+C G "" 4 1 1 "*"
+D G "ADC_CS1" 4 9 "PIN_A1"
+D G "ADC_SCLK" 4 10 "PIN_A2"
+D G "ADC_DOUT" 4 11 "PIN_A3"
+F N "leer_ADC" 4 12 ""
+f G "leer_ADC" 4 12 "int16()" `671 
+D G "FUNCIONES_H" 2 13 ""
+D G "PUNTO_TENS_CORR" 2 16 "0"
+D G "CONVERSION_DESFASE" 2 17 "1"
+D G "TENS_CORR_RMS" 2 18 "2"
+D G "CALCULO_POT_ENER" 2 19 "3"
+D G "MOSTRAR_DATOS" 2 20 "4"
+C L "leer_ADC" 2 14 1 "FUNCTION"
+F N "maquina_estado" 2 23 ""
+f G "maquina_estado" 2 23 "void()" `672 
+V G "contador" 0 18 "int8" `673 
+V G "pulso_timer" 0 19 "int8" `674 
 F N "inicializar" 0 21 ""
-f G "inicializar" 0 21 "void()" `674 
+f G "inicializar" 0 21 "void()" `675 
 F N "MAIN" 0 23 ""
-F G "MAIN" 0 24 "void()" `675  "declaracion de variables"
+F G "MAIN" 0 24 "void()" `676  "declaracion de variables"
 C L "MAIN" 0 27 1 "FUNCTION"
 F N "inicializar" 0 40 ""
-F G "inicializar" 0 40 "void()" `674 
+F G "inicializar" 0 40 "void()" `675 
 C L "inicializar" 0 27 1 "FUNCTION"
 F B "reset_cpu" 0 0
 F B "abs" 1 0
