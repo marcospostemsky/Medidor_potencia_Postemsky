@@ -1,41 +1,46 @@
 
-ROM used:   5410/31936 (17%)
-            5410/31936 (17%) including unused fragments
+ROM used:   5418/32768 (17%)
+            5418/32768 (17%) including unused fragments
 
-            1.5 Average locations per line
-            13.0 Average locations per statement
+            1.0 Average locations per line
+            7.0 Average locations per statement
 
-RAM used:   71/2036 (3%) at main() level
-            159/2036 (8%) worst case
+RAM used:   77/2048 (4%) at main() level
+            165/2048 (8%) worst case
 
-Stack used: 5 worst case (4 in main + 1 for interrupts)
-Stack size: 30
+Stack used: 1 worst case (0 in main + 1 for interrupts)
+Stack size: 31
 
 Lines Stmts  %   Files
 ----- ----- ---  -----
     4     0   0  $linker.c
-   52    13   3  main.c
+   55    14   2  main.c
   839     0   0  ..\..\..\..\Program Files (x86)\PICC\devices\18F4550.h
+   37     0   0  ..\..\..\..\Program Files (x86)\PICC\drivers\stdio.h
+  435     0   0  ..\..\..\..\Program Files (x86)\PICC\drivers\string.h
+   32     0   0  ..\..\..\..\Program Files (x86)\PICC\drivers\stddef.h
+   28     0   0  ..\..\..\..\Program Files (x86)\PICC\drivers\ctype.h
+ 1351   359  46  ..\..\..\..\Program Files (x86)\PICC\drivers\stdlib.h
    27     0   0  funciones.h
-  211    72  17  i2c_Flex_LCD.h
-   42    15   4  MAX191.h
- 2227   257  62  ..\..\..\..\Program Files (x86)\PICC\drivers\math.h
-  171    60  14  funciones.c
+  211    72   9  i2c_Flex_LCD.h
+   42    15   2  MAX191.h
+ 2227   257  33  ..\..\..\..\Program Files (x86)\PICC\drivers\math.h
+  171    60   8  funciones.c
 ----- -----
- 3573   417 Total
+ 5459   777 Total
 
 Page ROM  %  RAM    Vol Diff  Functions:
 ---- --- --- ---    --- ----  ----------
+0    242   2   11             @MULFF
+0     54   0    2             @ITOF
+0    618   6   16             @ADDFF
+0    346   3   14             @DIVFF
 0     40   0    1             @delay_ms1
 0    108   1    1             @I2C_WRITE_1
 0    118   1   10             @FLT
 0     58   1    4             @SFTOI
-0     54   0    2             @ITOF
-0    242   2   11             @MULFF
-0    618   6   16             @ADDFF
-0    346   3   14             @DIVFF
-0     46   0    0     38  1.2  MAIN
-0     52   0    0    195  2.7  inicializar
+0     50   0    0     38  1.2  MAIN
+0     56   1    0    219  2.7  inicializar
 0    122   1    1    156  1.3  i2c_send_nibble
 0     34   0    2    178  3.6  lcd_send_byte
 0     18   0    0     48  1.1  lcd_clear
@@ -46,33 +51,33 @@ Page ROM  %  RAM    Vol Diff  Functions:
 0    266   2   18    510 10.6  sqrt
 0    806   7   46   1146  9.9  cos
 0     14   0    0     29  1.2  interrtimer_0
-0   1246  12    4   2551 10.2  maquina_estado
-0     16   0    0             @const984
+0   1246  11    4   2551 10.2  maquina_estado
+0     16   0    0             @const1254
 0     30   0    3             @PSTRINGCN_670
 0     64   1    5             @FTOSD
 0    142   1   13             @DIV3232
 0    378   3   13             @PRINTF_L32D_670FPFPF
-0     16   0    0             @const995
+0     16   0    0             @const1265
  Inline         0             @cinit1
 
 Program metrics:
     Functions               13
-    Statements              417
-    Comments                236
-    Volume (V)              10317
+    Statements              777
+    Comments                401
+    Volume (V)              10359
     Difficulty (D)          60.4
-    Effort to implement (E) 623224
-    Time to implement (T)   9 hours, 37 minutes
+    Effort to implement (E) 625960
+    Time to implement (T)   9 hours, 40 minutes
     Est Delivered Bugs (B)  2
     Cyclomatic Complexity   32
-    Maintainability (MI)    95
+    Maintainability (MI)    106
 
  Segment     Used  Free
 -----------  ----  ----
 00000-00002     4  0  
 00004-00006     0  4  
 00008-000AC   166  0  
-000AE-07CBE  5240  26522  
+000AE-07FFE  5248  27346  
 
 
 

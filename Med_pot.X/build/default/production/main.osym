@@ -8,6 +8,7 @@ CCP_2_HIGH
 PSP_DATA
 C1OUT
 C2OUT
+_Randseed
 address
 lcd_backlight
 pe
@@ -24,14 +25,19 @@ Project Directory:
     C:\Users\MARCOS\Proyecto_final\Med_pot.X\
 
 Project Files:
-    main.c                                                  [18-sep-16 10:33  CRC=0C04F669]
+    main.c                                                  [23-sep-16 09:00  CRC=DB103722]
     ..\..\..\..\Program Files (x86)\PICC\devices\18F4550.h  [26-jun-15 10:09  CRC=281B1877]
-    funciones.h                                             [23-sep-16 08:41  CRC=32F16FC0]
+    ..\..\..\..\Program Files (x86)\PICC\drivers\stdio.h    [31-jul-07 14:24  CRC=4E4534F4]
+    ..\..\..\..\Program Files (x86)\PICC\drivers\string.h   [26-mar-15 12:34  CRC=C4814297]
+    ..\..\..\..\Program Files (x86)\PICC\drivers\stddef.h   [05-sep-14 11:47  CRC=897CEC6C]
+    ..\..\..\..\Program Files (x86)\PICC\drivers\ctype.h    [03-ene-08 14:55  CRC=2D1F019F]
+    ..\..\..\..\Program Files (x86)\PICC\drivers\stdlib.h   [07-dic-14 17:58  CRC=07F0FCBD]
+    funciones.h                                             [23-sep-16 08:49  CRC=97780B40]
     i2c_Flex_LCD.h                                          [12-ene-14 15:46  CRC=9BBA501F]
-    MAX191.h                                                [23-sep-16 08:30  CRC=D8BA4B18]
+    MAX191.h                                                [23-sep-16 08:49  CRC=D8BA4B18]
     ..\..\..\..\Program Files (x86)\PICC\drivers\math.h     [16-ene-15 10:40  CRC=6A8358B0]
 
-Source signature=B08CCB37
+Source signature=B57209C3
 
 Units:
     main (main)
@@ -43,7 +49,6 @@ Compiler Settings:
     Opt Level:      9
     Short,Int,Long: UNSIGNED: 1,8,16
     Float,Double:   32,32
-    ICD Provisions: Yes
     Output file:    Relocatable
     Compile Mode:       CCS5
     Predefined symbols:
