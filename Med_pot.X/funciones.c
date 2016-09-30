@@ -29,10 +29,11 @@ int control_V, control_I;
 int desfase;
 float tension, corriente, tension_RMS,corriente_RMS, t_desfase, potencia_ins,angulo;
 
+const long carga= 0xFD2D;
 
 #INT_RTCC                // interrupcion para demora de 500 us
 void interrtimer_0(){
-    set_timer0(0x1D);   // se carga 29 para un desborde en 500 us teniendo en cuenta los tiempos en C
+    set_timer0(carga);   // interrupcion cada 500 us
     pulso_timer++;
    }
 

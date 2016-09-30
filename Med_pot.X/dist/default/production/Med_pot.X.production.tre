@@ -1,7 +1,7 @@
 ÀÄMed_pot
    ÃÄMAIN  0/50  Ram=0
    ³  ÃÄ@cinit1  (Inline)  Ram=0
-   ³  ÃÄinicializar  0/56  Ram=0
+   ³  ÃÄinicializar  0/60  Ram=0
    ³  ³  ÃÄlcd_init  0/92  Ram=0
    ³  ³  ³  ÃÄ@delay_ms1  0/40  Ram=1
    ³  ³  ³  ÃÄlcd_send_byte  0/34  Ram=2
@@ -143,4 +143,4 @@
    ³     ÃÄLCD_PUTC  0/124  Ram=2
    ³     ³  ÀÄ*
    ³     ÀÄ@delay_ms1  0/40  Ram=1
-   ÀÄinterrtimer_0  0/14  Ram=0
+   ÀÄinterrtimer_0  0/16  Ram=0

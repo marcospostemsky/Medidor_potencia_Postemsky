@@ -18,6 +18,7 @@ pas
 qas
 pat
 qat
+carga
 contador
 pulso_timer
 
@@ -25,7 +26,7 @@ Project Directory:
     C:\Users\MARCOS\Proyecto_final\Med_pot.X\
 
 Project Files:
-    main.c                                                  [23-sep-16 09:00  CRC=DB103722]
+    main.c                                                  [29-sep-16 23:08  CRC=F539D71C]
     ..\..\..\..\Program Files (x86)\PICC\devices\18F4550.h  [26-jun-15 10:09  CRC=281B1877]
     ..\..\..\..\Program Files (x86)\PICC\drivers\stdio.h    [31-jul-07 14:24  CRC=4E4534F4]
     ..\..\..\..\Program Files (x86)\PICC\drivers\string.h   [26-mar-15 12:34  CRC=C4814297]
@@ -37,7 +38,7 @@ Project Files:
     MAX191.h                                                [23-sep-16 08:49  CRC=D8BA4B18]
     ..\..\..\..\Program Files (x86)\PICC\drivers\math.h     [16-ene-15 10:40  CRC=6A8358B0]
 
-Source signature=B57209C3
+Source signature=CF9BA9BD
 
 Units:
     main (main)

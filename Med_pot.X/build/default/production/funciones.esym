@@ -1,7 +1,7 @@
 D G "__PCH__" 0 0 ""5.048""
 D G "__DEVICE__" 0 0 ""
-D G "__DATE__" 0 0 ""23-sep-16""
-D G "__TIME__" 0 0 ""08:41:27""
+D G "__DATE__" 0 0 ""29-sep-16""
+D G "__TIME__" 0 0 ""23:08:09""
 D G "_UNICODE" 0 0 ""?""
 D G "__18F4550" 0 0 "1" "*	\file funciones.c"
 C G "" 0 1 1 "*"
@@ -1472,12 +1472,13 @@ V G "corriente_RMS" 0 30 "float" `832
 V G "t_desfase" 0 30 "float" `833 
 V G "potencia_ins" 0 30 "float" `834 
 V G "angulo" 0 30 "float" `835 
-F N "interrtimer_0" 0 34 ""
-F G "interrtimer_0" 0 34 "void()" `836 
+V G "carga" 0 32 "int16" `836 
+F N "interrtimer_0" 0 35 ""
+F G "interrtimer_0" 0 35 "void()" `838 
 C L "interrtimer_0" 0 19 1 "FUNCTION"
-F N "maquina_estado" 0 39 ""
-F G "maquina_estado" 0 40 "void()" `819 
-V L "estado" 0 41 "int8" `837 
+F N "maquina_estado" 0 40 ""
+F G "maquina_estado" 0 41 "void()" `819 
+V L "estado" 0 42 "int8" `839 
 C L "maquina_estado" 0 19 1 "FUNCTION"
 C L "maquina_estado" 0 19 2 "FUNCTION"
 C L "maquina_estado" 0 19 3 "FUNCTION"

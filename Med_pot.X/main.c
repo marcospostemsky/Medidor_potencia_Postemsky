@@ -17,6 +17,7 @@
 #use fast_io(A)
 #use fast_io(B)
 
+const long carga= 0xFD2D;
 extern int contador;
 extern int pulso_timer;
 
@@ -44,11 +45,12 @@ void Inicializar(){
     setup_adc_ports(AN0);                                   //Canal 0 analógico
     setup_adc(ADC_CLOCK_DIV_16);   
     setup_timer_0( RTCC_INTERNAL | T0_DIV_2);
-    set_tris_a(0xF1);
+    set_tris_a(0xF9);
     contador=1;
     lcd_init();
     lcd_gotoxy(1,1);
     lcd_backlight=ON;
     enable_interrupts (INT_RTCC);
-    set_timer0(0x1D);
+    enable_interrupts (GLOBAL);
+    set_timer0(carga);
 }
