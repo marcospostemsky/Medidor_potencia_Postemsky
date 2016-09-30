@@ -49,7 +49,7 @@
    ³  ³     ³  ÀÄ*
    ³  ³     ÀÄlcd_send_byte  0/34  Ram=2
    ³  ³        ÀÄ*
-   ³  ÀÄmaquina_estado  0/1246  Ram=4
+   ³  ÀÄmaquina_estado  0/1248  Ram=4
    ³     ÃÄleer_ADC  0/104  Ram=6
    ³     ÃÄ@ITOF  0/54  Ram=2
    ³     ÃÄ@ITOF  0/54  Ram=2

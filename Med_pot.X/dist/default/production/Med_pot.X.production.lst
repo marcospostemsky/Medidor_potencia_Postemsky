@@ -1,16 +1,16 @@
-CCS PCH C Compiler, Version 5.048, 5967               29-sep-16 23:08
+CCS PCH C Compiler, Version 5.048, 5967               30-sep-16 12:06
 
                Filename:   C:\Users\MARCOS\Proyecto_final\Med_pot.X\dist\default\production\Med_pot.X.production.lst
 
-               ROM used:   5424 bytes (17%)
-                           Largest free fragment is 27340
+               ROM used:   5426 bytes (17%)
+                           Largest free fragment is 27338
                RAM used:   77 (4%) at main() level
                            165 (8%) worst case
                Stack used: 1 locations (0 in main + 1 for interrupts)
                Stack size: 31
 
 *
-0000:  GOTO   1502
+0000:  GOTO   1504
 *
 0008:  MOVWF  04
 000A:  MOVFF  FD8,05
@@ -934,11 +934,11 @@ CCS PCH C Compiler, Version 5.048, 5967               29-sep-16 23:08
 ....................       ++s; 
 ....................       ++s2; 
 *
-151C:  CLRF   24
-151E:  MOVF   FC1,W
-1520:  ANDLW  C0
-1522:  IORLW  0F
-1524:  MOVWF  FC1
+151E:  CLRF   24
+1520:  MOVF   FC1,W
+1522:  ANDLW  C0
+1524:  IORLW  0F
+1526:  MOVWF  FC1
 ....................       --n; 
 ....................    } 
 ....................  
@@ -1177,8 +1177,8 @@ CCS PCH C Compiler, Version 5.048, 5967               29-sep-16 23:08
 .................... unsigned char *strtok(unsigned char *s1, unsigned char *s2) 
 .................... { 
 *
-150E:  CLRF   19
-1510:  CLRF   1A
+1510:  CLRF   19
+1512:  CLRF   1A
 ....................    unsigned char *beg, *end; 
 ....................    static char *save; 
 ....................  
@@ -3403,7 +3403,7 @@ CCS PCH C Compiler, Version 5.048, 5967               29-sep-16 23:08
 ....................  
 .................... void lcd_gotoxy( byte x, byte y) 
 *
-1512:  CLRF   21
+1514:  CLRF   21
 .................... {      
 .................... static char data; 
 ....................       
@@ -5746,40 +5746,40 @@ CCS PCH C Compiler, Version 5.048, 5967               29-sep-16 23:08
 ....................  
 .................... void main() 
 *
-1502:  CLRF   FF8
-1504:  BCF    FD0.7
-1506:  BSF    07.7
-1508:  BSF    20.0
+1504:  CLRF   FF8
+1506:  BCF    FD0.7
+1508:  BSF    07.7
 150A:  BSF    20.0
 150C:  BSF    20.0
+150E:  BSF    20.0
 *
-1514:  CLRF   22
-1516:  CLRF   23
-1518:  BSF    20.0
-151A:  CLRF   4C
+1516:  CLRF   22
+1518:  CLRF   23
+151A:  BSF    20.0
+151C:  CLRF   4C
 *
-1526:  MOVLW  07
-1528:  MOVWF  FB4
+1528:  MOVLW  07
+152A:  MOVWF  FB4
 .................... { 
 ....................  
 .................... //declaracion de variables 
 .................... //inicializacion de perifericos 
 ....................  
 .................... 	inicializar() ; 
-152A:  GOTO   02D2
+152C:  GOTO   02D2
 ....................  
 ....................  
 .................... 	while(1) 
 .................... 	{ 
 ....................  
 .................... 		maquina_estado(); 
-152E:  BRA    1024
-1530:  BRA    152E
+1530:  BRA    1024
+1532:  BRA    1530
 ....................  
 .................... 	} 
 .................... } 
 ....................  
-1532:  SLEEP 
+1534:  SLEEP 
 .................... void Inicializar(){ 
 ....................  
 ....................     setup_adc_ports(AN0);                                   //Canal 0 analógico 
@@ -5822,7 +5822,7 @@ CCS PCH C Compiler, Version 5.048, 5967               29-sep-16 23:08
 0304:  MOVLW  FD
 0306:  MOVWF  FD7
 0308:  CLRF   FD6
-030A:  GOTO   152E (RETURN)
+030A:  GOTO   1530 (RETURN)
 .................... } 
 ....................  
 ....................  
@@ -9331,8 +9331,8 @@ CCS PCH C Compiler, Version 5.048, 5967               29-sep-16 23:08
 1038:  BRA    1280
 103A:  XORLW  07
 103C:  BTFSC  FD8.2
-103E:  BRA    143C
-1040:  BRA    14FC
+103E:  BRA    143E
+1040:  BRA    14FE
 .................... 		{ 
 .................... 			case PUNTO_TENS_CORR: 
 ....................                 set_adc_channel(0);           //Habilitación canal 
@@ -9380,7 +9380,7 @@ CCS PCH C Compiler, Version 5.048, 5967               29-sep-16 23:08
 .................... 				 
 ....................  
 .................... 				break; 
-10A8:  BRA    14FE
+10A8:  BRA    1500
 .................... 			 
 .................... 			case CONVERSION_DESFASE: 
 ....................                 tension= (tension*5)/4096; 
@@ -9461,13 +9461,15 @@ CCS PCH C Compiler, Version 5.048, 5967               29-sep-16 23:08
 ....................                 #asm 
 ....................                 clrf &pos_I; 
 116C:  CLRF   2A
-....................                 btfsc (&corriente + 0x01), 7; 
+....................                 btfsc (&corriente + 0x01), 7; // comprueba signo en un bit de los 4 byte del float 
 116E:  BTFSC  35.7
 ....................                 bsf &pos_I,0; 
 1170:  BSF    2A.0
 ....................                 #endasm 
-.................... 					 
-....................                 if (pos_V==1 && contador!=0 && pos_V_A==0 && control_V != 0){ 
+.................... 				 
+....................                 // si el punto actual de tension es positivo, el anterior es negativo  
+....................                 //y se tiene mas de un punto (contaodr distinto de cero) 
+....................                 if (pos_V==1 && contador!=0 && pos_V_A==0 && control_V != 0){  
 1172:  DECFSZ 29,W
 1174:  BRA    118A
 1176:  MOVF   22,F
@@ -9483,6 +9485,8 @@ CCS PCH C Compiler, Version 5.048, 5967               29-sep-16 23:08
 1188:  MOVWF  2F
 ....................                 } 
 ....................                  
+....................                 // si el punto actual de tension es positivo, el anterior es negativo  
+....................                 //y se tiene mas de un punto (contaodr distinto de cero) 
 ....................                 if (pos_I==1 && contador!=0 && pos_I_A==0 && control_I != 0){ 
 118A:  DECFSZ 2A,W
 118C:  BRA    11A2
@@ -9513,7 +9517,7 @@ CCS PCH C Compiler, Version 5.048, 5967               29-sep-16 23:08
 .................... 				 
 ....................  
 .................... 				break; 
-11AE:  BRA    14FE
+11AE:  BRA    1500
 .................... 			 
 .................... 			case TENS_CORR_RMS: 
 .................... 			 
@@ -9593,10 +9597,10 @@ CCS PCH C Compiler, Version 5.048, 5967               29-sep-16 23:08
 .................... 				} 
 ....................  
 .................... 				break; 
-127E:  BRA    14FE
+127E:  BRA    1500
 .................... 			 
-.................... 			case CALCULO_POT_ENER: 
-.................... 			 
+.................... 			case CALCULO_POT_ENER: // falta calculo de energia 
+....................                 //calcula las raices para completar el calculo RMS 
 .................... 				tension_RMS= SQRT(tension_RMS/60); 
 1280:  MOVFF  3B,62
 1284:  MOVFF  3A,61
@@ -9648,6 +9652,8 @@ CCS PCH C Compiler, Version 5.048, 5967               29-sep-16 23:08
 1320:  MOVFF  01,3D
 1324:  MOVFF  00,3C
 ....................                  
+....................                 // se controla si se pudo calcular desfase en el estado anterior  
+....................                 // se realiza las diferencia de cruce por cero y se convierte de tiempo a radianes 
 ....................                 if (desfase==2){ 
 1328:  MOVF   2F,W
 132A:  SUBLW  02
@@ -9696,7 +9702,7 @@ CCS PCH C Compiler, Version 5.048, 5967               29-sep-16 23:08
 13A6:  MOVFF  01,49
 13AA:  MOVFF  00,48
 ....................                 }                 
-....................                 
+....................                // calculo de potencia  
 ....................                 potencia_ins= tension_RMS*corriente_RMS* cos(angulo); 
 13AE:  MOVFF  3B,82
 13B2:  MOVFF  3A,81
@@ -9739,112 +9745,115 @@ CCS PCH C Compiler, Version 5.048, 5967               29-sep-16 23:08
 1430:  CLRF   4A
 1432:  CLRF   49
 1434:  CLRF   48
+....................                 desfase=0;  
+1436:  CLRF   2F
 ....................                  
 .................... 					estado = MOSTRAR_DATOS; 
-1436:  MOVLW  04
-1438:  MOVWF  4C
+1438:  MOVLW  04
+143A:  MOVWF  4C
 .................... 				break; 
-143A:  BRA    14FE
+143C:  BRA    1500
 .................... 			 
 .................... 			case MOSTRAR_DATOS: 
+....................                 //este estado solo muestra los datos en la pantalla LCD 
 ....................                 lcd_gotoxy(1,1); 
-143C:  MOVLW  01
-143E:  MOVWF  5C
-1440:  MOVWF  5D
-1442:  CALL   027C
+143E:  MOVLW  01
+1440:  MOVWF  5C
+1442:  MOVWF  5D
+1444:  CALL   027C
 ....................                 printf(LCD_PUTC,"Potencia= \%f W",potencia_ins); 
-1446:  MOVLW  BE
-1448:  MOVWF  FF6
-144A:  MOVLW  00
-144C:  MOVWF  FF7
-144E:  MOVLW  0A
-1450:  MOVWF  4D
-1452:  RCALL  0DBE
-1454:  MOVLW  89
-1456:  MOVWF  FE9
-1458:  MOVFF  47,50
-145C:  MOVFF  46,4F
-1460:  MOVFF  45,4E
-1464:  MOVFF  44,4D
-1468:  MOVLW  02
-146A:  MOVWF  51
-146C:  RCALL  0EAA
-146E:  MOVLW  20
-1470:  MOVWF  5B
-1472:  RCALL  0D42
-1474:  MOVLW  57
-1476:  MOVWF  5B
-1478:  RCALL  0D42
+1448:  MOVLW  BE
+144A:  MOVWF  FF6
+144C:  MOVLW  00
+144E:  MOVWF  FF7
+1450:  MOVLW  0A
+1452:  MOVWF  4D
+1454:  RCALL  0DBE
+1456:  MOVLW  89
+1458:  MOVWF  FE9
+145A:  MOVFF  47,50
+145E:  MOVFF  46,4F
+1462:  MOVFF  45,4E
+1466:  MOVFF  44,4D
+146A:  MOVLW  02
+146C:  MOVWF  51
+146E:  RCALL  0EAA
+1470:  MOVLW  20
+1472:  MOVWF  5B
+1474:  RCALL  0D42
+1476:  MOVLW  57
+1478:  MOVWF  5B
+147A:  RCALL  0D42
 ....................                 lcd_gotoxy(1,2); 
-147A:  MOVLW  01
-147C:  MOVWF  5C
-147E:  MOVLW  02
-1480:  MOVWF  5D
-1482:  CALL   027C
+147C:  MOVLW  01
+147E:  MOVWF  5C
+1480:  MOVLW  02
+1482:  MOVWF  5D
+1484:  CALL   027C
 ....................                 printf (LCD_PUTC, "T=\%f V  I=\%f A",tension_RMS,corriente_RMS); 
-1486:  MOVLW  54
-1488:  MOVWF  5B
-148A:  RCALL  0D42
-148C:  MOVLW  3D
-148E:  MOVWF  5B
-1490:  RCALL  0D42
-1492:  MOVLW  89
-1494:  MOVWF  FE9
-1496:  MOVFF  3B,50
-149A:  MOVFF  3A,4F
-149E:  MOVFF  39,4E
-14A2:  MOVFF  38,4D
-14A6:  MOVLW  02
-14A8:  MOVWF  51
-14AA:  RCALL  0EAA
-14AC:  MOVLW  D2
-14AE:  MOVWF  FF6
-14B0:  MOVLW  00
-14B2:  MOVWF  FF7
-14B4:  MOVLW  06
-14B6:  MOVWF  4D
-14B8:  RCALL  0DBE
-14BA:  MOVLW  89
-14BC:  MOVWF  FE9
-14BE:  MOVFF  3F,50
-14C2:  MOVFF  3E,4F
-14C6:  MOVFF  3D,4E
-14CA:  MOVFF  3C,4D
-14CE:  MOVLW  02
-14D0:  MOVWF  51
-14D2:  RCALL  0EAA
-14D4:  MOVLW  20
-14D6:  MOVWF  5B
-14D8:  RCALL  0D42
-14DA:  MOVLW  41
-14DC:  MOVWF  5B
-14DE:  RCALL  0D42
+1488:  MOVLW  54
+148A:  MOVWF  5B
+148C:  RCALL  0D42
+148E:  MOVLW  3D
+1490:  MOVWF  5B
+1492:  RCALL  0D42
+1494:  MOVLW  89
+1496:  MOVWF  FE9
+1498:  MOVFF  3B,50
+149C:  MOVFF  3A,4F
+14A0:  MOVFF  39,4E
+14A4:  MOVFF  38,4D
+14A8:  MOVLW  02
+14AA:  MOVWF  51
+14AC:  RCALL  0EAA
+14AE:  MOVLW  D2
+14B0:  MOVWF  FF6
+14B2:  MOVLW  00
+14B4:  MOVWF  FF7
+14B6:  MOVLW  06
+14B8:  MOVWF  4D
+14BA:  RCALL  0DBE
+14BC:  MOVLW  89
+14BE:  MOVWF  FE9
+14C0:  MOVFF  3F,50
+14C4:  MOVFF  3E,4F
+14C8:  MOVFF  3D,4E
+14CC:  MOVFF  3C,4D
+14D0:  MOVLW  02
+14D2:  MOVWF  51
+14D4:  RCALL  0EAA
+14D6:  MOVLW  20
+14D8:  MOVWF  5B
+14DA:  RCALL  0D42
+14DC:  MOVLW  41
+14DE:  MOVWF  5B
+14E0:  RCALL  0D42
 ....................                 delay_ms(750); 
-14E0:  MOVLW  03
-14E2:  MOVWF  4D
-14E4:  MOVLW  FA
-14E6:  MOVWF  5C
-14E8:  CALL   00DE
-14EC:  DECFSZ 4D,F
-14EE:  BRA    14E4
+14E2:  MOVLW  03
+14E4:  MOVWF  4D
+14E6:  MOVLW  FA
+14E8:  MOVWF  5C
+14EA:  CALL   00DE
+14EE:  DECFSZ 4D,F
+14F0:  BRA    14E6
 ....................                 enable_interrupts(INT_RTCC); 
-14F0:  BSF    FF2.5
+14F2:  BSF    FF2.5
 ....................                 set_timer0(0x1D);   // se carga 29 para un desborde en 500 us teniendo en cuenta los tiempos en C 
-14F2:  CLRF   FD7
-14F4:  MOVLW  1D
-14F6:  MOVWF  FD6
+14F4:  CLRF   FD7
+14F6:  MOVLW  1D
+14F8:  MOVWF  FD6
 .................... 					 
 .................... 					estado = PUNTO_TENS_CORR; 
-14F8:  CLRF   4C
+14FA:  CLRF   4C
 .................... 		 
 ....................  
 .................... 				break; 
-14FA:  BRA    14FE
+14FC:  BRA    1500
 .................... 			 
 .................... 			default: estado = PUNTO_TENS_CORR; 
-14FC:  CLRF   4C
+14FE:  CLRF   4C
 .................... 		} 
-14FE:  GOTO   1530 (RETURN)
+1500:  GOTO   1532 (RETURN)
 ....................  
 ....................  
 .................... } 

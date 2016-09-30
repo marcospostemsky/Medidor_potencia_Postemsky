@@ -212,9 +212,9 @@ ROM Allocation:
 000E1C  @DIV3232
 000EAA  @PRINTF_L32D_670FPFPF
 001024  maquina_estado
-001502  @cinit1
-001502  MAIN
-00152A  @cinit2
+001504  @cinit1
+001504  MAIN
+00152C  @cinit2
 0136  StrtoulGO
 0136  StrtolGO
 
@@ -222,7 +222,7 @@ Project Directory:
     C:\Users\MARCOS\Proyecto_final\Med_pot.X\
 
 Project Files:
-    main.c (link)                                           [29-sep-16 23:08  CRC=F539D71C]
+    main.c (link)                                           [30-sep-16 11:50  CRC=F539D71C]
     ..\..\..\..\Program Files (x86)\PICC\devices\18F4550.h  [26-jun-15 10:09  CRC=281B1877]
     ..\..\..\..\Program Files (x86)\PICC\drivers\stdio.h    [31-jul-07 14:24  CRC=4E4534F4]
     ..\..\..\..\Program Files (x86)\PICC\drivers\string.h   [26-mar-15 12:34  CRC=C4814297]
@@ -233,12 +233,12 @@ Project Files:
     i2c_Flex_LCD.h                                          [12-ene-14 15:46  CRC=9BBA501F]
     MAX191.h                                                [23-sep-16 08:49  CRC=D8BA4B18]
     ..\..\..\..\Program Files (x86)\PICC\drivers\math.h     [16-ene-15 10:40  CRC=6A8358B0]
-    funciones.c (link)                                      [29-sep-16 23:03  CRC=485CDAC4]
+    funciones.c (link)                                      [30-sep-16 12:05  CRC=8125C046]
 
-Source signature=F5D20695
+Source signature=6763D199
 Program memory checksum=0000
 Program memory CRC=0000
-Hex file CRC=C491
+Hex file CRC=770B
 
 Units:
     C:\Users\MARCOS\Proyecto_final\Med_pot.X\build\default\production\main.o

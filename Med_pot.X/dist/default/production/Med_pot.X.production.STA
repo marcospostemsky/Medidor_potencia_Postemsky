@@ -1,6 +1,6 @@
 
-ROM used:   5424/32768 (17%)
-            5424/32768 (17%) including unused fragments
+ROM used:   5426/32768 (17%)
+            5426/32768 (17%) including unused fragments
 
             1.0 Average locations per line
             7.0 Average locations per statement
@@ -25,9 +25,9 @@ Lines Stmts  %   Files
   211    72   9  i2c_Flex_LCD.h
    42    15   2  MAX191.h
  2227   257  33  ..\..\..\..\Program Files (x86)\PICC\drivers\math.h
-  172    60   8  funciones.c
+  180    61   8  funciones.c
 ----- -----
- 5462   778 Total
+ 5470   779 Total
 
 Page ROM  %  RAM    Vol Diff  Functions:
 ---- --- --- ---    --- ----  ----------
@@ -51,7 +51,7 @@ Page ROM  %  RAM    Vol Diff  Functions:
 0    266   2   18    510 10.6  sqrt
 0    806   7   46   1146  9.9  cos
 0     16   0    0     27  1.5  interrtimer_0
-0   1246  11    4   2551 10.2  maquina_estado
+0   1248  12    4   2587 10.2  maquina_estado
 0     16   0    0             @const1257
 0     30   0    3             @PSTRINGCN_670
 0     64   1    5             @FTOSD
@@ -62,12 +62,12 @@ Page ROM  %  RAM    Vol Diff  Functions:
 
 Program metrics:
     Functions               13
-    Statements              778
+    Statements              779
     Comments                401
-    Volume (V)              10399
+    Volume (V)              10441
     Difficulty (D)          60.6
-    Effort to implement (E) 629742
-    Time to implement (T)   9 hours, 43 minutes
+    Effort to implement (E) 632480
+    Time to implement (T)   9 hours, 46 minutes
     Est Delivered Bugs (B)  2
     Cyclomatic Complexity   32
     Maintainability (MI)    106
@@ -77,7 +77,7 @@ Program metrics:
 00000-00002     4  0  
 00004-00006     0  4  
 00008-000AC   166  0  
-000AE-07FFE  5254  27340  
+000AE-07FFE  5256  27338  
 
 
 

@@ -74,15 +74,19 @@ void maquina_estado()
                 //CORRIENTE
                 #asm
                 clrf &pos_I;
-                btfsc (&corriente + 0x01), 7;
+                btfsc (&corriente + 0x01), 7; // comprueba signo en un bit de los 4 byte del float
                 bsf &pos_I,0;
                 #endasm
-					
-                if (pos_V==1 && contador!=0 && pos_V_A==0 && control_V != 0){
+				
+                // si el punto actual de tension es positivo, el anterior es negativo 
+                //y se tiene mas de un punto (contaodr distinto de cero)
+                if (pos_V==1 && contador!=0 && pos_V_A==0 && control_V != 0){ 
                  control_V= contador; // tiempo en el que cruzó la tension 
                  desfase=1;
                 }
                 
+                // si el punto actual de tension es positivo, el anterior es negativo 
+                //y se tiene mas de un punto (contaodr distinto de cero)
                 if (pos_I==1 && contador!=0 && pos_I_A==0 && control_I != 0){
                     
                  control_I= contador; // tiempo en el que cruzó la corriente
@@ -119,26 +123,30 @@ void maquina_estado()
 
 				break;
 			
-			case CALCULO_POT_ENER:
-			
+			case CALCULO_POT_ENER: // falta calculo de energia
+                //calcula las raices para completar el calculo RMS
 				tension_RMS= SQRT(tension_RMS/60);
                 corriente_RMS= SQRT(corriente_RMS/60);
                 
+                // se controla si se pudo calcular desfase en el estado anterior 
+                // se realiza las diferencia de cruce por cero y se convierte de tiempo a radianes
                 if (desfase==2){
                     t_desfase= (control_I-control_V);
                     angulo= (t_desfase*pi)/20;      // angulo de desfase en radianes.
                 }                
-               
+               // calculo de potencia 
                 potencia_ins= tension_RMS*corriente_RMS* cos(angulo);
                 //se limpian las variables para la próxima tanta de muestreo
                 control_V=0;      
                 control_I=0;
                 angulo=0;
+                desfase=0; 
                 
 					estado = MOSTRAR_DATOS;
 				break;
 			
 			case MOSTRAR_DATOS:
+                //este estado solo muestra los datos en la pantalla LCD
                 lcd_gotoxy(1,1);
                 printf(LCD_PUTC,"Potencia= \%f W",potencia_ins);
                 lcd_gotoxy(1,2);
