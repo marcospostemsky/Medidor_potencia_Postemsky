@@ -77,6 +77,9 @@ void maquina_estado()
                 btfsc (&corriente + 0x01), 7; // comprueba signo en un bit de los 4 byte del float
                 bsf &pos_I,0;
                 #endasm
+
+                
+                
 				
                 // si el punto actual de tension es positivo, el anterior es negativo 
                 //y se tiene mas de un punto (contaodr distinto de cero)
@@ -133,6 +136,9 @@ void maquina_estado()
                 if (desfase==2){
                     t_desfase= (control_I-control_V);
                     angulo= (t_desfase*pi)/20;      // angulo de desfase en radianes.
+                     lcd_gotoxy(1,1);
+                     printf(LCD_PUTC,"Se midio desfase");
+                     delay_ms(1000);
                 }                
                // calculo de potencia 
                 potencia_ins= tension_RMS*corriente_RMS* cos(angulo);
@@ -151,7 +157,7 @@ void maquina_estado()
                 printf(LCD_PUTC,"Potencia= \%f W",potencia_ins);
                 lcd_gotoxy(1,2);
                 printf (LCD_PUTC, "T=\%f V  I=\%f A",tension_RMS,corriente_RMS);
-                delay_ms(750);
+                delay_ms(1000);
                 enable_interrupts(INT_RTCC);
                 set_timer0(0x1D);   // se carga 29 para un desborde en 500 us teniendo en cuenta los tiempos en C
 					
