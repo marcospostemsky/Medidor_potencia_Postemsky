@@ -8,18 +8,19 @@
 #include <18F4550.h>
 
 #fuses NOWDT,MCLR,HS,NOUSBDIV,NOIESO,            //Selecciona el oscilador externo
-#include <stdio.h>
-#include <stdlib.h>
 #use delay(clock=12 Mhz, crystal= 12 MHz)   // Selecciona la velocidad del oscilador interno
 #use i2c(Master,Fast=100000, sda=PIN_D6, scl=PIN_D7,force_sw)
+
+#include <stdio.h>
+#include <stdlib.h>
 
 #include "funciones.h"
 #use fast_io(A)
 #use fast_io(B)
 
-const long carga= 0xFD2D;
+const long carga= 0xF485;
 extern int contador;
-extern int pulso_timer;
+extern long pulso_timer;
 
 void inicializar();
 
@@ -31,7 +32,7 @@ void main()
 
 	inicializar() ;
 
-
+    set_timer0(carga);
 	while(1)
 	{
 
@@ -49,8 +50,9 @@ void Inicializar(){
     contador=1;
     lcd_init();
     lcd_gotoxy(1,1);
+    printf(LCD_PUTC,"Primer prueba");
     lcd_backlight=ON;
     enable_interrupts (INT_RTCC);
     enable_interrupts (GLOBAL);
-    set_timer0(carga);
+    
 }

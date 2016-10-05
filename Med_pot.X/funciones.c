@@ -7,10 +7,13 @@
 */
 
 #include <18F4550.h>
+#fuses NOWDT,MCLR,HS,NOUSBDIV,NOIESO,            //Selecciona el oscilador externo
 #use delay(clock=12 Mhz, crystal= 12 MHz)   // Selecciona la velocidad del oscilador interno
 #use i2c(Master,Fast=100000, sda=PIN_D6, scl=PIN_D7,force_sw)
 int contador = 0 ;int pulso_timer = 0 ;
 #include "funciones.h" 
+#include <math.h>
+#include <MAX191.h>
 
 
 
@@ -29,12 +32,13 @@ int control_V, control_I;
 int desfase;
 float tension, corriente, tension_RMS,corriente_RMS, t_desfase, potencia_ins,angulo;
 
-const long carga= 0xFD2D;
+const long carga= 0xF485;
 
 #INT_RTCC                // interrupcion para demora de 500 us
 void interrtimer_0(){
     set_timer0(carga);   // interrupcion cada 500 us
     pulso_timer++;
+
    }
 
 void maquina_estado()
@@ -44,7 +48,7 @@ void maquina_estado()
 		switch(estado)
 		{
 			case PUNTO_TENS_CORR:
-                set_adc_channel(0);           //Habilitación canal
+               set_adc_channel(0);           //Habilitación canal
                 punto1= leer_ADC(2);
                 punto2= read_adc(); // comprobar si funciona con el tiempo de demora de la lectura del externo
                 // convierte los valores de long a float
@@ -58,8 +62,8 @@ void maquina_estado()
 				break;
 			
 			case CONVERSION_DESFASE:
-                tension= (tension*5)/4096;
-                corriente= (corriente*5)/1024;
+                tension= (tension)/1000-2.54;
+                corriente= (corriente*5)/1024-2.5;
                 
                 // Analisis del punto POSITVO O NEGATIVO
                 // valor positivo estado=0-- valor negativo estado=1
@@ -108,7 +112,7 @@ void maquina_estado()
 			
 			case TENS_CORR_RMS:
 			
-				if((contador<60)&& (pulso_timer==1))
+				if((contador<30)&& (pulso_timer==1))
 				{
 					tension_RMS=tension_RMS+ tension * tension;       //calcula tension eficaz
                     corriente_RMS= corriente_RMS+ corriente * corriente; // calcula corriente eficaz
@@ -117,19 +121,20 @@ void maquina_estado()
 					estado = PUNTO_TENS_CORR;
 		
 				}
-				if((contador==60))
+				if((contador== 29))
 				{
-					disable_interrupts(INT_RTCC);
+					disable_interrupts(GLOBAL);
 					estado = CALCULO_POT_ENER;
-		
+                      // lcd_gotoxy(1,1);  
+                      // printf(LCD_PUTC,"entro timer \%d",contador);
 				}
 
 				break;
 			
 			case CALCULO_POT_ENER: // falta calculo de energia
                 //calcula las raices para completar el calculo RMS
-				tension_RMS= SQRT(tension_RMS/60);
-                corriente_RMS= SQRT(corriente_RMS/60);
+				tension_RMS= sqrt(tension_RMS/30);
+                corriente_RMS= sqrt(corriente_RMS/30);
                 
                 // se controla si se pudo calcular desfase en el estado anterior 
                 // se realiza las diferencia de cruce por cero y se convierte de tiempo a radianes
@@ -158,7 +163,7 @@ void maquina_estado()
                 lcd_gotoxy(1,2);
                 printf (LCD_PUTC, "T=\%f V  I=\%f A",tension_RMS,corriente_RMS);
                 delay_ms(1000);
-                enable_interrupts(INT_RTCC);
+                enable_interrupts(GLOBAL);
                 set_timer0(0x1D);   // se carga 29 para un desborde en 500 us teniendo en cuenta los tiempos en C
 					
 					estado = PUNTO_TENS_CORR;

@@ -1,7 +1,7 @@
 ÀÄMed_pot
-   ÃÄMAIN  0/50  Ram=0
+   ÃÄMAIN  0/66  Ram=0
    ³  ÃÄ@cinit1  (Inline)  Ram=0
-   ³  ÃÄinicializar  0/60  Ram=0
+   ³  ÃÄinicializar  0/64  Ram=0
    ³  ³  ÃÄlcd_init  0/92  Ram=0
    ³  ³  ³  ÃÄ@delay_ms1  0/40  Ram=1
    ³  ³  ³  ÃÄlcd_send_byte  0/34  Ram=2
@@ -44,19 +44,36 @@
    ³  ³  ³     ÃÄlcd_send_byte  0/34  Ram=2
    ³  ³  ³     ³  ÀÄ*
    ³  ³  ³     ÀÄ@delay_ms1  0/40  Ram=1
-   ³  ³  ÀÄlcd_gotoxy  0/86  Ram=2
-   ³  ³     ÃÄlcd_send_byte  0/34  Ram=2
-   ³  ³     ³  ÀÄ*
-   ³  ³     ÀÄlcd_send_byte  0/34  Ram=2
-   ³  ³        ÀÄ*
-   ³  ÀÄmaquina_estado  0/1248  Ram=4
+   ³  ³  ÃÄlcd_gotoxy  0/86  Ram=2
+   ³  ³  ³  ÃÄlcd_send_byte  0/34  Ram=2
+   ³  ³  ³  ³  ÀÄ*
+   ³  ³  ³  ÀÄlcd_send_byte  0/34  Ram=2
+   ³  ³  ³     ÀÄ*
+   ³  ³  ÀÄ@PSTRINGC_941  0/34  Ram=2
+   ³  ³     ÀÄLCD_PUTC  0/110  Ram=2
+   ³  ³        ÃÄlcd_clear  0/18  Ram=0
+   ³  ³        ³  ÀÄ*
+   ³  ³        ÃÄlcd_gotoxy  0/86  Ram=2
+   ³  ³        ³  ÀÄ*
+   ³  ³        ÃÄlcd_gotoxy  0/86  Ram=2
+   ³  ³        ³  ÀÄ*
+   ³  ³        ÃÄlcd_gotoxy  0/86  Ram=2
+   ³  ³        ³  ÀÄ*
+   ³  ³        ÃÄlcd_gotoxy  0/86  Ram=2
+   ³  ³        ³  ÀÄ*
+   ³  ³        ÃÄlcd_send_byte  0/34  Ram=2
+   ³  ³        ³  ÀÄ*
+   ³  ³        ÀÄlcd_send_byte  0/34  Ram=2
+   ³  ³           ÀÄ*
+   ³  ÀÄmaquina_estado  0/1364  Ram=4
    ³     ÃÄleer_ADC  0/104  Ram=6
    ³     ÃÄ@ITOF  0/54  Ram=2
    ³     ÃÄ@ITOF  0/54  Ram=2
+   ³     ÃÄ@DIVFF  0/346  Ram=14
+   ³     ÃÄ@ADDFF  0/618  Ram=16
    ³     ÃÄ@MULFF  0/242  Ram=11
    ³     ÃÄ@DIVFF  0/346  Ram=14
-   ³     ÃÄ@MULFF  0/242  Ram=11
-   ³     ÃÄ@DIVFF  0/346  Ram=14
+   ³     ÃÄ@ADDFF  0/618  Ram=16
    ³     ÃÄ@MULFF  0/242  Ram=11
    ³     ÃÄ@ADDFF  0/618  Ram=16
    ³     ÃÄ@MULFF  0/242  Ram=11
@@ -73,8 +90,14 @@
    ³     ÃÄ@ITOF  0/54  Ram=2
    ³     ÃÄ@MULFF  0/242  Ram=11
    ³     ÃÄ@DIVFF  0/346  Ram=14
+   ³     ÃÄlcd_gotoxy  0/86  Ram=2
+   ³     ³  ÀÄ*
+   ³     ÃÄ@PSTRINGC_670  0/34  Ram=2
+   ³     ³  ÀÄLCD_PUTC  0/110  Ram=2
+   ³     ³     ÀÄ*
+   ³     ÃÄ@delay_ms1  0/40  Ram=1
    ³     ÃÄ@MULFF  0/242  Ram=11
-   ³     ÃÄcos  0/806  Ram=46
+   ³     ÃÄcos  0/830  Ram=46
    ³     ³  ÃÄ@FLT  0/118  Ram=10
    ³     ³  ÃÄ@MULFF  0/242  Ram=11
    ³     ³  ÃÄ@SFTOI  0/58  Ram=4
@@ -93,54 +116,41 @@
    ³     ÃÄ@MULFF  0/242  Ram=11
    ³     ÃÄlcd_gotoxy  0/86  Ram=2
    ³     ³  ÀÄ*
-   ³     ÃÄ@PSTRINGCN_670  0/30  Ram=3
-   ³     ³  ÀÄLCD_PUTC  0/124  Ram=2
-   ³     ³     ÃÄlcd_clear  0/18  Ram=0
-   ³     ³     ³  ÀÄ*
-   ³     ³     ÃÄlcd_gotoxy  0/86  Ram=2
-   ³     ³     ³  ÀÄ*
-   ³     ³     ÃÄlcd_gotoxy  0/86  Ram=2
-   ³     ³     ³  ÀÄ*
-   ³     ³     ÃÄlcd_gotoxy  0/86  Ram=2
-   ³     ³     ³  ÀÄ*
-   ³     ³     ÃÄlcd_gotoxy  0/86  Ram=2
-   ³     ³     ³  ÀÄ*
-   ³     ³     ÃÄlcd_send_byte  0/34  Ram=2
-   ³     ³     ³  ÀÄ*
-   ³     ³     ÀÄlcd_send_byte  0/34  Ram=2
-   ³     ³        ÀÄ*
-   ³     ÃÄ@PRINTF_L32D_670FPFPF  0/378  Ram=13
+   ³     ÃÄ@PSTRINGCN_670  0/32  Ram=3
+   ³     ³  ÀÄLCD_PUTC  0/110  Ram=2
+   ³     ³     ÀÄ*
+   ³     ÃÄ@PRINTF_L32D_670FPFPF  0/384  Ram=13
    ³     ³  ÃÄ@MULFF  0/242  Ram=11
    ³     ³  ÃÄ@FTOSD  0/64  Ram=5
    ³     ³  ÃÄ@DIV3232  0/142  Ram=13
-   ³     ³  ÃÄLCD_PUTC  0/124  Ram=2
+   ³     ³  ÃÄLCD_PUTC  0/110  Ram=2
    ³     ³  ³  ÀÄ*
-   ³     ³  ÃÄLCD_PUTC  0/124  Ram=2
+   ³     ³  ÃÄLCD_PUTC  0/110  Ram=2
    ³     ³  ³  ÀÄ*
-   ³     ³  ÃÄLCD_PUTC  0/124  Ram=2
+   ³     ³  ÃÄLCD_PUTC  0/110  Ram=2
    ³     ³  ³  ÀÄ*
-   ³     ³  ÃÄLCD_PUTC  0/124  Ram=2
+   ³     ³  ÃÄLCD_PUTC  0/110  Ram=2
    ³     ³  ³  ÀÄ*
    ³     ³  ÀÄ@DIV3232  0/142  Ram=13
-   ³     ÃÄLCD_PUTC  0/124  Ram=2
+   ³     ÃÄLCD_PUTC  0/110  Ram=2
    ³     ³  ÀÄ*
-   ³     ÃÄLCD_PUTC  0/124  Ram=2
+   ³     ÃÄLCD_PUTC  0/110  Ram=2
    ³     ³  ÀÄ*
    ³     ÃÄlcd_gotoxy  0/86  Ram=2
    ³     ³  ÀÄ*
-   ³     ÃÄLCD_PUTC  0/124  Ram=2
+   ³     ÃÄLCD_PUTC  0/110  Ram=2
    ³     ³  ÀÄ*
-   ³     ÃÄLCD_PUTC  0/124  Ram=2
+   ³     ÃÄLCD_PUTC  0/110  Ram=2
    ³     ³  ÀÄ*
-   ³     ÃÄ@PRINTF_L32D_670FPFPF  0/378  Ram=13
+   ³     ÃÄ@PRINTF_L32D_670FPFPF  0/384  Ram=13
    ³     ³  ÀÄ*
-   ³     ÃÄ@PSTRINGCN_670  0/30  Ram=3
+   ³     ÃÄ@PSTRINGCN_670  0/32  Ram=3
    ³     ³  ÀÄ*
-   ³     ÃÄ@PRINTF_L32D_670FPFPF  0/378  Ram=13
+   ³     ÃÄ@PRINTF_L32D_670FPFPF  0/384  Ram=13
    ³     ³  ÀÄ*
-   ³     ÃÄLCD_PUTC  0/124  Ram=2
+   ³     ÃÄLCD_PUTC  0/110  Ram=2
    ³     ³  ÀÄ*
-   ³     ÃÄLCD_PUTC  0/124  Ram=2
+   ³     ÃÄLCD_PUTC  0/110  Ram=2
    ³     ³  ÀÄ*
    ³     ÀÄ@delay_ms1  0/40  Ram=1
    ÀÄinterrtimer_0  0/16  Ram=0
