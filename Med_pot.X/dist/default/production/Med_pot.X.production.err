@@ -1,5 +1,5 @@
 C:\Users\MARCOS\Proyecto_final\Med_pot.X\$linker.c:2:7:  Warning#227  Feature not supported   Instead, Use #device icd=2
 C:\Users\MARCOS\Proyecto_final\Med_pot.X\$linker.c:3:8:  Warning#227  Feature not supported   Instead, Use #device icd=2
-      Memory usage:   ROM=17%      RAM=4% - 7%
+      Memory usage:   ROM=18%      RAM=4% - 7%
       0 Errors,  2 Warnings.
 Build Successful.

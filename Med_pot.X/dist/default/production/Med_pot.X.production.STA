@@ -1,9 +1,9 @@
 
-ROM used:   5680/32768 (17%)
-            5680/32768 (17%) including unused fragments
+ROM used:   5876/32768 (18%)
+            5876/32768 (18%) including unused fragments
 
-            1.0 Average locations per line
-            7.3 Average locations per statement
+            1.1 Average locations per line
+            7.2 Average locations per statement
 
 RAM used:   79/2048 (4%) at main() level
             145/2048 (7%) worst case
@@ -14,20 +14,20 @@ Stack size: 31
 Lines Stmts  %   Files
 ----- ----- ---  -----
     4     0   0  $linker.c
-   59    16   2  main.c
+   60    18   2  main.c
   839     0   0  ..\..\..\..\Program Files (x86)\PICC\devices\18F4550.h
    37     0   0  ..\..\..\..\Program Files (x86)\PICC\drivers\stdio.h
   435     0   0  ..\..\..\..\Program Files (x86)\PICC\drivers\string.h
    32     0   0  ..\..\..\..\Program Files (x86)\PICC\drivers\stddef.h
    28     0   0  ..\..\..\..\Program Files (x86)\PICC\drivers\ctype.h
- 1351   359  46  ..\..\..\..\Program Files (x86)\PICC\drivers\stdlib.h
+ 1351   359  44  ..\..\..\..\Program Files (x86)\PICC\drivers\stdlib.h
    26     0   0  funciones.h
   211    72   9  i2c_Flex_LCD.h
   191    64   8  funciones.c
- 2227   257  33  ..\..\..\..\Program Files (x86)\PICC\drivers\math.h
-   42    15   2  MAX191.h
+ 2227   257  31  ..\..\..\..\Program Files (x86)\PICC\drivers\math.h
+   96    47   6  Control_ADCs.h
 ----- -----
- 5482   783 Total
+ 5537   817 Total
 
 Page ROM  %  RAM    Vol Diff  Functions:
 ---- --- --- ---    --- ----  ----------
@@ -38,7 +38,7 @@ Page ROM  %  RAM    Vol Diff  Functions:
 0    618   5   16             @ADDFF
 0    346   3   14             @DIVFF
 0     66   1    0     55  1.4  MAIN
-0     64   1    0    257  2.7  inicializar
+0     68   1    0    307  2.7  inicializar
 0     14   0    0             @const953
 0     34   0    2             @PSTRINGC_941
 0    122   1    1    156  1.3  i2c_send_nibble
@@ -48,40 +48,41 @@ Page ROM  %  RAM    Vol Diff  Functions:
 0     86   1    2    521  6.8  lcd_gotoxy
 0    110   1    2    625  5.6  LCD_PUTC
 0    118   1   10             @FLT
-0     58   1    4             @SFTOI
+0     58   0    4             @SFTOI
 0    266   2   18    510 10.6  sqrt
 0    830   7   46   1146  9.9  cos
-0    104   1    6    489  6.2  leer_ADC
+0    126   1    5    650  6.7  leer_Tension
+0    172   1    6   1002  6.4  leer_Corriente
 0     16   0    0     27  1.5  interrtimer_0
-0   1364  12    4   2747 10.2  maquina_estado
-0     18   0    0             @const1134
-0     34   0    2             @PSTRINGC_670
-0     16   0    0             @const1138
+0   1360  12    4   2737 10.2  maquina_estado
+0     18   0    0             @const1138
+0     36   0    2             @PSTRINGC_670
+0     16   0    0             @const1142
 0     32   0    3             @PSTRINGCN_670
 0     64   1    5             @FTOSD
 0    142   1   13             @DIV3232
 0    384   3   13             @PRINTF_L32D_670FPFPF
-0     16   0    0             @const1149
+0     16   0    0             @const1153
  Inline         0             @cinit1
 
 Program metrics:
-    Functions               13
-    Statements              783
+    Functions               14
+    Statements              817
     Comments                411
-    Volume (V)              10705
-    Difficulty (D)          60.2
-    Effort to implement (E) 644765
-    Time to implement (T)   9 hours, 57 minutes
-    Est Delivered Bugs (B)  2
-    Cyclomatic Complexity   32
-    Maintainability (MI)    102
+    Volume (V)              12717
+    Difficulty (D)          67.3
+    Effort to implement (E) 856158
+    Time to implement (T)   13 hours, 13 minutes
+    Est Delivered Bugs (B)  3
+    Cyclomatic Complexity   34
+    Maintainability (MI)    112
 
  Segment     Used  Free
 -----------  ----  ----
 00000-00002     4  0  
 00004-00006     0  4  
 00008-000AC   166  0  
-000AE-07FFE  5510  27084  
+000AE-07FFE  5706  26888  
 
 
 

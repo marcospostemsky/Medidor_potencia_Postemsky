@@ -13,7 +13,7 @@
 int contador = 0 ;int pulso_timer = 0 ;
 #include "funciones.h" 
 #include <math.h>
-#include <MAX191.h>
+#include <Control_ADCs.h>
 
 
 
@@ -48,9 +48,9 @@ void maquina_estado()
 		switch(estado)
 		{
 			case PUNTO_TENS_CORR:
-               set_adc_channel(0);           //Habilitación canal
-                punto1= leer_ADC(2);
-                punto2= read_adc(); // comprobar si funciona con el tiempo de demora de la lectura del externo
+                set_adc_channel(0);           //Habilitación canal
+                punto1= leer_Tension();
+                punto2= leer_Corriente(); // comprobar si funciona con el tiempo de demora de la lectura del externo
                 // convierte los valores de long a float
                 tension=punto1;
                 corriente=punto2;

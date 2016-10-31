@@ -31,8 +31,8 @@
 021     lcd_gotoxy.data
 022     contador
 023-024 @sprintf_string
-025     pulso_timer
 025-026 pulso_timer
+025     pulso_timer
 026     lcd_gotoxy.data
 027-028 punto1
 029-02A punto2
@@ -52,33 +52,36 @@
 04A-04D angulo
 04E     maquina_estado.estado
 04F     @PSTRINGCN_670.P1
-04F-052 @PRINTF_L32D_670FPFPF.P2
 04F-052 atan2.y
-04F     leer_ADC.ADC
+04F-052 @PRINTF_L32D_670FPFPF.P1
+04F-050 leer_Tension.dato
+04F-050 leer_Corriente.dato
 04F     @PSTRINGC_941.@SCRATCH1
 04F     maquina_estado.@SCRATCH1
 04F     @PSTRINGC_670.@SCRATCH1
-050-051 leer_ADC.dato
 050     @PSTRINGC_941.@SCRATCH2
 050     maquina_estado.@SCRATCH2
 050     @PSTRINGC_670.@SCRATCH2
 050     @PSTRINGCN_670.@SCRATCH1
+051-052 leer_Tension.dato_t
+051     leer_Corriente.config
 051     maquina_estado.@SCRATCH3
 051     @PSTRINGCN_670.@SCRATCH2
-052     leer_ADC.i
+052     leer_Corriente.i
 052     maquina_estado.@SCRATCH4
-053-056 sqrt.x
 053-056 atan2.x
-053     @PRINTF_L32D_670FPFPF.P1
+053     leer_Tension.i
 053-056 cos.x
-053     leer_ADC.@SCRATCH1
-054     leer_ADC.@SCRATCH2
+053     @PRINTF_L32D_670FPFPF.P1
+053-056 sqrt.x
+053     leer_Corriente.@SCRATCH1
+054     leer_Corriente.@SCRATCH2
 054     @PRINTF_L32D_670FPFPF.@SCRATCH1
 055     @PRINTF_L32D_670FPFPF.@SCRATCH2
 056     @PRINTF_L32D_670FPFPF.@SCRATCH3
-057-05A sqrt.y
 057-05A cos.y
 057-05A atan2.z
+057-05A sqrt.y
 057     @PRINTF_L32D_670FPFPF.@SCRATCH4
 058     @PRINTF_L32D_670FPFPF.@SCRATCH5
 059     @PRINTF_L32D_670FPFPF.@SCRATCH6
@@ -88,18 +91,18 @@
 05B.0   atan2.sign
 05B     @PRINTF_L32D_670FPFPF.@SCRATCH8
 05C     atan2.quad
-05C     LCD_PUTC.data
 05C-05F @DIV3232.P1
-05C-05F @FTOSD.P2
+05C     LCD_PUTC.data
+05C-05F @FTOSD.P1
 05D     LCD_PUTC.in_data
+05E     LCD_PUTC.data
 05E     lcd_gotoxy.x
 05E     @delay_ms1.P1
-05E     LCD_PUTC.data
 05F-060 sqrt.p
-05F-062 cos.t2
 05F     lcd_gotoxy.y
-060-063 @DIV3232.P1
+05F-062 cos.t2
 060     lcd_send_byte.data
+060-063 @DIV3232.P1
 060     @FTOSD.@SCRATCH1
 061     i2c_send_nibble.data
 061-064 @DIVFF.P1
@@ -132,11 +135,11 @@
 07F     cos.@SCRATCH3
 080     cos.@SCRATCH4
 081-084 @FLT.P1
-081-084 @MULFF.P2
+081-082 @ITOF.P2
 081-084 @ADDFF.P3
-081-082 @ITOF.P4
-085-088 @MULFF.P1
-085-088 @ADDFF.P2
+081-084 @MULFF.P4
+085-088 @ADDFF.P1
+085-088 @MULFF.P2
 085     @FLT.@SCRATCH1
 086     @FLT.@SCRATCH2
 089     @MULFF.@SCRATCH1
@@ -153,27 +156,27 @@
 F83     PSP_DATA
 FB4.6   C1OUT
 FB4.7   C2OUT
-FBB     CCP_2
 FBB     CCP_2_LOW
+FBB     CCP_2
 FBC     CCP_2_HIGH
-FBE     CCP_1
 FBE     CCP_1_LOW
+FBE     CCP_1
 FBF     CCP_1_HIGH
-FE1-FE2 @WRITE_PACKED_MEMORY.P1
-FE1-FE2 @READ_PACKED_MEMORY.P2
+FE1-FE2 @READ_PACKED_MEMORY.P1
+FE1-FE2 @WRITE_PACKED_MEMORY.P2
 FE9-FEA @WRITE_PROGRAM_MEMORY.P1
 FE9-FEA @WRITE_PACKED_MEMORY.P2
 FE9-FEA @READ_PACKED_MEMORY.P3
 FE9-FEA @READ_PROGRAM_MEMORY.P4
-FF6-FF8 @READ_PROGRAM_MEMORY.P1
-FF6-FF8 @WRITE_PROGRAM_MEMORY.P2
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P1
+FF6-FF8 @READ_PROGRAM_MEMORY.P2
 
 ROM Allocation:
 0000AE  @const953.call
 0000BC  interrtimer_0
-0000CC  @const1134.call
-0000DE  @const1138.call
-0000EE  @const1149.call
+0000CC  @const1138.call
+0000DE  @const1142.call
+0000EE  @const1153.call
 0000FE  @delay_ms1
 000126  @I2C_WRITE_1
 000192  i2c_send_nibble
@@ -184,28 +187,29 @@ ROM Allocation:
 0002F2  LCD_PUTC
 000360  @PSTRINGC_941
 000382  inicializar
-0003C2  leer_ADC
-00042A  @ITOF
-00042A  @ITOF
-000460  @DIVFF
-000460  @DIVFF
-0005BA  @ADDFF
-0005BA  @ADDFF
-000824  @MULFF
-000824  @MULFF
-000916  @FLT
-00098C  sqrt
-000A96  @PSTRINGC_670
-000AB8  @SFTOI
-000AF2  cos
-000E30  @PSTRINGCN_670
-000E50  @FTOSD
-000E90  @DIV3232
-000F1E  @PRINTF_L32D_670FPFPF
-00109E  maquina_estado
-0015F2  MAIN
-0015F2  @cinit1
-001622  @cinit2
+0003C6  leer_Tension
+000444  leer_Corriente
+0004F0  @ITOF
+0004F0  @ITOF
+000526  @DIVFF
+000526  @DIVFF
+000680  @ADDFF
+000680  @ADDFF
+0008EA  @MULFF
+0008EA  @MULFF
+0009DC  @FLT
+000A52  sqrt
+000B5C  @PSTRINGC_670
+000B80  @SFTOI
+000BBA  cos
+000EF8  @PSTRINGCN_670
+000F18  @FTOSD
+000F58  @DIV3232
+000FE6  @PRINTF_L32D_670FPFPF
+001166  maquina_estado
+0016B6  MAIN
+0016B6  @cinit1
+0016E6  @cinit2
 0136  StrtoulGO
 0136  StrtolGO
 
@@ -213,7 +217,7 @@ Project Directory:
     C:\Users\MARCOS\Proyecto_final\Med_pot.X\
 
 Project Files:
-    main.c (link)                                           [05-oct-16 11:21  CRC=49647615]
+    main.c (link)                                           [30-oct-16 20:53  CRC=64ED00B8]
     ..\..\..\..\Program Files (x86)\PICC\devices\18F4550.h  [26-jun-15 10:09  CRC=281B1877]
     ..\..\..\..\Program Files (x86)\PICC\drivers\stdio.h    [31-jul-07 14:24  CRC=4E4534F4]
     ..\..\..\..\Program Files (x86)\PICC\drivers\string.h   [26-mar-15 12:34  CRC=C4814297]
@@ -222,14 +226,14 @@ Project Files:
     ..\..\..\..\Program Files (x86)\PICC\drivers\stdlib.h   [07-dic-14 17:58  CRC=07F0FCBD]
     funciones.h                                             [05-oct-16 10:43  CRC=EF492E58]
     i2c_Flex_LCD.h                                          [12-ene-14 15:46  CRC=9BBA501F]
-    funciones.c (link)                                      [05-oct-16 11:21  CRC=11888164]
+    funciones.c (link)                                      [30-oct-16 20:55  CRC=44F0262A]
     ..\..\..\..\Program Files (x86)\PICC\drivers\math.h     [16-ene-15 10:40  CRC=6A8358B0]
-    MAX191.h                                                [30-sep-16 12:12  CRC=D8BA4B18]
+    Control_ADCs.h                                          [30-oct-16 20:47  CRC=41A0A897]
 
-Source signature=FB56DF9A
+Source signature=1C13CA01
 Program memory checksum=0000
 Program memory CRC=0000
-Hex file CRC=BFB1
+Hex file CRC=D5E0
 
 Units:
     C:\Users\MARCOS\Proyecto_final\Med_pot.X\build\default\production\main.o

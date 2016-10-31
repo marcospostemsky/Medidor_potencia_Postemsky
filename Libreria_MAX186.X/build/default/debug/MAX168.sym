@@ -1,0 +1,147 @@
+000     @SCRATCH
+001     @SCRATCH
+001     _RETURN_
+002     @SCRATCH
+003     @SCRATCH
+004-005 strtok.save
+006-009 _Randseed
+00A     address
+00B.0   lcd_backlight
+00C     lcd_gotoxy.data
+00D-00E MAIN.valor
+00D-010 atan2.y
+00F-012 MAIN.enviar
+011-014 atan2.x
+013-014 leer_ADC.dato
+013-014 @ITOF.P1
+013     @PSTRINGCN_941.P2
+013-016 @PRINTF_L32D_941FPFPF.P3
+013     MAIN.@SCRATCH1
+014     @PSTRINGCN_941.@SCRATCH1
+015     leer_ADC.config
+015-018 atan2.z
+015     @PSTRINGCN_941.@SCRATCH2
+016     leer_ADC.i
+017     @PRINTF_L32D_941FPFPF.P1
+017     leer_ADC.@SCRATCH1
+018     leer_ADC.@SCRATCH2
+018     @PRINTF_L32D_941FPFPF.@SCRATCH1
+019.0   atan2.sign
+019     @PRINTF_L32D_941FPFPF.@SCRATCH2
+01A     atan2.quad
+01A     @PRINTF_L32D_941FPFPF.@SCRATCH3
+01B     @PRINTF_L32D_941FPFPF.@SCRATCH4
+01C     @PRINTF_L32D_941FPFPF.@SCRATCH5
+01D     @PRINTF_L32D_941FPFPF.@SCRATCH6
+01E     @PRINTF_L32D_941FPFPF.@SCRATCH7
+01F     @PRINTF_L32D_941FPFPF.@SCRATCH8
+020-023 @DIV3232.P1
+020-023 @FTOSD.P2
+020-023 @MULFF.P3
+020     LCD_PUTC.in_data
+021     LCD_PUTC.data
+022     @delay_ms1.P1
+022     lcd_gotoxy.x
+023     lcd_gotoxy.y
+024-027 @DIV3232.P1
+024-027 @MULFF.P2
+024     lcd_send_byte.data
+024     @FTOSD.@SCRATCH1
+025     i2c_send_nibble.data
+025     lcd_send_byte.@SCRATCH1
+026     @I2C_WRITE_1.P1
+028     @MULFF.@SCRATCH1
+028     @DIV3232.@SCRATCH1
+029     @MULFF.@SCRATCH2
+029     @DIV3232.@SCRATCH2
+02A     @MULFF.@SCRATCH3
+02A     @DIV3232.@SCRATCH3
+02B     @DIV3232.@SCRATCH4
+02C     @DIV3232.@SCRATCH5
+F83     PSP_DATA
+FB4.6   C1OUT
+FB4.7   C2OUT
+FBB     CCP_2_LOW
+FBB     CCP_2
+FBC     CCP_2_HIGH
+FBE     CCP_1_LOW
+FBE     CCP_1
+FBF     CCP_1_HIGH
+FE1-FE2 @READ_PACKED_MEMORY.P1
+FE1-FE2 @WRITE_PACKED_MEMORY.P2
+FE9-FEA @READ_PACKED_MEMORY.P1
+FE9-FEA @WRITE_PACKED_MEMORY.P2
+FE9-FEA @READ_PROGRAM_MEMORY.P3
+FE9-FEA @WRITE_PROGRAM_MEMORY.P4
+FF6-FF8 @READ_PROGRAM_MEMORY.P1
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P2
+
+ROM Allocation:
+000004  @const1084.call
+000014  @delay_ms1
+00003A  @I2C_WRITE_1
+0000A6  i2c_send_nibble
+000118  lcd_send_byte
+00013A  lcd_clear
+00014C  lcd_init
+0001A8  leer_ADC
+000264  @ITOF
+00029C  lcd_gotoxy
+0002F2  LCD_PUTC
+000360  @PSTRINGCN_941
+00037E  @MULFF
+000472  @FTOSD
+0004B2  @DIV3232
+000540  @PRINTF_L32D_941FPFPF
+0006BA  MAIN
+0006BA  @cinit1
+0006CC  @cinit2
+0136  StrtoulGO
+0136  StrtolGO
+
+Project Directory:
+    C:\Users\MARCOS\Proyecto_final\Libreria_MAX186.X\
+
+Project Files:
+    MAX168.c                                                [28-oct-16 20:12  CRC=DD117781]
+    ..\..\..\..\Program Files (x86)\PICC\devices\18F4550.h  [26-jun-15 10:09  CRC=281B1877]
+    ..\..\..\..\Program Files (x86)\PICC\drivers\stdio.h    [31-jul-07 14:24  CRC=4E4534F4]
+    ..\..\..\..\Program Files (x86)\PICC\drivers\string.h   [26-mar-15 12:34  CRC=C4814297]
+    ..\..\..\..\Program Files (x86)\PICC\drivers\stddef.h   [05-sep-14 11:47  CRC=897CEC6C]
+    ..\..\..\..\Program Files (x86)\PICC\drivers\ctype.h    [03-ene-08 14:55  CRC=2D1F019F]
+    ..\..\..\..\Program Files (x86)\PICC\drivers\stdlib.h   [07-dic-14 17:58  CRC=07F0FCBD]
+    i2c_Flex_LCD.h                                          [12-ene-14 15:46  CRC=9BBA501F]
+    ..\..\..\..\Program Files (x86)\PICC\drivers\math.h     [16-ene-15 10:40  CRC=6A8358B0]
+
+Source signature=4740F3CA
+Program memory checksum=0000
+Program memory CRC=0000
+Hex file CRC=DC4A
+
+Units:
+    MAX168 (main)
+
+Compiler Settings:
+    Processor:      PIC18F4550
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    ICD Provisions: Yes
+    Compile Mode:       CCS5
+    Predefined symbols:
+       #define __DEBUG 1
+       #define __18F4550 1
+
+Output Files:
+    XREF file:   build\default\debug\MAX168.xsym
+    Errors:      build\default\debug\MAX168.err
+    Ext Symbols: build\default\debug\MAX168.esym
+    INHX32:      build\default\debug\MAX168.hex
+    Symbols:     build\default\debug\MAX168.sym
+    List:        build\default\debug\MAX168.lst
+    Debug/COFF:  build\default\debug\MAX168.cof
+    Project:     MAX168.ccspjt
+    Call Tree:   build\default\debug\MAX168.tre
+    Statistics:  build\default\debug\MAX168.STA

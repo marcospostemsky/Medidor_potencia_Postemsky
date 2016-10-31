@@ -1,7 +1,7 @@
 ÀÄMed_pot
    ÃÄMAIN  0/66  Ram=0
    ³  ÃÄ@cinit1  (Inline)  Ram=0
-   ³  ÃÄinicializar  0/64  Ram=0
+   ³  ÃÄinicializar  0/68  Ram=0
    ³  ³  ÃÄlcd_init  0/92  Ram=0
    ³  ³  ³  ÃÄ@delay_ms1  0/40  Ram=1
    ³  ³  ³  ÃÄlcd_send_byte  0/34  Ram=2
@@ -65,8 +65,9 @@
    ³  ³        ³  ÀÄ*
    ³  ³        ÀÄlcd_send_byte  0/34  Ram=2
    ³  ³           ÀÄ*
-   ³  ÀÄmaquina_estado  0/1364  Ram=4
-   ³     ÃÄleer_ADC  0/104  Ram=6
+   ³  ÀÄmaquina_estado  0/1360  Ram=4
+   ³     ÃÄleer_Tension  0/126  Ram=5
+   ³     ÃÄleer_Corriente  0/172  Ram=6
    ³     ÃÄ@ITOF  0/54  Ram=2
    ³     ÃÄ@ITOF  0/54  Ram=2
    ³     ÃÄ@DIVFF  0/346  Ram=14
@@ -92,7 +93,7 @@
    ³     ÃÄ@DIVFF  0/346  Ram=14
    ³     ÃÄlcd_gotoxy  0/86  Ram=2
    ³     ³  ÀÄ*
-   ³     ÃÄ@PSTRINGC_670  0/34  Ram=2
+   ³     ÃÄ@PSTRINGC_670  0/36  Ram=2
    ³     ³  ÀÄLCD_PUTC  0/110  Ram=2
    ³     ³     ÀÄ*
    ³     ÃÄ@delay_ms1  0/40  Ram=1

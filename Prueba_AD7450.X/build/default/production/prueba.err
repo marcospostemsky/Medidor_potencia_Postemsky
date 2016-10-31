@@ -1,0 +1,5 @@
+C:\Users\MARCOS\Proyecto_final\Prueba_AD7450.X\prueba.c:62:1:  Warning#203  Condition always TRUE
+C:\Users\MARCOS\Proyecto_final\Prueba_AD7450.X\prueba.c:56:5:  Warning#208  Function not void and does not return a value  MAIN
+      Memory usage:   ROM=7%      RAM=1% - 2%
+      0 Errors,  2 Warnings.
+Build Successful.

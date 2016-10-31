@@ -31,7 +31,7 @@ void main()
 //inicializacion de perifericos
 
 	inicializar() ;
-
+    
     set_timer0(carga);
 	while(1)
 	{
@@ -54,5 +54,6 @@ void Inicializar(){
     lcd_backlight=ON;
     enable_interrupts (INT_RTCC);
     enable_interrupts (GLOBAL);
-    
+    output_high (PIN_A0); //pone en alto el chipselect del AD7450
+    output_high (PIN_A1); // pone en alto el chipselect del MAX186
 }

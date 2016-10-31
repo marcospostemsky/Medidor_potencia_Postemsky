@@ -42,14 +42,14 @@ Project Directory:
     C:\Users\MARCOS\Proyecto_final\Med_pot.X\
 
 Project Files:
-    funciones.c                                             [05-oct-16 11:21  CRC=11888164]
+    funciones.c                                             [30-oct-16 20:55  CRC=44F0262A]
     ..\..\..\..\Program Files (x86)\PICC\devices\18F4550.h  [26-jun-15 10:09  CRC=281B1877]
     funciones.h                                             [05-oct-16 10:43  CRC=EF492E58]
     i2c_Flex_LCD.h                                          [12-ene-14 15:46  CRC=9BBA501F]
     ..\..\..\..\Program Files (x86)\PICC\drivers\math.h     [16-ene-15 10:40  CRC=6A8358B0]
-    MAX191.h                                                [30-sep-16 12:12  CRC=D8BA4B18]
+    Control_ADCs.h                                          [30-oct-16 20:47  CRC=41A0A897]
 
-Source signature=E09F0732
+Source signature=E5D366F6
 
 Units:
     funciones (main)

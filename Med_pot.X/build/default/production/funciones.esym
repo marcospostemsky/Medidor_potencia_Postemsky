@@ -1,7 +1,7 @@
 D G "__PCH__" 0 0 ""5.048""
 D G "__DEVICE__" 0 0 ""
-D G "__DATE__" 0 0 ""05-oct-16""
-D G "__TIME__" 0 0 ""11:21:45""
+D G "__DATE__" 0 0 ""30-oct-16""
+D G "__TIME__" 0 0 ""20:55:52""
 D G "_UNICODE" 0 0 ""?""
 D G "__18F4550" 0 0 "1" "*	\file funciones.c"
 C G "" 0 1 1 "*"
@@ -1441,44 +1441,54 @@ V L "exp" 4 2207 "sint8" `815
 F G "ldexp" 4 2208 "float(float value,sint8 exp)" `813 
 C G "" 5 1 1 "*"
 C G "" 5 1 1 "*"
-D G "MAX192_H" 5 9 ""
-D G "ADC_CS1" 5 11 "PIN_A1"
-D G "ADC_SCLK" 5 12 "PIN_A2"
-D G "ADC_DOUT" 5 13 "PIN_A3"
-F N "leer_ADC" 5 15 ""
-V L "ADC" 5 15 "int8" `817 
-F G "leer_ADC" 5 15 "int16(int8 ADC)" `816 
-V L "dato" 5 16 "int16" `818 
-V L "i" 5 17 "int8" `819 
-C L "leer_ADC" 5 1 1 "FUNCTION"
+D G "Control_ADCs_H" 5 9 ""
+D G "ADC_CSCorriente" 5 11 "PIN_A0"
+D G "ADC_CSTension" 5 12 "PIN_A1"
+D G "ADC_SCLK" 5 13 "PIN_A2"
+D G "ADC_DOUT" 5 14 "PIN_A3" "por aqui ingresa la info de los ADC, SDATA en AD7450"
+D G "ADC_DIN" 5 15 "PIN_A4" "se envia la informacion al MAX186"
+D G "ADC_SSTRB" 5 16 "PIN_A5"
+C L "leer_Tension" 5 1 1 "FUNCTION"
+F N "leer_Tension" 5 19 ""
+F G "leer_Tension" 5 19 "int16()" `816 
+V L "dato" 5 20 "sint16" `817 
+V L "dato_t" 5 20 "sint16" `818 
+V L "i" 5 21 "int8" `819 
+C L "leer_Tension" 5 1 2 "FUNCTION"
+C L "leer_Corriente" 5 1 1 "FUNCTION"
+F N "leer_Corriente" 5 51 ""
+F G "leer_Corriente" 5 51 "int16()" `820 
+V L "dato" 5 52 "int16" `821 
+V L "config" 5 53 "int8" `822 
+V L "i" 5 54 "int8" `823 
 C G "" 0 22 1 "*"
 C G "" 0 22 1 "*"
 C G "" 0 22 1 "*"
 C G "" 0 22 1 "*"
 C G "" 0 22 1 "*"
-V G "punto1" 0 29 "int16" `820 
-V G "punto2" 0 29 "int16" `821 
-V G "pos_V" 0 30 "int8" `822 
-V G "pos_I" 0 30 "int8" `823 
-V G "pos_V_A" 0 30 "int8" `824 
-V G "pos_I_A" 0 30 "int8" `825 
-V G "control_V" 0 31 "int8" `826 
-V G "control_I" 0 31 "int8" `827 
-V G "desfase" 0 32 "int8" `828 
-V G "tension" 0 33 "float" `829 
-V G "corriente" 0 33 "float" `830 
-V G "tension_RMS" 0 33 "float" `831 
-V G "corriente_RMS" 0 33 "float" `832 
-V G "t_desfase" 0 33 "float" `833 
-V G "potencia_ins" 0 33 "float" `834 
-V G "angulo" 0 33 "float" `835 
-V G "carga" 0 35 "int16" `836 
+V G "punto1" 0 29 "int16" `824 
+V G "punto2" 0 29 "int16" `825 
+V G "pos_V" 0 30 "int8" `826 
+V G "pos_I" 0 30 "int8" `827 
+V G "pos_V_A" 0 30 "int8" `828 
+V G "pos_I_A" 0 30 "int8" `829 
+V G "control_V" 0 31 "int8" `830 
+V G "control_I" 0 31 "int8" `831 
+V G "desfase" 0 32 "int8" `832 
+V G "tension" 0 33 "float" `833 
+V G "corriente" 0 33 "float" `834 
+V G "tension_RMS" 0 33 "float" `835 
+V G "corriente_RMS" 0 33 "float" `836 
+V G "t_desfase" 0 33 "float" `837 
+V G "potencia_ins" 0 33 "float" `838 
+V G "angulo" 0 33 "float" `839 
+V G "carga" 0 35 "int16" `840 
 F N "interrtimer_0" 0 38 ""
-F G "interrtimer_0" 0 38 "void()" `838 
+F G "interrtimer_0" 0 38 "void()" `842 
 C L "interrtimer_0" 0 22 1 "FUNCTION"
 F N "maquina_estado" 0 44 ""
 F G "maquina_estado" 0 45 "void()" `673 
-V L "estado" 0 46 "int8" `839 
+V L "estado" 0 46 "int8" `843 
 C L "maquina_estado" 0 22 1 "FUNCTION"
 C L "maquina_estado" 0 22 2 "FUNCTION"
 C L "maquina_estado" 0 22 3 "FUNCTION"
