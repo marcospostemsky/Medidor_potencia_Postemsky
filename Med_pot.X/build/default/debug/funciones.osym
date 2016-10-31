@@ -42,14 +42,14 @@ Project Directory:
     C:\Users\MARCOS\Proyecto_final\Med_pot.X\
 
 Project Files:
-    funciones.c                                             [30-oct-16 21:58  CRC=0ACBF398]
+    funciones.c                                             [31-oct-16 08:15  CRC=1AE673E2]
     ..\..\..\..\Program Files (x86)\PICC\devices\18F4550.h  [26-jun-15 10:09  CRC=281B1877]
     funciones.h                                             [30-oct-16 21:09  CRC=EF492E58]
     i2c_Flex_LCD.h                                          [12-ene-14 15:46  CRC=9BBA501F]
     ..\..\..\..\Program Files (x86)\PICC\drivers\math.h     [16-ene-15 10:40  CRC=6A8358B0]
     Control_ADCs.h                                          [30-oct-16 21:09  CRC=41A0A897]
 
-Source signature=ABAF3464
+Source signature=BBC9B4AE
 
 Units:
     funciones (main)
@@ -61,9 +61,11 @@ Compiler Settings:
     Opt Level:      9
     Short,Int,Long: UNSIGNED: 1,8,16
     Float,Double:   32,32
+    ICD Provisions: Yes
     Output file:    Relocatable
     Compile Mode:       CCS5
     Predefined symbols:
+       #define __DEBUG 1
        #define __18F4550 1
 
 Output Files:

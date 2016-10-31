@@ -45,10 +45,10 @@ void Inicializar(){
     setup_timer_0( RTCC_INTERNAL | T0_DIV_2);
     set_tris_a(0xF9);
     contador=0;
-  /*  lcd_init();
+    lcd_init();
     lcd_gotoxy(1,1);
     printf(LCD_PUTC,"Primer prueba");
-    lcd_backlight=ON;*/
+    lcd_backlight=ON;
     enable_interrupts (INT_RTCC);
     enable_interrupts (GLOBAL);
     output_high (PIN_A0); //pone en alto el chipselect del AD7450

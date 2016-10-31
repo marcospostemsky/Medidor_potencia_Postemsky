@@ -14,6 +14,7 @@
 #define ADC_DOUT PIN_A3  // por aqui ingresa la info de los ADC, SDATA en AD7450
 #define ADC_DIN PIN_A4 // se envia la informacion al MAX186
 #define ADC_SSTRB PIN_A5
+#define ADC_SDATA PIN_A6
 
 //control AD7450
 long leer_Tension(){

@@ -14,12 +14,13 @@ lcd_backlight
 carga
 contador
 pulso_timer
+@sprintf_string
 
 Project Directory:
     C:\Users\MARCOS\Proyecto_final\Med_pot.X\
 
 Project Files:
-    main.c                                                  [30-oct-16 21:58  CRC=7EADE273]
+    main.c                                                  [31-oct-16 19:50  CRC=64E44241]
     ..\..\..\..\Program Files (x86)\PICC\devices\18F4550.h  [26-jun-15 10:09  CRC=281B1877]
     ..\..\..\..\Program Files (x86)\PICC\drivers\stdio.h    [31-jul-07 14:24  CRC=4E4534F4]
     ..\..\..\..\Program Files (x86)\PICC\drivers\string.h   [26-mar-15 12:34  CRC=C4814297]
@@ -29,7 +30,7 @@ Project Files:
     funciones.h                                             [30-oct-16 21:09  CRC=EF492E58]
     i2c_Flex_LCD.h                                          [12-ene-14 15:46  CRC=9BBA501F]
 
-Source signature=9EDA2BD3
+Source signature=85108BA1
 
 Units:
     main (main)
@@ -41,9 +42,11 @@ Compiler Settings:
     Opt Level:      9
     Short,Int,Long: UNSIGNED: 1,8,16
     Float,Double:   32,32
+    ICD Provisions: Yes
     Output file:    Relocatable
     Compile Mode:       CCS5
     Predefined symbols:
+       #define __DEBUG 1
        #define __18F4550 1
 
 Output Files:
