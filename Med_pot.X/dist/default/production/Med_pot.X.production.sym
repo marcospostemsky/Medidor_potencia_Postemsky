@@ -202,9 +202,9 @@ ROM Allocation:
 000EFA  @DIV3232
 000F88  @PRINTF_L32D_670FPFPF
 001102  maquina_estado
-001674  MAIN
-001674  @cinit1
-0016A0  @cinit2
+001676  MAIN
+001676  @cinit1
+0016A2  @cinit2
 0136  StrtoulGO
 0136  StrtolGO
 
@@ -221,14 +221,14 @@ Project Files:
     ..\..\..\..\Program Files (x86)\PICC\drivers\stdlib.h   [07-dic-14 17:58  CRC=07F0FCBD]
     funciones.h                                             [30-oct-16 21:09  CRC=EF492E58]
     i2c_Flex_LCD.h                                          [12-ene-14 15:46  CRC=9BBA501F]
-    funciones.c (link)                                      [30-oct-16 22:10  CRC=B5DE46C6]
+    funciones.c (link)                                      [31-oct-16 08:15  CRC=1AE673E2]
     ..\..\..\..\Program Files (x86)\PICC\drivers\math.h     [16-ene-15 10:40  CRC=6A8358B0]
     Control_ADCs.h                                          [30-oct-16 21:09  CRC=41A0A897]
 
-Source signature=A6C2CC58
+Source signature=0BCAF974
 Program memory checksum=0000
 Program memory CRC=0000
-Hex file CRC=2E55
+Hex file CRC=899E
 
 Units:
     C:\Users\MARCOS\Proyecto_final\Med_pot.X\build\default\production\main.o

@@ -60,7 +60,7 @@ void maquina_estado()
 			
 			case CONVERSION_DESFASE:
                 tension= (tension)*2.5/2048;
-                corriente= (corriente)/1000.0-2.5;
+                corriente= (corriente)/1000.0-2.55;
                 //se convierte a la tension y corriente real
                 tension= tension*77.78; // conversion con 4 V igual a 311.13 V
                 corriente= corriente*12; // 2.5 V es igual a +30 A (recordar que el sensor mide ±30A)

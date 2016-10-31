@@ -1,6 +1,6 @@
 
-ROM used:   5806/32768 (18%)
-            5806/32768 (18%) including unused fragments
+ROM used:   5808/32768 (18%)
+            5808/32768 (18%) including unused fragments
 
             1.0 Average locations per line
             7.2 Average locations per statement
@@ -51,7 +51,7 @@ Page ROM  %  RAM    Vol Diff  Functions:
 0    156   1    5    650  6.7  leer_Tension
 0    214   2    6   1002  6.4  leer_Corriente
 0     16   0    0     27  1.5  interrtimer_0
-0   1394  12    4   2790 10.3  maquina_estado
+0   1396  12    4   2790 10.3  maquina_estado
 0     18   0    0             @const1133
 0     34   0    2             @PSTRINGC_670
 0     16   0    0             @const1138
@@ -79,7 +79,7 @@ Program metrics:
 00000-00002     4  0  
 00004-00006     0  4  
 00008-000AC   166  0  
-000AE-07FFE  5636  26958  
+000AE-07FFE  5638  26956  
 
 
 

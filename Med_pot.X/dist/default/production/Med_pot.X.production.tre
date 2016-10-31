@@ -2,7 +2,7 @@
    ÃÄMAIN  0/62  Ram=0
    ³  ÃÄ@cinit1  (Inline)  Ram=0
    ³  ÃÄinicializar  0/24  Ram=0
-   ³  ÀÄmaquina_estado  0/1394  Ram=4
+   ³  ÀÄmaquina_estado  0/1396  Ram=4
    ³     ÃÄleer_Tension  0/156  Ram=5
    ³     ÃÄleer_Corriente  0/214  Ram=6
    ³     ÃÄ@ITOF  0/54  Ram=2
