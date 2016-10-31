@@ -1,9 +1,9 @@
 
-ROM used:   5806/32768 (18%)
-            5806/32768 (18%) including unused fragments
+ROM used:   5748/32768 (18%)
+            5748/32768 (18%) including unused fragments
 
             1.0 Average locations per line
-            7.2 Average locations per statement
+            7.1 Average locations per statement
 
 RAM used:   79/2048 (4%) at main() level
             145/2048 (7%) worst case
@@ -23,11 +23,11 @@ Lines Stmts  %   Files
  1351   359  44  ..\..\..\..\Program Files (x86)\PICC\drivers\stdlib.h
    26     0   0  funciones.h
   211    72   9  i2c_Flex_LCD.h
-  191    65   8  funciones.c
+  188    63   8  funciones.c
  2227   257  32  ..\..\..\..\Program Files (x86)\PICC\drivers\math.h
    96    47   6  Control_ADCs.h
 ----- -----
- 5534   812 Total
+ 5531   810 Total
 
 Page ROM  %  RAM    Vol Diff  Functions:
 ---- --- --- ---    --- ----  ----------
@@ -45,13 +45,13 @@ Page ROM  %  RAM    Vol Diff  Functions:
 0     86   1    2    521  6.8  lcd_gotoxy
 0    110   1    2    625  5.6  LCD_PUTC
 0    118   1   10             @FLT
-0     58   0    4             @SFTOI
+0     58   1    4             @SFTOI
 0    266   2   18    510 10.6  sqrt
-0    850   7   46   1146  9.9  cos
+0    838   7   46   1146  9.9  cos
 0    156   1    5    650  6.7  leer_Tension
 0    214   2    6   1002  6.4  leer_Corriente
 0     16   0    0     27  1.5  interrtimer_0
-0   1394  12    4   2790 10.3  maquina_estado
+0   1348  12    4   2701 10.2  maquina_estado
 0     18   0    0             @const1133
 0     34   0    2             @PSTRINGC_670
 0     16   0    0             @const1138
@@ -64,22 +64,22 @@ Page ROM  %  RAM    Vol Diff  Functions:
 
 Program metrics:
     Functions               13
-    Statements              812
-    Comments                411
-    Volume (V)              11730
-    Difficulty (D)          65.7
-    Effort to implement (E) 770387
-    Time to implement (T)   11 hours, 53 minutes
+    Statements              810
+    Comments                351
+    Volume (V)              11623
+    Difficulty (D)          65.6
+    Effort to implement (E) 762909
+    Time to implement (T)   11 hours, 46 minutes
     Est Delivered Bugs (B)  3
     Cyclomatic Complexity   34
-    Maintainability (MI)    101
+    Maintainability (MI)    117
 
  Segment     Used  Free
 -----------  ----  ----
 00000-00002     4  0  
 00004-00006     0  4  
 00008-000AC   166  0  
-000AE-07FFE  5636  26958  
+000AE-07FFE  5578  27016  
 
 
 

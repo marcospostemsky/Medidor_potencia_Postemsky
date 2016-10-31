@@ -179,12 +179,12 @@ ROM Allocation:
 0001A4  leer_Corriente
 00027A  @ITOF
 00027A  @ITOF
-0002B0  @MULFF
-0002B0  @MULFF
-0003A2  @DIVFF
-0003A2  @DIVFF
-0004FC  @ADDFF
-0004FC  @ADDFF
+0002B0  @DIVFF
+0002B0  @DIVFF
+00040A  @ADDFF
+00040A  @ADDFF
+000674  @MULFF
+000674  @MULFF
 000766  @FLT
 0007DC  sqrt
 0008E6  @I2C_WRITE_1
@@ -197,14 +197,14 @@ ROM Allocation:
 000AEE  @PSTRINGC_670
 000B10  @SFTOI
 000B4A  cos
-000E9C  @PSTRINGCN_670
-000EBA  @FTOSD
-000EFA  @DIV3232
-000F88  @PRINTF_L32D_670FPFPF
-001102  maquina_estado
-001674  MAIN
-001674  @cinit1
-0016A0  @cinit2
+000E90  @PSTRINGCN_670
+000EAE  @FTOSD
+000EEE  @DIV3232
+000F7C  @PRINTF_L32D_670FPFPF
+0010F6  maquina_estado
+00163A  MAIN
+00163A  @cinit1
+001666  @cinit2
 0136  StrtoulGO
 0136  StrtolGO
 
@@ -221,18 +221,18 @@ Project Files:
     ..\..\..\..\Program Files (x86)\PICC\drivers\stdlib.h   [07-dic-14 17:58  CRC=07F0FCBD]
     funciones.h                                             [30-oct-16 21:09  CRC=EF492E58]
     i2c_Flex_LCD.h                                          [12-ene-14 15:46  CRC=9BBA501F]
-    funciones.c (link)                                      [30-oct-16 22:10  CRC=B5DE46C6]
+    funciones.c (link)                                      [30-oct-16 21:58  CRC=0ACBF398]
     ..\..\..\..\Program Files (x86)\PICC\drivers\math.h     [16-ene-15 10:40  CRC=6A8358B0]
     Control_ADCs.h                                          [30-oct-16 21:09  CRC=41A0A897]
 
-Source signature=A6C2CC58
+Source signature=FBB0792A
 Program memory checksum=0000
 Program memory CRC=0000
-Hex file CRC=2E55
+Hex file CRC=1637
 
 Units:
-    C:\Users\MARCOS\Proyecto_final\Med_pot.X\build\default\production\main.o
-    C:\Users\MARCOS\Proyecto_final\Med_pot.X\build\default\production\funciones.o
+    C:\Users\MARCOS\Proyecto_final\Med_pot.X\build\default\debug\main.o
+    C:\Users\MARCOS\Proyecto_final\Med_pot.X\build\default\debug\funciones.o
 
 Compiler Settings:
     Processor:      PIC18F4550
@@ -244,13 +244,13 @@ Compiler Settings:
     Compile Mode:       CCS5
 
 Output Files:
-    XREF file:   dist\default\production\Med_pot.xsym
-    Errors:      dist\default\production\Med_pot.X.production.err
-    Ext Symbols: dist\default\production\Med_pot.X.production.esym
-    INHX32:      dist\default\production\Med_pot.X.production.hex
-    Symbols:     dist\default\production\Med_pot.X.production.sym
-    List:        dist\default\production\Med_pot.X.production.lst
-    Debug/COFF:  dist\default\production\Med_pot.X.production.cof
-    Project:     Med_pot.X.production.ccspjt
-    Call Tree:   dist\default\production\Med_pot.X.production.tre
-    Statistics:  dist\default\production\Med_pot.X.production.STA
+    XREF file:   dist\default\debug\Med_pot.xsym
+    Errors:      dist\default\debug\Med_pot.X.debug.err
+    Ext Symbols: dist\default\debug\Med_pot.X.debug.esym
+    INHX32:      dist\default\debug\Med_pot.X.debug.hex
+    Symbols:     dist\default\debug\Med_pot.X.debug.sym
+    List:        dist\default\debug\Med_pot.X.debug.lst
+    Debug/COFF:  dist\default\debug\Med_pot.X.debug.cof
+    Project:     Med_pot.X.debug.ccspjt
+    Call Tree:   dist\default\debug\Med_pot.X.debug.tre
+    Statistics:  dist\default\debug\Med_pot.X.debug.STA

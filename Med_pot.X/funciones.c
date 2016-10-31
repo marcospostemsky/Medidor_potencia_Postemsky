@@ -8,7 +8,7 @@
 
 #include <18F4550.h>
 #fuses NOWDT,MCLR,HS,NOUSBDIV,NOIESO,            //Selecciona el oscilador externo
-#use delay(clock=12 Mhz, crystal= 12 MHz)   // Selecciona la velocidad del oscilador interno
+#use delay(clock=48 Mhz, crystal= 48 MHz)   // Selecciona la velocidad del oscilador interno
 #use i2c(Master,Fast=100000, sda=PIN_D6, scl=PIN_D7,force_sw)
 int contador = 0 ;int pulso_timer = 0 ;
 #include "funciones.h" 
@@ -32,11 +32,11 @@ int control_V, control_I;
 int desfase;
 float tension, corriente, tension_RMS,corriente_RMS, t_desfase, potencia_ins,angulo;
 
-const long carga= 0xF485;
+const long carga= 0xE8AB;
 
-#INT_RTCC                // interrupcion para demora de 500 us
+#INT_RTCC                // interrupcion para demora de 1 ms
 void interrtimer_0(){
-    set_timer0(carga);   // interrupcion cada 500 us
+    set_timer0(carga);   // interrupcion cada 1 ms
     pulso_timer++;
 
    }
@@ -48,7 +48,6 @@ void maquina_estado()
 		switch(estado)
 		{
 			case PUNTO_TENS_CORR:
-                set_adc_channel(0);           //Habilitación canal
                 punto1= leer_Tension();
                 punto2= leer_Corriente(); // comprobar si funciona con el tiempo de demora de la lectura del externo
                 // convierte los valores de long a float
@@ -56,14 +55,15 @@ void maquina_estado()
                 corriente=punto2;
                 contador++;
 					estado = CONVERSION_DESFASE;
-		
-				
 
 				break;
 			
 			case CONVERSION_DESFASE:
-                tension= (tension)/1000-2.54;
-                corriente= (corriente*5)/1024-2.5;
+                tension= (tension)*2.5/2048;
+                corriente= (corriente)/1000.0-2.5;
+                //se convierte a la tension y corriente real
+                tension= tension*77.78; // conversion con 4 V igual a 311.13 V
+                corriente= corriente*12; // 2.5 V es igual a +30 A (recordar que el sensor mide ±30A)
                 
                 // Analisis del punto POSITVO O NEGATIVO
                 // valor positivo estado=0-- valor negativo estado=1
@@ -119,15 +119,15 @@ void maquina_estado()
                     pulso_timer=0;
                     
 					estado = PUNTO_TENS_CORR;
-		
-				}
-				if((contador== 29))
-				{
+                    
+                    if((contador== 29)){
 					disable_interrupts(GLOBAL);
 					estado = CALCULO_POT_ENER;
                       // lcd_gotoxy(1,1);  
                       // printf(LCD_PUTC,"entro timer \%d",contador);
 				}
+				}
+				
 
 				break;
 			

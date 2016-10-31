@@ -8,7 +8,7 @@
 #include <18F4550.h>
 
 #fuses NOWDT,MCLR,HS,NOUSBDIV,NOIESO,            //Selecciona el oscilador externo
-#use delay(clock=12 Mhz, crystal= 12 MHz)   // Selecciona la velocidad del oscilador interno
+#use delay(clock=48 Mhz, crystal= 48 MHz)   // Selecciona la velocidad del oscilador interno
 #use i2c(Master,Fast=100000, sda=PIN_D6, scl=PIN_D7,force_sw)
 
 #include <stdio.h>
@@ -18,7 +18,7 @@
 #use fast_io(A)
 #use fast_io(B)
 
-const long carga= 0xF485;
+const long carga= 0xE8AB;
 extern int contador;
 extern long pulso_timer;
 
@@ -42,16 +42,13 @@ void main()
 }
 
 void Inicializar(){
-
-    setup_adc_ports(AN0);                                   //Canal 0 analógico
-    setup_adc(ADC_CLOCK_DIV_16);   
     setup_timer_0( RTCC_INTERNAL | T0_DIV_2);
     set_tris_a(0xF9);
-    contador=1;
-    lcd_init();
+    contador=0;
+  /*  lcd_init();
     lcd_gotoxy(1,1);
     printf(LCD_PUTC,"Primer prueba");
-    lcd_backlight=ON;
+    lcd_backlight=ON;*/
     enable_interrupts (INT_RTCC);
     enable_interrupts (GLOBAL);
     output_high (PIN_A0); //pone en alto el chipselect del AD7450

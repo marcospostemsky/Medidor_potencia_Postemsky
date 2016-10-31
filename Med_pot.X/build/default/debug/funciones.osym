@@ -42,14 +42,14 @@ Project Directory:
     C:\Users\MARCOS\Proyecto_final\Med_pot.X\
 
 Project Files:
-    funciones.c                                             [30-oct-16 22:10  CRC=B5DE46C6]
+    funciones.c                                             [30-oct-16 21:58  CRC=0ACBF398]
     ..\..\..\..\Program Files (x86)\PICC\devices\18F4550.h  [26-jun-15 10:09  CRC=281B1877]
     funciones.h                                             [30-oct-16 21:09  CRC=EF492E58]
     i2c_Flex_LCD.h                                          [12-ene-14 15:46  CRC=9BBA501F]
     ..\..\..\..\Program Files (x86)\PICC\drivers\math.h     [16-ene-15 10:40  CRC=6A8358B0]
     Control_ADCs.h                                          [30-oct-16 21:09  CRC=41A0A897]
 
-Source signature=56C18792
+Source signature=ABAF3464
 
 Units:
     funciones (main)
@@ -67,8 +67,8 @@ Compiler Settings:
        #define __18F4550 1
 
 Output Files:
-    XREF file:   build\default\production\funciones.xsym
-    Errors:      build\default\production\funciones.err
-    Ext Symbols: build\default\production\funciones.esym
-    Object:      build\default\production\funciones.o
-    Symbols:     build\default\production\funciones.osym
+    XREF file:   build\default\debug\funciones.xsym
+    Errors:      build\default\debug\funciones.err
+    Ext Symbols: build\default\debug\funciones.esym
+    Object:      build\default\debug\funciones.o
+    Symbols:     build\default\debug\funciones.osym

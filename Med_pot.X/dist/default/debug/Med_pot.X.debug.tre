@@ -2,17 +2,16 @@
    ÃÄMAIN  0/62  Ram=0
    ³  ÃÄ@cinit1  (Inline)  Ram=0
    ³  ÃÄinicializar  0/24  Ram=0
-   ³  ÀÄmaquina_estado  0/1394  Ram=4
+   ³  ÀÄmaquina_estado  0/1348  Ram=4
    ³     ÃÄleer_Tension  0/156  Ram=5
    ³     ÃÄleer_Corriente  0/214  Ram=6
    ³     ÃÄ@ITOF  0/54  Ram=2
    ³     ÃÄ@ITOF  0/54  Ram=2
-   ³     ÃÄ@MULFF  0/242  Ram=11
-   ³     ÃÄ@DIVFF  0/346  Ram=14
    ³     ÃÄ@DIVFF  0/346  Ram=14
    ³     ÃÄ@ADDFF  0/618  Ram=16
    ³     ÃÄ@MULFF  0/242  Ram=11
-   ³     ÃÄ@MULFF  0/242  Ram=11
+   ³     ÃÄ@DIVFF  0/346  Ram=14
+   ³     ÃÄ@ADDFF  0/618  Ram=16
    ³     ÃÄ@MULFF  0/242  Ram=11
    ³     ÃÄ@ADDFF  0/618  Ram=16
    ³     ÃÄ@MULFF  0/242  Ram=11
@@ -60,7 +59,7 @@
    ³     ³        ÀÄ*
    ³     ÃÄ@delay_ms1  0/40  Ram=1
    ³     ÃÄ@MULFF  0/242  Ram=11
-   ³     ÃÄcos  0/850  Ram=46
+   ³     ÃÄcos  0/838  Ram=46
    ³     ³  ÃÄ@FLT  0/118  Ram=10
    ³     ³  ÃÄ@MULFF  0/242  Ram=11
    ³     ³  ÃÄ@SFTOI  0/58  Ram=4
