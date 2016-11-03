@@ -1,7 +1,7 @@
 D G "__PCH__" 0 0 ""5.048""
 D G "__DEVICE__" 0 0 ""
 D G "__DATE__" 0 0 ""03-nov-16""
-D G "__TIME__" 0 0 ""10:03:48""
+D G "__TIME__" 0 0 ""10:49:06""
 D G "_UNICODE" 0 0 ""?""
 D G "__18F4550" 0 0 "1" "*	\file main.c"
 C G "" 0 1 1 "*"
@@ -1719,7 +1719,6 @@ C L "MAIN" 0 31 1 "FUNCTION"
 F N "inicializar" 0 44 ""
 F G "inicializar" 0 44 "void()" `949 
 C L "inicializar" 0 31 1 "FUNCTION"
-C L "inicializar" 0 31 4 "FUNCTION"
 C L "inicializar" 0 31 1 "FUNCTION"
 F B "reset_cpu" 0 0
 F B "abs" 1 0

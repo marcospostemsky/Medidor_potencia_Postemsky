@@ -174,7 +174,7 @@ void maquina_estado()
                     Energia_Wms=0;                
                 }
                 
-                if (Energia_Wh=1000){
+                if (Energia_Wh==1000){
                     Energia_kWh=Energia_kWh+1;
                     Energia_Wh=0;
                 }
@@ -192,7 +192,7 @@ void maquina_estado()
 			case MOSTRAR_DATOS:
                 //este estado solo muestra los datos en la pantalla LCD
                 lcd_gotoxy(1,1);
-                printf(LCD_PUTC,"Potencia= \%f W",potencia_ins);
+                printf(LCD_PUTC,"pot= \%f W",potencia_ins);
                 lcd_gotoxy(1,2);
                 printf (LCD_PUTC, "T=\%f  I=\%f  ",tension_RMS,corriente_RMS);
                 delay_ms(1000);

@@ -48,10 +48,10 @@ void Inicializar(){
     set_tris_a(0xE8);// configuracion portA necesaria para la libreria control_ADC
     set_tris_b(0xFF);
     contador=0;
-    /*lcd_init();
+    lcd_init();
     lcd_gotoxy(1,1);
     printf(LCD_PUTC,"Primer prueba");
-    lcd_backlight=ON;*/
+    lcd_backlight=ON;
     enable_interrupts (INT_TIMER1);
     enable_interrupts (GLOBAL);
     output_high (PIN_A0); //pone en alto el chipselect del AD7450

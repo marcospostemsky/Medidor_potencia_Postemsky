@@ -38,20 +38,22 @@ t_desfase
 potencia_ins
 angulo
 Energia_Wms
+Energia_Wh
+Energia_kWh
 carga
 
 Project Directory:
     C:\Users\MARCOS\Proyecto_final\Med_pot.X\
 
 Project Files:
-    funciones.c                                             [03-nov-16 10:03  CRC=348AB9F0]
+    funciones.c                                             [03-nov-16 10:51  CRC=AED1FEFA]
     ..\..\..\..\Program Files (x86)\PICC\devices\18F4550.h  [26-jun-15 10:09  CRC=281B1877]
     ..\..\..\..\Program Files (x86)\PICC\drivers\math.h     [16-ene-15 10:40  CRC=6A8358B0]
     funciones.h                                             [30-oct-16 21:09  CRC=EF492E58]
     i2c_Flex_LCD.h                                          [12-ene-14 15:46  CRC=9BBA501F]
     Control_ADCs.h                                          [02-nov-16 12:16  CRC=7E77FC6C]
 
-Source signature=4F1CA266
+Source signature=C963E770
 
 Units:
     funciones (main)
@@ -63,9 +65,11 @@ Compiler Settings:
     Opt Level:      9
     Short,Int,Long: UNSIGNED: 1,8,16
     Float,Double:   32,32
+    ICD Provisions: Yes
     Output file:    Relocatable
     Compile Mode:       CCS5
     Predefined symbols:
+       #define __DEBUG 1
        #define __18F4550 1
 
 Output Files:

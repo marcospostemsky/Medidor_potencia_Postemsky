@@ -1,7 +1,7 @@
 D G "__PCH__" 0 0 ""5.048""
 D G "__DEVICE__" 0 0 ""
 D G "__DATE__" 0 0 ""03-nov-16""
-D G "__TIME__" 0 0 ""10:03:48""
+D G "__TIME__" 0 0 ""10:49:06""
 D G "_UNICODE" 0 0 ""?""
 D G "__18F4550" 0 0 "1" "*	\file funciones.c"
 C G "" 0 1 1 "*"
@@ -1486,13 +1486,15 @@ V G "t_desfase" 0 37 "float" `839
 V G "potencia_ins" 0 37 "float" `840 
 V G "angulo" 0 37 "float" `841 
 V G "Energia_Wms" 0 38 "float" `842 
-V G "carga" 0 40 "int16" `843 
+V G "Energia_Wh" 0 38 "float" `843 
+V G "Energia_kWh" 0 38 "float" `844 
+V G "carga" 0 40 "int16" `845 
 F N "interrtimer_1" 0 43 ""
-F G "interrtimer_1" 0 43 "void()" `845 
+F G "interrtimer_1" 0 43 "void()" `847 
 C L "interrtimer_1" 0 22 1 "FUNCTION"
 F N "maquina_estado" 0 49 ""
 F G "maquina_estado" 0 50 "void()" `815 
-V L "estado" 0 51 "int8" `846 
+V L "estado" 0 51 "int8" `848 
 C L "maquina_estado" 0 22 2 "FUNCTION"
 C L "maquina_estado" 0 22 1 "FUNCTION"
 C L "maquina_estado" 0 22 1 "FUNCTION"
@@ -1510,6 +1512,8 @@ C L "maquina_estado" 0 22 1 "FUNCTION"
 C L "maquina_estado" 0 22 2 "FUNCTION"
 C L "maquina_estado" 0 22 2 "FUNCTION"
 C L "maquina_estado" 0 22 6 "FUNCTION"
+C L "maquina_estado" 0 22 1 "FUNCTION"
+C L "maquina_estado" 0 22 1 "FUNCTION"
 C L "maquina_estado" 0 22 1 "FUNCTION"
 C L "maquina_estado" 0 22 1 "FUNCTION"
 C L "maquina_estado" 0 22 1 "FUNCTION"
