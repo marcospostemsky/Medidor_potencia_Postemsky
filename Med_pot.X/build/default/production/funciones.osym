@@ -10,8 +10,6 @@ C1OUT
 C2OUT
 contador
 pulso_timer
-address
-lcd_backlight
 pe
 pl
 ql
@@ -19,6 +17,8 @@ pas
 qas
 pat
 qat
+address
+lcd_backlight
 punto1
 punto2
 pos_V
@@ -28,6 +28,7 @@ pos_I_A
 control_V
 control_I
 desfase
+puntos
 tension
 corriente
 tension_RMS
@@ -42,14 +43,14 @@ Project Directory:
     C:\Users\MARCOS\Proyecto_final\Med_pot.X\
 
 Project Files:
-    funciones.c                                             [31-oct-16 08:15  CRC=1AE673E2]
+    funciones.c                                             [02-nov-16 12:15  CRC=AD7889AE]
     ..\..\..\..\Program Files (x86)\PICC\devices\18F4550.h  [26-jun-15 10:09  CRC=281B1877]
+    ..\..\..\..\Program Files (x86)\PICC\drivers\math.h     [16-ene-15 10:40  CRC=6A8358B0]
     funciones.h                                             [30-oct-16 21:09  CRC=EF492E58]
     i2c_Flex_LCD.h                                          [12-ene-14 15:46  CRC=9BBA501F]
-    ..\..\..\..\Program Files (x86)\PICC\drivers\math.h     [16-ene-15 10:40  CRC=6A8358B0]
-    Control_ADCs.h                                          [30-oct-16 21:09  CRC=41A0A897]
+    Control_ADCs.h                                          [02-nov-16 12:16  CRC=7E77FC6C]
 
-Source signature=BBC9B4AE
+Source signature=C80A7224
 
 Units:
     funciones (main)

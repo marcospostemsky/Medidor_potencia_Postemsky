@@ -1,7 +1,7 @@
 D G "__PCH__" 0 0 ""5.048""
 D G "__DEVICE__" 0 0 ""
-D G "__DATE__" 0 0 ""30-oct-16""
-D G "__TIME__" 0 0 ""20:55:42""
+D G "__DATE__" 0 0 ""02-nov-16""
+D G "__TIME__" 0 0 ""12:03:11""
 D G "_UNICODE" 0 0 ""?""
 D G "__18F4550" 0 0 "1" "Standard Header file for the PIC18F4550 device ////////////////"
 c L "set_tris_a" 1 3 6 "FUNCTION"
@@ -1872,20 +1872,35 @@ F N "ldexp" 8 2207 ""
 V L "value" 8 2207 "float" `1073 
 V L "exp" 8 2207 "sint8" `1074 
 F G "ldexp" 8 2208 "float(float value,sint8 exp)" `1072 
-D G "ADC_CS" 0 14 "PIN_A0"
-D G "ADC_SCLK" 0 15 "PIN_A2"
-D G "ADC_DOUT" 0 16 "PIN_A3"
-D G "ADC_DIN" 0 17 "PIN_A4"
-D G "ADC_SSTRB" 0 18 "PIN_A5"
-F N "leer_ADC" 0 20 ""
-F G "leer_ADC" 0 20 "int16()" `1075 
-V L "dato" 0 21 "int16" `1076 
-V L "config" 0 22 "int8" `1077 
-V L "i" 0 23 "int8" `1078 
-F N "MAIN" 0 62 ""
-F G "MAIN" 0 62 "int8()" `1079 
-V L "valor" 0 63 "int16" `1080 
-V L "enviar" 0 64 "float" `1081 
+C G "" 9 1 1 "*"
+C G "" 9 1 1 "*"
+D G "Control_ADCs_H" 9 9 ""
+D G "ADC_CSCorriente" 9 11 "PIN_A0" "salida"
+D G "ADC_CSTension" 9 12 "PIN_A1" "salida"
+D G "ADC_SCLK" 9 13 "PIN_A2" "salida"
+D G "ADC_DOUT" 9 14 "PIN_B0" "entrada, por aqui ingresa la info del MAX186"
+D G "ADC_DIN" 9 15 "PIN_A4" "salida, se envia la informacion al MAX186"
+D G "ADC_SSTRB" 9 16 "PIN_A5" "entrada"
+D G "ADC_SDATA" 9 17 "PIN_A3" "entrada SDATA en AD7450"
+C L "leer_Tension" 9 1 1 "FUNCTION"
+F N "leer_Tension" 9 20 ""
+F G "leer_Tension" 9 20 "sint16()" `1075 
+V L "dato" 9 21 "sint16" `1076 
+V L "dato_t" 9 21 "sint16" `1077 
+V L "i" 9 22 "int8" `1078 
+C L "leer_Tension" 9 1 2 "FUNCTION"
+C L "leer_Corriente" 9 1 1 "FUNCTION"
+F N "leer_Corriente" 9 51 ""
+F G "leer_Corriente" 9 51 "int16()" `1079 
+V L "dato" 9 52 "int16" `1080 
+V L "config" 9 53 "int8" `1081 
+V L "i" 9 54 "int8" `1082 
+C L "MAIN" 0 17 29 "FUNCTION"
+F N "MAIN" 0 60 ""
+F G "MAIN" 0 60 "int8()" `1083 
+V L "valor" 0 61 "sint16" `1084 
+V L "enviar" 0 62 "float" `1085 
+C L "MAIN" 0 17 2 "FUNCTION"
 F B "reset_cpu" 0 0
 F B "abs" 1 0
 F B "sleep" 0 1

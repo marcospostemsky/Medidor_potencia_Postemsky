@@ -11,8 +11,8 @@
 #use delay(clock=48 Mhz, crystal= 48 MHz)   // Selecciona la velocidad del oscilador interno
 #use i2c(Master,Fast=100000, sda=PIN_D6, scl=PIN_D7,force_sw)
 int contador = 0 ;int pulso_timer = 0 ;
-#include "funciones.h" 
 #include <math.h>
+#include "funciones.h"
 #include <Control_ADCs.h>
 
 
@@ -26,10 +26,12 @@ int contador = 0 ;int pulso_timer = 0 ;
 *	\author Postemsky Marcos
 *	\date 17-09-2016 11:39:08
  **/
-unsigned long punto1, punto2;
+signed long punto1;
+long punto2;
 int8 pos_V,pos_I,pos_V_A,pos_I_A;
 int control_V, control_I;
 int desfase;
+int puntos=20;//puntos por periodo
 float tension, corriente, tension_RMS,corriente_RMS, t_desfase, potencia_ins,angulo;
 
 const long carga= 0xE8AB;
@@ -60,9 +62,9 @@ void maquina_estado()
 			
 			case CONVERSION_DESFASE:
                 tension= (tension)*2.5/2048;
-                corriente= (corriente)/1000.0-2.55;
+                corriente= (corriente)/1000-2.5;
                 //se convierte a la tension y corriente real
-                tension= tension*77.78; // conversion con 4 V igual a 311.13 V
+                tension= tension*155.57; // conversion con 2 V igual a 311.13 V
                 corriente= corriente*12; // 2.5 V es igual a +30 A (recordar que el sensor mide ±30A)
                 
                 // Analisis del punto POSITVO O NEGATIVO
@@ -121,10 +123,9 @@ void maquina_estado()
 					estado = PUNTO_TENS_CORR;
                     
                     if((contador== 29)){
-					disable_interrupts(GLOBAL);
+					disable_interrupts(INT_RTCC);// deshabilita la interrupcion para no entrar al timer
+                    contador=0; //se reinicia el contador, para comenzar nuevamente 
 					estado = CALCULO_POT_ENER;
-                      // lcd_gotoxy(1,1);  
-                      // printf(LCD_PUTC,"entro timer \%d",contador);
 				}
 				}
 				
@@ -138,15 +139,17 @@ void maquina_estado()
                 
                 // se controla si se pudo calcular desfase en el estado anterior 
                 // se realiza las diferencia de cruce por cero y se convierte de tiempo a radianes
+                angulo=0;
                 if (desfase==2){
                     t_desfase= (control_I-control_V);
-                    angulo= (t_desfase*pi)/20;      // angulo de desfase en radianes.
+                    angulo= (t_desfase*pi)/10;      // angulo de desfase en radianes. 20 puntos por periodo
                      lcd_gotoxy(1,1);
                      printf(LCD_PUTC,"Se midio desfase");
                      delay_ms(1000);
                 }                
+                angulo=cos(angulo);
                // calculo de potencia 
-                potencia_ins= tension_RMS*corriente_RMS* cos(angulo);
+                potencia_ins= tension_RMS*corriente_RMS*angulo;
                 //se limpian las variables para la próxima tanta de muestreo
                 control_V=0;      
                 control_I=0;
@@ -163,10 +166,15 @@ void maquina_estado()
                 lcd_gotoxy(1,2);
                 printf (LCD_PUTC, "T=\%f V  I=\%f A",tension_RMS,corriente_RMS);
                 delay_ms(1000);
+                enable_interrupts(INT_RTCC);
                 enable_interrupts(GLOBAL);
-                set_timer0(0x1D);   // se carga 29 para un desborde en 500 us teniendo en cuenta los tiempos en C
-					
-					estado = PUNTO_TENS_CORR;
+                pulso_timer=0;
+                set_timer0(carga);   
+				//reinicia todo
+                corriente_RMS=0;
+                tension_RMS=0;
+                
+				estado = PUNTO_TENS_CORR;
 		
 
 				break;

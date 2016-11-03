@@ -10,8 +10,7 @@
 
 #define ADC_CSCorriente PIN_A0  // salida
 #define ADC_CSTension PIN_A1 // salida
-#define ADC_SCLK PIN_A2 // salida clock tension
-#define ADC_SCLKcorr PIN_B1
+#define ADC_SCLK PIN_A2 // salida
 #define ADC_DOUT PIN_B0  // entrada, por aqui ingresa la info del MAX186
 #define ADC_DIN PIN_A4 //salida, se envia la informacion al MAX186
 #define ADC_SSTRB PIN_A5//entrada
@@ -59,9 +58,9 @@ long leer_Corriente(){
     
     for(i=0; i<8; i++) {
       output_bit(ADC_DIN, shift_left(&config,1,0));
-      output_high(ADC_SCLKcorr);
+      output_high(ADC_SCLK);
       delay_us(1);
-      output_low(ADC_SCLKcorr);	
+      output_low(ADC_SCLK);	
       delay_us(1);
    }
 
@@ -70,16 +69,16 @@ long leer_Corriente(){
     while(input(ADC_SSTRB)=='0');   
         
         output_low (ADC_CSCorriente);
-        output_high (ADC_SCLKcorr);
+        output_high (ADC_SCLK);
         delay_us(1);
-        output_low (ADC_SCLKcorr);
+        output_low (ADC_SCLK);
         delay_us(1);
         
         for(i=0;i<15;i++){
-          output_high(ADC_SCLKcorr);
+          output_high(ADC_SCLK);
           delay_us(1);
           shift_left(&dato,2,input(ADC_DOUT)); 
-          output_low(ADC_SCLKcorr);
+          output_low(ADC_SCLK);
           delay_us(1);
         }
  

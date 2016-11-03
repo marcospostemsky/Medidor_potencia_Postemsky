@@ -1,7 +1,7 @@
 D G "__PCH__" 0 0 ""5.048""
 D G "__DEVICE__" 0 0 ""
-D G "__DATE__" 0 0 ""31-oct-16""
-D G "__TIME__" 0 0 ""19:55:12""
+D G "__DATE__" 0 0 ""02-nov-16""
+D G "__TIME__" 0 0 ""12:16:42""
 D G "_UNICODE" 0 0 ""?""
 D G "__18F4550" 0 0 "1" "*	\file funciones.c"
 C G "" 0 1 1 "*"
@@ -1194,301 +1194,303 @@ d G "INT_SPP" 1 835 "0x009D80"
 d G "INT_USB" 1 836 "0x00A020"
 V G "contador" 0 13 "int8" `654 
 V G "pulso_timer" 0 13 "int8" `655 
-C L "jump_to_isr" 2 1 1 "*"
-C L "jump_to_isr" 2 1 1 "*"
-C L "jump_to_isr" 2 1 1 "*"
-C L "jump_to_isr" 2 1 1 "*"
-C L "jump_to_isr" 2 1 1 "*"
-D G "LCD_ADDR" 3 86 "0x4E" "I2C slave address for LCD module"
-D G "ON" 3 88 "1"
-D G "OFF" 3 89 "0"
-D G "RS" 3 90 "0b00000001" "P0 - PCF8574T Pin connected to RS"
-D G "RW" 3 91 "0b00000010" "P1 - PCF8574T Pin connected to RW"
-D G "EN" 3 92 "0b00000100" "P2 - PCF8574T Pin connected to EN"
-D G "BACKLIGHT_LED" 3 93 "0b00001000" "P3 - PCF8574T Pin connected to BACKLIGHT LED"
-D G "lcd_line_one" 3 95 "0x80" "LCD RAM address for line 1"
-D G "lcd_line_two" 3 96 "0xC0" "LCD RAM address for line 2"
-D G "lcd_line_three" 3 97 "0x94" "LCD RAM address for line 3"
-D G "lcd_line_four" 3 98 "0xD4" "LCD RAM address for line 4"
-V G "address" 3 100 "int8" `656 
-V G "lcd_backlight" 3 101 "int1" `657 
-F N "i2c_lcd_backlight_On" 3 103 ""
-F G "i2c_lcd_backlight_On" 3 103 "void()" `658 
-F N "i2c_lcd_backlight_Off" 3 107 ""
-F G "i2c_lcd_backlight_Off" 3 107 "void()" `659 
-F N "i2c_send_nibble" 3 111 ""
-V L "data" 3 111 "int8" `661 
-F G "i2c_send_nibble" 3 112 "void(int8 data)" `660 
-C L "i2c_send_nibble" 3 2 1 "FUNCTION"
-F N "lcd_send_byte" 3 123 ""
-V L "data" 3 123 "int8" `663 
-F G "lcd_send_byte" 3 124 "void(int8 data)" `662 
-C L "lcd_send_byte" 3 2 1 "FUNCTION"
-C L "lcd_send_byte" 3 2 1 "FUNCTION"
-F N "lcd_clear" 3 131 ""
-F G "lcd_clear" 3 132 "void()" `664 
-F N "lcd_init" 3 138 ""
-F G "lcd_init" 3 139 "void()" `665 
-C L "lcd_init" 3 2 2 "FUNCTION"
-C L "lcd_init" 3 2 1 "FUNCTION"
-C L "lcd_init" 3 2 1 "FUNCTION"
-C L "lcd_init" 3 2 1 "FUNCTION"
-C L "lcd_init" 3 2 1 "FUNCTION"
-C L "lcd_init" 3 2 1 "FUNCTION"
-C L "lcd_init" 3 2 1 "FUNCTION"
-F N "lcd_gotoxy" 3 167 ""
-V L "x" 3 167 "int8" `667 
-V L "y" 3 167 "int8" `668 
-F G "lcd_gotoxy" 3 168 "void(int8 x,int8 y)" `666 
-V L "data" 3 169 "int8" `669 
-C L "LCD_PUTC" 3 2 1 "FUNCTION"
-F N "LCD_PUTC" 3 189 ""
-V L "in_data" 3 189 "int8" `671 
-F G "LCD_PUTC" 3 190 "void(int8 in_data)" `670 
-V L "data" 3 191 "int8" `672 
-C L "LCD_PUTC" 3 2 1 "FUNCTION"
-C L "LCD_PUTC" 3 2 1 "FUNCTION"
-D G "FUNCIONES_H" 2 13 ""
-D G "PUNTO_TENS_CORR" 2 16 "0"
-D G "CONVERSION_DESFASE" 2 17 "1"
-D G "TENS_CORR_RMS" 2 18 "2"
-D G "CALCULO_POT_ENER" 2 19 "3"
-D G "MOSTRAR_DATOS" 2 20 "4"
-C L "maquina_estado" 2 14 1 "FUNCTION"
-F N "maquina_estado" 2 23 ""
-f G "maquina_estado" 2 23 "void()" `673  "(C) Copyright 1996,2011 Custom Computer Services            ////"
-D G "MATH_H" 4 30 ""
-D G "PI" 4 35 "3.1415926535897932"
-D G "SQRT2" 4 38 "1.4142135623730950"
-C L "maquina_estado" 4 3 3 "FUNCTION"
-F N "CEIL_FLOOR" 4 45 ""
-V L "x" 4 45 "float" `675 
-V L "n" 4 45 "int8" `676 
-F G "CEIL_FLOOR" 4 46 "float(float x,int8 n)" `674 
-V L "y" 4 47 "float" `677 
-V L "res" 4 47 "float" `678 
-V L "l" 4 48 "int16" `679 
-V L "s" 4 49 "int1" `680 
-C L "floor" 4 3 5 "FUNCTION"
-F N "floor" 4 207 ""
-V L "x" 4 207 "float" `695 
-F G "floor" 4 208 "float(float x)" `694 
-C L "ceil" 4 3 5 "FUNCTION"
-F N "ceil" 4 233 ""
-V L "x" 4 233 "float" `697 
-F G "ceil" 4 234 "float(float x)" `696 
-D G "fabs" 4 259 "abs"
-C L "fmod" 4 3 6 "FUNCTION"
-F N "fmod" 4 271 ""
-V L "x" 4 271 "float" `699 
-V L "y" 4 271 "float" `700 
-F G "fmod" 4 272 "float(float x,float y)" `698 
-V L "i" 4 273 "float" `701 
-D G "LN2" 4 334 "0.6931471805599453"
-D G "LN2_INV" 4 335 "1.4426950408889634073"
-V G "pe" 4 337 "[6]" `706 
-F N "exp" 4 341 ""
-V L "x" 4 341 "float" `709 
-F G "exp" 4 342 "float(float x)" `708 
-V L "y" 4 343 "float" `710 
-V L "res" 4 343 "float" `711 
-V L "r" 4 343 "float" `712 
-V L "n" 4 347 "sint8" `713 
-V L "s" 4 348 "int1" `714 
-C L "exp" 4 3 1 "FUNCTION"
-V G "pl" 4 525 "[4]" `718 
-V G "ql" 4 526 "[4]" `721 
-C L "log" 4 3 3 "FUNCTION"
-F N "log" 4 534 ""
-V L "x" 4 534 "float" `724 
-F G "log" 4 535 "float(float x)" `723 
-V L "y" 4 536 "float" `725 
-V L "res" 4 536 "float" `726 
-V L "r" 4 536 "float" `727 
-V L "y2" 4 536 "float" `728 
-V L "n" 4 540 "sint8" `729 
-C L "log" 4 3 1 "FUNCTION"
-D G "LN10" 4 758 "2.3025850929940456"
-D G "LN10_INV" 4 759 "0.4342944819032518276"
-C L "log10" 4 3 3 "FUNCTION"
-F N "log10" 4 767 ""
-V L "x" 4 767 "float" `731 
-F G "log10" 4 768 "float(float x)" `730 
-V L "r" 4 769 "float" `732 
-C L "modf" 4 3 8 "FUNCTION"
-F N "modf" 4 808 ""
-V L "value" 4 808 "float" `734 
-V L "iptr" 4 808 "*float" `735 
-F G "modf" 4 809 "float(float value,*float iptr)" `733 
-C L "pwr" 4 3 6 "FUNCTION"
-F N "pwr" 4 836 ""
-V L "x" 4 836 "float" `737 
-V L "y" 4 836 "float" `738 
-F G "pwr" 4 837 "float(float x,float y)" `736 
-C L "pow" 4 3 7 "FUNCTION"
-F N "pow" 4 899 ""
-V L "x" 4 899 "float" `740 
-V L "y" 4 899 "float" `741 
-F G "pow" 4 900 "float(float x,float y)" `739 
-C L "sqrt" 4 3 5 "FUNCTION"
-F N "sqrt" 4 960 ""
-V L "x" 4 960 "float" `743 
-F G "sqrt" 4 961 "float(float x)" `742 
-V L "y" 4 962 "float" `744 
-V L "res" 4 962 "float" `745 
-V L "p" 4 966 "*int8" `746 
-D G "PI_DIV_BY_TWO_INV" 4 1155 "0.63661977236758134"
-D G "PI_DIV_BY_TWO" 4 1159 "1.5707963267948966"
-D G "TWOBYPI" 4 1163 "0.6366197723675813"
-C L "cos" 4 3 3 "FUNCTION"
-F N "cos" 4 1171 ""
-V L "x" 4 1171 "float" `748 
-F G "cos" 4 1172 "float(float x)" `747 
-V L "y" 4 1173 "float" `749 
-V L "t" 4 1173 "float" `750 
-V L "t2" 4 1173 "float" `751 
-V L "quad" 4 1174 "int8" `752 
-V L "i" 4 1174 "int8" `753 
-V L "frac" 4 1175 "float" `754 
-V L "p" 4 1176 "float[5]" `755  "by the series definition for cosine"
-C L "cos" 4 3 1 "FUNCTION"
-C L "cos" 4 3 2 "FUNCTION"
-C L "cos" 4 3 1 "FUNCTION"
-C L "cos" 4 3 1 "FUNCTION"
-C L "cos" 4 3 1 "FUNCTION"
-C L "cos" 4 3 1 "FUNCTION"
-C L "cos" 4 3 1 "FUNCTION"
-C L "cos" 4 3 1 "FUNCTION"
-C L "sin" 4 3 5 "FUNCTION"
-F N "sin" 4 1310 ""
-V L "x" 4 1310 "float" `757 
-F G "sin" 4 1311 "float(float x)" `756 
-C L "tan" 4 3 5 "FUNCTION"
-F N "tan" 4 1336 ""
-V L "x" 4 1336 "float" `759 
-F G "tan" 4 1337 "float(float x)" `758 
-V L "c" 4 1338 "float" `760 
-V L "s" 4 1338 "float" `761 
-V G "pas" 4 1376 "[3]" `763 
-V G "qas" 4 1377 "[3]" `766 
-F N "ASIN_COS" 4 1379 ""
-V L "x" 4 1379 "float" `769 
-V L "n" 4 1379 "int8" `770 
-F G "ASIN_COS" 4 1380 "float(float x,int8 n)" `768 
-V L "y" 4 1381 "float" `771 
-V L "res" 4 1381 "float" `772 
-V L "r" 4 1381 "float" `773 
-V L "y2" 4 1381 "float" `774 
-V L "s" 4 1382 "int1" `775 
-C L "ASIN_COS" 4 3 1 "FUNCTION"
-C L "ASIN_COS" 4 3 1 "FUNCTION"
-C L "asin" 4 3 5 "FUNCTION"
-F N "asin" 4 1537 ""
-V L "x" 4 1537 "float" `777 
-F G "asin" 4 1538 "float(float x)" `776 
-V L "r" 4 1539 "float" `778 
-C L "acos" 4 3 5 "FUNCTION"
-F N "acos" 4 1571 ""
-V L "x" 4 1571 "float" `780 
-F G "acos" 4 1572 "float(float x)" `779 
-V L "r" 4 1573 "float" `781 
-V G "pat" 4 1599 "[4]" `783 
-V G "qat" 4 1600 "[4]" `786 
-C L "atan" 4 3 3 "FUNCTION"
-F N "atan" 4 1608 ""
-V L "x" 4 1608 "float" `789 
-F G "atan" 4 1609 "float(float x)" `788 
-V L "y" 4 1610 "float" `790 
-V L "res" 4 1610 "float" `791 
-V L "r" 4 1610 "float" `792 
-V L "s" 4 1611 "int1" `793 
-V L "flag" 4 1611 "int1" `794 
-C L "atan" 4 3 1 "FUNCTION"
-C L "atan2" 4 3 7 "FUNCTION"
-F N "atan2" 4 1751 ""
-V L "y" 4 1751 "float" `796 
-V L "x" 4 1751 "float" `797 
-F G "atan2" 4 1752 "float(float y,float x)" `795 
-V L "z" 4 1753 "float" `798 
-V L "sign" 4 1754 "int1" `799 
-V L "quad" 4 1755 "int8" `800 
-C L "atan2" 4 3 1 "FUNCTION"
-C L "atan2" 4 3 1 "FUNCTION"
-C L "cosh" 4 3 7 "FUNCTION"
-F N "cosh" 4 1973 ""
-V L "x" 4 1973 "float" `803 
-F G "cosh" 4 1974 "float(float x)" `802 
-C L "sinh" 4 3 6 "FUNCTION"
-F N "sinh" 4 2000 ""
-V L "x" 4 2000 "float" `805 
-F G "sinh" 4 2001 "float(float x)" `804 
-C L "tanh" 4 3 6 "FUNCTION"
-F N "tanh" 4 2030 ""
-V L "x" 4 2030 "float" `807 
-F G "tanh" 4 2031 "float(float x)" `806 
-D G "LOG2" 4 2060 ".30102999566398119521"
-D G "LOG2_INV" 4 2061 "3.32192809488736234787"
-F N "frexp" 4 2062 ""
-V L "x" 4 2062 "float" `809 
-V L "exp" 4 2062 "*sint8" `810 
-F G "frexp" 4 2063 "float(float x,*sint8 exp)" `808 
-V L "res" 4 2064 "float" `811 
-V L "sign" 4 2065 "int1" `812 
-C L "ldexp" 4 3 6 "FUNCTION"
-F N "ldexp" 4 2207 ""
-V L "value" 4 2207 "float" `814 
-V L "exp" 4 2207 "sint8" `815 
-F G "ldexp" 4 2208 "float(float value,sint8 exp)" `813 
-C G "" 5 1 1 "*"
-C G "" 5 1 1 "*"
+D G "MATH_H" 2 30 ""
+D G "PI" 2 35 "3.1415926535897932"
+D G "SQRT2" 2 38 "1.4142135623730950"
+C L "jump_to_isr" 2 2 3 "FUNCTION"
+F N "CEIL_FLOOR" 2 45 ""
+V L "x" 2 45 "float" `657 
+V L "n" 2 45 "int8" `658 
+F G "CEIL_FLOOR" 2 46 "float(float x,int8 n)" `656 
+V L "y" 2 47 "float" `659 
+V L "res" 2 47 "float" `660 
+V L "l" 2 48 "int16" `661 
+V L "s" 2 49 "int1" `662 
+C L "floor" 2 2 5 "FUNCTION"
+F N "floor" 2 207 ""
+V L "x" 2 207 "float" `677 
+F G "floor" 2 208 "float(float x)" `676 
+C L "ceil" 2 2 5 "FUNCTION"
+F N "ceil" 2 233 ""
+V L "x" 2 233 "float" `679 
+F G "ceil" 2 234 "float(float x)" `678 
+D G "fabs" 2 259 "abs"
+C L "fmod" 2 2 6 "FUNCTION"
+F N "fmod" 2 271 ""
+V L "x" 2 271 "float" `681 
+V L "y" 2 271 "float" `682 
+F G "fmod" 2 272 "float(float x,float y)" `680 
+V L "i" 2 273 "float" `683 
+D G "LN2" 2 334 "0.6931471805599453"
+D G "LN2_INV" 2 335 "1.4426950408889634073"
+V G "pe" 2 337 "[6]" `688 
+F N "exp" 2 341 ""
+V L "x" 2 341 "float" `691 
+F G "exp" 2 342 "float(float x)" `690 
+V L "y" 2 343 "float" `692 
+V L "res" 2 343 "float" `693 
+V L "r" 2 343 "float" `694 
+V L "n" 2 347 "sint8" `695 
+V L "s" 2 348 "int1" `696 
+C L "exp" 2 2 1 "FUNCTION"
+V G "pl" 2 525 "[4]" `700 
+V G "ql" 2 526 "[4]" `703 
+C L "log" 2 2 3 "FUNCTION"
+F N "log" 2 534 ""
+V L "x" 2 534 "float" `706 
+F G "log" 2 535 "float(float x)" `705 
+V L "y" 2 536 "float" `707 
+V L "res" 2 536 "float" `708 
+V L "r" 2 536 "float" `709 
+V L "y2" 2 536 "float" `710 
+V L "n" 2 540 "sint8" `711 
+C L "log" 2 2 1 "FUNCTION"
+D G "LN10" 2 758 "2.3025850929940456"
+D G "LN10_INV" 2 759 "0.4342944819032518276"
+C L "log10" 2 2 3 "FUNCTION"
+F N "log10" 2 767 ""
+V L "x" 2 767 "float" `713 
+F G "log10" 2 768 "float(float x)" `712 
+V L "r" 2 769 "float" `714 
+C L "modf" 2 2 8 "FUNCTION"
+F N "modf" 2 808 ""
+V L "value" 2 808 "float" `716 
+V L "iptr" 2 808 "*float" `717 
+F G "modf" 2 809 "float(float value,*float iptr)" `715 
+C L "pwr" 2 2 6 "FUNCTION"
+F N "pwr" 2 836 ""
+V L "x" 2 836 "float" `719 
+V L "y" 2 836 "float" `720 
+F G "pwr" 2 837 "float(float x,float y)" `718 
+C L "pow" 2 2 7 "FUNCTION"
+F N "pow" 2 899 ""
+V L "x" 2 899 "float" `722 
+V L "y" 2 899 "float" `723 
+F G "pow" 2 900 "float(float x,float y)" `721 
+C L "sqrt" 2 2 5 "FUNCTION"
+F N "sqrt" 2 960 ""
+V L "x" 2 960 "float" `725 
+F G "sqrt" 2 961 "float(float x)" `724 
+V L "y" 2 962 "float" `726 
+V L "res" 2 962 "float" `727 
+V L "p" 2 966 "*int8" `728 
+D G "PI_DIV_BY_TWO_INV" 2 1155 "0.63661977236758134"
+D G "PI_DIV_BY_TWO" 2 1159 "1.5707963267948966"
+D G "TWOBYPI" 2 1163 "0.6366197723675813"
+C L "cos" 2 2 3 "FUNCTION"
+F N "cos" 2 1171 ""
+V L "x" 2 1171 "float" `730 
+F G "cos" 2 1172 "float(float x)" `729 
+V L "y" 2 1173 "float" `731 
+V L "t" 2 1173 "float" `732 
+V L "t2" 2 1173 "float" `733 
+V L "quad" 2 1174 "int8" `734 
+V L "i" 2 1174 "int8" `735 
+V L "frac" 2 1175 "float" `736 
+V L "p" 2 1176 "float[5]" `737  "by the series definition for cosine"
+C L "cos" 2 2 1 "FUNCTION"
+C L "cos" 2 2 2 "FUNCTION"
+C L "cos" 2 2 1 "FUNCTION"
+C L "cos" 2 2 1 "FUNCTION"
+C L "cos" 2 2 1 "FUNCTION"
+C L "cos" 2 2 1 "FUNCTION"
+C L "cos" 2 2 1 "FUNCTION"
+C L "cos" 2 2 1 "FUNCTION"
+C L "sin" 2 2 5 "FUNCTION"
+F N "sin" 2 1310 ""
+V L "x" 2 1310 "float" `739 
+F G "sin" 2 1311 "float(float x)" `738 
+C L "tan" 2 2 5 "FUNCTION"
+F N "tan" 2 1336 ""
+V L "x" 2 1336 "float" `741 
+F G "tan" 2 1337 "float(float x)" `740 
+V L "c" 2 1338 "float" `742 
+V L "s" 2 1338 "float" `743 
+V G "pas" 2 1376 "[3]" `745 
+V G "qas" 2 1377 "[3]" `748 
+F N "ASIN_COS" 2 1379 ""
+V L "x" 2 1379 "float" `751 
+V L "n" 2 1379 "int8" `752 
+F G "ASIN_COS" 2 1380 "float(float x,int8 n)" `750 
+V L "y" 2 1381 "float" `753 
+V L "res" 2 1381 "float" `754 
+V L "r" 2 1381 "float" `755 
+V L "y2" 2 1381 "float" `756 
+V L "s" 2 1382 "int1" `757 
+C L "ASIN_COS" 2 2 1 "FUNCTION"
+C L "ASIN_COS" 2 2 1 "FUNCTION"
+C L "asin" 2 2 5 "FUNCTION"
+F N "asin" 2 1537 ""
+V L "x" 2 1537 "float" `759 
+F G "asin" 2 1538 "float(float x)" `758 
+V L "r" 2 1539 "float" `760 
+C L "acos" 2 2 5 "FUNCTION"
+F N "acos" 2 1571 ""
+V L "x" 2 1571 "float" `762 
+F G "acos" 2 1572 "float(float x)" `761 
+V L "r" 2 1573 "float" `763 
+V G "pat" 2 1599 "[4]" `765 
+V G "qat" 2 1600 "[4]" `768 
+C L "atan" 2 2 3 "FUNCTION"
+F N "atan" 2 1608 ""
+V L "x" 2 1608 "float" `771 
+F G "atan" 2 1609 "float(float x)" `770 
+V L "y" 2 1610 "float" `772 
+V L "res" 2 1610 "float" `773 
+V L "r" 2 1610 "float" `774 
+V L "s" 2 1611 "int1" `775 
+V L "flag" 2 1611 "int1" `776 
+C L "atan" 2 2 1 "FUNCTION"
+C L "atan2" 2 2 7 "FUNCTION"
+F N "atan2" 2 1751 ""
+V L "y" 2 1751 "float" `778 
+V L "x" 2 1751 "float" `779 
+F G "atan2" 2 1752 "float(float y,float x)" `777 
+V L "z" 2 1753 "float" `780 
+V L "sign" 2 1754 "int1" `781 
+V L "quad" 2 1755 "int8" `782 
+C L "atan2" 2 2 1 "FUNCTION"
+C L "atan2" 2 2 1 "FUNCTION"
+C L "cosh" 2 2 7 "FUNCTION"
+F N "cosh" 2 1973 ""
+V L "x" 2 1973 "float" `785 
+F G "cosh" 2 1974 "float(float x)" `784 
+C L "sinh" 2 2 6 "FUNCTION"
+F N "sinh" 2 2000 ""
+V L "x" 2 2000 "float" `787 
+F G "sinh" 2 2001 "float(float x)" `786 
+C L "tanh" 2 2 6 "FUNCTION"
+F N "tanh" 2 2030 ""
+V L "x" 2 2030 "float" `789 
+F G "tanh" 2 2031 "float(float x)" `788 
+D G "LOG2" 2 2060 ".30102999566398119521"
+D G "LOG2_INV" 2 2061 "3.32192809488736234787"
+F N "frexp" 2 2062 ""
+V L "x" 2 2062 "float" `791 
+V L "exp" 2 2062 "*sint8" `792 
+F G "frexp" 2 2063 "float(float x,*sint8 exp)" `790 
+V L "res" 2 2064 "float" `793 
+V L "sign" 2 2065 "int1" `794 
+C L "ldexp" 2 2 6 "FUNCTION"
+F N "ldexp" 2 2207 ""
+V L "value" 2 2207 "float" `796 
+V L "exp" 2 2207 "sint8" `797 
+F G "ldexp" 2 2208 "float(float value,sint8 exp)" `795 
+C G "" 3 1 1 "*"
+C G "" 3 1 1 "*"
+C G "" 3 1 1 "*"
+C G "" 3 1 1 "*"
+C G "" 3 1 1 "*"
+D G "LCD_ADDR" 4 86 "0x4E" "I2C slave address for LCD module"
+D G "ON" 4 88 "1"
+D G "OFF" 4 89 "0"
+D G "RS" 4 90 "0b00000001" "P0 - PCF8574T Pin connected to RS"
+D G "RW" 4 91 "0b00000010" "P1 - PCF8574T Pin connected to RW"
+D G "EN" 4 92 "0b00000100" "P2 - PCF8574T Pin connected to EN"
+D G "BACKLIGHT_LED" 4 93 "0b00001000" "P3 - PCF8574T Pin connected to BACKLIGHT LED"
+D G "lcd_line_one" 4 95 "0x80" "LCD RAM address for line 1"
+D G "lcd_line_two" 4 96 "0xC0" "LCD RAM address for line 2"
+D G "lcd_line_three" 4 97 "0x94" "LCD RAM address for line 3"
+D G "lcd_line_four" 4 98 "0xD4" "LCD RAM address for line 4"
+V G "address" 4 100 "int8" `798 
+V G "lcd_backlight" 4 101 "int1" `799 
+F N "i2c_lcd_backlight_On" 4 103 ""
+F G "i2c_lcd_backlight_On" 4 103 "void()" `800 
+F N "i2c_lcd_backlight_Off" 4 107 ""
+F G "i2c_lcd_backlight_Off" 4 107 "void()" `801 
+F N "i2c_send_nibble" 4 111 ""
+V L "data" 4 111 "int8" `803 
+F G "i2c_send_nibble" 4 112 "void(int8 data)" `802 
+C L "i2c_send_nibble" 4 2 1 "FUNCTION"
+F N "lcd_send_byte" 4 123 ""
+V L "data" 4 123 "int8" `805 
+F G "lcd_send_byte" 4 124 "void(int8 data)" `804 
+C L "lcd_send_byte" 4 2 1 "FUNCTION"
+C L "lcd_send_byte" 4 2 1 "FUNCTION"
+F N "lcd_clear" 4 131 ""
+F G "lcd_clear" 4 132 "void()" `806 
+F N "lcd_init" 4 138 ""
+F G "lcd_init" 4 139 "void()" `807 
+C L "lcd_init" 4 2 2 "FUNCTION"
+C L "lcd_init" 4 2 1 "FUNCTION"
+C L "lcd_init" 4 2 1 "FUNCTION"
+C L "lcd_init" 4 2 1 "FUNCTION"
+C L "lcd_init" 4 2 1 "FUNCTION"
+C L "lcd_init" 4 2 1 "FUNCTION"
+C L "lcd_init" 4 2 1 "FUNCTION"
+F N "lcd_gotoxy" 4 167 ""
+V L "x" 4 167 "int8" `809 
+V L "y" 4 167 "int8" `810 
+F G "lcd_gotoxy" 4 168 "void(int8 x,int8 y)" `808 
+V L "data" 4 169 "int8" `811 
+C L "LCD_PUTC" 4 2 1 "FUNCTION"
+F N "LCD_PUTC" 4 189 ""
+V L "in_data" 4 189 "int8" `813 
+F G "LCD_PUTC" 4 190 "void(int8 in_data)" `812 
+V L "data" 4 191 "int8" `814 
+C L "LCD_PUTC" 4 2 1 "FUNCTION"
+C L "LCD_PUTC" 4 2 1 "FUNCTION"
+D G "FUNCIONES_H" 3 13 ""
+D G "PUNTO_TENS_CORR" 3 16 "0"
+D G "CONVERSION_DESFASE" 3 17 "1"
+D G "TENS_CORR_RMS" 3 18 "2"
+D G "CALCULO_POT_ENER" 3 19 "3"
+D G "MOSTRAR_DATOS" 3 20 "4"
+C L "maquina_estado" 3 14 1 "FUNCTION"
+F N "maquina_estado" 3 23 ""
+f G "maquina_estado" 3 23 "void()" `815  "* File:   MAX191.h"
+C L "maquina_estado" 5 1 1 "*"
 D G "Control_ADCs_H" 5 9 ""
-D G "ADC_CSCorriente" 5 11 "PIN_A0"
-D G "ADC_CSTension" 5 12 "PIN_A1"
-D G "ADC_SCLK" 5 13 "PIN_A2"
-D G "ADC_DOUT" 5 14 "PIN_A3" "por aqui ingresa la info de los ADC, SDATA en AD7450"
-D G "ADC_DIN" 5 15 "PIN_A4" "se envia la informacion al MAX186"
-D G "ADC_SSTRB" 5 16 "PIN_A5"
-C L "leer_Tension" 5 1 1 "FUNCTION"
-F N "leer_Tension" 5 19 ""
-F G "leer_Tension" 5 19 "int16()" `816 
-V L "dato" 5 20 "sint16" `817 
-V L "dato_t" 5 20 "sint16" `818 
-V L "i" 5 21 "int8" `819 
+D G "ADC_CSCorriente" 5 11 "PIN_A0" "salida"
+D G "ADC_CSTension" 5 12 "PIN_A1" "salida"
+D G "ADC_SCLK" 5 13 "PIN_A2" "salida clock tension"
+D G "ADC_SCLKcorr" 5 14 "PIN_B1"
+D G "ADC_DOUT" 5 15 "PIN_B0" "entrada, por aqui ingresa la info del MAX186"
+D G "ADC_DIN" 5 16 "PIN_A4" "salida, se envia la informacion al MAX186"
+D G "ADC_SSTRB" 5 17 "PIN_A5" "entrada"
+D G "ADC_SDATA" 5 18 "PIN_A3" "entrada SDATA en AD7450"
+C L "maquina_estado" 5 1 1 "FUNCTION"
+F N "leer_Tension" 5 21 ""
+F G "leer_Tension" 5 21 "sint16()" `816 
+V L "dato" 5 22 "sint16" `817 
+V L "dato_t" 5 22 "sint16" `818 
+V L "i" 5 23 "int8" `819 
 C L "leer_Tension" 5 1 2 "FUNCTION"
 C L "leer_Corriente" 5 1 1 "FUNCTION"
-F N "leer_Corriente" 5 51 ""
-F G "leer_Corriente" 5 51 "int16()" `820 
-V L "dato" 5 52 "int16" `821 
-V L "config" 5 53 "int8" `822 
-V L "i" 5 54 "int8" `823 
+F N "leer_Corriente" 5 52 ""
+F G "leer_Corriente" 5 52 "int16()" `820 
+V L "dato" 5 53 "int16" `821 
+V L "config" 5 54 "int8" `822 
+V L "i" 5 55 "int8" `823 
 C G "" 0 22 1 "*"
 C G "" 0 22 1 "*"
 C G "" 0 22 1 "*"
 C G "" 0 22 1 "*"
 C G "" 0 22 1 "*"
-V G "punto1" 0 29 "int16" `824 
-V G "punto2" 0 29 "int16" `825 
-V G "pos_V" 0 30 "int8" `826 
-V G "pos_I" 0 30 "int8" `827 
-V G "pos_V_A" 0 30 "int8" `828 
-V G "pos_I_A" 0 30 "int8" `829 
-V G "control_V" 0 31 "int8" `830 
-V G "control_I" 0 31 "int8" `831 
-V G "desfase" 0 32 "int8" `832 
-V G "tension" 0 33 "float" `833 
-V G "corriente" 0 33 "float" `834 
-V G "tension_RMS" 0 33 "float" `835 
-V G "corriente_RMS" 0 33 "float" `836 
-V G "t_desfase" 0 33 "float" `837 
-V G "potencia_ins" 0 33 "float" `838 
-V G "angulo" 0 33 "float" `839 
-V G "carga" 0 35 "int16" `840 
-F N "interrtimer_0" 0 38 ""
-F G "interrtimer_0" 0 38 "void()" `842 
+V G "punto1" 0 29 "sint16" `824 
+V G "punto2" 0 30 "int16" `825 
+V G "pos_V" 0 31 "int8" `826 
+V G "pos_I" 0 31 "int8" `827 
+V G "pos_V_A" 0 31 "int8" `828 
+V G "pos_I_A" 0 31 "int8" `829 
+V G "control_V" 0 32 "int8" `830 
+V G "control_I" 0 32 "int8" `831 
+V G "desfase" 0 33 "int8" `832 
+V G "puntos" 0 34 "int8" `833 
+V G "tension" 0 35 "float" `834 
+V G "corriente" 0 35 "float" `835 
+V G "tension_RMS" 0 35 "float" `836 
+V G "corriente_RMS" 0 35 "float" `837 
+V G "t_desfase" 0 35 "float" `838 
+V G "potencia_ins" 0 35 "float" `839 
+V G "angulo" 0 35 "float" `840 
+V G "carga" 0 37 "int16" `841 
+F N "interrtimer_0" 0 40 ""
+F G "interrtimer_0" 0 40 "void()" `843 
 C L "interrtimer_0" 0 22 1 "FUNCTION"
-F N "maquina_estado" 0 44 ""
-F G "maquina_estado" 0 45 "void()" `673 
-V L "estado" 0 46 "int8" `843 
+F N "maquina_estado" 0 46 ""
+F G "maquina_estado" 0 47 "void()" `815 
+V L "estado" 0 48 "int8" `844 
 C L "maquina_estado" 0 22 2 "FUNCTION"
 C L "maquina_estado" 0 22 1 "FUNCTION"
 C L "maquina_estado" 0 22 1 "FUNCTION"
@@ -1500,7 +1502,8 @@ C L "maquina_estado" 0 22 2 "FUNCTION"
 C L "maquina_estado" 0 22 1 "FUNCTION"
 C L "maquina_estado" 0 22 1 "FUNCTION"
 C L "maquina_estado" 0 22 1 "FUNCTION"
-C L "maquina_estado" 0 22 2 "FUNCTION"
+C L "maquina_estado" 0 22 1 "FUNCTION"
+C L "maquina_estado" 0 22 1 "FUNCTION"
 C L "maquina_estado" 0 22 2 "FUNCTION"
 C L "maquina_estado" 0 22 2 "FUNCTION"
 C L "maquina_estado" 0 22 1 "FUNCTION"

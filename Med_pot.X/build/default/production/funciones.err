@@ -1,2 +1,3 @@
-C:\Users\MARCOS\Proyecto_final\Med_pot.X\funciones.o ===>  0 Errors,  0 Warnings.
+C:\Users\MARCOS\Proyecto_final\Med_pot.X\funciones.c:34:5:  Warning#202  Variable never used:   puntos
+C:\Users\MARCOS\Proyecto_final\Med_pot.X\funciones.o ===>  0 Errors,  1 Warnings.
 Build Successful.

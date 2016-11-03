@@ -43,7 +43,8 @@ void main()
 
 void Inicializar(){
     setup_timer_0( RTCC_INTERNAL | T0_DIV_2);
-    set_tris_a(0xF9);
+    set_tris_a(0xE8);// configuracion portA necesaria para la libreria control_ADC
+    set_tris_b(0xFF);
     contador=0;
     lcd_init();
     lcd_gotoxy(1,1);

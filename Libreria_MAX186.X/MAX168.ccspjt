@@ -1,5 +1,5 @@
 [PROJECT]
-Target=build\default\production\MAX168.hex
+Target=build\default\debug\MAX168.hex
 Processor_Text=PIC18F4550
 CCSVersion=5.048
 Compiler=PCH
@@ -8,7 +8,7 @@ FileList=MAX168.c
 [build\default\production\MAX168.c]
 Type=4
 [mru-list]
-1=build\default\production\MAX168.c
+1=build\default\debug\MAX168.c
 [build\default\debug\MAX168.c]
 Type=4
 [Units]
