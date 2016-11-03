@@ -28,20 +28,20 @@ int contador = 0 ;int pulso_timer = 0 ;
  **/
 signed long punto1;
 long punto2;
-int16 tiempo_potencia;
+//int16 tiempo_potencia;
 BYTE pos_V,pos_I,pos_V_A,pos_I_A;
 int control_V;
 int control_I;
 int desfase;
 int puntos=20;//puntos por periodo
 float tension, corriente, tension_RMS,corriente_RMS, t_desfase, potencia_ins,angulo;
-float Energia_Wms=0, Energia_Wh=0, Energia_kWh=0;
+//float Energia_Wms=0, Energia_Wh=0, Energia_kWh=0;
 
 const long carga= 0xE8AB;
 
-#INT_TIMER1               // interrupcion para demora de 1 ms
-void interrtimer_1(){
-    set_timer1(carga);   // interrupcion cada 1 ms
+#INT_RTCC               // interrupcion para demora de 1 ms
+void interrtimer_0(){
+    set_timer0(carga);   // interrupcion cada 1 ms
     pulso_timer++;
 
    }
@@ -127,7 +127,7 @@ void maquina_estado()
 					estado = PUNTO_TENS_CORR;
                     
                     if((contador== 29)){
-					disable_interrupts(INT_TIMER1);// deshabilita la interrupcion para no entrar al timer
+					disable_interrupts(INT_RTCC);// deshabilita la interrupcion para no entrar al timer
                     contador=0; //se reinicia el contador, para comenzar nuevamente 
 					estado = CALCULO_POT_ENER;
 				}
@@ -164,7 +164,7 @@ void maquina_estado()
                 control_I=0;
                 angulo=0;
                 desfase=0; 
-                
+               /* 
                 //Calculo de Energia
                 tiempo_potencia=65536 - get_timer0();    //variable para calcular energia segun tiempo de potencia
                 Energia_Wms=Energia_Wms+potencia_ins*tiempo_potencia/37500000;             //Energia en Watt por milisegundo
@@ -182,7 +182,7 @@ void maquina_estado()
                 
                 
                 // Se reinicia timer 0 nuevamente, para volver a calcular energia
-                set_timer0(0x0000);
+               // set_timer0(0x0000);*/
                 
 					estado = MOSTRAR_DATOS;
 				break;
@@ -192,14 +192,14 @@ void maquina_estado()
 			case MOSTRAR_DATOS:
                 //este estado solo muestra los datos en la pantalla LCD
                 lcd_gotoxy(1,1);
-                printf(LCD_PUTC,"pot= \%f W",potencia_ins);
+                printf(LCD_PUTC,"POT= \%f W    ",potencia_ins);
                 lcd_gotoxy(1,2);
-                printf (LCD_PUTC, "T=\%f  I=\%f  ",tension_RMS,corriente_RMS);
+                printf (LCD_PUTC, "T=\%f  I=\%f     ",tension_RMS,corriente_RMS);
                 delay_ms(1000);
-                enable_interrupts(INT_TIMER1);
+                enable_interrupts(INT_RTCC);
                 enable_interrupts(GLOBAL);
                 pulso_timer=0;
-                set_timer1(carga);   
+                set_timer0(carga);   
 				//reinicia todo
                 corriente_RMS=0;
                 tension_RMS=0;

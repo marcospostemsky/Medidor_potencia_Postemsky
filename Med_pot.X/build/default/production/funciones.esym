@@ -1,7 +1,7 @@
 D G "__PCH__" 0 0 ""5.048""
 D G "__DEVICE__" 0 0 ""
 D G "__DATE__" 0 0 ""03-nov-16""
-D G "__TIME__" 0 0 ""10:49:06""
+D G "__TIME__" 0 0 ""11:09:38""
 D G "_UNICODE" 0 0 ""?""
 D G "__18F4550" 0 0 "1" "*	\file funciones.c"
 C G "" 0 1 1 "*"
@@ -1468,33 +1468,29 @@ C G "" 0 22 1 "*"
 C G "" 0 22 1 "*"
 C G "" 0 22 1 "*"
 V G "punto1" 0 29 "sint16" `824 
-V G "punto2" 0 30 "int16" `825 
-V G "tiempo_potencia" 0 31 "int16" `826 
-V G "pos_V" 0 32 "int8" `827 
-V G "pos_I" 0 32 "int8" `828 
-V G "pos_V_A" 0 32 "int8" `829 
-V G "pos_I_A" 0 32 "int8" `830 
-V G "control_V" 0 33 "int8" `831 
-V G "control_I" 0 34 "int8" `832 
-V G "desfase" 0 35 "int8" `833 
-V G "puntos" 0 36 "int8" `834 
-V G "tension" 0 37 "float" `835 
-V G "corriente" 0 37 "float" `836 
-V G "tension_RMS" 0 37 "float" `837 
-V G "corriente_RMS" 0 37 "float" `838 
-V G "t_desfase" 0 37 "float" `839 
-V G "potencia_ins" 0 37 "float" `840 
-V G "angulo" 0 37 "float" `841 
-V G "Energia_Wms" 0 38 "float" `842 
-V G "Energia_Wh" 0 38 "float" `843 
-V G "Energia_kWh" 0 38 "float" `844 
-V G "carga" 0 40 "int16" `845 
-F N "interrtimer_1" 0 43 ""
-F G "interrtimer_1" 0 43 "void()" `847 
-C L "interrtimer_1" 0 22 1 "FUNCTION"
+V G "punto2" 0 30 "int16" `825  "int16 tiempo_potencia;"
+V G "pos_V" 0 32 "int8" `826 
+V G "pos_I" 0 32 "int8" `827 
+V G "pos_V_A" 0 32 "int8" `828 
+V G "pos_I_A" 0 32 "int8" `829 
+V G "control_V" 0 33 "int8" `830 
+V G "control_I" 0 34 "int8" `831 
+V G "desfase" 0 35 "int8" `832 
+V G "puntos" 0 36 "int8" `833 
+V G "tension" 0 37 "float" `834 
+V G "corriente" 0 37 "float" `835 
+V G "tension_RMS" 0 37 "float" `836 
+V G "corriente_RMS" 0 37 "float" `837 
+V G "t_desfase" 0 37 "float" `838 
+V G "potencia_ins" 0 37 "float" `839 
+V G "angulo" 0 37 "float" `840  "float Energia_Wms=0, Energia_Wh=0, Energia_kWh=0;"
+V G "carga" 0 40 "int16" `841 
+F N "interrtimer_0" 0 43 ""
+F G "interrtimer_0" 0 43 "void()" `843 
+C L "interrtimer_0" 0 22 1 "FUNCTION"
 F N "maquina_estado" 0 49 ""
 F G "maquina_estado" 0 50 "void()" `815 
-V L "estado" 0 51 "int8" `848 
+V L "estado" 0 51 "int8" `844 
 C L "maquina_estado" 0 22 2 "FUNCTION"
 C L "maquina_estado" 0 22 1 "FUNCTION"
 C L "maquina_estado" 0 22 1 "FUNCTION"
@@ -1514,11 +1510,7 @@ C L "maquina_estado" 0 22 2 "FUNCTION"
 C L "maquina_estado" 0 22 6 "FUNCTION"
 C L "maquina_estado" 0 22 1 "FUNCTION"
 C L "maquina_estado" 0 22 1 "FUNCTION"
-C L "maquina_estado" 0 22 1 "FUNCTION"
-C L "maquina_estado" 0 22 1 "FUNCTION"
-C L "maquina_estado" 0 22 1 "FUNCTION"
-C L "maquina_estado" 0 22 1 "FUNCTION"
-C L "maquina_estado" 0 22 1 "FUNCTION"
+C L "maquina_estado" 0 22 11 "FUNCTION"
 C L "maquina_estado" 0 22 1 "FUNCTION"
 C L "maquina_estado" 0 22 1 "FUNCTION"
 F B "reset_cpu" 0 0
