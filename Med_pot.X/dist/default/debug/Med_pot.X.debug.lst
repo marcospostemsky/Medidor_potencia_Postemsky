@@ -1,6 +1,6 @@
-CCS PCH C Compiler, Version 5.048, 5967               03-nov-16 10:03
+CCS PCH C Compiler, Version 5.048, 5967               03-nov-16 10:04
 
-               Filename:   C:\Users\MARCOS\Proyecto_final\Med_pot.X\dist\default\production\Med_pot.X.production.lst
+               Filename:   C:\Users\MARCOS\Proyecto_final\Med_pot.X\dist\default\debug\Med_pot.X.debug.lst
 
                ROM used:   5978 bytes (18%)
                            Largest free fragment is 26786
@@ -57,8 +57,8 @@ CCS PCH C Compiler, Version 5.048, 5967               03-nov-16 10:03
 00A4:  MOVFF  06,FE0
 00A8:  MOVFF  05,FD8
 00AC:  RETFIE 0
-.................... #import(file="build/default/production/main.o") 
-.................... #import(file="build/default/production/funciones.o") 
+.................... #import(file="build/default/debug/main.o") 
+.................... #import(file="build/default/debug/funciones.o") 
 .................... /** 
 .................... *	\file main.c 
 .................... *	\brief Resumen del contenido del archivo 

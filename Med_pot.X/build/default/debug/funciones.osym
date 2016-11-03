@@ -69,8 +69,8 @@ Compiler Settings:
        #define __18F4550 1
 
 Output Files:
-    XREF file:   build\default\production\funciones.xsym
-    Errors:      build\default\production\funciones.err
-    Ext Symbols: build\default\production\funciones.esym
-    Object:      build\default\production\funciones.o
-    Symbols:     build\default\production\funciones.osym
+    XREF file:   build\default\debug\funciones.xsym
+    Errors:      build\default\debug\funciones.err
+    Ext Symbols: build\default\debug\funciones.esym
+    Object:      build\default\debug\funciones.o
+    Symbols:     build\default\debug\funciones.osym

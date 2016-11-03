@@ -231,8 +231,8 @@ Program memory CRC=0000
 Hex file CRC=15E1
 
 Units:
-    C:\Users\MARCOS\Proyecto_final\Med_pot.X\build\default\production\main.o
-    C:\Users\MARCOS\Proyecto_final\Med_pot.X\build\default\production\funciones.o
+    C:\Users\MARCOS\Proyecto_final\Med_pot.X\build\default\debug\main.o
+    C:\Users\MARCOS\Proyecto_final\Med_pot.X\build\default\debug\funciones.o
 
 Compiler Settings:
     Processor:      PIC18F4550
@@ -244,13 +244,13 @@ Compiler Settings:
     Compile Mode:       CCS5
 
 Output Files:
-    XREF file:   dist\default\production\Med_pot.xsym
-    Errors:      dist\default\production\Med_pot.X.production.err
-    Ext Symbols: dist\default\production\Med_pot.X.production.esym
-    INHX32:      dist\default\production\Med_pot.X.production.hex
-    Symbols:     dist\default\production\Med_pot.X.production.sym
-    List:        dist\default\production\Med_pot.X.production.lst
-    Debug/COFF:  dist\default\production\Med_pot.X.production.cof
-    Project:     Med_pot.X.production.ccspjt
-    Call Tree:   dist\default\production\Med_pot.X.production.tre
-    Statistics:  dist\default\production\Med_pot.X.production.STA
+    XREF file:   dist\default\debug\Med_pot.xsym
+    Errors:      dist\default\debug\Med_pot.X.debug.err
+    Ext Symbols: dist\default\debug\Med_pot.X.debug.esym
+    INHX32:      dist\default\debug\Med_pot.X.debug.hex
+    Symbols:     dist\default\debug\Med_pot.X.debug.sym
+    List:        dist\default\debug\Med_pot.X.debug.lst
+    Debug/COFF:  dist\default\debug\Med_pot.X.debug.cof
+    Project:     Med_pot.X.debug.ccspjt
+    Call Tree:   dist\default\debug\Med_pot.X.debug.tre
+    Statistics:  dist\default\debug\Med_pot.X.debug.STA

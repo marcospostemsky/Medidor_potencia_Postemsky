@@ -47,8 +47,8 @@ Compiler Settings:
        #define __18F4550 1
 
 Output Files:
-    XREF file:   build\default\production\main.xsym
-    Errors:      build\default\production\main.err
-    Ext Symbols: build\default\production\main.esym
-    Object:      build\default\production\main.o
-    Symbols:     build\default\production\main.osym
+    XREF file:   build\default\debug\main.xsym
+    Errors:      build\default\debug\main.err
+    Ext Symbols: build\default\debug\main.esym
+    Object:      build\default\debug\main.o
+    Symbols:     build\default\debug\main.osym

@@ -28,17 +28,20 @@ int contador = 0 ;int pulso_timer = 0 ;
  **/
 signed long punto1;
 long punto2;
-int8 pos_V,pos_I,pos_V_A,pos_I_A;
-int control_V, control_I;
+int16 tiempo_potencia;
+BYTE pos_V,pos_I,pos_V_A,pos_I_A;
+int control_V;
+int control_I;
 int desfase;
 int puntos=20;//puntos por periodo
 float tension, corriente, tension_RMS,corriente_RMS, t_desfase, potencia_ins,angulo;
+float Energia_Wms=0, Energia_Wh=0, Energia_kWh=0;
 
 const long carga= 0xE8AB;
 
-#INT_RTCC                // interrupcion para demora de 1 ms
-void interrtimer_0(){
-    set_timer0(carga);   // interrupcion cada 1 ms
+#INT_TIMER1               // interrupcion para demora de 1 ms
+void interrtimer_1(){
+    set_timer1(carga);   // interrupcion cada 1 ms
     pulso_timer++;
 
    }
@@ -62,7 +65,7 @@ void maquina_estado()
 			
 			case CONVERSION_DESFASE:
                 tension= (tension)*2.5/2048;
-                corriente= (corriente)/1000-2.5;
+                corriente= (corriente)/1000-2.510;
                 //se convierte a la tension y corriente real
                 tension= tension*155.57; // conversion con 2 V igual a 311.13 V
                 corriente= corriente*12; // 2.5 V es igual a +30 A (recordar que el sensor mide ±30A)
@@ -88,20 +91,20 @@ void maquina_estado()
                 
 				
                 // si el punto actual de tension es positivo, el anterior es negativo 
-                //y se tiene mas de un punto (contaodr distinto de cero)
-                if (pos_V==1 && contador!=0 && pos_V_A==0 && control_V != 0){ 
+                //y se tiene mas de un punto (contador distinto de cero)
+                if (pos_V==1 && contador>=2 && pos_V_A==0 && desfase!=1){ 
                  control_V= contador; // tiempo en el que cruzó la tension 
                  desfase=1;
                 }
                 
                 // si el punto actual de tension es positivo, el anterior es negativo 
                 //y se tiene mas de un punto (contaodr distinto de cero)
-                if (pos_I==1 && contador!=0 && pos_I_A==0 && control_I != 0){
+                if (pos_I==1 && contador>=2 && pos_I_A==0 && desfase!=2){
                     
                  control_I= contador; // tiempo en el que cruzó la corriente
                  desfase=2;
                 }
-                
+                // guarda el signo de los puntos anteriores
                 pos_V_A=pos_V;
                 pos_I_A=pos_I;
                 
@@ -111,7 +114,8 @@ void maquina_estado()
 				
 
 				break;
-			
+//----------------------------------------------------------------------------------------------------
+                
 			case TENS_CORR_RMS:
 			
 				if((contador<30)&& (pulso_timer==1))
@@ -123,7 +127,7 @@ void maquina_estado()
 					estado = PUNTO_TENS_CORR;
                     
                     if((contador== 29)){
-					disable_interrupts(INT_RTCC);// deshabilita la interrupcion para no entrar al timer
+					disable_interrupts(INT_TIMER1);// deshabilita la interrupcion para no entrar al timer
                     contador=0; //se reinicia el contador, para comenzar nuevamente 
 					estado = CALCULO_POT_ENER;
 				}
@@ -131,6 +135,8 @@ void maquina_estado()
 				
 
 				break;
+                
+//--------------------------------------------------------------------------------------------------------------------                
 			
 			case CALCULO_POT_ENER: // falta calculo de energia
                 //calcula las raices para completar el calculo RMS
@@ -143,33 +149,57 @@ void maquina_estado()
                 if (desfase==2){
                     t_desfase= (control_I-control_V);
                     angulo= (t_desfase*pi)/10;      // angulo de desfase en radianes. 20 puntos por periodo
-                     lcd_gotoxy(1,1);
-                     printf(LCD_PUTC,"Se midio desfase");
-                     delay_ms(1000);
+                   /*  lcd_gotoxy(1,1);
+                     printf(LCD_PUTC,"desfase= %f       ",t_desfase);
+                     lcd_gotoxy(1,2);
+                     printf(LCD_PUTC,"angulo=%f        ",angulo);
+                     delay_ms(1000);*/
                 }                
+                
                 angulo=cos(angulo);
                // calculo de potencia 
                 potencia_ins= tension_RMS*corriente_RMS*angulo;
-                //se limpian las variables para la próxima tanta de muestreo
+                //se limpian las variables para la próxima etapa de muestreo
                 control_V=0;      
                 control_I=0;
                 angulo=0;
                 desfase=0; 
                 
+                //Calculo de Energia
+                tiempo_potencia=65536 - get_timer0();    //variable para calcular energia segun tiempo de potencia
+                Energia_Wms=Energia_Wms+potencia_ins*tiempo_potencia/37500000;             //Energia en Watt por milisegundo
+                
+                if(Energia_Wms>=3600000){
+                    Energia_Wh=Energia_Wh+1;  // rekacion watt ms a watt hora
+                    Energia_Wms=0;                
+                }
+                
+                if (Energia_Wh=1000){
+                    Energia_kWh=Energia_kWh+1;
+                    Energia_Wh=0;
+                }
+                
+                
+                
+                // Se reinicia timer 0 nuevamente, para volver a calcular energia
+                set_timer0(0x0000);
+                
 					estado = MOSTRAR_DATOS;
 				break;
-			
+                
+//-------------------------------------------------------------------------------------
+                
 			case MOSTRAR_DATOS:
                 //este estado solo muestra los datos en la pantalla LCD
                 lcd_gotoxy(1,1);
                 printf(LCD_PUTC,"Potencia= \%f W",potencia_ins);
                 lcd_gotoxy(1,2);
-                printf (LCD_PUTC, "T=\%f V  I=\%f A",tension_RMS,corriente_RMS);
+                printf (LCD_PUTC, "T=\%f  I=\%f  ",tension_RMS,corriente_RMS);
                 delay_ms(1000);
-                enable_interrupts(INT_RTCC);
+                enable_interrupts(INT_TIMER1);
                 enable_interrupts(GLOBAL);
                 pulso_timer=0;
-                set_timer0(carga);   
+                set_timer1(carga);   
 				//reinicia todo
                 corriente_RMS=0;
                 tension_RMS=0;
