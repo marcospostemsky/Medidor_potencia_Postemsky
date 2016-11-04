@@ -21,6 +21,8 @@ address
 lcd_backlight
 punto1
 punto2
+tiempo_potencia
+tiempo_pottimer
 pos_V
 pos_I
 pos_V_A
@@ -36,20 +38,23 @@ corriente_RMS
 t_desfase
 potencia_ins
 angulo
+Energia_Wms
+Energia_Wh
+Energia_kWh
 carga
 
 Project Directory:
     C:\Users\MARCOS\Proyecto_final\Med_pot.X\
 
 Project Files:
-    funciones.c                                             [03-nov-16 11:09  CRC=B943AB41]
+    funciones.c                                             [03-nov-16 20:51  CRC=5AF7D95C]
     ..\..\..\..\Program Files (x86)\PICC\devices\18F4550.h  [26-jun-15 10:09  CRC=281B1877]
     ..\..\..\..\Program Files (x86)\PICC\drivers\math.h     [16-ene-15 10:40  CRC=6A8358B0]
     funciones.h                                             [30-oct-16 21:09  CRC=EF492E58]
     i2c_Flex_LCD.h                                          [12-ene-14 15:46  CRC=9BBA501F]
     Control_ADCs.h                                          [02-nov-16 12:16  CRC=7E77FC6C]
 
-Source signature=D3D593B7
+Source signature=7589C1D2
 
 Units:
     funciones (main)

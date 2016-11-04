@@ -32,7 +32,7 @@ void main()
 
 	inicializar() ;
     
-    set_timer0(carga);
+    set_timer1(carga);
 	while(1)
 	{
 
@@ -42,17 +42,17 @@ void main()
 }
 
 void Inicializar(){
-    //setup_timer_1( T1_INTERNAL|T1_DIV_BY_2);
-    setup_timer_0(T0_INTERNAL |T0_DIV_2);
-    //set_timer0(0x0000);
+    setup_timer_1( T1_INTERNAL|T1_DIV_BY_2);
+    setup_timer_0(T0_INTERNAL |T0_DIV_32);
+    set_timer0(0x0000);
     set_tris_a(0xE8);// configuracion portA necesaria para la libreria control_ADC
-    set_tris_b(0xFF);
+    set_tris_b(0xFD);
     contador=0;
     lcd_init();
     lcd_gotoxy(1,1);
     printf(LCD_PUTC,"Primer prueba");
     lcd_backlight=ON;
-    enable_interrupts (INT_RTCC);
+    enable_interrupts (INT_TIMER1);
     enable_interrupts (GLOBAL);
     output_high (PIN_A0); //pone en alto el chipselect del AD7450
     output_high (PIN_A1); // pone en alto el chipselect del MAX186
