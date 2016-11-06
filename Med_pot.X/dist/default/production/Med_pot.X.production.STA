@@ -1,12 +1,12 @@
 
-ROM used:   6450/32768 (20%)
-            6450/32768 (20%) including unused fragments
+ROM used:   7010/32768 (21%)
+            7010/32768 (21%) including unused fragments
 
             1.2 Average locations per line
-            7.7 Average locations per statement
+            8.1 Average locations per statement
 
-RAM used:   98/2048 (5%) at main() level
-            160/2048 (8%) worst case
+RAM used:   99/2048 (5%) at main() level
+            168/2048 (8%) worst case
 
 Stack used: 1 worst case (0 in main + 1 for interrupts)
 Stack size: 31
@@ -14,20 +14,20 @@ Stack size: 31
 Lines Stmts  %   Files
 ----- ----- ---  -----
     4     0   0  $linker.c
-   60    19   2  main.c
+   63    20   2  main.c
   839     0   0  ..\..\..\..\Program Files (x86)\PICC\devices\18F4550.h
    37     0   0  ..\..\..\..\Program Files (x86)\PICC\drivers\stdio.h
   435     0   0  ..\..\..\..\Program Files (x86)\PICC\drivers\string.h
    32     0   0  ..\..\..\..\Program Files (x86)\PICC\drivers\stddef.h
    28     0   0  ..\..\..\..\Program Files (x86)\PICC\drivers\ctype.h
- 1351   359  43  ..\..\..\..\Program Files (x86)\PICC\drivers\stdlib.h
+ 1351   359  41  ..\..\..\..\Program Files (x86)\PICC\drivers\stdlib.h
    26     0   0  funciones.h
-  211    72   9  i2c_Flex_LCD.h
-  233    80  10  funciones.c
- 2227   257  31  ..\..\..\..\Program Files (x86)\PICC\drivers\math.h
-   97    47   6  Control_ADCs.h
+  211    72   8  i2c_Flex_LCD.h
+  301   111  13  funciones.c
+ 2227   257  30  ..\..\..\..\Program Files (x86)\PICC\drivers\math.h
+   97    47   5  Control_ADCs.h
 ----- -----
- 5580   834 Total
+ 5651   866 Total
 
 Page ROM  %  RAM    Vol Diff  Functions:
 ---- --- --- ---    --- ----  ----------
@@ -35,10 +35,10 @@ Page ROM  %  RAM    Vol Diff  Functions:
 0    108   1    1             @I2C_WRITE_1
 0    242   2   11             @MULFF
 0     54   0    2             @ITOF
-0    618   5   16             @ADDFF
-0    346   3   14             @DIVFF
-0     82   1    0     55  1.4  MAIN
-0     58   0    0    346  2.7  inicializar
+0    618   4   16             @ADDFF
+0    346   2   14             @DIVFF
+0     92   1    0     55  1.4  MAIN
+0     60   0    0    372  2.8  inicializar
 0     14   0    0             @const953
 0     34   0    2             @PSTRINGC_941
 0    118   1   10             @FLT
@@ -54,34 +54,45 @@ Page ROM  %  RAM    Vol Diff  Functions:
 0    110   1    2    625  5.6  LCD_PUTC
 0    156   1    5    650  6.7  leer_Tension
 0    218   2    6   1018  6.4  leer_Corriente
-0     16   0    0     27  1.5  interrtimer_0
-0   1810  14    4   3414 10.8  maquina_estado
-0     28   0    0             @const1144
+0     14   0    1     47  2.0  interrupcion_ext
+0     34   0    0     70  2.2  interrtimer_0
+0   2066  15    4   4653 11.3  maquina_estado
+0     18   0    0             @const1146
+0     34   0    2             @PSTRINGC_812
+0     26   0    0             @const1150
 0     64   0    5             @FTOSD
 0    142   1   13             @DIV3232
 0    386   3   13             @PRINTF_L32D_812FPFPF
 0     32   0    3             @PSTRINGCN_812
-0     16   0    0             @const1155
+0     18   0    0             @const1161
+0     24   0    0             @const1162
+0     18   0    0             @const1163
+0     24   0    0             @const1164
+0     18   0    0             @const1165
+0     24   0    0             @const1166
+0     18   0    0             @const1167
+0     30   0    0             @const1168
+0     36   0    0             @goto50366
  Inline         0             @cinit1
 
 Program metrics:
-    Functions               14
-    Statements              834
+    Functions               15
+    Statements              866
     Comments                411
-    Volume (V)              13614
-    Difficulty (D)          68.2
-    Effort to implement (E) 927986
-    Time to implement (T)   14 hours, 19 minutes
-    Est Delivered Bugs (B)  3
-    Cyclomatic Complexity   36
-    Maintainability (MI)    111
+    Volume (V)              15403
+    Difficulty (D)          71.2
+    Effort to implement (E) 1096512
+    Time to implement (T)   16 hours, 55 minutes
+    Est Delivered Bugs (B)  4
+    Cyclomatic Complexity   43
+    Maintainability (MI)    117
 
  Segment     Used  Free
 -----------  ----  ----
 00000-00002     4  0  
 00004-00006     0  4  
-00008-000AC   166  0  
-000AE-07FFE  6280  26314  
+00008-000BC   182  0  
+000BE-07FFE  6824  25754  
 
 
 

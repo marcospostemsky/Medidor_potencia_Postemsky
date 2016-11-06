@@ -1,7 +1,7 @@
 ÀÄMed_pot
-   ÃÄMAIN  0/82  Ram=0
+   ÃÄMAIN  0/92  Ram=0
    ³  ÃÄ@cinit1  (Inline)  Ram=0
-   ³  ÃÄinicializar  0/58  Ram=0
+   ³  ÃÄinicializar  0/60  Ram=0
    ³  ³  ÃÄlcd_init  0/92  Ram=0
    ³  ³  ³  ÃÄ@delay_ms1  0/40  Ram=1
    ³  ³  ³  ÃÄlcd_send_byte  0/34  Ram=2
@@ -65,9 +65,7 @@
    ³  ³        ³  ÀÄ*
    ³  ³        ÀÄlcd_send_byte  0/34  Ram=2
    ³  ³           ÀÄ*
-   ³  ÀÄmaquina_estado  0/1810  Ram=4
-   ³     ÃÄleer_Tension  0/156  Ram=5
-   ³     ÃÄleer_Corriente  0/218  Ram=6
+   ³  ÀÄmaquina_estado  0/2066  Ram=4
    ³     ÃÄ@SITOF  0/74  Ram=2
    ³     ÃÄ@ITOF  0/54  Ram=2
    ³     ÃÄ@MULFF  0/242  Ram=11
@@ -116,9 +114,16 @@
    ³     ÃÄ@MULFF  0/242  Ram=11
    ³     ÃÄ@ADDFF  0/618  Ram=16
    ³     ÃÄ@FLT  0/118  Ram=10
+   ³     ÃÄ@DIVFF  0/346  Ram=14
    ³     ÃÄ@ADDFF  0/618  Ram=16
    ³     ÃÄ@FLT  0/118  Ram=10
    ³     ÃÄ@ADDFF  0/618  Ram=16
+   ³     ÃÄ@goto50366  0/36  Ram=0
+   ³     ÃÄlcd_gotoxy  0/86  Ram=2
+   ³     ³  ÀÄ*
+   ³     ÃÄ@PSTRINGC_812  0/34  Ram=2
+   ³     ³  ÀÄLCD_PUTC  0/110  Ram=2
+   ³     ³     ÀÄ*
    ³     ÃÄlcd_gotoxy  0/86  Ram=2
    ³     ³  ÀÄ*
    ³     ÃÄ@PRINTF_L32D_812FPFPF  0/386  Ram=13
@@ -137,17 +142,41 @@
    ³     ÃÄ@PSTRINGCN_812  0/32  Ram=3
    ³     ³  ÀÄLCD_PUTC  0/110  Ram=2
    ³     ³     ÀÄ*
+   ³     ÃÄlcd_gotoxy  0/86  Ram=2
+   ³     ³  ÀÄ*
+   ³     ÃÄ@PSTRINGC_812  0/34  Ram=2
+   ³     ³  ÀÄ*
+   ³     ÃÄlcd_gotoxy  0/86  Ram=2
+   ³     ³  ÀÄ*
    ³     ÃÄ@PRINTF_L32D_812FPFPF  0/386  Ram=13
    ³     ³  ÀÄ*
    ³     ÃÄ@PSTRINGCN_812  0/32  Ram=3
    ³     ³  ÀÄ*
    ³     ÃÄlcd_gotoxy  0/86  Ram=2
    ³     ³  ÀÄ*
-   ³     ÃÄLCD_PUTC  0/110  Ram=2
+   ³     ÃÄ@PSTRINGC_812  0/34  Ram=2
    ³     ³  ÀÄ*
-   ³     ÃÄLCD_PUTC  0/110  Ram=2
+   ³     ÃÄlcd_gotoxy  0/86  Ram=2
    ³     ³  ÀÄ*
    ³     ÃÄ@PRINTF_L32D_812FPFPF  0/386  Ram=13
+   ³     ³  ÀÄ*
+   ³     ÃÄ@PSTRINGCN_812  0/32  Ram=3
+   ³     ³  ÀÄ*
+   ³     ÃÄlcd_gotoxy  0/86  Ram=2
+   ³     ³  ÀÄ*
+   ³     ÃÄ@PSTRINGC_812  0/34  Ram=2
+   ³     ³  ÀÄ*
+   ³     ÃÄlcd_gotoxy  0/86  Ram=2
+   ³     ³  ÀÄ*
+   ³     ÃÄ@PRINTF_L32D_812FPFPF  0/386  Ram=13
+   ³     ³  ÀÄ*
+   ³     ÃÄ@PSTRINGCN_812  0/32  Ram=3
+   ³     ³  ÀÄ*
+   ³     ÃÄlcd_gotoxy  0/86  Ram=2
+   ³     ³  ÀÄ*
+   ³     ÃÄ@PSTRINGC_812  0/34  Ram=2
+   ³     ³  ÀÄ*
+   ³     ÃÄlcd_gotoxy  0/86  Ram=2
    ³     ³  ÀÄ*
    ³     ÃÄ@PSTRINGCN_812  0/32  Ram=3
    ³     ³  ÀÄ*
@@ -155,4 +184,7 @@
    ³     ³  ÀÄ*
    ³     ÀÄ@PSTRINGCN_812  0/32  Ram=3
    ³        ÀÄ*
-   ÀÄinterrtimer_0  0/16  Ram=0
+   ÃÄinterrupcion_ext  0/14  Ram=1
+   ÀÄinterrtimer_0  0/34  Ram=0
+      ÃÄleer_Tension  0/156  Ram=5
+      ÀÄleer_Corriente  0/218  Ram=6

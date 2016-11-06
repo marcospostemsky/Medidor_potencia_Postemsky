@@ -42,19 +42,21 @@ Energia_Wms
 Energia_Wh
 Energia_kWh
 carga
+control_pantalla
+@sprintf_string
 
 Project Directory:
     C:\Users\MARCOS\Proyecto_final\Med_pot.X\
 
 Project Files:
-    funciones.c                                             [03-nov-16 20:51  CRC=5AF7D95C]
+    funciones.c                                             [06-nov-16 16:05  CRC=0A932E16]
     ..\..\..\..\Program Files (x86)\PICC\devices\18F4550.h  [26-jun-15 10:09  CRC=281B1877]
     ..\..\..\..\Program Files (x86)\PICC\drivers\math.h     [16-ene-15 10:40  CRC=6A8358B0]
     funciones.h                                             [30-oct-16 21:09  CRC=EF492E58]
     i2c_Flex_LCD.h                                          [12-ene-14 15:46  CRC=9BBA501F]
-    Control_ADCs.h                                          [02-nov-16 12:16  CRC=7E77FC6C]
+    Control_ADCs.h                                          [06-nov-16 12:57  CRC=7E77FC6C]
 
-Source signature=7589C1D2
+Source signature=2525168C
 
 Units:
     funciones (main)

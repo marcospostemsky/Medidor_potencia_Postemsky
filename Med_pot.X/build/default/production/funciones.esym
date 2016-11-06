@@ -1,7 +1,7 @@
 D G "__PCH__" 0 0 ""5.048""
 D G "__DEVICE__" 0 0 ""
-D G "__DATE__" 0 0 ""03-nov-16""
-D G "__TIME__" 0 0 ""20:51:10""
+D G "__DATE__" 0 0 ""06-nov-16""
+D G "__TIME__" 0 0 ""16:05:08""
 D G "_UNICODE" 0 0 ""?""
 D G "__18F4550" 0 0 "1" "*	\file funciones.c"
 C G "" 0 1 1 "*"
@@ -1192,8 +1192,8 @@ d G "INT_EEPROM" 1 833 "0x00A010"
 d G "INT_OSCF" 1 834 "0x00A080"
 d G "INT_SPP" 1 835 "0x009D80"
 d G "INT_USB" 1 836 "0x00A020"
-V G "contador" 0 13 "int8" `654 
-V G "pulso_timer" 0 13 "int8" `655 
+V G "contador" 0 14 "int8" `654 
+V G "pulso_timer" 0 14 "int8" `655 
 D G "MATH_H" 2 30 ""
 D G "PI" 2 35 "3.1415926535897932"
 D G "SQRT2" 2 38 "1.4142135623730950"
@@ -1444,8 +1444,8 @@ D G "Control_ADCs_H" 5 9 ""
 D G "ADC_CSCorriente" 5 11 "PIN_A0" "salida"
 D G "ADC_CSTension" 5 12 "PIN_A1" "salida"
 D G "ADC_SCLK" 5 13 "PIN_A2" "salida clock tension"
-D G "ADC_SCLKcorr" 5 14 "PIN_B1"
-D G "ADC_DOUT" 5 15 "PIN_B0" "entrada, por aqui ingresa la info del MAX186"
+D G "ADC_SCLKcorr" 5 14 "PIN_B0"
+D G "ADC_DOUT" 5 15 "PIN_B2" "entrada, por aqui ingresa la info del MAX186"
 D G "ADC_DIN" 5 16 "PIN_A4" "salida, se envia la informacion al MAX186"
 D G "ADC_SSTRB" 5 17 "PIN_A5" "entrada"
 D G "ADC_SDATA" 5 18 "PIN_A3" "entrada SDATA en AD7450"
@@ -1490,13 +1490,17 @@ V G "Energia_Wms" 0 39 "float" `843
 V G "Energia_Wh" 0 40 "float" `844 
 V G "Energia_kWh" 0 40 "float" `845 
 V G "carga" 0 41 "int16" `846 
-F N "interrtimer_0" 0 44 ""
-F G "interrtimer_0" 0 44 "void()" `848 
+V G "control_pantalla" 0 42 "int8" `848 
+F N "interrupcion_ext" 0 47 ""
+F G "interrupcion_ext" 0 47 "void()" `849 
+F N "interrtimer_0" 0 53 ""
+F G "interrtimer_0" 0 53 "void()" `850 
 C L "interrtimer_0" 0 22 1 "FUNCTION"
-F N "maquina_estado" 0 50 ""
-F G "maquina_estado" 0 51 "void()" `815 
-V L "estado" 0 52 "int8" `849 
-C L "maquina_estado" 0 22 2 "FUNCTION"
+C L "interrtimer_0" 0 22 1 "FUNCTION"
+F N "maquina_estado" 0 63 ""
+F G "maquina_estado" 0 64 "void()" `815 
+V L "estado" 0 65 "int8" `851 
+C L "maquina_estado" 0 22 3 "FUNCTION"
 C L "maquina_estado" 0 22 1 "FUNCTION"
 C L "maquina_estado" 0 22 1 "FUNCTION"
 C L "maquina_estado" 0 22 4 "FUNCTION"
@@ -1507,7 +1511,7 @@ C L "maquina_estado" 0 22 2 "FUNCTION"
 C L "maquina_estado" 0 22 1 "FUNCTION"
 C L "maquina_estado" 0 22 1 "FUNCTION"
 C L "maquina_estado" 0 22 1 "FUNCTION"
-C L "maquina_estado" 0 22 1 "FUNCTION"
+C L "maquina_estado" 0 22 2 "FUNCTION"
 C L "maquina_estado" 0 22 1 "FUNCTION"
 C L "maquina_estado" 0 22 1 "FUNCTION"
 C L "maquina_estado" 0 22 2 "FUNCTION"
@@ -1522,7 +1526,7 @@ C L "maquina_estado" 0 22 1 "FUNCTION"
 C L "maquina_estado" 0 22 1 "FUNCTION"
 C L "maquina_estado" 0 22 1 "FUNCTION"
 C L "maquina_estado" 0 22 1 "FUNCTION"
-C L "maquina_estado" 0 22 1 "FUNCTION"
+C L "maquina_estado" 0 22 5 "FUNCTION"
 C L "maquina_estado" 0 22 1 "FUNCTION"
 F B "reset_cpu" 0 0
 F B "abs" 1 0

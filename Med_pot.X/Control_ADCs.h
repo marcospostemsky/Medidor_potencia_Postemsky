@@ -11,8 +11,8 @@
 #define ADC_CSCorriente PIN_A0  // salida
 #define ADC_CSTension PIN_A1 // salida
 #define ADC_SCLK PIN_A2 // salida clock tension
-#define ADC_SCLKcorr PIN_B1
-#define ADC_DOUT PIN_B0  // entrada, por aqui ingresa la info del MAX186
+#define ADC_SCLKcorr PIN_B0
+#define ADC_DOUT PIN_B2  // entrada, por aqui ingresa la info del MAX186
 #define ADC_DIN PIN_A4 //salida, se envia la informacion al MAX186
 #define ADC_SSTRB PIN_A5//entrada
 #define ADC_SDATA PIN_A3//entrada SDATA en AD7450

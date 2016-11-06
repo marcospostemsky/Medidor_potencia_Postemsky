@@ -7,6 +7,7 @@
 */
 
 #include <18F4550.h>
+#device HIGH_INTS = TRUE
 #fuses NOWDT,MCLR,HS,NOUSBDIV,NOIESO,            //Selecciona el oscilador externo
 #use delay(clock=48 Mhz, crystal= 48 MHz)   // Selecciona la velocidad del oscilador interno
 #use i2c(Master,Fast=100000, sda=PIN_D6, scl=PIN_D7,force_sw)
@@ -14,7 +15,6 @@ int contador = 0 ;int pulso_timer = 0 ;
 #include <math.h>
 #include "funciones.h"
 #include <Control_ADCs.h>
-
 
 
 //Implementacion Switch-Case
@@ -38,14 +38,27 @@ int puntos=20;//puntos por periodo
 float tension, corriente, tension_RMS,corriente_RMS, t_desfase, potencia_ins,angulo;
 float Energia_Wms=0;//, Energia_Wh=0, Energia_kWh=0;
 float Energia_Wh=0, Energia_kWh;
-const long carga= 0xE8AB;
+const long carga= 0xE877;
+int control_pantalla;
 
-#INT_TIMER1               // interrupcion para demora de 1 ms
+
+
+#INT_EXT1 
+void interrupcion_ext(){
+    control_pantalla++;
+    while(input(PIN_B1)==1);
+}
+
+#INT_TIMER1 FAST          // interrupcion para demora de 1 ms, ALTA PRIORIDAD
 void interrtimer_0(){
+    punto1= leer_Tension();
+    punto2= leer_Corriente(); // comprobar si funciona con el tiempo de demora de la lectura del externo
     set_timer1(carga);   // interrupcion cada 1 ms
     pulso_timer++;
 
    }
+
+
 
 void maquina_estado()
 {
@@ -54,19 +67,21 @@ void maquina_estado()
 		switch(estado)
 		{
 			case PUNTO_TENS_CORR:
-                punto1= leer_Tension();
-                punto2= leer_Corriente(); // comprobar si funciona con el tiempo de demora de la lectura del externo
+                //punto1= leer_Tension();
+               // punto2= leer_Corriente(); // comprobar si funciona con el tiempo de demora de la lectura del externo
                 // convierte los valores de long a float
+            if (pulso_timer==1){ 
                 tension=punto1;
                 corriente=punto2;
                 contador++;
+                pulso_timer=0;
 					estado = CONVERSION_DESFASE;
-
+            }
 				break;
 			
 			case CONVERSION_DESFASE:
                 tension= (tension)*2.5/2048;
-                corriente= (corriente)/1000-2.510;
+                corriente= (corriente)/1000-2.5;
                 //se convierte a la tension y corriente real
                 tension= tension*155.57; // conversion con 2 V igual a 311.13 V
                 corriente= corriente*12; // 2.5 V es igual a +30 A (recordar que el sensor mide ±30A)
@@ -119,11 +134,11 @@ void maquina_estado()
                 
 			case TENS_CORR_RMS:
 			
-				if((contador<30)&& (pulso_timer==1))
+				if((contador<30))
 				{
 					tension_RMS=tension_RMS+ tension * tension;       //calcula tension eficaz
                     corriente_RMS= corriente_RMS+ corriente * corriente; // calcula corriente eficaz
-                    pulso_timer=0;
+                    //pulso_timer=0;
                     
 					estado = PUNTO_TENS_CORR;
                     
@@ -144,6 +159,7 @@ void maquina_estado()
 				tension_RMS= sqrt(tension_RMS/30);
                 corriente_RMS= sqrt(corriente_RMS/30);
                 
+               
                 // se controla si se pudo calcular desfase en el estado anterior 
                 // se realiza las diferencia de cruce por cero y se convierte de tiempo a radianes
                 angulo=0;
@@ -172,12 +188,15 @@ void maquina_estado()
                 tiempo_potencia=tiempo_potencia/375;
                 Energia_Wms=Energia_Wms+potencia_ins*tiempo_potencia;             //Energia en Watt por milisegundo
                 
+                
+               
                 if(Energia_Wms>=3600000){
-                    Energia_Wh=Energia_Wh+1;  // relacion watt ms a watt hora
+                    Energia_Wms=Energia_Wms/3600000;
+                    Energia_Wh=Energia_Wh+Energia_Wms;  // relacion watt ms a watt hora
                     Energia_Wms=0;                
                 }
                 
-                if (Energia_Wh==1000){
+                if (Energia_Wh>=1000){
                     Energia_kWh=Energia_kWh+1;
                     Energia_Wh=0;
                 }
@@ -195,11 +214,60 @@ void maquina_estado()
                 
 			case MOSTRAR_DATOS:
                 //este estado solo muestra los datos en la pantalla LCD
-                lcd_gotoxy(1,1);
+              if (control_pantalla>4){
+                    control_pantalla=0;
+                }
+                
+                switch(control_pantalla)
+                {
+                    case 0:
+                        lcd_gotoxy(1,1);
+                        printf(LCD_PUTC,"  ENERGIA kWh   ");
+                        lcd_gotoxy(1,2);
+                        printf (LCD_PUTC, "%f kWh                   ",Energia_kWh);
+                    break;
+                    
+                    case 1:
+                        lcd_gotoxy(1,1);
+                        printf(LCD_PUTC,"   ENERGIA Wh    ");
+                        lcd_gotoxy(1,2);
+                        printf (LCD_PUTC, "%f Wh                 ",Energia_Wh);
+                    break;
+                    
+                    case 2:
+                        lcd_gotoxy(1,1);
+                        printf(LCD_PUTC,"   Tension RMS  ");
+                        lcd_gotoxy(1,2);
+                        printf (LCD_PUTC, "%f V                  ",tension_RMS);
+                    break;
+                    
+                    case 3:
+                        lcd_gotoxy(1,1);
+                        printf(LCD_PUTC," Corriente RMS  ");
+                        lcd_gotoxy(1,2);
+                        printf (LCD_PUTC, "%f A                  ",corriente_RMS);
+                    break;
+                    
+                    case 4:
+                        lcd_gotoxy(1,1);
+                        printf(LCD_PUTC,"Factor potencia ");
+                        lcd_gotoxy(1,2);
+                        printf (LCD_PUTC, "Cos(fi)=%f                   ",angulo);
+                    break;
+                
+                    
+                }
+                
+                
+                
+              /*  lcd_gotoxy(1,1);
                 printf(LCD_PUTC,"%f Wh %f kWh              ",Energia_Wh,Energia_kWh);
                 lcd_gotoxy(1,2);
-                printf (LCD_PUTC, "T=\%f  I=\%f     ",tension_RMS,corriente_RMS);
-                //delay_ms(1000);
+                printf (LCD_PUTC, "T=\%f  I=\%f     ",tension_RMS,corriente_RMS);*/
+                
+                
+                
+                //Configuraciones para volver a tomar puntos
                 enable_interrupts(INT_TIMER1);
                 enable_interrupts(GLOBAL);
                 pulso_timer=0;
